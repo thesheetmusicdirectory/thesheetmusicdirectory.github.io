@@ -7,7 +7,7 @@ The Guitar Directory is a collection of guitar tabs, audio files, and informatio
 To install this project, follow these steps:
 1. Clone the repository:
    ```bash
-   git clone https://github.com/mattialobrano/The_Guitar_Directory.git
+   git clone https://github.com/theguitardirectory/The_Guitar_Directory.git
    ```
 2. Navigate to the project directory:
    ```bash
@@ -21,7 +21,7 @@ To use this project:
 2. Navigate through the links to explore tabs and audio files for various songs.
 3. Alternatively, visit the live GitHub Pages site:
    ```
-   https://mattialobrano.github.io/The_Guitar_Directory/
+   https://theguitardirectory.github.io/The_Guitar_Directory/
    ```
 
 ## Features
@@ -53,4 +53,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 For any questions or suggestions, feel free to contact:
 - **Name**: Mattia Lobrano
 - **Email**: mattialobrano@gmail.com
-- **Phone**: +39 389 016 3511
