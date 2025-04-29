@@ -9,10 +9,6 @@
                 color: #f4f4f4;
                 margin: 0;
                 padding: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
                 text-align: center;
             }
             header {
@@ -20,17 +16,29 @@
                 padding: 20px;
                 text-align: center;
                 border-bottom: 3px solid #1DB954; /* Spotify green */
-                position: absolute;
+                position: fixed;
                 top: 0;
                 width: 100%;
+                z-index: 1000; /* Ensures the header stays on top */
             }
             header h1 {
                 margin: 0;
                 font-size: 2.5em;
                 color: #1DB954; /* Spotify green */
             }
+            header a {
+                display: inline-block;
+                margin: 0 10px;
+                color: #1DB954;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            header a:hover {
+                text-decoration: underline;
+            }
             main {
                 padding: 20px;
+                margin-top: 140px; /* Adjusted to ensure content is below the header */
             }
             main h2 {
                 font-size: 2em;
@@ -47,7 +55,7 @@
                 color: #aaa;
                 text-align: center;
                 padding: 10px;
-                position: absolute;
+                position: fixed;
                 bottom: 0;
                 width: 100%;
                 border-top: 3px solid #1DB954; /* Spotify green */
@@ -60,34 +68,44 @@
             a:hover {
                 text-decoration: underline;
             }
+
+            /* Responsive Design for Mobile Screens */
+            @media (max-width: 768px) {
+                header h1 {
+                    font-size: 2em; /* Reduce font size for smaller screens */
+                }
+                header a {
+                    display: block; /* Stack navigation links vertically */
+                    margin: 5px 0;
+                }
+                main h2 {
+                    font-size: 1.5em; /* Reduce heading size */
+                }
+                main p {
+                    font-size: 1em; /* Reduce paragraph font size */
+                }
+                footer {
+                    font-size: 0.9em; /* Reduce footer font size */
+                }
+            }
         </style>
     </head>
     <body>
         <header>
-            <h1>Coming Soon</h1>
-            <a href="index.html" style="color: #1DB954;">Home</a>
-            <a href="content.html" style="color: #1DB954;">Content</a>
-            <a href="comingsoon.html" style="color: #1DB954;">Coming Soon</a>
-            <h2>Exciting Updates Are on the Way!</h2>
+            <h1>Coming Soon - The Guitar Directory</h1>
+            <a href="index.html">Home</a>
+            <a href="content.html">Content</a>
+            <a href="videos.html">Videos</a>
+            <a href="comingsoon.html">Coming Soon</a>
             <p>We're working hard to bring you new features, songs, and updates to The Guitar Directory.</p>
             <p>Stay tuned for more content and improvements!</p>
-            <p>In the meantime, feel free to explore the <a href="index.html">homepage</a> or check out the <a href="content.html">content page</a>.</p>   
+            <p>In the meantime, feel free to explore the <a href="index.html">homepage</a> or check out the <a href="content.html">content page</a>.</p>
         </header>
         <main>
             <br>
             <br>
             <br>
-            <h2>v2.0</h2>
-            <p>Version 2.0 is coming soon with new features and improvements!:
-                <br>
-                - New songs
-                <br>
-                - A new tab for videos
-                <br>
-                - Changed some names and descriptons 
-                <br>
-                - Mobile Version
-            </p>
+            <h2>Exciting Updates Are on the Way!</h2>
         </main>
     </body>
 </html>

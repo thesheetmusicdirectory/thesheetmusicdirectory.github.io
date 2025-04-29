@@ -24,6 +24,15 @@
                 font-size: 2.5em;
                 color: #1DB954; /* Spotify green */
             }
+            header a {
+                display: inline-block;
+                margin: 0 10px;
+                color: #1DB954;
+                text-decoration: none;
+            }
+            header a:hover {
+                text-decoration: underline;
+            }
             main {
                 padding: 20px; /* Adds padding inside the main content */
                 text-align: center;
@@ -52,20 +61,49 @@
             }
             img {
                 margin: 20px; /* Adds padding around the image */
+                max-width: 100%; /* Ensures the image scales on smaller screens */
+                height: auto; /* Maintains aspect ratio */
+                border: 5px solid #1DB954;
+                border-radius: 10px;
+            }
+
+            /* Responsive Design for Mobile Screens */
+            @media (max-width: 768px) {
+                body {
+                    padding: 10px; /* Reduce padding on smaller screens */
+                }
+                header h1 {
+                    font-size: 2em; /* Reduce font size for the title */
+                }
+                header a {
+                    display: block; /* Stack navigation links vertically */
+                    margin: 5px 0;
+                }
+                img {
+                    margin: 10px auto; /* Center the image */
+                    display: block; /* Ensure the image is centered */
+                }
+                main p {
+                    font-size: 1em; /* Reduce font size for better readability */
+                }
+                footer {
+                    font-size: 0.9em; /* Reduce footer font size */
+                }
             }
         </style>
     </head>
     <body>
         <header>
             <h1>The Guitar Directory</h1>
-            <a href="index.html" style="color: #1DB954;" class="active">Home</a>
-            <a href="content.html" style="color: #1DB954;">Content</a>
-            <a href="comingsoon.html" style="color: #1DB954;">Coming Soon</a>
+            <a href="index.html" class="active">Home</a>
+            <a href="content.html">Content</a>
+            <a href="videos.html">Videos</a>
+            <a href="comingsoon.html">Coming Soon</a>
             <h3>The Guitar Directory is a directory for tabs and audio</h3>
             <div class="vertical-menu"></div>
         </header>
 
-        <img src="Untitled design.jpg" width="500" height="300" align="left" style="margin-right: 20px; border: 5px solid #1DB954; border-radius: 10px;">
+        <img src="Untitled design.jpg" width="500" height="300" align="left" style="margin-right: 20px;">
         <br>
         <h2>About</h2>
         <p><font size="4">The Guitar Directory is a directory for tabs, videos and info for guitar songs <br> This directory was created by Mattia Lobrano. This webpage<br> was created only by me <br>so feel free to send an email with a review or some tips. Thank you for using <br> <strong>The Guitar Directory</strong></font></p>

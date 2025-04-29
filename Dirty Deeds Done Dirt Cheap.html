@@ -22,12 +22,22 @@
             font-size: 2.5em;
             color: #1DB954; /* Spotify green */
         }
+        header a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #1DB954;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        header a:hover {
+            text-decoration: underline;
+        }
         main {
             padding: 20px; /* Adds padding inside the main content */
             text-align: center; /* Centers the text inside the main content */
         }
-        main h2 {
-            font-size: 2em;
+        main h3 {
+            font-size: 1.8em;
             margin-bottom: 10px;
         }
         main p {
@@ -69,15 +79,41 @@
         audio::-webkit-media-controls-time-remaining-display {
             color: #000; /* Text color for time display */
         }
+
+        /* Responsive Design for Mobile Screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px; /* Reduce padding on smaller screens */
+            }
+            header h1 {
+                font-size: 2em; /* Reduce font size for the title */
+            }
+            header a {
+                display: block; /* Stack navigation links vertically */
+                margin: 5px 0;
+            }
+            main h3 {
+                font-size: 1.5em; /* Reduce heading size */
+            }
+            main p {
+                font-size: 1em; /* Reduce paragraph font size */
+            }
+            footer {
+                font-size: 0.9em; /* Reduce footer font size */
+            }
+            audio {
+                width: 100%; /* Make the audio player responsive */
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Dirty Deeds Done Dirt Cheap - The Guitar Directory</h1>
-    
-        <a href="index.html" style="color: #1DB954;" class="active">Home</a>
-        <a href="content.html" style="color: #1DB954;">Content</a>
-        <a href="comingsoon.html" style="color: #1DB954;">Coming Soon</a>
+        <a href="index.html" class="active">Home</a>
+        <a href="content.html">Content</a>
+        <a href="videos.html">Videos</a>
+        <a href="comingsoon.html">Coming Soon</a>
         <h3>AC/DC</h3>
         <h4>Tabs and Audio</h4>
         <p>Experience the electrifying energy of AC/DC's classic hit. Let the music take you on a journey through the raw power of rock and roll.</p>
