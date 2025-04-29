@@ -1,9 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
     <head>
         <title>The Guitar Directory</title>
-        <meta name="google-site-verification" content="GQrQsdgZxieUltcTySgXI_aTjGUK9LP4BRnFI9veVGs" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures proper scaling on mobile devices -->
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -33,9 +32,22 @@
             header a:hover {
                 text-decoration: underline;
             }
-            main {
-                padding: 20px; /* Adds padding inside the main content */
-                text-align: center;
+            .content {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 20px; /* Adds space between the image and text */
+                margin-bottom: 20px;
+                flex-wrap: wrap; /* Ensures content wraps on smaller screens */
+            }
+            .content img {
+                max-width: 300px; /* Limit the image width */
+                height: auto; /* Maintain aspect ratio */
+                border: 5px solid #1DB954;
+                border-radius: 10px;
+            }
+            .content-text {
+                max-width: 600px; /* Limit the text width */
             }
             main h2 {
                 font-size: 2em;
@@ -56,16 +68,6 @@
                 border-top: 3px solid #1DB954; /* Spotify green */
                 margin-top: 20px; /* Adds space above the footer */
             }
-            .vertical-menu a {
-                color: #1DB954; /* Spotify green */
-            }
-            img {
-                margin: 20px; /* Adds padding around the image */
-                max-width: 100%; /* Ensures the image scales on smaller screens */
-                height: auto; /* Maintains aspect ratio */
-                border: 5px solid #1DB954;
-                border-radius: 10px;
-            }
 
             /* Responsive Design for Mobile Screens */
             @media (max-width: 768px) {
@@ -79,15 +81,34 @@
                     display: block; /* Stack navigation links vertically */
                     margin: 5px 0;
                 }
-                img {
-                    margin: 10px auto; /* Center the image */
-                    display: block; /* Ensure the image is centered */
+                .content {
+                    flex-direction: column; /* Stack image and text vertically */
+                    text-align: center; /* Center-align text */
+                }
+                .content img {
+                    max-width: 100%; /* Scale image to fit smaller screens */
                 }
                 main p {
                     font-size: 1em; /* Reduce font size for better readability */
                 }
                 footer {
                     font-size: 0.9em; /* Reduce footer font size */
+                }
+            }
+
+            /* Extra Small Screens (e.g., iPhone 7, width <= 375px) */
+            @media (max-width: 375px) {
+                header h1 {
+                    font-size: 1.8em; /* Further reduce font size for smaller screens */
+                }
+                main h2 {
+                    font-size: 1.5em; /* Reduce heading size */
+                }
+                main p {
+                    font-size: 0.9em; /* Reduce paragraph font size */
+                }
+                footer {
+                    font-size: 0.8em; /* Reduce footer font size */
                 }
             }
         </style>
@@ -100,14 +121,25 @@
             <a href="videos.html">Videos</a>
             <a href="comingsoon.html">Coming Soon</a>
             <h3>The Guitar Directory is a directory for tabs and audio</h3>
-            <div class="vertical-menu"></div>
         </header>
 
-        <img src="Untitled design.jpg" width="500" height="300" align="left" style="margin-right: 20px;">
-        <br>
-        <h2>About</h2>
-        <p><font size="4">The Guitar Directory is a directory for tabs, videos and info for guitar songs <br> This directory was created by Mattia Lobrano. This webpage<br> was created only by me <br>so feel free to send an email with a review or some tips. Thank you for using <br> <strong>The Guitar Directory</strong></font></p>
-        <h2>Contact</h2>
-        <p><font size="4">You can contact me at or at mattialobrano@gmail.com.</font></p>
+
+            <img src="Untitled design.jpg" alt="Guitar Directory Logo">
+            <div class="content-text">
+                <h2>About</h2>
+                <p>The Guitar Directory is a directory for tabs, videos, and info for guitar songs.<br>
+                   This directory was created by Mattia Lobrano. This webpage<br>
+                   was created only by me, so feel free to send an email with a review or some tips.<br>
+                   Thank you for using <strong>The Guitar Directory</strong>.
+                </p>
+
+        </div>
+
+        <main>
+            <h2>Contact</h2>
+            <p>You can contact me at mattialobrano@gmail.com.</p>
+        </main>
+
+
     </body>
 </html>

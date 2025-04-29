@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Content - The Guitar Directory</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures proper scaling on mobile devices -->
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -15,6 +16,7 @@
                 padding: 20px;
                 text-align: center;
                 border-bottom: 3px solid #1DB954; /* Spotify green */
+                margin-bottom: 20px; /* Adds space below the header */
             }
             header h1 {
                 margin: 0;
@@ -73,6 +75,19 @@
                 }
                 footer {
                     font-size: 0.9em; /* Reduce footer font size */
+                }
+            }
+
+            /* Extra Small Screens (e.g., iPhone 7, width <= 375px) */
+            @media (max-width: 375px) {
+                header h1 {
+                    font-size: 1.8em; /* Further reduce font size for smaller screens */
+                }
+                main a {
+                    font-size: 0.9em; /* Reduce font size for links */
+                }
+                footer {
+                    font-size: 0.8em; /* Reduce footer font size */
                 }
             }
         </style>

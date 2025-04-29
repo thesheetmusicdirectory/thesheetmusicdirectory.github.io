@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Highway Star - Deep Purple - The Guitar Directory</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures proper scaling on mobile devices -->
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -103,6 +104,22 @@
                 }
                 audio {
                     width: 100%; /* Make the audio player responsive */
+                }
+            }
+
+            /* Extra Small Screens (e.g., iPhone 7, width <= 375px) */
+            @media (max-width: 375px) {
+                header h1 {
+                    font-size: 1.8em; /* Further reduce font size for smaller screens */
+                }
+                main h3 {
+                    font-size: 1.3em; /* Further reduce heading size */
+                }
+                main p {
+                    font-size: 0.9em; /* Further reduce paragraph font size */
+                }
+                footer {
+                    font-size: 0.8em; /* Further reduce footer font size */
                 }
             }
         </style>
