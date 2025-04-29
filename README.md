@@ -1,39 +1,56 @@
-# Your Project Title
+# The Guitar Directory
 
 ## Overview
-This project is designed to [briefly describe the purpose of your project]. It includes various code files that implement [describe the functionality or features of your project].
+The Guitar Directory is a collection of guitar tabs, audio files, and information for popular songs. It is designed to help guitar enthusiasts learn and explore songs with ease. The project includes HTML pages for each song, styled with CSS, and hosted as a GitHub Pages site.
 
 ## Installation
 To install this project, follow these steps:
 1. Clone the repository:
-   ```
-   git clone [repository-url]
+   ```bash
+   git clone https://github.com/mattialobrano/The_Guitar_Directory.git
    ```
 2. Navigate to the project directory:
+   ```bash
+   cd The_Guitar_Directory
    ```
-   cd your-project
-   ```
-3. [Include any additional installation steps, such as installing dependencies.]
+3. No additional installation steps are required as this is a static HTML project.
 
 ## Usage
-To use this project, [provide instructions on how to run or use the project]. For example:
-1. [Step 1]
-2. [Step 2]
-3. [Step 3]
+To use this project:
+1. Open the `index.html` file in your browser to view the homepage.
+2. Navigate through the links to explore tabs and audio files for various songs.
+3. Alternatively, visit the live GitHub Pages site:
+   ```
+   https://mattialobrano.github.io/The_Guitar_Directory/
+   ```
+
+## Features
+- **Song Pages**: Each song has its own dedicated page with tabs and audio.
+- **Responsive Design**: The pages are styled to look good on both desktop and mobile devices.
+- **Spotify Green Theme**: A consistent color scheme inspired by Spotify.
 
 ## Contributing
 If you would like to contribute to this project, please follow these steps:
 1. Fork the repository.
 2. Create a new branch:
-   ```
+   ```bash
    git checkout -b feature-branch
    ```
-3. Make your changes and commit them.
-4. Push to the branch:
+3. Make your changes and commit them:
+   ```bash
+   git commit -m "Add your message here"
    ```
+4. Push to the branch:
+   ```bash
    git push origin feature-branch
    ```
 5. Open a pull request.
 
 ## License
-This project is licensed under the [Your License] License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+For any questions or suggestions, feel free to contact:
+- **Name**: Mattia Lobrano
+- **Email**: mattialobrano@gmail.com
+- **Phone**: +39 389 016 3511
