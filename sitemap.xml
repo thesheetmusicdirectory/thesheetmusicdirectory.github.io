@@ -4,8 +4,7 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
+<!-- Sitemap for The Guitar Directory -->
 
 <url>
   <loc>https://theguitardirectory.github.io/The_Guitar_Directory/</loc>
@@ -52,6 +51,5 @@
   <lastmod>2025-04-30T09:35:43+00:00</lastmod>
   <priority>0.64</priority>
 </url>
-
 
 </urlset>

@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Smells Like Teen Spirit - Nirvana - The Guitar Directory</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures proper scaling on mobile devices -->
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -37,12 +38,12 @@
                 text-align: center;
             }
             main h3 {
-                font-size: 1.8em;
+                font-size: 2em; /* Increased font size for headings */
                 margin-bottom: 10px;
             }
             main p {
-                font-size: 1.2em;
-                line-height: 1.6;
+                font-size: 1.5em; /* Increased font size for paragraphs */
+                line-height: 1.8; /* Adjusted line height for better readability */
             }
             footer {
                 background-color: #222;
@@ -60,6 +61,7 @@
                 border: 2px solid #1DB954; /* Spotify green border */
                 border-radius: 5px; /* Rounded corners */
                 color: #000; /* Text color (if applicable) */
+                width: 100%; /* Make the audio player responsive */
             }
 
             /* For WebKit browsers (Chrome, Safari) */
@@ -93,16 +95,29 @@
                     margin: 5px 0;
                 }
                 main h3 {
-                    font-size: 1.5em; /* Reduce heading size */
+                    font-size: 1.8em; /* Adjust font size for headings */
                 }
                 main p {
-                    font-size: 1em; /* Reduce paragraph font size */
+                    font-size: 1.2em; /* Adjust font size for paragraphs */
                 }
                 footer {
                     font-size: 0.9em; /* Reduce footer font size */
                 }
-                audio {
-                    width: 100%; /* Make the audio player responsive */
+            }
+
+            /* Extra Small Screens (e.g., iPhone 7, width <= 375px) */
+            @media (max-width: 375px) {
+                header h1 {
+                    font-size: 1.8em; /* Further reduce font size for smaller screens */
+                }
+                main h3 {
+                    font-size: 1.5em; /* Adjust font size for headings */
+                }
+                main p {
+                    font-size: 1em; /* Adjust font size for paragraphs */
+                }
+                footer {
+                    font-size: 0.8em; /* Reduce footer font size */
                 }
             }
         </style>
