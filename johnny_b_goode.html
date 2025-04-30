@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Johnny B. Goode - Chuck Berry - The Guitar Directory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures proper scaling on mobile devices -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #1e1e1e, #222);
+            color: #f4f4f4;
+            margin: 0;
+            padding: 20px; /* Adds padding inside the body */
+        }
+        header {
+            background-color: #222;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #1DB954; /* Spotify green */
+            margin-bottom: 20px; /* Adds space below the header */
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #1DB954; /* Spotify green */
+        }
+        header a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #1DB954;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        header a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px; /* Adds padding inside the main content */
+            text-align: center; /* Centers the text inside the main content */
+        }
+        main h3 {
+            font-size: 2em; /* Increased font size for headings */
+            margin-bottom: 10px;
+        }
+        main p {
+            font-size: 1.5em; /* Increased font size for paragraphs */
+            line-height: 1.8; /* Adjusted line height for better readability */
+        }
+        footer {
+            background-color: #222;
+            color: #aaa;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: calc(100% - 40px); /* Adjusts width to account for body padding */
+            border-top: 3px solid #1DB954; /* Spotify green */
+        }
+        audio {
+            margin-top: 20px; /* Adds space above the audio player */
+            background-color: #1DB954; /* Spotify green background */
+            border: 2px solid #1DB954; /* Spotify green border */
+            border-radius: 5px; /* Rounded corners */
+            color: #000; /* Text color (if applicable) */
+            width: 100%; /* Make the audio player responsive */
+        }
+
+        /* For WebKit browsers (Chrome, Safari) */
+        audio::-webkit-media-controls-panel {
+            background-color: #1DB954; /* Spotify green for controls panel */
+            color: #000; /* Text color for controls */
+        }
+
+        audio::-webkit-media-controls-play-button,
+        audio::-webkit-media-controls-timeline,
+        audio::-webkit-media-controls-volume-slider {
+            background-color: #1DB954; /* Spotify green for buttons/sliders */
+            color: #000; /* Text/icon color */
+        }
+
+        audio::-webkit-media-controls-current-time-display,
+        audio::-webkit-media-controls-time-remaining-display {
+            color: #000; /* Text color for time display */
+        }
+
+        /* Responsive Design for Mobile Screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px; /* Reduce padding on smaller screens */
+            }
+            header h1 {
+                font-size: 2em; /* Reduce font size for the title */
+            }
+            header a {
+                display: block; /* Stack navigation links vertically */
+                margin: 5px 0;
+            }
+            main h3 {
+                font-size: 1.8em; /* Adjust font size for headings */
+            }
+            main p {
+                font-size: 1.2em; /* Adjust font size for paragraphs */
+            }
+            footer {
+                font-size: 0.9em; /* Reduce footer font size */
+            }
+        }
+
+        /* Extra Small Screens (e.g., iPhone 7, width <= 375px) */
+        @media (max-width: 375px) {
+            header h1 {
+                font-size: 1.8em; /* Further reduce font size for smaller screens */
+            }
+            main h3 {
+                font-size: 1.5em; /* Adjust font size for headings */
+            }
+            main p {
+                font-size: 1em; /* Adjust font size for paragraphs */
+            }
+            footer {
+                font-size: 0.8em; /* Reduce footer font size */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Johnny B. Goode - The Guitar Directory</h1>
+        <a href="index.html" class="active">Home</a>
+        <a href="content.html">Content</a>
+        <a href="videos.html">Videos</a>
+        <a href="comingsoon.html">Coming Soon</a>
+        <h3>Chuck Berry</h3>
+        <h4>Tabs and Audio</h4>
+        <p>Explore the legendary song "Johnny B. Goode" by Chuck Berry. Find tabs and listen to the audio below.</p>
+    </header>
+    <main>
+        <h3>Tabs</h3>
+        <a href="https://tabs.ultimate-guitar.com/tab/chuck-berry/johnny-b-goode-tabs-16986" style="color: #1DB954;">Ultimate Guitar Tabs</a>
+        <p>Click the link above to view the tabs for "Johnny B. Goode".</p>
+        <h3>Listen to the Song</h3>
+        <audio controls>
+            <source src="Chuck Berry - Johnny B. Goode.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <p>Click the play button above to listen to the song.</p>
+        <p>For more information about the song, visit the <a href="https://en.wikipedia.org/wiki/Johnny_B._Goode" style="color: #1DB954;">Wikipedia page</a>.</p>
+    </main>
+</body>
+</html>
