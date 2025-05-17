@@ -25,9 +25,9 @@ To use this project:
    ```
 
 ## Features
-- **Song Pages**: Each song has its own dedicated page with tabs and audio.
+- **Song Pages**: Each song has its own dedicated page with tabs, audio, music videos and "How to play" videos (How to play videos won't work if you download the files)
 - **Responsive Design**: The pages are styled to look good on both desktop and mobile devices.
-- **Spotify Green Theme**: A consistent color scheme inspired by Spotify.
+- **Rounded Theme**:A rounded theme inspired by Apple
 
 ## Contributing
 If you would like to contribute to this project, please follow these steps:

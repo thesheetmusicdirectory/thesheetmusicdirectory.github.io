@@ -1,129 +1,134 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-    <head>
-        <title>Coming Soon - The Guitar Directory</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures proper scaling on mobile devices -->
-        <link rel="icon" href="The Guitar Directory.ico" type="image/x-icon">
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background: linear-gradient(45deg, #1e1e1e, #222);
-                color: #f4f4f4;
-                margin: 0;
-                padding: 0;
-                text-align: center;
-            }
-            header {
-                background-color: #222;
-                padding: 20px;
-                text-align: center;
-                border-bottom: 3px solid #1DB954; /* Spotify green */
-                position: fixed;
-                top: 0;
-                width: 100%;
-                z-index: 1000; /* Ensures the header stays on top */
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Coming Soon - The Guitar Directory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="The Guitar Directory.ico" type="image/x-icon">
+    <style>
+        /* General Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f5f7, #e5e5e7);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 20px 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #007aff; /* Apple blue */
+        }
+        header nav {
+            margin-top: 10px;
+        }
+        header a {
+            color: #007aff;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+        header a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content Section */
+        main {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        main h2 {
+            font-size: 2em;
+            color: #007aff;
+            margin-bottom: 20px;
+        }
+        main p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        main a {
+            color: #007aff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #ffffff;
+            color: #555;
+            text-align: center;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 20px 20px 0 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
             header h1 {
-                margin: 0;
-                font-size: 2.5em;
-                color: #1DB954; /* Spotify green */
+                font-size: 2em;
             }
             header a {
-                display: inline-block;
+                font-size: 1em;
                 margin: 0 10px;
-                color: #1DB954;
-                text-decoration: none;
-                font-weight: bold;
-            }
-            header a:hover {
-                text-decoration: underline;
-            }
-            main {
-                padding: 20px;
-                margin-top: 140px; /* Adjusted to ensure content is below the header */
             }
             main h2 {
-                font-size: 2em;
-                margin-bottom: 10px;
-                color: #1DB954; /* Spotify green */
+                font-size: 1.8em;
             }
             main p {
-                font-size: 1.2em;
-                line-height: 1.6;
-                margin-bottom: 20px;
+                font-size: 1em;
             }
-            footer {
-                background-color: #222;
-                color: #aaa;
-                text-align: center;
-                padding: 10px;
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-                border-top: 3px solid #1DB954; /* Spotify green */
-            }
-            a {
-                color: #1DB954;
-                text-decoration: none;
-                font-weight: bold;
-            }
-            a:hover {
-                text-decoration: underline;
-            }
+        }
 
-            /* Responsive Design for Mobile Screens */
-            @media (max-width: 768px) {
-                header h1 {
-                    font-size: 2em; /* Reduce font size for smaller screens */
-                }
-                header a {
-                    display: block; /* Stack navigation links vertically */
-                    margin: 5px 0;
-                }
-                main h2 {
-                    font-size: 1.5em; /* Reduce heading size */
-                }
-                main p {
-                    font-size: 1em; /* Reduce paragraph font size */
-                }
-                footer {
-                    font-size: 0.9em; /* Reduce footer font size */
-                }
+        @media (max-width: 375px) {
+            header h1 {
+                font-size: 1.8em;
             }
-
-            /* Extra Small Screens (e.g., iPhone 7, width <= 375px) */
-            @media (max-width: 375px) {
-                header h1 {
-                    font-size: 1.8em; /* Further reduce font size for smaller screens */
-                }
-                main h2 {
-                    font-size: 1.3em; /* Further reduce heading size */
-                }
-                main p {
-                    font-size: 0.9em; /* Further reduce paragraph font size */
-                }
-                footer {
-                    font-size: 0.8em; /* Further reduce footer font size */
-                }
+            header a {
+                font-size: 0.9em;
             }
-        </style>
-    </head>
-    <body>
-        <header>
-            <h1>Coming Soon - The Guitar Directory</h1>
+            main h2 {
+                font-size: 1.5em;
+            }
+            main p {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Coming Soon</h1>
+        <nav>
             <a href="index.html">Home</a>
             <a href="content.html">Content</a>
             <a href="videos.html">Videos</a>
             <a href="comingsoon.html">Coming Soon</a>
-            <p>We're working hard to bring you new features, songs, and updates to The Guitar Directory.</p>
-            <p>Stay tuned for more content and improvements!</p>
-            <p>In the meantime, feel free to explore the <a href="index.html">homepage</a> or check out the <a href="content.html">content page</a>.</p>
-        </header>
-        <main>
-            <br>
-            <br>
-            <br>
-            <h2>We are currently working on new features and improvements for The Guitar Directory.</h2>
-        </main>
-    </body>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h2>We are currently working on new features and improvements for The Guitar Directory.</h2>
+        <p>We're working hard to bring you new features, songs, and updates to The Guitar Directory.</p>
+        <p>Stay tuned for more content and improvements!</p>
+        <p>In the meantime, feel free to explore the <a href="index.html">homepage</a> or check out the <a href="content.html">content page</a>.</p>
+    </main>
+</body>
 </html>

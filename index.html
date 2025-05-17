@@ -1,152 +1,161 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-    <head>
-        <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-558GCHQP');</script>
-    <!-- End Google Tag Manager -->
-        <title>The Guitar Directory</title>
-        <meta name="google-site-verification" content="GQrQsdgZxieUltcTySgXI_aTjGUK9LP4BRnFI9veVGs" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures proper scaling on mobile devices -->
-        <link rel="icon" href="The Guitar Directory.ico" type="image/x-icon">
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background: linear-gradient(45deg, #222, #222);
-                color: #f4f4f4;
-                margin: 0;
-                padding: 20px; /* Adds padding inside the page on all sides */
-            }
-            header {
-                background-color: #222;
-                padding: 20px;
-                text-align: center;
-                border-bottom: 3px solid #1DB954; /* Spotify green */
-                margin-bottom: 20px; /* Adds space below the header */
-            }
-            header h1 {
-                margin: 0;
-                font-size: 2.5em;
-                color: #1DB954; /* Spotify green */
-            }
-            header a {
-                display: inline-block;
-                margin: 0 10px;
-                color: #1DB954;
-                text-decoration: none;
-            }
-            header a:hover {
-                text-decoration: underline;
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>The Guitar Directory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="GQrQsdgZxieUltcTySgXI_aTjGUK9LP4BRnFI9veVGs" />
+    <link rel="icon" href="The Guitar Directory.ico" type="image/x-icon">
+    <style>
+        /* General Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f5f7, #e5e5e7);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 20px 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #007aff; /* Apple blue */
+        }
+        header nav {
+            margin-top: 10px;
+        }
+        header a {
+            color: #007aff;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+        header a:hover {
+            text-decoration: underline;
+        }
+
+        /* Content Section */
+        .content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .content img {
+            max-width: 600px; /* Increase the max width to match the text block */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .content-text {
+            max-width: 600px;
+            text-align: left;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        .content-text h2 {
+            font-size: 2em;
+            color: #007aff;
+            margin-bottom: 15px;
+        }
+        .content-text p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #ffffff;
+            color: #555;
+            text-align: center;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 20px 20px 0 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
             .content {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 20px; /* Adds space between the image and text */
-                margin-bottom: 20px;
-                flex-wrap: wrap; /* Ensures content wraps on smaller screens */
-            }
-            .content img {
-                max-width: 450px; /* Increase the image size */
-                height: auto; /* Maintain aspect ratio */
-                border: 5px solid #1DB954; /* Add a Spotify green border */
-                border-radius: 10px; /* Add rounded corners */
-                margin: 10px; /* Add spacing around the image */
+                flex-direction: column;
+                text-align: center;
             }
             .content-text {
-                max-width: 600px; /* Limit the text width */
-            }
-            main h2 {
-                font-size: 2em;
-                margin-bottom: 10px;
-            }
-            main p {
-                font-size: 2.5em; /* Increased font size for paragraphs */
-                line-height: 1.8; /* Adjusted line height for better readability */
-            }
-            footer {
-                background-color: #222;
-                color: #aaa;
                 text-align: center;
-                padding: 10px;
-                position: fixed;
-                bottom: 0;
-                width: calc(100% - 40px); /* Adjusts width to account for body padding */
-                border-top: 3px solid #1DB954; /* Spotify green */
-                margin-top: 20px; /* Adds space above the footer */
             }
+            header h1 {
+                font-size: 2em;
+            }
+            header a {
+                font-size: 1em;
+                margin: 0 10px;
+            }
+            .content img {
+                max-width: 100%;
+            }
+            .content-text h2 {
+                font-size: 1.8em;
+            }
+            .content-text p {
+                font-size: 1em;
+            }
+        }
 
-            /* Responsive Design for Mobile Screens */
-            @media (max-width: 768px) {
-                body {
-                    padding: 10px; /* Reduce padding on smaller screens */
-                }
-                header h1 {
-                    font-size: 2em; /* Reduce font size for the title */
-                }
-                header a {
-                    display: block; /* Stack navigation links vertically */
-                    margin: 5px 0;
-                }
-                .content {
-                    flex-direction: column; /* Stack image and text vertically */
-                    text-align: center; /* Center-align text */
-                }
-                .content img {
-                    max-width: 100%; /* Scale image to fit smaller screens */
-                }
-                main p {
-                    font-size: 1.5em; /* Adjust font size for better readability on smaller screens */
-                }
-                footer {
-                    font-size: 0.9em; /* Reduce footer font size */
-                }
+        @media (max-width: 375px) {
+            header h1 {
+                font-size: 1.8em;
             }
-
-            /* Extra Small Screens (e.g., iPhone 7, width <= 375px) */
-            @media (max-width: 375px) {
-                header h1 {
-                    font-size: 1.8em; /* Further reduce font size for smaller screens */
-                }
-                main h2 {
-                    font-size: 1.5em; /* Reduce heading size */
-                }
-                main p {
-                    font-size: 1.2em; /* Adjust font size for paragraphs */
-                }
-                footer {
-                    font-size: 0.8em; /* Reduce footer font size */
-                }
+            header a {
+                font-size: 0.9em;
             }
-        </style>
-    </head>
-    <body>
-        <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-558GCHQP"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-        <header>
-            <h1>The Guitar Directory</h1>
+            .content-text h2 {
+                font-size: 1.5em;
+            }
+            .content-text p {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>The Guitar Directory</h1>
+        <nav>
             <a href="index.html" class="active">Home</a>
             <a href="content.html">Content</a>
             <a href="videos.html">Videos</a>
             <a href="comingsoon.html">Coming Soon</a>
-            <h3>The Guitar Directory is a directory for tabs and audio</h3>
-        </header>
+        </nav>
+    </header>
 
-        <div class="content">
-            <img src="Untitled design.jpg" alt="Guitar Directory Logo">
-            <div class="content-text">
-                <h2>About</h2>
-                <font size="5">The Guitar Directory is a directory for tabs, videos, and info for guitar songs.<br>
-                   This directory was created by Mattia Lobrano. This <br> webpage
-                   was created only by me, so feel free to send an email with a review or some tips.<br>
-                   Thank you for using <strong>The Guitar Directory</strong>.</font>
-                </p>
-            </div>
+    <!-- Content Section -->
+    <div class="content">
+        <img src="Untitled design.jpg" alt="Guitar Directory Logo">
+        <div class="content-text">
+            <h2>About</h2>
+            <p>
+                The Guitar Directory is a directory for tabs, videos, and info for guitar songs.<br>
+                This directory was created by <strong>Mattia Lobrano</strong>. This webpage was created entirely by me, so feel free to send an email with a review or some tips.<br>
+                Thank you for using <strong>The Guitar Directory</strong>.
+            </p>
         </div>
-    </body>
+    </div>
+</body>
 </html>
