@@ -4,180 +4,39 @@
     <title>Twist and Shout - The Beatles - The Guitar Directory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="The Guitar Directory.ico" type="image/x-icon">
-    <style>
-        /* General Styles */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f5f7, #e5e5e7);
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Header Styles */
-        header {
-            background-color: #ffffff;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 0 0 20px 20px;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: #007aff; /* Apple blue */
-        }
-        header nav {
-            margin-top: 10px;
-        }
-        header a {
-            color: #007aff;
-            text-decoration: none;
-            font-size: 1.2em;
-            margin: 0 15px;
-            font-weight: 500;
-        }
-        header a:hover {
-            text-decoration: underline;
-        }
-
-        /* Content Section */
-        .content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .content iframe {
-            width: 100%;
-            max-width: 600px;
-            height: 315px;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-        .content-text {
-            max-width: 600px;
-            text-align: left;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-        .content-text h2, .content-text h3 {
-            font-size: 2em;
-            color: #007aff;
-            margin-bottom: 15px;
-        }
-        .content-text p {
-            font-size: 1.2em;
-            line-height: 1.8;
-            color: #555;
-        }
-        .content-text a {
-            color: #007aff;
-            text-decoration: none;
-        }
-        .content-text a:hover {
-            text-decoration: underline;
-        }
-        audio {
-            width: 100%;
-            max-width: 600px;
-            margin-top: 20px;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Footer Styles */
-        footer {
-            background-color: #ffffff;
-            color: #555;
-            text-align: center;
-            padding: 15px;
-            border-top: 1px solid #ddd;
-            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 20px 20px 0 0;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .content {
-                flex-direction: column;
-                text-align: center;
-            }
-            .content-text {
-                text-align: center;
-            }
-            header h1 {
-                font-size: 2em;
-            }
-            header a {
-                font-size: 1em;
-                margin: 0 10px;
-            }
-            .content iframe {
-                max-width: 100%;
-            }
-            .content-text h2, .content-text h3 {
-                font-size: 1.8em;
-            }
-            .content-text p {
-                font-size: 1em;
-            }
-        }
-
-        @media (max-width: 375px) {
-            header h1 {
-                font-size: 1.8em;
-            }
-            header a {
-                font-size: 0.9em;
-            }
-            .content-text h2, .content-text h3 {
-                font-size: 1.5em;
-            }
-            .content-text p {
-                font-size: 0.9em;
-            }
-        }
-    </style>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 text-gray-800 font-sans">
     <!-- Header -->
-    <header>
-        <h1>Twist and Shout</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="content.html">Content</a>
-            <a href="videos.html">Videos</a>
-            <a href="comingsoon.html">Coming Soon</a>
+    <header class="bg-white shadow-md border border-gray-300 rounded-full w-11/12 mx-auto mt-5 p-5 text-center">
+        <h1 class="text-4xl font-bold text-blue-500">Twist and Shout</h1>
+        <nav class="mt-3">
+            <a href="index.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Home</a>
+            <a href="content.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Content</a>
+            <a href="videos.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Videos</a>
+            <a href="comingsoon.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Coming Soon</a>
         </nav>
     </header>
 
     <!-- Content Section -->
-    <div class="content">
-        <div class="content-text">
-            <h3>About the Song</h3>
-            <p>
+    <div class="content text-center py-10 px-5">
+        <div class="content-text bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto">
+            <h3 class="text-2xl font-semibold text-blue-500 mb-4">About the Song</h3>
+            <p class="text-lg text-gray-600 mb-6">
                 Explore the iconic song "Twist and Shout" by The Beatles. Find tabs and listen to the audio below.
             </p>
-            <h3>Tabs</h3>
-            <p>
-                Explore the tabs for "Twist and Shout" on <a href="https://tabs.ultimate-guitar.com/tab/the-beatles/twist-and-shout-tabs-17381">Ultimate Guitar</a>.
+            <h3 class="text-2xl font-semibold text-blue-500 mb-4">Tabs</h3>
+            <p class="text-lg text-gray-600 mb-6">
+                Explore the tabs for "Twist and Shout" on <a href="https://tabs.ultimate-guitar.com/tab/the-beatles/twist-and-shout-tabs-17381" class="text-blue-500 font-bold hover:underline">Ultimate Guitar</a>.
             </p>
-            <h3>Listen to the Song</h3>
-            <audio controls>
+            <h3 class="text-2xl font-semibold text-blue-500 mb-4">Listen to the Song</h3>
+            <audio controls class="w-full max-w-2xl rounded-lg shadow-lg mb-6">
                 <source src="Twist And Shout (Remastered 2009).mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
-            <p>
-                For more information about the song, visit the <a href="https://en.wikipedia.org/wiki/Twist_and_Shout">Wikipedia page</a>.
+            <p class="text-lg text-gray-600">
+                For more information about the song, visit the <a href="https://en.wikipedia.org/wiki/Twist_and_Shout" class="text-blue-500 font-bold hover:underline">Wikipedia page</a>.
             </p>
         </div>
     </div>

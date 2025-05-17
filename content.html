@@ -4,153 +4,62 @@
     <title>Content - The Guitar Directory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="The Guitar Directory.ico" type="image/x-icon">
-    <style>
-        /* General Styles */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f5f7, #e5e5e7);
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Header Styles */
-        header {
-            background-color: #ffffff;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 0 0 20px 20px;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: #007aff; /* Apple blue */
-        }
-        header nav {
-            margin-top: 10px;
-        }
-        header a {
-            color: #007aff;
-            text-decoration: none;
-            font-size: 1.2em;
-            margin: 0 15px;
-            font-weight: 500;
-        }
-        header a:hover {
-            text-decoration: underline;
-        }
-        header p {
-            margin: 10px 0;
-            font-size: 1em;
-            color: #555;
-        }
-
-        /* Main Content Section */
-        main {
-            padding: 40px 20px;
-            text-align: center;
-        }
-        main h2 {
-            font-size: 2em;
-            color: #007aff;
-            margin-bottom: 10px;
-        }
-        main a {
-            display: block;
-            margin: 10px 0;
-            color: #007aff;
-            text-decoration: none;
-            font-size: 1.2em;
-        }
-        main a:hover {
-            text-decoration: underline;
-        }
-
-        /* Footer Styles */
-        footer {
-            background-color: #ffffff;
-            color: #555;
-            text-align: center;
-            padding: 15px;
-            border-top: 1px solid #ddd;
-            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 20px 20px 0 0;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-            header a {
-                font-size: 1em;
-                margin: 0 10px;
-            }
-            main h2 {
-                font-size: 1.8em;
-            }
-            main a {
-                font-size: 1em;
-            }
-        }
-
-        @media (max-width: 375px) {
-            header h1 {
-                font-size: 1.8em;
-            }
-            header a {
-                font-size: 0.9em;
-            }
-            main h2 {
-                font-size: 1.5em;
-            }
-            main a {
-                font-size: 0.9em;
-            }
-        }
-    </style>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 text-gray-800 font-sans">
     <!-- Header -->
-    <header>
-        <h1>Content - The Guitar Directory</h1>
-        <nav>
-            <a href="index.html" class="active">Home</a>
-            <a href="content.html">Content</a>
-            <a href="videos.html">Videos</a>
-            <a href="comingsoon.html">Coming Soon</a>
+    <header class="bg-white shadow-md border border-gray-300 rounded-full w-11/12 mx-auto mt-5 p-5 text-center">
+        <h1 class="text-4xl font-bold text-blue-500">Content - The Guitar Directory</h1>
+        <nav class="mt-3">
+            <a href="index.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Home</a>
+            <a href="content.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Content</a>
+            <a href="videos.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Videos</a>
+            <a href="comingsoon.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Coming Soon</a>
         </nav>
-        <p>This page is for scrolling through the content on this directory.</p>
-        <p>Click on the links below to view the content.</p>
+        <p class="text-gray-600 mt-3">This page is for scrolling through the content on this directory.</p>
+        <p class="text-gray-600">Click on the links below to view the content.</p>
     </header>
 
     <!-- Main Content -->
-    <main>
-        <h2>Nirvana</h2>
-        <a href="sltsnirvana.html">Smells Like Teen Spirit - Nirvana</a>
+    <main class="text-center py-10 px-5">
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-blue-500 mb-3">Nirvana</h2>
+            <a href="sltsnirvana.html" class="text-blue-500 text-lg hover:underline">Smells Like Teen Spirit - Nirvana</a>
+        </section>
 
-        <h2>AC/DC</h2>
-        <a href="Dirty Deeds Done Dirt Cheap.html">Dirty Deeds Done Dirt Cheap - AC/DC</a>
-        <a href="highway_to_hell_acdc.html">Highway to Hell - AC/DC</a>
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-blue-500 mb-3">AC/DC</h2>
+            <a href="Dirty Deeds Done Dirt Cheap.html" class="text-blue-500 text-lg hover:underline">Dirty Deeds Done Dirt Cheap - AC/DC</a>
+            <a href="highway_to_hell_acdc.html" class="text-blue-500 text-lg hover:underline">Highway to Hell - AC/DC</a>
+        </section>
 
-        <h2>Deep Purple</h2>
-        <a href="highway_star.html">Highway Star - Deep Purple</a>
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-blue-500 mb-3">Deep Purple</h2>
+            <a href="highway_star.html" class="text-blue-500 text-lg hover:underline">Highway Star - Deep Purple</a>
+        </section>
 
-        <h2>Men at Work</h2>
-        <a href="down_under.html">Down Under - Men At Work</a>
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-blue-500 mb-3">Men at Work</h2>
+            <a href="down_under.html" class="text-blue-500 text-lg hover:underline">Down Under - Men At Work</a>
+        </section>
 
-        <h2>Lynyrd Skynyrd</h2>
-        <a href="free_bird.html">Free Bird - Lynyrd Skynyrd</a>
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-blue-500 mb-3">Lynyrd Skynyrd</h2>
+            <a href="free_bird.html" class="text-blue-500 text-lg hover:underline">Free Bird - Lynyrd Skynyrd</a>
+        </section>
 
-        <h2>The Beatles</h2>
-        <a href="twist_and_shout.html">Twist And Shout - The Beatles</a>
-        <a href="i_want_to_hold_your_hand.html">I Want To Hold Your Hand - The Beatles</a>
-        <a href="hey_jude.html">Hey Jude - The Beatles</a>
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-blue-500 mb-3">The Beatles</h2>
+            <a href="twist_and_shout.html" class="text-blue-500 text-lg hover:underline">Twist And Shout - The Beatles</a>
+            <a href="i_want_to_hold_your_hand.html" class="text-blue-500 text-lg hover:underline">I Want To Hold Your Hand - The Beatles</a>
+            <a href="hey_jude.html" class="text-blue-500 text-lg hover:underline">Hey Jude - The Beatles</a>
+        </section>
 
-        <h2>Chuck Berry</h2>
-        <a href="johnny_b_goode.html">Johnny B. Goode - Chuck Berry</a>
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-blue-500 mb-3">Chuck Berry</h2>
+            <a href="johnny_b_goode.html" class="text-blue-500 text-lg hover:underline">Johnny B. Goode - Chuck Berry</a>
+        </section>
     </main>
 </body>
 </html>
