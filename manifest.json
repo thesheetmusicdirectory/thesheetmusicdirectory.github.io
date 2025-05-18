@@ -1,6 +1,6 @@
 {
     "name": "The Guitar Directory",
-    "short_name": "GuitarDir",
+    "short_name": "GuitarDirectory",
     "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#ffffff",
@@ -12,7 +12,7 @@
             "type": "image/png"
         },
         {
-            "src": "icon-512x512.png",
+            "src": "The Guitar Directory.png",
             "sizes": "512x512",
             "type": "image/png"
         }
