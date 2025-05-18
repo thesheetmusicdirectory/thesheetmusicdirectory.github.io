@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><link rel="manifest" href="manifest.json">
-    <meta http-equiv="refresh" content="0; url=https://theguitardirectory.github.io/The_Guitar_Directory" />
+    <script>
+        // Check if the user has already been redirected
+        if (!localStorage.getItem('hasRedirected')) {
+          localStorage.setItem('hasRedirected', 'true'); // Set the flag
+          window.location.href = "https://theguitardirectory.github.io/The_Guitar_Directory"; // Your redirect target
+        }
+      </script>
     <title>The Guitar Directory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="GQrQsdgZxieUltcTySgXI_aTjGUK9LP4BRnFI9veVGs" />
