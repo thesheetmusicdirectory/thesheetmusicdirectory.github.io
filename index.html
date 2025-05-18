@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><link rel="manifest" href="manifest.json">
     <title>The Guitar Directory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="GQrQsdgZxieUltcTySgXI_aTjGUK9LP4BRnFI9veVGs" />
@@ -32,5 +32,12 @@
             </p>
         </div>
     </div>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(() => console.log('Service Worker Registered'))
+                .catch((error) => console.error('Service Worker Registration Failed:', error));
+        }
+    </script>
 </body>
 </html>
