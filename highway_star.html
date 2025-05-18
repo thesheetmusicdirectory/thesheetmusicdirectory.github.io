@@ -40,5 +40,86 @@
             </p>
         </div>
     </div>
+    <footer>
+        <script>
+            // Dark mode toggle
+            const toggleDarkMode = () => {
+                document.body.classList.toggle('dark-mode');
+                const darkModeEnabled = document.body.classList.contains('dark-mode');
+                localStorage.setItem('dark-mode', darkModeEnabled);
+            };
+        
+            // Create the dark mode toggle button
+            const darkModeButton = document.createElement('button');
+            darkModeButton.textContent = 'Toggle Dark Mode';
+            darkModeButton.style.position = 'fixed';
+            darkModeButton.style.bottom = '20px';
+            darkModeButton.style.right = '20px';
+            darkModeButton.style.padding = '10px 20px';
+            darkModeButton.style.backgroundColor = '#007aff';
+            darkModeButton.style.color = '#fff';
+            darkModeButton.style.border = 'none';
+            darkModeButton.style.borderRadius = '5px';
+            darkModeButton.style.cursor = 'pointer';
+            darkModeButton.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.2)';
+            darkModeButton.style.transition = 'background-color 0.3s, color 0.3s';
+        
+            document.body.appendChild(darkModeButton);
+            darkModeButton.addEventListener('click', toggleDarkMode);
+        
+            // Apply dark mode if previously enabled
+            if (localStorage.getItem('dark-mode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+        
+            // Define dark mode styles
+            const darkModeStyles = `
+                body.dark-mode {
+                    background: linear-gradient(135deg, #1e1e1e, #121212);
+                    color: #e0e0e0;
+                    transition: background 0.3s, color 0.3s;
+                }
+                body.dark-mode header {
+                    background: linear-gradient(135deg, #2a2a2a, #1e1e1e);
+                    color: #e0e0e0;
+                    border-bottom: 1px solid #444;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+                }
+                body.dark-mode footer {
+                    background: linear-gradient(135deg, #2a2a2a, #1e1e1e);
+                    color: #e0e0e0;
+                    border-top: 1px solid #444;
+                    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
+                }
+                body.dark-mode .content-text {
+                    background: linear-gradient(135deg, #2c2c2c, #1e1e1e);
+                    color: #e0e0e0;
+                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+                }
+                body.dark-mode .content img {
+                    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+                }
+                body.dark-mode button {
+                    background: linear-gradient(135deg, #444, #333);
+                    color: #e0e0e0;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+                }
+                body.dark-mode button:hover {
+                    background: linear-gradient(135deg, #555, #444);
+                }
+                body.dark-mode a {
+                    color: #4da6ff;
+                }
+                body.dark-mode a:hover {
+                    color: #80c1ff;
+                }
+            `;
+        
+            // Add dark mode styles to the document
+            const styleSheet = document.createElement("style");
+            styleSheet.type = "text/css";
+            styleSheet.innerText = darkModeStyles;
+            document.head.appendChild(styleSheet);
+        </script>
 </body>
 </html>
