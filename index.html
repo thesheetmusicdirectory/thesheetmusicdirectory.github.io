@@ -2,10 +2,10 @@
 <html lang="en">
 <head><link rel="manifest" href="manifest.json">
     <script>
-        // Check if the user has already been redirected
-        if (!localStorage.getItem('hasRedirected')) {
-          localStorage.setItem('hasRedirected', 'true'); // Set the flag
-          window.location.href = "https://theguitardirectory.github.io/The_Guitar_Directory"; // Your redirect target
+        // Only redirect once per session
+        if (!sessionStorage.getItem('hasRedirectedToSubpage')) {
+          sessionStorage.setItem('hasRedirectedToSubpage', 'true');
+          window.location.href = "/The_Guitar_Directory"; // Relative path works on GitHub Pages
         }
       </script>
     <title>The Guitar Directory</title>
