@@ -1,6 +1,6 @@
 const CACHE_NAME = 'guitar-directory-cache-v1';
 const urlsToCache = [
-    '/',
+    '/', // Root path
     '/index.html',
     '/content.html',
     '/videos.html',
