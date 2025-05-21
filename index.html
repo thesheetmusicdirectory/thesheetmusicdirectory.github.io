@@ -29,17 +29,45 @@
     </header>
 
     <!-- Content Section -->
-    <div class="content flex flex-col md:flex-row items-center justify-center py-10 px-5 gap-10 max-w-5xl mx-auto">
-        <img src="Untitled design.jpg" alt="Guitar Directory Logo" class="max-w-sm rounded-lg shadow-lg">
-        <div class="content-text bg-white p-6 rounded-lg shadow-md max-w-lg">
-            <h2 class="text-2xl font-semibold text-blue-500 mb-4">About</h2>
-            <p class="text-lg text-gray-600">
-                The Guitar Directory is a directory for tabs, videos, and info for guitar songs.<br>
-                This directory was created by <strong>Mattia Lobrano</strong>. This webpage was created entirely by me, so feel free to send an email with a review or some tips.<br>
-                Thank you for using <strong>The Guitar Directory</strong>.
-            </p>
+    <div class="content flex flex-col items-center justify-center py-10 px-5 gap-10 max-w-5xl mx-auto">
+<!-- About Section -->
+<div class="flex flex-col md:flex-row items-center gap-6 w-full">
+    <img src="Untitled design.jpg" alt="Guitar Directory Logo" class="w-full md:w-[640px] h-auto rounded-lg shadow-md">
+    <div class="content-text bg-white p-6 rounded-lg shadow-md w-full md:w-[740px]">
+        <h2 class="text-2xl font-semibold text-blue-500 mb-4">About</h2>
+        <p class="text-lg text-gray-600">
+            The Guitar Directory is a directory for tabs, videos, and info for guitar songs.<br>
+            This directory was created by <strong>Mattia Lobrano</strong>. This webpage was created entirely by me, so feel free to send an email with a review or some tips.<br>
+            Thank you for using <strong>The Guitar Directory</strong>.
+        </p>
+        <h2 class="text-2xl font-semibold text-blue-500 mt-4">Contact</h2>
+        <p class="text-lg text-gray-600">
+            Please contact me at <a href="mailto:theguitardirectory@gmail.com" class="text-blue-500 hover:underline">theguitardirectory@gmail.com</a> or <a href="mailto:mattialobrano@gmail.com" class="text-blue-500 hover:underline">mattialobrano@gmail.com</a>
+        </p>
+    </div>
+</div>
+<!-- New Songs Section -->
+<div class="new-songs bg-white p-6 rounded-lg shadow-md w-11/12 mx-auto text-center">
+    <h2 class="text-2xl font-semibold text-blue-500 mb-4">New Songs</h2>
+    <div class="flex flex-wrap justify-center gap-6">
+        <!-- Song 1 -->
+        <div class="song-item flex flex-col items-center">
+            <img src="bohemian-rhapsody.jpg" alt="Bohemian Rhapsody" class="w-40 h-40 rounded-lg shadow-md">
+            <p class="text-lg text-gray-600 mt-2"><strong>Bohemian Rhapsody</strong> - Queen</p>
+        </div>
+        <!-- Song 2 -->
+        <div class="song-item flex flex-col items-center">
+            <img src="stairway-to-heaven.jpg" alt="Stairway to Heaven" class="w-40 h-40 rounded-lg shadow-md">
+            <p class="text-lg text-gray-600 mt-2"><strong>Stairway to Heaven</strong> - Led Zeppelin</p>
+        </div>
+        <!-- Song 3 -->
+        <div class="song-item flex flex-col items-center">
+            <img src="hotel-california.jpg" alt="Hotel California" class="w-40 h-40 rounded-lg shadow-md">
+            <p class="text-lg text-gray-600 mt-2"><strong>Hotel California</strong> - Eagles</p>
         </div>
     </div>
+</div>
+
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/service-worker.js')
