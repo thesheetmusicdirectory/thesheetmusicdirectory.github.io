@@ -3,7 +3,7 @@
 <head>
     <title>Content - The Guitar Directory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="The Guitar Directory.ico" type="image/x-icon">
+    <link rel="icon" href="The Guitar Directory (1).png" type="image/x-icon">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -19,134 +19,129 @@
         </nav>
         <p class="text-gray-600 mt-3">This page is for scrolling through the content on this directory.</p>
         <p class="text-gray-600">Click on the links below to view the content.</p>
+        <!-- Search Bar -->
+        <div class="mt-4">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search songs..."
+                class="w-full md:w-1/2 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+        </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="text-center py-10 px-5">
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-blue-500 mb-3">Nirvana</h2>
-            <a href="sltsnirvana.html" class="text-blue-500 text-lg hover:underline">Smells Like Teen Spirit - Nirvana</a>
-        </section>
+   <!-- Main Content -->
+   <main class="text-center py-10 px-5" id="contentList">
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold text-blue-500 mb-3">Nirvana</h2>
+        <a href="sltsnirvana.html" class="text-blue-500 text-lg hover:underline">Smells Like Teen Spirit - Nirvana</a>
+    </section>
 
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-blue-500 mb-3">AC/DC</h2>
-            <a href="Dirty Deeds Done Dirt Cheap.html" class="text-blue-500 text-lg hover:underline">Dirty Deeds Done Dirt Cheap - AC/DC</a>
-            <br>
-            <a href="thunderstruck.html" class="text-blue-500 text-lg hover:underline">Thunderstruck - AC/DC</a>
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold text-blue-500 mb-3">AC/DC</h2>
+        <a href="Dirty Deeds Done Dirt Cheap.html" class="text-blue-500 text-lg hover:underline">Dirty Deeds Done Dirt Cheap - AC/DC</a>
+        <br>
+        <a href="thunderstruck.html" class="text-blue-500 text-lg hover:underline">Thunderstruck - AC/DC</a>
+    </section>
 
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-blue-500 mb-3">Deep Purple</h2>
-            <a href="highway_star.html" class="text-blue-500 text-lg hover:underline">Highway Star - Deep Purple</a>
-        </section>
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold text-blue-500 mb-3">Deep Purple</h2>
+        <a href="highway_star.html" class="text-blue-500 text-lg hover:underline">Highway Star - Deep Purple</a>
+    </section>
 
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-blue-500 mb-3">Men at Work</h2>
-            <a href="down_under.html" class="text-blue-500 text-lg hover:underline">Down Under - Men At Work</a>
-        </section>
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold text-blue-500 mb-3">Men at Work</h2>
+        <a href="down_under.html" class="text-blue-500 text-lg hover:underline">Down Under - Men At Work</a>
+    </section>
 
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-blue-500 mb-3">Lynyrd Skynyrd</h2>
-            <a href="free_bird.html" class="text-blue-500 text-lg hover:underline">Free Bird - Lynyrd Skynyrd</a>
-        </section>
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold text-blue-500 mb-3">Lynyrd Skynyrd</h2>
+        <a href="free_bird.html" class="text-blue-500 text-lg hover:underline">Free Bird - Lynyrd Skynyrd</a>
+    </section>
 
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-blue-500 mb-3">The Beatles</h2>
-            <a href="twist_and_shout.html" class="text-blue-500 text-lg hover:underline">Twist And Shout - The Beatles</a>
-            <br>
-            <a href="i_want_to_hold_your_hand.html" class="text-blue-500 text-lg hover:underline">I Want To Hold Your Hand - The Beatles</a>
-            <br>
-            <a href="hey_jude.html" class="text-blue-500 text-lg hover:underline">Hey Jude - The Beatles</a>
-        </section>
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold text-blue-500 mb-3">The Beatles</h2>
+        <a href="twist_and_shout.html" class="text-blue-500 text-lg hover:underline">Twist And Shout - The Beatles</a>
+        <br>
+        <a href="i_want_to_hold_your_hand.html" class="text-blue-500 text-lg hover:underline">I Want To Hold Your Hand - The Beatles</a>
+        <br>
+        <a href="hey_jude.html" class="text-blue-500 text-lg hover:underline">Hey Jude - The Beatles</a>
+    </section>
 
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-blue-500 mb-3">Chuck Berry</h2>
-            <a href="johnny_b_goode.html" class="text-blue-500 text-lg hover:underline">Johnny B. Goode - Chuck Berry</a>
-        </section>
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-blue-500 mb-3">Queen</h2>
-            <a href="bohemian_rhapsody.html" class="text-blue-500 text-lg hover:underline">Bohemian Rhapsody - Queen</a>
-        </section>
-    </main>
-    <footer>
-        <script>
-            // Dark mode toggle
-            const toggleDarkMode = () => {
-                document.body.classList.toggle('dark-mode');
-                const darkModeEnabled = document.body.classList.contains('dark-mode');
-                localStorage.setItem('dark-mode', darkModeEnabled);
-            };
-        
-            // Create the dark mode toggle button
-            const darkModeButton = document.createElement('button');
-            darkModeButton.textContent = 'Toggle Dark Mode';
-            darkModeButton.style.position = 'fixed';
-            darkModeButton.style.bottom = '20px';
-            darkModeButton.style.right = '20px';
-            darkModeButton.style.padding = '10px 20px';
-            darkModeButton.style.backgroundColor = '#007aff';
-            darkModeButton.style.color = '#fff';
-            darkModeButton.style.border = 'none';
-            darkModeButton.style.borderRadius = '5px';
-            darkModeButton.style.cursor = 'pointer';
-            darkModeButton.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.2)';
-            darkModeButton.style.transition = 'background-color 0.3s, color 0.3s';
-        
-            document.body.appendChild(darkModeButton);
-            darkModeButton.addEventListener('click', toggleDarkMode);
-        
-            // Apply dark mode if previously enabled
-            if (localStorage.getItem('dark-mode') === 'true') {
-                document.body.classList.add('dark-mode');
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold text-blue-500 mb-3">Chuck Berry</h2>
+        <a href="johnny_b_goode.html" class="text-blue-500 text-lg hover:underline">Johnny B. Goode - Chuck Berry</a>
+    </section>
+
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold text-blue-500 mb-3">Queen</h2>
+        <a href="bohemian_rhapsody.html" class="text-blue-500 text-lg hover:underline">Bohemian Rhapsody - Queen</a>
+    </section>
+</main>
+
+    <!-- Search Modal -->
+    <div id="searchModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-1/2 text-center">
+            <button id="closeModal" class="text-red-500 font-bold float-right">X</button>
+            <h2 class="text-2xl font-semibold text-blue-500 mb-4">Search Results</h2>
+            <div id="searchResults" class="flex flex-col items-center gap-4">
+                <!-- Search results will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Search functionality with modal
+        const searchInput = document.getElementById('searchInput');
+        const searchModal = document.getElementById('searchModal');
+        const searchResults = document.getElementById('searchResults');
+        const closeModal = document.getElementById('closeModal');
+
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            searchModal.classList.add('hidden');
+            searchResults.innerHTML = ''; // Clear results
+        });
+
+        // Search input event
+        searchInput.addEventListener('input', () => {
+            const keyword = searchInput.value.toLowerCase().trim();
+            if (keyword === '') {
+                searchModal.classList.add('hidden');
+                return;
             }
-        
-            // Define dark mode styles
-            const darkModeStyles = `
-                body.dark-mode {
-                    background: linear-gradient(135deg, #1e1e1e, #121212);
-                    color: #e0e0e0;
-                    transition: background 0.3s, color 0.3s;
-                }
-                body.dark-mode header {
-                    background: linear-gradient(135deg, #2a2a2a, #1e1e1e);
-                    color: #e0e0e0;
-                    border-bottom: 1px solid #444;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-                }
-                body.dark-mode footer {
-                    background: linear-gradient(135deg, #2a2a2a, #1e1e1e);
-                    color: #e0e0e0;
-                    border-top: 1px solid #444;
-                    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
-                }
-                body.dark-mode .content-text {
-                    background: linear-gradient(135deg, #2c2c2c, #1e1e1e);
-                    color: #e0e0e0;
-                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-                }
-                body.dark-mode .content img {
-                    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
-                }
-                body.dark-mode button {
-                    background: linear-gradient(135deg, #444, #333);
-                    color: #e0e0e0;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-                }
-                body.dark-mode button:hover {
-                    background: linear-gradient(135deg, #555, #444);
-                }
-                body.dark-mode a {
-                    color: #4da6ff;
-                }
-                body.dark-mode a:hover {
-                    color: #80c1ff;
-                }
-            `;
-        
-            // Add dark mode styles to the document
-            const styleSheet = document.createElement("style");
-            styleSheet.type = "text/css";
-            styleSheet.innerText = darkModeStyles;
-            document.head.appendChild(styleSheet);
-        </script>
+
+            searchModal.classList.remove('hidden');
+            searchResults.innerHTML = ''; // Clear previous results
+
+            const contentList = document.getElementById('contentList');
+            const sections = contentList.querySelectorAll('section');
+
+            let hasResults = false;
+
+            sections.forEach(section => {
+                const links = section.querySelectorAll('a');
+
+                links.forEach(link => {
+                    const text = link.textContent.toLowerCase();
+                    if (text.includes(keyword)) {
+                        hasResults = true;
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'text-lg text-gray-600';
+                        resultItem.innerHTML = `
+                            <a href="${link.getAttribute('href')}" class="text-blue-500 hover:underline">
+                                ${link.textContent}
+                            </a>
+                        `;
+                        searchResults.appendChild(resultItem);
+                    }
+                });
+            });
+
+            if (!hasResults) {
+                searchResults.innerHTML = '<p class="text-gray-600">No results found.</p>';
+            }
+        });
+    </script>
 </body>
 </html>

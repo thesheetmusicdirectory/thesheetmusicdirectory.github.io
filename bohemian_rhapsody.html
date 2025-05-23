@@ -3,237 +3,130 @@
 <head>
     <title>Bohemian Rhapsody - The Guitar Directory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="The Guitar Directory.ico" type="image/x-icon">
-    <style>
-        /* General Styles */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f5f7, #e5e5e7);
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Header Styles */
-        header {
-            background-color: #ffffff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border: 1px solid #ddd;
-            border-radius: 50px;
-            width: 90%;
-            margin: 20px auto;
-            padding: 20px;
-            text-align: center;
-        }
-        header h1 {
-            font-size: 2.5em;
-            font-weight: bold;
-            color: #007aff;
-            margin: 0;
-        }
-        header nav {
-            margin-top: 15px;
-        }
-        header a {
-            color: #007aff;
-            text-decoration: none;
-            font-size: 1.2em;
-            font-weight: 500;
-            margin: 0 15px;
-        }
-        header a:hover {
-            text-decoration: underline;
-        }
-
-        /* Content Section */
-        .content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 100px 20px;
-            gap: 30px;
-        }
-        .content img {
-            max-width: 400px;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-        .content-text {
-            max-width: 600px;
-            text-align: center;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-        .content-text h2 {
-            font-size: 2em;
-            color: #007aff;
-            margin-bottom: 15px;
-        }
-        .content-text p {
-            font-size: 1.2em;
-            line-height: 1.8;
-            color: #555;
-        }
-
-        /* Footer Styles */
-        footer {
-            background-color: #ffffff;
-            color: #555;
-            text-align: center;
-            padding: 15px;
-            border-top: 1px solid #ddd;
-            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 20px 20px 0 0;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-            header a {
-                font-size: 1em;
-                margin: 0 10px;
-            }
-            .content img {
-                max-width: 100%;
-            }
-            .content-text h2 {
-                font-size: 1.8em;
-            }
-            .content-text p {
-                font-size: 1em;
-            }
-        }
-
-        @media (max-width: 375px) {
-            header h1 {
-                font-size: 1.5em;
-            }
-            header a {
-                font-size: 0.9em;
-            }
-            .content-text h2 {
-                font-size: 1.5em;
-            }
-            .content-text p {
-                font-size: 0.9em;
-            }
-        }
-    </style>
+    <link rel="icon" href="The Guitar Directory (1).png" type="image/x-icon">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-</head>
-<body>
-    <header>
-        <h1>Bohemian Rhapsody</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="content.html">Content</a>
-            <a href="videos.html">Videos</a>
-            <a href="comingsoon.html">Coming Soon</a>
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 text-gray-800 font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-md border border-gray-300 rounded-full w-11/12 mx-auto mt-5 p-5 text-center">
+        <h1 class="text-4xl font-bold text-blue-500">Bohemian Rhapsody</h1>
+        <nav class="mt-4">
+            <a href="index.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Home</a>
+            <a href="content.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Content</a>
+            <a href="videos.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Videos</a>
+            <a href="comingsoon.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Coming Soon</a>
         </nav>
+        <!-- Search Bar -->
+        <div class="mt-4">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search songs..."
+                class="w-full md:w-1/2 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+        </div>
     </header>
 
-    <div class="content">
-
-        <div class="content-text">
-            <h2>About the Song</h2>
-            <p>"Bohemian Rhapsody" is a song by the British rock band Queen, released in 1975. It is known for its unique structure, blending elements of rock, ballad, and opera. The song has become one of Queen's most iconic tracks and is celebrated for its innovative production and powerful vocals.</p>
-        <h3>Tabs</h3>
-            <p>Explore the tabs for "Bohemian Rhapsody" on <a href="https://tabs.ultimate-guitar.com/tab/queen/bohemian-rhapsody-tabs-3021" class="text-blue-500 font-bold hover:underline">Ultimate Guitar</a>.</p>
-            <h3>Listen to the Song</h3>
-            <audio controls class="w-full max-w-2xl rounded-lg shadow-lg mb-6">
-                <source src="Bohemian Rhapsody.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-            <p>For more information about the song, visit the <a href="https://en.wikipedia.org/wiki/Bohemian_Rhapsody" class="text-blue-500 font-bold hover:underline">Wikipedia page</a>.</p>
+    <!-- Content Section -->
+    <div class="content flex flex-col items-center justify-center py-10 px-5 gap-10 max-w-5xl mx-auto text-center">
+        <div class="content-text bg-white p-6 rounded-lg shadow-md w-full">
+            <h2 class="text-2xl font-semibold text-blue-500 mb-4">About the Song</h2>
+            <p class="text-lg text-gray-600">
+                "Bohemian Rhapsody" is a song by the British rock band Queen, released in 1975. It is <br>known for its unique structure, blending elements of rock, ballad, and opera. The song has become one of<br> Queen's most iconic tracks and is celebrated for its innovative production and powerful vocals.
+            </p>
+            <h3 class="text-xl font-semibold text-blue-500 mt-6">Tabs</h3>
+            <p class="text-lg text-gray-600">
+                Explore the tabs for "Bohemian Rhapsody" on <a href="https://tabs.ultimate-guitar.com/tab/queen/bohemian-rhapsody-tabs-3021" class="text-blue-500 font-bold hover:underline">Ultimate Guitar</a>.
+            </p>
+            <h3 class="text-xl font-semibold text-blue-500 mt-6">Listen to the Song</h3>
+            <br>
+            <div class="flex justify-center">
+                <audio controls class="w-full max-w-2xl rounded-lg shadow-lg mb-6">
+                    <source src="Bohemian Rhapsody.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <p class="text-lg text-gray-600">
+                For more information about the song, visit the <a href="https://en.wikipedia.org/wiki/Bohemian_Rhapsody" class="text-blue-500 font-bold hover:underline">Wikipedia page</a>.
+            </p>
         </div>
     </div>
-    <footer>
-        <script>
-            // Dark mode toggle
-            const toggleDarkMode = () => {
-                document.body.classList.toggle('dark-mode');
-                const darkModeEnabled = document.body.classList.contains('dark-mode');
-                localStorage.setItem('dark-mode', darkModeEnabled);
-            };
-        
-            // Create the dark mode toggle button
-            const darkModeButton = document.createElement('button');
-            darkModeButton.textContent = 'Toggle Dark Mode';
-            darkModeButton.style.position = 'fixed';
-            darkModeButton.style.bottom = '20px';
-            darkModeButton.style.right = '20px';
-            darkModeButton.style.padding = '10px 20px';
-            darkModeButton.style.backgroundColor = '#007aff';
-            darkModeButton.style.color = '#fff';
-            darkModeButton.style.border = 'none';
-            darkModeButton.style.borderRadius = '5px';
-            darkModeButton.style.cursor = 'pointer';
-            darkModeButton.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.2)';
-            darkModeButton.style.transition = 'background-color 0.3s, color 0.3s';
-        
-            document.body.appendChild(darkModeButton);
-            darkModeButton.addEventListener('click', toggleDarkMode);
-        
-            // Apply dark mode if previously enabled
-            if (localStorage.getItem('dark-mode') === 'true') {
-                document.body.classList.add('dark-mode');
-            }
-        
-            // Define dark mode styles
-            const darkModeStyles = `
-                body.dark-mode {
-                    background: linear-gradient(135deg, #1e1e1e, #121212);
-                    color: #e0e0e0;
-                    transition: background 0.3s, color 0.3s;
-                }
-                body.dark-mode header {
-                    background: linear-gradient(135deg, #2a2a2a, #1e1e1e);
-                    color: #e0e0e0;
-                    border-bottom: 1px solid #444;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-                }
-                body.dark-mode footer {
-                    background: linear-gradient(135deg, #2a2a2a, #1e1e1e);
-                    color: #e0e0e0;
-                    border-top: 1px solid #444;
-                    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
-                }
-                body.dark-mode .content-text {
-                    background: linear-gradient(135deg, #2c2c2c, #1e1e1e);
-                    color: #e0e0e0;
-                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-                }
-                body.dark-mode .content img {
-                    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
-                }
-                body.dark-mode button {
-                    background: linear-gradient(135deg, #444, #333);
-                    color: #e0e0e0;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-                }
-                body.dark-mode button:hover {
-                    background: linear-gradient(135deg, #555, #444);
-                }
-                body.dark-mode a {
-                    color: #4da6ff;
-                }
-                body.dark-mode a:hover {
-                    color: #80c1ff;
-                }
-            `;
-        
-            // Add dark mode styles to the document
-            const styleSheet = document.createElement("style");
-            styleSheet.type = "text/css";
-            styleSheet.innerText = darkModeStyles;
-            document.head.appendChild(styleSheet);
-        </script>
 
+    <!-- Search Modal -->
+    <div id="searchModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-1/2 text-center">
+            <button id="closeModal" class="text-red-500 font-bold float-right">X</button>
+            <h2 class="text-2xl font-semibold text-blue-500 mb-4">Search Results</h2>
+            <div id="searchResults" class="flex flex-col items-center gap-4">
+                <!-- Search results will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Search functionality
+        async function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchModal = document.getElementById('searchModal');
+            const searchResults = document.getElementById('searchResults');
+            const closeModal = document.getElementById('closeModal');
+
+            // Close modal
+            closeModal.addEventListener('click', () => {
+                searchModal.classList.add('hidden');
+                searchResults.innerHTML = ''; // Clear results
+            });
+
+            // Search input event
+            searchInput.addEventListener('input', async () => {
+                const keyword = searchInput.value.toLowerCase().trim();
+                if (keyword === '') {
+                    searchModal.classList.add('hidden');
+                    return;
+                }
+
+                searchModal.classList.remove('hidden');
+                searchResults.innerHTML = ''; // Clear previous results
+
+                try {
+                    const response = await fetch('content.html');
+                    const contentHtml = await response.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(contentHtml, 'text/html');
+                    const songLinks = doc.querySelectorAll('a[href$=".html"]');
+
+                    const songs = Array.from(songLinks).map(link => ({
+                        title: link.textContent.trim(),
+                        link: link.getAttribute('href')
+                    }));
+
+                    const filteredSongs = songs.filter(song =>
+                        song.title.toLowerCase().includes(keyword)
+                    );
+
+                    if (filteredSongs.length > 0) {
+                        filteredSongs.forEach(song => {
+                            const songItem = document.createElement('div');
+                            songItem.className = 'text-lg text-gray-600';
+                            songItem.innerHTML = `
+                                <a href="${song.link}" class="text-blue-500 hover:underline">
+                                    ${song.title}
+                                </a>
+                            `;
+                            searchResults.appendChild(songItem);
+                        });
+                    } else {
+                        searchResults.innerHTML = '<p class="text-gray-600">No results found.</p>';
+                    }
+                } catch (error) {
+                    console.error('Error fetching songs:', error);
+                    searchResults.innerHTML = '<p class="text-red-500">Error loading results.</p>';
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', setupSearch);
+    </script>
 </body>
 </html>
