@@ -5,6 +5,9 @@
     <title>The Guitar Directory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="GQrQsdgZxieUltcTySgXI_aTjGUK9LP4BRnFI9veVGs" />
+    <meta name="description" content="The Guitar Directory">
+    <meta name="keywords" content="guitar, tabs, videos, songs, directory">
+    <meta name="author" content="Mattia Lobrano">
     <link rel="icon" href="The Guitar Directory (1).png" type="image/x-icon">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -56,28 +59,28 @@
         <div id="songList" class="flex flex-wrap justify-center gap-6">
             <!-- New Song 1 -->
             <div class="song-item flex flex-col items-center">
-                <img src="new-song-1.jpg" alt="New Song 1" class="w-40 h-40 rounded-lg shadow-md">
+                <img src="Bohemian-Rhapsody.jpg" alt="Bohemian Rhapsody" class="w-40 h-40 rounded-lg shadow-md">
                 <p class="text-lg text-gray-600 mt-2">
-                    <a href="new_song_1.html" class="text-blue-500 hover:underline">
-                        <strong>New Song 1</strong>
+                    <a href="bohemian_rhapsody.html" class="text-blue-500 hover:underline">
+                        <strong>Bohemian Rhapsody</strong>
                     </a>
                 </p>
             </div>
             <!-- New Song 2 -->
             <div class="song-item flex flex-col items-center">
-                <img src="new-song-2.jpg" alt="New Song 2" class="w-40 h-40 rounded-lg shadow-md">
+                <img src="thunderstruck.jpg" alt="Thunderstruck" class="w-40 h-40 rounded-lg shadow-md">
                 <p class="text-lg text-gray-600 mt-2">
-                    <a href="new_song_2.html" class="text-blue-500 hover:underline">
-                        <strong>New Song 2</strong>
+                    <a href="thunderstruck.html" class="text-blue-500 hover:underline">
+                        <strong>Thunderstruck</strong>
                     </a>
                 </p>
             </div>
             <!-- New Song 3 -->
             <div class="song-item flex flex-col items-center">
-                <img src="new-song-3.jpg" alt="New Song 3" class="w-40 h-40 rounded-lg shadow-md">
+                <img src="hey_jude.jpg" alt="Hey Jude" class="w-40 h-40 rounded-lg shadow-md">
                 <p class="text-lg text-gray-600 mt-2">
-                    <a href="new_song_3.html" class="text-blue-500 hover:underline">
-                        <strong>New Song 3</strong>
+                    <a href="hey_jude.html" class="text-blue-500 hover:underline">
+                        <strong>Hey Jude</strong>
                     </a>
                 </p>
             </div>
@@ -94,7 +97,71 @@
             </div>
         </div>
     </div>
-
+    <script>
+        async function loadNewSongs() {
+            const response = await fetch('new-songs.json');
+            const songs = await response.json();
+            const songList = document.getElementById('songList');
+            songList.innerHTML = '';
+            songs.forEach(song => {
+                const songItem = document.createElement('div');
+                songItem.className = 'song-item flex flex-col items-center';
+                songItem.innerHTML = `
+                    <img src="${song.image}" alt="${song.title}" class="w-40 h-40 rounded-lg shadow-md">
+                    <p class="text-lg text-gray-600 mt-2">
+                        <a href="${song.link}" class="text-blue-500 hover:underline">
+                            <strong>${song.title}</strong>
+                        </a>
+                    </p>
+                `;
+                songList.appendChild(songItem);
+            });
+        }
+    
+        document.addEventListener('DOMContentLoaded', loadNewSongs);
+    </script>
+<footer class="bg-white text-center py-4 mt-10 border-t border-gray-300">
+    <p class="text-gray-600 text-sm">© 2025 The Guitar Directory. Created by Mattia Lobrano.</p>
+    <nav class="mt-2">
+        <a href="privacy.html" class="text-blue-500 text-sm hover:underline">Privacy Policy</a> |
+        <a href="terms.html" class="text-blue-500 text-sm hover:underline">Terms and Conditions</a>
+    </nav>
+    <div class="mt-4 flex justify-center items-center gap-4">
+        <a href="https://www.tiktok.com/@the_guitar_directory" target="_blank" class="flex items-center gap-2">
+            <img src="tiktok.png" alt="TikTok" class="w-6 h-6">
+            <span class="text-blue-500 text-sm hover:underline">Follow us on TikTok</span>
+        </a>
+    </div>
+</footer>
+    <button id="backToTop" class="fixed bottom-5 left-5 bg-blue-500 text-white p-3 rounded-full shadow-md hidden">
+        ↑
+    </button>
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.remove('hidden');
+            } else {
+                backToTop.classList.add('hidden');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "The Guitar Directory",
+            "url": "https://yourwebsite.com",
+            "description": "A directory for guitar tabs, videos, and song information.",
+            "author": {
+                "@type": "Person",
+                "name": "Mattia Lobrano"
+            }
+        }
+        </script>
     <script>
         // Funzione di ricerca migliorata
         async function setupSearch() {

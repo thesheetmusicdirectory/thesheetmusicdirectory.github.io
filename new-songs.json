@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Bohemian Rhapsody",
+        "image": "Bohemian-Rhapsody.jpg",
+        "link": "bohemian_rhapsody.html"
+    },
+    {
+        "title": "Thunderstruck",
+        "image": "thunderstruck.jpg",
+        "link": "thunderstruck.html"
+    },
+        {
+            "title": "Hey Jude",
+            "image": "hey_jude.jpg",
+            "link": "hey_jude.html"
+        }
+    ]
