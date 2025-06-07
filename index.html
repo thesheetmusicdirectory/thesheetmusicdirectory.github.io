@@ -12,91 +12,112 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-br from-gray-100 to-gray-200 text-gray-800 font-sans">
+<body class="bg-gradient-to-tr from-gray-50 via-white to-gray-100 min-h-screen text-gray-800 font-sans">
     <!-- Header -->
-    <header class="bg-white shadow-md border border-gray-300 rounded-full w-11/12 mx-auto mt-5 p-5 text-center">
-        <h1 class="text-4xl font-bold text-blue-500">The Guitar Directory</h1>
-        <nav class="mt-3">
-            <a href="index.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Home</a>
-            <a href="content.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Content</a>
-            <a href="videos.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Videos</a>
-            <a href="comingsoon.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Coming Soon</a>
-        </nav>
-        <!-- Search Bar -->
-        <div class="mt-4">
+    <header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <div class="flex items-center gap-3">
+                <img src="The Guitar Directory (1).png" alt="Logo" class="w-12 h-12 object-contain rounded-full shadow">
+                <span class="text-2xl font-bold text-blue-700 tracking-tight">The Guitar Directory</span>
+            </div>
+            <nav class="flex gap-8">
+                <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
+                <a href="content.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Content</a>
+                <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
+                <a href="comingsoon.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Coming Soon</a>
+            </nav>
+        </div>
+        <div class="max-w-2xl mx-auto px-6 pb-4">
             <input
                 type="text"
                 id="searchInput"
                 placeholder="Search songs..."
-                class="w-full md:w-1/2 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                class="w-full p-3 border border-blue-100 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
             />
         </div>
     </header>
 
     <!-- Content Section -->
-    <div class="content flex flex-col items-center justify-center py-10 px-5 gap-10 max-w-5xl mx-auto">
+    <main class="flex flex-col items-center justify-center py-10 px-5 gap-10 max-w-6xl mx-auto">
         <!-- About Section -->
-        <div class="flex flex-col md:flex-row items-center gap-6 w-full">
-            <img src="Untitled design.jpg" alt="Guitar Directory Logo" class="w-full md:w-[640px] h-auto rounded-lg shadow-md">
-            <div class="content-text bg-white p-6 rounded-lg shadow-md w-full md:w-[740px]">
-                <h2 class="text-2xl font-semibold text-blue-500 mb-4">About</h2>
-                <p class="text-lg text-gray-600">
+        <section class="flex flex-col md:flex-row items-center gap-10 w-full">
+            <img src="Untitled design.jpg" alt="Guitar Directory Logo" class="w-full md:w-[480px] h-auto rounded-3xl shadow-xl border border-blue-100">
+            <div class="bg-white/95 p-10 rounded-3xl shadow-xl border border-blue-100 flex-1">
+                <h2 class="text-3xl font-bold text-blue-700 mb-4">About</h2>
+                <p class="text-lg text-gray-700 mb-4">
                     The Guitar Directory is a directory for tabs, videos, and info for guitar songs.<br>
                     This directory was created by <strong>Mattia Lobrano</strong>. This webpage was created entirely by me, so feel free to send an email with a review or some tips.<br>
                     Thank you for using <strong>The Guitar Directory</strong>.
                 </p>
-                <h2 class="text-2xl font-semibold text-blue-500 mt-4">Contact</h2>
-                <p class="text-lg text-gray-600">
+                <h2 class="text-2xl font-bold text-blue-700 mt-6 mb-2">Contact</h2>
+                <p class="text-lg text-gray-700">
                     Please contact me at <a href="mailto:theguitardirectory@gmail.com" class="text-blue-500 hover:underline">theguitardirectory@gmail.com</a> or <a href="mailto:mattialobrano@gmail.com" class="text-blue-500 hover:underline">mattialobrano@gmail.com</a>
                 </p>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- New Songs Section -->
-    <div class="new-songs bg-white p-6 rounded-lg shadow-md w-11/12 mx-auto text-center">
-        <h2 class="text-2xl font-semibold text-blue-500 mb-4">New Songs</h2>
-        <div id="songList" class="flex flex-wrap justify-center gap-6">
-            <!-- New Song 1 -->
-            <div class="song-item flex flex-col items-center">
-                <img src="Bohemian-Rhapsody.jpg" alt="Bohemian Rhapsody" class="w-40 h-40 rounded-lg shadow-md">
-                <p class="text-lg text-gray-600 mt-2">
-                    <a href="bohemian_rhapsody.html" class="text-blue-500 hover:underline">
-                        <strong>Bohemian Rhapsody</strong>
-                    </a>
-                </p>
+        <!-- New Songs Section -->
+        <section class="bg-white/95 p-10 rounded-3xl shadow-xl border border-blue-100 w-full text-center">
+            <h2 class="text-3xl font-bold text-blue-700 mb-8">New Songs</h2>
+            <div id="songList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 justify-items-center">
+                <!-- New Song 1 -->
+                <div class="song-item flex flex-col items-center">
+                    <img src="Bohemian-Rhapsody.jpg" alt="Bohemian Rhapsody" class="w-56 h-56 object-cover rounded-2xl shadow-lg border border-blue-100">
+                    <p class="text-lg text-gray-700 mt-4 text-center">
+                        <a href="bohemian_rhapsody.html" class="text-blue-700 hover:underline font-semibold">
+                            Bohemian Rhapsody
+                        </a>
+                    </p>
+                </div>
+                <!-- New Song 2 -->
+                <div class="song-item flex flex-col items-center">
+                    <img src="thunderstruck.jpg" alt="Thunderstruck" class="w-56 h-56 object-cover rounded-2xl shadow-lg border border-blue-100">
+                    <p class="text-lg text-gray-700 mt-4 text-center">
+                        <a href="thunderstruck.html" class="text-blue-700 hover:underline font-semibold">
+                            Thunderstruck
+                        </a>
+                    </p>
+                </div>
+                <!-- New Song 3 -->
+                <div class="song-item flex flex-col items-center">
+                    <img src="hey_jude.jpg" alt="Hey Jude" class="w-56 h-56 object-cover rounded-2xl shadow-lg border border-blue-100">
+                    <p class="text-lg text-gray-700 mt-4 text-center">
+                        <a href="hey_jude.html" class="text-blue-700 hover:underline font-semibold">
+                            Hey Jude
+                        </a>
+                    </p>
+                </div>
             </div>
-            <!-- New Song 2 -->
-            <div class="song-item flex flex-col items-center">
-                <img src="thunderstruck.jpg" alt="Thunderstruck" class="w-40 h-40 rounded-lg shadow-md">
-                <p class="text-lg text-gray-600 mt-2">
-                    <a href="thunderstruck.html" class="text-blue-500 hover:underline">
-                        <strong>Thunderstruck</strong>
-                    </a>
-                </p>
-            </div>
-            <!-- New Song 3 -->
-            <div class="song-item flex flex-col items-center">
-                <img src="hey_jude.jpg" alt="Hey Jude" class="w-40 h-40 rounded-lg shadow-md">
-                <p class="text-lg text-gray-600 mt-2">
-                    <a href="hey_jude.html" class="text-blue-500 hover:underline">
-                        <strong>Hey Jude</strong>
-                    </a>
-                </p>
-            </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <!-- Search Modal -->
-    <div id="searchModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-1/2">
-            <button id="closeModal" class="text-red-500 font-bold float-right">X</button>
-            <h2 class="text-2xl font-semibold text-blue-500 mb-4">Search Results</h2>
+    <div id="searchModal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
+        <div class="bg-white p-8 rounded-2xl shadow-2xl w-11/12 md:w-1/2">
+            <button id="closeModal" class="text-red-500 font-bold float-right text-xl">×</button>
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Search Results</h2>
             <div id="searchResults" class="flex flex-wrap justify-center gap-6">
                 <!-- Search results will be dynamically loaded here -->
             </div>
         </div>
     </div>
+
+    <footer class="bg-white text-center py-4 mt-10 border-t border-gray-300">
+        <p class="text-gray-600 text-sm">© 2025 The Guitar Directory. Created by Mattia Lobrano.</p>
+        <nav class="mt-2">
+            <a href="privacy.html" class="text-blue-500 text-sm hover:underline">Privacy Policy</a> |
+            <a href="terms.html" class="text-blue-500 text-sm hover:underline">Terms and Conditions</a>
+        </nav>
+        <div class="mt-4 flex justify-center items-center gap-4">
+            <a href="https://www.tiktok.com/@the_guitar_directory" target="_blank" class="flex items-center gap-2">
+                <img src="tiktok.png" alt="TikTok" class="w-6 h-6">
+                <span class="text-blue-500 text-sm hover:underline">Follow us on TikTok</span>
+            </a>
+        </div>
+    </footer>
+    <button id="backToTop" class="fixed bottom-5 left-5 bg-blue-500 text-white p-3 rounded-full shadow-md hidden">
+        ↑
+    </button>
     <script>
         async function loadNewSongs() {
             const response = await fetch('new-songs.json');
@@ -107,36 +128,19 @@
                 const songItem = document.createElement('div');
                 songItem.className = 'song-item flex flex-col items-center';
                 songItem.innerHTML = `
-                    <img src="${song.image}" alt="${song.title}" class="w-40 h-40 rounded-lg shadow-md">
-                    <p class="text-lg text-gray-600 mt-2">
-                        <a href="${song.link}" class="text-blue-500 hover:underline">
-                            <strong>${song.title}</strong>
+                    <img src="${song.image}" alt="${song.title}" class="w-56 h-56 object-cover rounded-2xl shadow-lg border border-blue-100">
+                    <p class="text-lg text-gray-700 mt-4 text-center">
+                        <a href="${song.link}" class="text-blue-700 hover:underline font-semibold">
+                            ${song.title}
                         </a>
                     </p>
                 `;
                 songList.appendChild(songItem);
             });
         }
-    
         document.addEventListener('DOMContentLoaded', loadNewSongs);
-    </script>
-<footer class="bg-white text-center py-4 mt-10 border-t border-gray-300">
-    <p class="text-gray-600 text-sm">© 2025 The Guitar Directory. Created by Mattia Lobrano.</p>
-    <nav class="mt-2">
-        <a href="privacy.html" class="text-blue-500 text-sm hover:underline">Privacy Policy</a> |
-        <a href="terms.html" class="text-blue-500 text-sm hover:underline">Terms and Conditions</a>
-    </nav>
-    <div class="mt-4 flex justify-center items-center gap-4">
-        <a href="https://www.tiktok.com/@the_guitar_directory" target="_blank" class="flex items-center gap-2">
-            <img src="tiktok.png" alt="TikTok" class="w-6 h-6">
-            <span class="text-blue-500 text-sm hover:underline">Follow us on TikTok</span>
-        </a>
-    </div>
-</footer>
-    <button id="backToTop" class="fixed bottom-5 left-5 bg-blue-500 text-white p-3 rounded-full shadow-md hidden">
-        ↑
-    </button>
-    <script>
+
+        // Back to Top
         const backToTop = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
@@ -148,6 +152,63 @@
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+
+        // Search Modal Logic
+        async function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchModal = document.getElementById('searchModal');
+            const searchResults = document.getElementById('searchResults');
+            const closeModal = document.getElementById('closeModal');
+
+            closeModal.addEventListener('click', () => {
+                searchModal.classList.add('hidden');
+                searchResults.innerHTML = '';
+            });
+
+            searchInput.addEventListener('input', async () => {
+                const keyword = searchInput.value.toLowerCase().trim();
+                if (keyword === '') {
+                    searchModal.classList.add('hidden');
+                    return;
+                }
+                searchModal.classList.remove('hidden');
+                searchResults.innerHTML = '';
+                try {
+                    const response = await fetch('content.html');
+                    const contentHtml = await response.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(contentHtml, 'text/html');
+                    const songLinks = doc.querySelectorAll('a[href$=".html"]');
+                    const songs = Array.from(songLinks).map(link => ({
+                        title: link.textContent.trim(),
+                        link: link.getAttribute('href')
+                    }));
+                    const filteredSongs = songs.filter(song =>
+                        song.title.toLowerCase().includes(keyword)
+                    );
+                    if (filteredSongs.length > 0) {
+                        filteredSongs.forEach(song => {
+                            const songItem = document.createElement('div');
+                            songItem.className = 'song-item flex flex-col items-center';
+                            songItem.innerHTML = `
+                                <p class="text-lg text-gray-700 mt-4 text-center">
+                                    <a href="${song.link}" class="text-blue-700 hover:underline font-semibold">
+                                        ${song.title}
+                                    </a>
+                                </p>
+                            `;
+                            searchResults.appendChild(songItem);
+                        });
+                    } else {
+                        searchResults.innerHTML = '<p class="text-gray-700">No results found.</p>';
+                    }
+                } catch (error) {
+                    console.error('Error fetching songs:', error);
+                    searchResults.innerHTML = '<p class="text-red-500">Error loading results.</p>';
+                }
+            });
+        }
+        document.addEventListener('DOMContentLoaded', setupSearch);
     </script>
     <script type="application/ld+json">
         {
@@ -161,72 +222,6 @@
                 "name": "Mattia Lobrano"
             }
         }
-        </script>
-    <script>
-        // Funzione di ricerca migliorata
-        async function setupSearch() {
-            const searchInput = document.getElementById('searchInput');
-            const searchModal = document.getElementById('searchModal');
-            const searchResults = document.getElementById('searchResults');
-            const closeModal = document.getElementById('closeModal');
-
-            closeModal.addEventListener('click', () => {
-                searchModal.classList.add('hidden');
-                searchResults.innerHTML = ''; // Pulisce i risultati
-            });
-
-            searchInput.addEventListener('input', async () => {
-                const keyword = searchInput.value.toLowerCase().trim();
-                if (keyword === '') {
-                    searchModal.classList.add('hidden');
-                    return;
-                }
-
-                searchModal.classList.remove('hidden');
-                searchResults.innerHTML = ''; // Pulisce i risultati precedenti
-
-                try {
-                    const response = await fetch('content.html');
-                    const contentHtml = await response.text();
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(contentHtml, 'text/html');
-                    const songLinks = doc.querySelectorAll('a[href$=".html"]');
-
-                    const songs = Array.from(songLinks).map(link => ({
-                        title: link.textContent.trim(),
-                        link: link.getAttribute('href')
-                    }));
-
-                    const filteredSongs = songs.filter(song =>
-                        song.title.toLowerCase().includes(keyword)
-                    );
-
-                    if (filteredSongs.length > 0) {
-                        filteredSongs.forEach(song => {
-                            const songItem = document.createElement('div');
-                            songItem.className = 'song-item flex flex-col items-center';
-                            songItem.innerHTML = `
-                                <p class="text-lg text-gray-600 mt-2">
-                                    <a href="${song.link}" class="text-blue-500 hover:underline">
-                                        <strong>${song.title}</strong>
-                                    </a>
-                                </p>
-                            `;
-                            searchResults.appendChild(songItem);
-                        });
-                    } else {
-                        searchResults.innerHTML = '<p class="text-gray-600">No results found.</p>';
-                    }
-                } catch (error) {
-                    console.error('Error fetching songs:', error);
-                    searchResults.innerHTML = '<p class="text-red-500">Error loading results.</p>';
-                }
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            setupSearch();
-        });
     </script>
 </body>
 </html>

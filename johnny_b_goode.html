@@ -51,9 +51,9 @@
     </div>
 
     <!-- Search Modal -->
-    <div id="searchModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-1/2 text-center">
-            <button id="closeModal" class="text-red-500 font-bold float-right">X</button>
+    <div id="searchModal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-1/2 text-center relative">
+            <button id="closeModal" class="absolute top-4 right-4 text-red-500 font-bold text-xl">×</button>
             <h2 class="text-2xl font-semibold text-blue-500 mb-4">Search Results</h2>
             <div id="searchResults" class="flex flex-col items-center gap-4">
                 <!-- Search results will be dynamically loaded here -->
@@ -73,64 +73,62 @@
             </a>
         </div>
     </footer>
-    <footer>
-        <script>
-            // Search functionality with modal
-            const searchInput = document.getElementById('searchInput');
-            const searchModal = document.getElementById('searchModal');
-            const searchResults = document.getElementById('searchResults');
-            const closeModal = document.getElementById('closeModal');
+    <script>
+        // Search functionality with modal
+        const searchInput = document.getElementById('searchInput');
+        const searchModal = document.getElementById('searchModal');
+        const searchResults = document.getElementById('searchResults');
+        const closeModal = document.getElementById('closeModal');
 
-            // Close modal
-            closeModal.addEventListener('click', () => {
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            searchModal.classList.add('hidden');
+            searchResults.innerHTML = '';
+        });
+
+        // Search input event
+        searchInput.addEventListener('input', async () => {
+            const keyword = searchInput.value.toLowerCase().trim();
+            if (keyword === '') {
                 searchModal.classList.add('hidden');
-                searchResults.innerHTML = ''; // Clear results
-            });
+                return;
+            }
 
-            // Search input event
-            searchInput.addEventListener('input', async () => {
-                const keyword = searchInput.value.toLowerCase().trim();
-                if (keyword === '') {
-                    searchModal.classList.add('hidden');
-                    return;
-                }
+            searchModal.classList.remove('hidden');
+            searchResults.innerHTML = '';
 
-                searchModal.classList.remove('hidden');
-                searchResults.innerHTML = ''; // Clear previous results
+            try {
+                const response = await fetch('content.html');
+                const contentHtml = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(contentHtml, 'text/html');
+                const links = doc.querySelectorAll('a[href$=".html"]');
 
-                try {
-                    const response = await fetch('content.html');
-                    const contentHtml = await response.text();
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(contentHtml, 'text/html');
-                    const links = doc.querySelectorAll('a[href$=".html"]');
+                let hasResults = false;
 
-                    let hasResults = false;
-
-                    links.forEach(link => {
-                        const text = link.textContent.toLowerCase();
-                        if (text.includes(keyword)) {
-                            hasResults = true;
-                            const resultItem = document.createElement('div');
-                            resultItem.className = 'text-lg text-gray-600';
-                            resultItem.innerHTML = `
-                                <a href="${link.getAttribute('href')}" class="text-blue-500 hover:underline">
-                                    ${link.textContent}
-                                </a>
-                            `;
-                            searchResults.appendChild(resultItem);
-                        }
-                    });
-
-                    if (!hasResults) {
-                        searchResults.innerHTML = '<p class="text-gray-600">No results found.</p>';
+                links.forEach(link => {
+                    const text = link.textContent.toLowerCase();
+                    if (text.includes(keyword)) {
+                        hasResults = true;
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'text-lg text-gray-600';
+                        resultItem.innerHTML = `
+                            <a href="${link.getAttribute('href')}" class="text-blue-500 hover:underline">
+                                ${link.textContent}
+                            </a>
+                        `;
+                        searchResults.appendChild(resultItem);
                     }
-                } catch (error) {
-                    console.error('Error fetching songs:', error);
-                    searchResults.innerHTML = '<p class="text-red-500">Error loading results.</p>';
+                });
+
+                if (!hasResults) {
+                    searchResults.innerHTML = '<p class="text-gray-600">No results found.</p>';
                 }
-            });
-        </script>
-    </footer>
+            } catch (error) {
+                console.error('Error fetching songs:', error);
+                searchResults.innerHTML = '<p class="text-red-500">Error loading results.</p>';
+            }
+        });
+    </script>
 </body>
 </html>

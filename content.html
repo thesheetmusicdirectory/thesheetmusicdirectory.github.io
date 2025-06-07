@@ -7,83 +7,86 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-br from-gray-100 to-gray-200 text-gray-800 font-sans">
+<body class="bg-gradient-to-tr from-gray-50 via-white to-gray-100 min-h-screen text-gray-800 font-sans">
     <!-- Header -->
-    <header class="bg-white shadow-md border border-gray-300 rounded-full w-11/12 mx-auto mt-5 p-5 text-center">
-        <h1 class="text-4xl font-bold text-blue-500">Content - The Guitar Directory</h1>
-        <nav class="mt-3">
-            <a href="index.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Home</a>
-            <a href="content.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Content</a>
-            <a href="videos.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Videos</a>
-            <a href="comingsoon.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Coming Soon</a>
-        </nav>
-        <p class="text-gray-600 mt-3">This page is for scrolling through the content on this directory.</p>
-        <p class="text-gray-600">Click on the links below to view the content.</p>
-        <!-- Search Bar -->
-        <div class="mt-4">
+    <header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <div class="flex items-center gap-3">
+                <img src="The Guitar Directory (1).png" alt="Logo" class="w-12 h-12 object-contain rounded-full shadow">
+                <span class="text-2xl font-bold text-blue-700 tracking-tight">The Guitar Directory</span>
+            </div>
+            <nav class="flex gap-8">
+                <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
+                <a href="content.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Content</a>
+                <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
+                <a href="comingsoon.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Coming Soon</a>
+            </nav>
+        </div>
+        <div class="max-w-2xl mx-auto px-6 pb-4">
             <input
                 type="text"
                 id="searchInput"
                 placeholder="Search songs..."
-                class="w-full md:w-1/2 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                class="w-full p-3 border border-blue-100 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
             />
         </div>
     </header>
 
-   <!-- Main Content -->
-   <main class="text-center py-10 px-5" id="contentList">
-    <section class="mb-8">
-        <h2 class="text-2xl font-semibold text-blue-500 mb-3">Nirvana</h2>
-        <a href="sltsnirvana.html" class="text-blue-500 text-lg hover:underline">Smells Like Teen Spirit - Nirvana</a>
-    </section>
-
-    <section class="mb-8">
-        <h2 class="text-2xl font-semibold text-blue-500 mb-3">AC/DC</h2>
-        <a href="Dirty Deeds Done Dirt Cheap.html" class="text-blue-500 text-lg hover:underline">Dirty Deeds Done Dirt Cheap - AC/DC</a>
-        <br>
-        <a href="thunderstruck.html" class="text-blue-500 text-lg hover:underline">Thunderstruck - AC/DC</a>
-    </section>
-
-    <section class="mb-8">
-        <h2 class="text-2xl font-semibold text-blue-500 mb-3">Deep Purple</h2>
-        <a href="highway_star.html" class="text-blue-500 text-lg hover:underline">Highway Star - Deep Purple</a>
-    </section>
-
-    <section class="mb-8">
-        <h2 class="text-2xl font-semibold text-blue-500 mb-3">Men at Work</h2>
-        <a href="down_under.html" class="text-blue-500 text-lg hover:underline">Down Under - Men At Work</a>
-    </section>
-
-    <section class="mb-8">
-        <h2 class="text-2xl font-semibold text-blue-500 mb-3">Lynyrd Skynyrd</h2>
-        <a href="free_bird.html" class="text-blue-500 text-lg hover:underline">Free Bird - Lynyrd Skynyrd</a>
-    </section>
-
-    <section class="mb-8">
-        <h2 class="text-2xl font-semibold text-blue-500 mb-3">The Beatles</h2>
-        <a href="twist_and_shout.html" class="text-blue-500 text-lg hover:underline">Twist And Shout - The Beatles</a>
-        <br>
-        <a href="i_want_to_hold_your_hand.html" class="text-blue-500 text-lg hover:underline">I Want To Hold Your Hand - The Beatles</a>
-        <br>
-        <a href="hey_jude.html" class="text-blue-500 text-lg hover:underline">Hey Jude - The Beatles</a>
-    </section>
-
-    <section class="mb-8">
-        <h2 class="text-2xl font-semibold text-blue-500 mb-3">Chuck Berry</h2>
-        <a href="johnny_b_goode.html" class="text-blue-500 text-lg hover:underline">Johnny B. Goode - Chuck Berry</a>
-    </section>
-
-    <section class="mb-8">
-        <h2 class="text-2xl font-semibold text-blue-500 mb-3">Queen</h2>
-        <a href="bohemian_rhapsody.html" class="text-blue-500 text-lg hover:underline">Bohemian Rhapsody - Queen</a>
-    </section>
-</main>
+    <!-- Main Content -->
+    <main class="flex flex-col items-center justify-center py-10 px-5 gap-10 max-w-4xl mx-auto" id="contentList">
+        <section class="bg-white/95 p-10 rounded-3xl shadow-xl border border-blue-100 w-full text-center">
+            <h1 class="text-3xl font-bold text-blue-700 mb-4">Content</h1>
+            <p class="text-gray-600 mb-2">This page is for scrolling through the content on this directory.</p>
+            <p class="text-gray-600 mb-8">Click on the links below to view the content.</p>
+            <!-- Content Sections -->
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-2xl font-semibold text-blue-700 mb-3">Nirvana</h2>
+                    <a href="sltsnirvana.html" class="text-blue-700 text-lg hover:underline">Smells Like Teen Spirit - Nirvana</a>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-semibold text-blue-700 mb-3">AC/DC</h2>
+                    <a href="Dirty Deeds Done Dirt Cheap.html" class="text-blue-700 text-lg hover:underline">Dirty Deeds Done Dirt Cheap - AC/DC</a>
+                    <br>
+                    <a href="thunderstruck.html" class="text-blue-700 text-lg hover:underline">Thunderstruck - AC/DC</a>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-semibold text-blue-700 mb-3">Deep Purple</h2>
+                    <a href="highway_star.html" class="text-blue-700 text-lg hover:underline">Highway Star - Deep Purple</a>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-semibold text-blue-700 mb-3">Men at Work</h2>
+                    <a href="down_under.html" class="text-blue-700 text-lg hover:underline">Down Under - Men At Work</a>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-semibold text-blue-700 mb-3">Lynyrd Skynyrd</h2>
+                    <a href="free_bird.html" class="text-blue-700 text-lg hover:underline">Free Bird - Lynyrd Skynyrd</a>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-semibold text-blue-700 mb-3">The Beatles</h2>
+                    <a href="twist_and_shout.html" class="text-blue-700 text-lg hover:underline">Twist And Shout - The Beatles</a>
+                    <br>
+                    <a href="i_want_to_hold_your_hand.html" class="text-blue-700 text-lg hover:underline">I Want To Hold Your Hand - The Beatles</a>
+                    <br>
+                    <a href="hey_jude.html" class="text-blue-700 text-lg hover:underline">Hey Jude - The Beatles</a>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-semibold text-blue-700 mb-3">Chuck Berry</h2>
+                    <a href="johnny_b_goode.html" class="text-blue-700 text-lg hover:underline">Johnny B. Goode - Chuck Berry</a>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-semibold text-blue-700 mb-3">Queen</h2>
+                    <a href="bohemian_rhapsody.html" class="text-blue-700 text-lg hover:underline">Bohemian Rhapsody - Queen</a>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Search Modal -->
-    <div id="searchModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-1/2 text-center">
-            <button id="closeModal" class="text-red-500 font-bold float-right">X</button>
-            <h2 class="text-2xl font-semibold text-blue-500 mb-4">Search Results</h2>
+    <div id="searchModal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
+        <div class="bg-white p-8 rounded-2xl shadow-2xl w-11/12 md:w-1/2 text-center relative">
+            <button id="closeModal" class="absolute top-4 right-4 text-red-500 font-bold text-xl">×</button>
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Search Results</h2>
             <div id="searchResults" class="flex flex-col items-center gap-4">
                 <!-- Search results will be dynamically loaded here -->
             </div>
@@ -102,17 +105,34 @@
             </a>
         </div>
     </footer>
+    <button id="backToTop" class="fixed bottom-5 left-5 bg-blue-500 text-white p-3 rounded-full shadow-md hidden">
+        ↑
+    </button>
     <script>
+        // Back to Top
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.remove('hidden');
+            } else {
+                backToTop.classList.add('hidden');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
         // Search functionality with modal
         const searchInput = document.getElementById('searchInput');
         const searchModal = document.getElementById('searchModal');
         const searchResults = document.getElementById('searchResults');
         const closeModal = document.getElementById('closeModal');
+        const contentList = document.getElementById('contentList');
 
         // Close modal
         closeModal.addEventListener('click', () => {
             searchModal.classList.add('hidden');
-            searchResults.innerHTML = ''; // Clear results
+            searchResults.innerHTML = '';
         });
 
         // Search input event
@@ -124,10 +144,9 @@
             }
 
             searchModal.classList.remove('hidden');
-            searchResults.innerHTML = ''; // Clear previous results
+            searchResults.innerHTML = '';
 
-            const contentList = document.getElementById('contentList');
-            const sections = contentList.querySelectorAll('section');
+            const sections = contentList.querySelectorAll('div');
 
             let hasResults = false;
 

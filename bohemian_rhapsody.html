@@ -7,62 +7,74 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-br from-gray-100 to-gray-200 text-gray-800 font-sans">
+<body class="bg-gradient-to-tr from-gray-50 via-white to-gray-100 min-h-screen text-gray-800 font-sans">
     <!-- Header -->
-    <header class="bg-white shadow-md border border-gray-300 rounded-full w-11/12 mx-auto mt-5 p-5 text-center">
-        <h1 class="text-4xl font-bold text-blue-500">Bohemian Rhapsody</h1>
-        <nav class="mt-4">
-            <a href="index.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Home</a>
-            <a href="content.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Content</a>
-            <a href="videos.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Videos</a>
-            <a href="comingsoon.html" class="text-blue-500 text-lg font-medium mx-4 hover:underline">Coming Soon</a>
-        </nav>
-        <!-- Search Bar -->
-        <div class="mt-4">
+    <header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <div class="flex items-center gap-3">
+                <img src="The Guitar Directory (1).png" alt="Logo" class="w-12 h-12 object-contain rounded-full shadow">
+                <span class="text-2xl font-bold text-blue-700 tracking-tight">The Guitar Directory</span>
+            </div>
+            <nav class="flex gap-8">
+                <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
+                <a href="content.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Content</a>
+                <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
+                <a href="comingsoon.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Coming Soon</a>
+            </nav>
+        </div>
+        <div class="max-w-2xl mx-auto px-6 pb-4">
             <input
                 type="text"
                 id="searchInput"
                 placeholder="Search songs..."
-                class="w-full md:w-1/2 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                class="w-full p-3 border border-blue-100 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
             />
         </div>
     </header>
 
     <!-- Content Section -->
-    <div class="content flex flex-col items-center justify-center py-10 px-5 gap-10 max-w-5xl mx-auto text-center">
-        <div class="content-text bg-white p-6 rounded-lg shadow-md w-full">
-            <h2 class="text-2xl font-semibold text-blue-500 mb-4">About the Song</h2>
-            <p class="text-lg text-gray-600">
-                "Bohemian Rhapsody" is a song by the British rock band Queen, released in 1975. It is <br>known for its unique structure, blending elements of rock, ballad, and opera. The song has become one of<br> Queen's most iconic tracks and is celebrated for its innovative production and powerful vocals.
-            </p>
-            <h3 class="text-xl font-semibold text-blue-500 mt-6">Tabs</h3>
-            <p class="text-lg text-gray-600">
-                Explore the tabs for "Bohemian Rhapsody" on <a href="https://tabs.ultimate-guitar.com/tab/queen/bohemian-rhapsody-tabs-3021" class="text-blue-500 font-bold hover:underline">Ultimate Guitar</a>.
-            </p>
-            <h3 class="text-xl font-semibold text-blue-500 mt-6">Listen to the Song</h3>
-            <br>
-            <div class="flex justify-center">
-                <audio controls class="w-full max-w-2xl rounded-lg shadow-lg mb-6">
-                    <source src="Bohemian Rhapsody.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
+    <main class="flex flex-col items-center justify-center py-10 px-5 gap-10 max-w-5xl mx-auto text-center">
+        <section class="flex flex-col md:flex-row items-center gap-10 w-full">
+            <img src="Bohemian-Rhapsody.jpg" alt="Bohemian Rhapsody" class="w-full md:w-[420px] h-auto rounded-3xl shadow-xl border border-blue-100">
+            <div class="bg-white/95 p-10 rounded-3xl shadow-xl border border-blue-100 flex-1 text-left">
+                <h1 class="text-3xl font-bold text-blue-700 mb-4">Bohemian Rhapsody</h1>
+                <h2 class="text-2xl font-semibold text-blue-700 mb-4">About the Song</h2>
+                <p class="text-lg text-gray-700 mb-4">
+                    "Bohemian Rhapsody" is a song by the British rock band Queen, released in 1975.<br>
+                    It is known for its unique structure, blending elements of rock, ballad, and opera.<br>
+                    The song has become one of Queen's most iconic tracks and is celebrated for its innovative production and powerful vocals.
+                </p>
+                <h3 class="text-xl font-semibold text-blue-700 mt-6">Tabs</h3>
+                <p class="text-lg text-gray-700 mb-4">
+                    Explore the tabs for "Bohemian Rhapsody" on
+                    <a href="https://tabs.ultimate-guitar.com/tab/queen/bohemian-rhapsody-tabs-3021" class="text-blue-500 font-bold hover:underline">Ultimate Guitar</a>.
+                </p>
+                <h3 class="text-xl font-semibold text-blue-700 mt-6">Listen to the Song</h3>
+                <div class="flex justify-center my-4">
+                    <audio controls class="w-full max-w-2xl rounded-lg shadow-lg mb-6">
+                        <source src="Bohemian Rhapsody.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <p class="text-lg text-gray-700">
+                    For more information about the song, visit the
+                    <a href="https://en.wikipedia.org/wiki/Bohemian_Rhapsody" class="text-blue-500 font-bold hover:underline">Wikipedia page</a>.
+                </p>
             </div>
-            <p class="text-lg text-gray-600">
-                For more information about the song, visit the <a href="https://en.wikipedia.org/wiki/Bohemian_Rhapsody" class="text-blue-500 font-bold hover:underline">Wikipedia page</a>.
-            </p>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <!-- Search Modal -->
-    <div id="searchModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-1/2 text-center">
-            <button id="closeModal" class="text-red-500 font-bold float-right">X</button>
-            <h2 class="text-2xl font-semibold text-blue-500 mb-4">Search Results</h2>
-            <div id="searchResults" class="flex flex-col items-center gap-4">
+    <div id="searchModal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
+        <div class="bg-white p-8 rounded-2xl shadow-2xl w-11/12 md:w-1/2">
+            <button id="closeModal" class="text-red-500 font-bold float-right text-xl">×</button>
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Search Results</h2>
+            <div id="searchResults" class="flex flex-wrap justify-center gap-6">
                 <!-- Search results will be dynamically loaded here -->
             </div>
         </div>
     </div>
+
     <footer class="bg-white text-center py-4 mt-10 border-t border-gray-300">
         <p class="text-gray-600 text-sm">© 2025 The Guitar Directory. Created by Mattia Lobrano.</p>
         <nav class="mt-2">
@@ -87,7 +99,7 @@
             // Close modal
             closeModal.addEventListener('click', () => {
                 searchModal.classList.add('hidden');
-                searchResults.innerHTML = ''; // Clear results
+                searchResults.innerHTML = '';
             });
 
             // Search input event
@@ -99,7 +111,7 @@
                 }
 
                 searchModal.classList.remove('hidden');
-                searchResults.innerHTML = ''; // Clear previous results
+                searchResults.innerHTML = '';
 
                 try {
                     const response = await fetch('content.html');
