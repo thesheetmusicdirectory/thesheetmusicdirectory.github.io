@@ -3,8 +3,10 @@
 <head>
     <title>Content - The Guitar Directory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse all guitar songs, tabs, and lessons.">
+    <meta name="keywords" content="guitar, content, tabs, lessons, directory">
+    <meta name="author" content="Mattia Lobrano">
     <link rel="icon" href="The Guitar Directory (1).png" type="image/x-icon">
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-tr from-gray-50 via-white to-gray-100 min-h-screen text-gray-800 font-sans">
@@ -32,52 +34,59 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="flex flex-col items-center justify-center py-10 px-5 gap-10 max-w-4xl mx-auto" id="contentList">
+    <!-- Content Section -->
+    <main class="flex flex-col items-center justify-center py-10 px-5 gap-10 max-w-6xl mx-auto" id="contentList">
         <section class="bg-white/95 p-10 rounded-3xl shadow-xl border border-blue-100 w-full text-center">
-            <h1 class="text-3xl font-bold text-blue-700 mb-4">Content</h1>
-            <p class="text-gray-600 mb-2">This page is for scrolling through the content on this directory.</p>
-            <p class="text-gray-600 mb-8">Click on the links below to view the content.</p>
-            <!-- Content Sections -->
-            <div class="space-y-8">
-                <div>
-                    <h2 class="text-2xl font-semibold text-blue-700 mb-3">Nirvana</h2>
-                    <a href="sltsnirvana.html" class="text-blue-700 text-lg hover:underline">Smells Like Teen Spirit - Nirvana</a>
+            <h2 class="text-3xl font-bold text-blue-700 mb-8">Content</h2>
+            <p class="text-lg text-gray-700 mb-8">Browse all available songs, tabs, and lessons in the directory.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 justify-items-center">
+                <!-- Nirvana -->
+                <div class="flex flex-col items-center">
+                    <img src="adesivi-nirvana-logo.jpg" alt="Nirvana" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
+                    <a href="sltsnirvana.html" class="text-blue-700 hover:underline font-semibold text-lg mb-2">Smells Like Teen Spirit - Nirvana</a>
                 </div>
-                <div>
-                    <h2 class="text-2xl font-semibold text-blue-700 mb-3">AC/DC</h2>
-                    <a href="Dirty Deeds Done Dirt Cheap.html" class="text-blue-700 text-lg hover:underline">Dirty Deeds Done Dirt Cheap - AC/DC</a>
-                    <br>
-                    <a href="thunderstruck.html" class="text-blue-700 text-lg hover:underline">Thunderstruck - AC/DC</a>
+                <!-- AC/DC -->
+                <div class="flex flex-col items-center">
+                    <img src="Black-Ice-ACDC-800x445.jpg" alt="AC/DC" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
+                    <a href="Dirty Deeds Done Dirt Cheap.html" class="text-blue-700 hover:underline font-semibold text-lg mb-2">Dirty Deeds Done Dirt Cheap - AC/DC</a>
+                    <a href="thunderstruck.html" class="text-blue-700 hover:underline font-semibold text-lg">Thunderstruck - AC/DC</a>
                 </div>
-                <div>
-                    <h2 class="text-2xl font-semibold text-blue-700 mb-3">Deep Purple</h2>
-                    <a href="highway_star.html" class="text-blue-700 text-lg hover:underline">Highway Star - Deep Purple</a>
+                <!-- Deep Purple -->
+                <div class="flex flex-col items-center">
+                    <img src="logo-deep-purple-on-air.webp" alt="Deep Purple" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
+                    <a href="highway_star.html" class="text-blue-700 hover:underline font-semibold text-lg">Highway Star - Deep Purple</a>
                 </div>
-                <div>
-                    <h2 class="text-2xl font-semibold text-blue-700 mb-3">Men at Work</h2>
-                    <a href="down_under.html" class="text-blue-700 text-lg hover:underline">Down Under - Men At Work</a>
+                <!-- Men at Work -->
+                <div class="flex flex-col items-center">
+                    <img src="MAW3-medium-1024x617.jpg" alt="Men at Work" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
+                    <a href="down_under.html" class="text-blue-700 hover:underline font-semibold text-lg">Down Under - Men At Work</a>
                 </div>
-                <div>
-                    <h2 class="text-2xl font-semibold text-blue-700 mb-3">Lynyrd Skynyrd</h2>
-                    <a href="free_bird.html" class="text-blue-700 text-lg hover:underline">Free Bird - Lynyrd Skynyrd</a>
+                <!-- Lynyrd Skynyrd -->
+                <div class="flex flex-col items-center">
+                    <img src="0a3a5df7-5330-419c-8805-941c22aa3423_TABLET_LANDSCAPE_LARGE_16_9.jpg" alt="Lynyrd Skynyrd" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
+                    <a href="free_bird.html" class="text-blue-700 hover:underline font-semibold text-lg">Free Bird - Lynyrd Skynyrd</a>
                 </div>
-                <div>
-                    <h2 class="text-2xl font-semibold text-blue-700 mb-3">The Beatles</h2>
-                    <a href="twist_and_shout.html" class="text-blue-700 text-lg hover:underline">Twist And Shout - The Beatles</a>
-                    <br>
-                    <a href="i_want_to_hold_your_hand.html" class="text-blue-700 text-lg hover:underline">I Want To Hold Your Hand - The Beatles</a>
-                    <br>
-                    <a href="hey_jude.html" class="text-blue-700 text-lg hover:underline">Hey Jude - The Beatles</a>
+                <!-- The Beatles -->
+                <div class="flex flex-col items-center">
+                    <img src="5814efca-2039-465f-a0cd-0520cde7f3d2.jpg" alt="The Beatles" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
+                    <a href="twist_and_shout.html" class="text-blue-700 hover:underline font-semibold text-lg mb-2">Twist And Shout - The Beatles</a>
+                    <a href="i_want_to_hold_your_hand.html" class="text-blue-700 hover:underline font-semibold text-lg mb-2">I Want To Hold Your Hand - The Beatles</a>
+                    <a href="hey_jude.html" class="text-blue-700 hover:underline font-semibold text-lg">Hey Jude - The Beatles</a>
                 </div>
-                <div>
-                    <h2 class="text-2xl font-semibold text-blue-700 mb-3">Chuck Berry</h2>
-                    <a href="johnny_b_goode.html" class="text-blue-700 text-lg hover:underline">Johnny B. Goode - Chuck Berry</a>
+                <!-- Chuck Berry -->
+                <div class="flex flex-col items-center">
+                    <img src="chuck-berry-il-giorno-in-cui-il-rock-ha-trovato-il-suo-eroe-wide-site-lgt5z.jpg" alt="Chuck Berry" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
+                    <a href="johnny_b_goode.html" class="text-blue-700 hover:underline font-semibold text-lg">Johnny B. Goode - Chuck Berry</a>
                 </div>
-                <div>
-                    <h2 class="text-2xl font-semibold text-blue-700 mb-3">Queen</h2>
-                    <a href="bohemian_rhapsody.html" class="text-blue-700 text-lg hover:underline">Bohemian Rhapsody - Queen</a>
+                <!-- Queen -->
+                <div class="flex flex-col items-center">
+                    <img src="queenev.jpg" alt="Queen" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
+                    <a href="bohemian_rhapsody.html" class="text-blue-700 hover:underline font-semibold text-lg">Bohemian Rhapsody - Queen</a>
                 </div>
+            </div>
+            <div class="mt-10">
+                <h2 class="text-2xl font-bold text-blue-700 mb-2">More content coming soon!</h2>
+                <p class="text-lg text-gray-700">We're always adding new songs and lessons to the directory.</p>
             </div>
         </section>
     </main>
@@ -129,13 +138,11 @@
         const closeModal = document.getElementById('closeModal');
         const contentList = document.getElementById('contentList');
 
-        // Close modal
         closeModal.addEventListener('click', () => {
             searchModal.classList.add('hidden');
             searchResults.innerHTML = '';
         });
 
-        // Search input event
         searchInput.addEventListener('input', () => {
             const keyword = searchInput.value.toLowerCase().trim();
             if (keyword === '') {
