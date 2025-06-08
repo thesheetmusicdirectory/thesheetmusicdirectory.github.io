@@ -4,11 +4,9 @@
     <title>Register - The Guitar Directory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Firebase scripts and config here (see step 2) -->
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col">
-    <!-- Copy your header here -->
-         <!-- Header -->
+<body class="bg-gradient-to-tr from-blue-100 via-white to-blue-200 min-h-screen text-gray-800 font-sans flex flex-col">
+    <!-- Header -->
     <header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
             <div class="flex items-center gap-3">
@@ -36,16 +34,18 @@
         </div>
     </header>
     <main class="flex flex-1 items-center justify-center">
-        <form id="registerForm" class="bg-white p-8 rounded-xl shadow-xl w-full max-w-md flex flex-col gap-4">
-            <h1 class="text-2xl font-bold text-blue-700 mb-4">Register</h1>
-            <input type="email" id="regEmail" placeholder="Email" required class="border p-2 rounded" />
-            <input type="password" id="regPassword" placeholder="Password" required class="border p-2 rounded" />
-            <button type="submit" class="bg-blue-600 text-white rounded p-2 font-bold">Register</button>
-            <p id="regMsg" class="text-red-500"></p>
+        <form id="registerForm" class="bg-white/95 p-10 rounded-3xl shadow-2xl border border-blue-100 w-full max-w-md flex flex-col gap-6 mt-10 mb-10">
+            <div class="flex flex-col items-center gap-2">
+                <h1 class="text-3xl font-bold text-blue-700 mb-2">Register</h1>
+            </div>
+            <input type="email" id="regEmail" placeholder="Email" required class="border border-blue-200 p-3 rounded-xl focus:ring-2 focus:ring-blue-400 transition" />
+            <input type="password" id="regPassword" placeholder="Password" required class="border border-blue-200 p-3 rounded-xl focus:ring-2 focus:ring-blue-400 transition" />
+            <button type="submit" class="bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-xl px-6 py-2 font-bold shadow-lg hover:from-blue-600 hover:to-blue-800 transition">Register</button>
+            <p id="regMsg" class="text-red-500 text-center"></p>
+            <p class="text-center text-gray-600 text-sm">Already have an account? <a href="login.html" class="text-blue-600 hover:underline font-semibold">Login</a></p>
         </form>
     </main>
-    <!-- Copy your footer here -->
-         <footer class="bg-white text-center py-4 mt-10 border-t border-gray-300">
+    <footer class="bg-white text-center py-4 mt-auto border-t border-gray-300">
         <p class="text-gray-600 text-sm">© 2025 The Guitar Directory. Created by Mattia Lobrano.</p>
         <nav class="mt-2">
             <a href="privacy.html" class="text-blue-500 text-sm hover:underline">Privacy Policy</a> |

@@ -4,38 +4,41 @@
     <title>Login - The Guitar Directory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Firebase scripts and config here (see step 2) -->
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col">
-    <!-- Copy your header here -->
-              <!-- Header -->
+<body class="bg-gradient-to-tr from-blue-100 via-white to-blue-200 min-h-screen text-gray-800 font-sans flex flex-col">
+    <!-- Header -->
     <header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
             <div class="flex items-center gap-3">
                 <img src="The Guitar Directory (1).png" alt="Logo" class="w-12 h-12 object-contain rounded-full shadow">
                 <span class="text-2xl font-bold text-blue-700 tracking-tight">The Guitar Directory</span>
             </div>
-<nav class="flex gap-8">
-    <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
-    <a href="content.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Content</a>
-    <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
-    <a href="comingsoon.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Coming Soon</a>
-    <a href="login.html" id="loginLink" class="text-blue-700 hover:text-blue-900 font-medium transition">Login</a>
-    <a href="register.html" id="registerLink" class="text-blue-700 hover:text-blue-900 font-medium transition">Register</a>
-    <a href="profile.html" id="profileLink" class="text-blue-700 hover:text-blue-900 font-medium transition hidden">Profile</a>
-    <button id="logoutBtn" class="text-blue-700 hover:text-blue-900 font-medium transition hidden">Logout</button>
-</nav>
+            <nav class="flex gap-8">
+                <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
+                <a href="content.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Content</a>
+                <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
+                <a href="comingsoon.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Coming Soon</a>
+                <a href="login.html" id="loginLink" class="text-blue-700 hover:text-blue-900 font-medium transition">Login</a>
+                <a href="register.html" id="registerLink" class="text-blue-700 hover:text-blue-900 font-medium transition">Register</a>
+                <a href="profile.html" id="profileLink" class="text-blue-700 hover:text-blue-900 font-medium transition hidden">Profile</a>
+                <button id="logoutBtn" class="text-blue-700 hover:text-blue-900 font-medium transition hidden">Logout</button>
+            </nav>
+        </div>
+    </header>
     <main class="flex flex-1 items-center justify-center">
-        <form id="loginForm" class="bg-white p-8 rounded-xl shadow-xl w-full max-w-md flex flex-col gap-4">
-            <h1 class="text-2xl font-bold text-blue-700 mb-4">Login</h1>
-            <input type="email" id="loginEmail" placeholder="Email" required class="border p-2 rounded" />
-            <input type="password" id="loginPassword" placeholder="Password" required class="border p-2 rounded" />
-            <button type="submit" class="bg-blue-600 text-white rounded p-2 font-bold">Login</button>
-            <p id="loginMsg" class="text-red-500"></p>
+        <form id="loginForm" class="bg-white/95 p-10 rounded-3xl shadow-2xl border border-blue-100 w-full max-w-md flex flex-col gap-6 mt-10 mb-10">
+            <div class="flex flex-col items-center gap-2">
+                <img src="The Guitar Directory (1).png" alt="Login" class="w-20 h-20 rounded-full shadow-lg border-4 border-blue-200 mb-2">
+                <h1 class="text-3xl font-bold text-blue-700 mb-2">Login</h1>
+            </div>
+            <input type="email" id="loginEmail" placeholder="Email" required class="border border-blue-200 p-3 rounded-xl focus:ring-2 focus:ring-blue-400 transition" />
+            <input type="password" id="loginPassword" placeholder="Password" required class="border border-blue-200 p-3 rounded-xl focus:ring-2 focus:ring-blue-400 transition" />
+            <button type="submit" class="bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-xl px-6 py-2 font-bold shadow-lg hover:from-blue-600 hover:to-blue-800 transition">Login</button>
+            <p id="loginMsg" class="text-red-500 text-center"></p>
+            <p class="text-center text-gray-600 text-sm">Don't have an account? <a href="register.html" class="text-blue-600 hover:underline font-semibold">Register</a></p>
         </form>
     </main>
-    <!-- Copy your footer here -->
-              <footer class="bg-white text-center py-4 mt-10 border-t border-gray-300">
+    <footer class="bg-white text-center py-4 mt-auto border-t border-gray-300">
         <p class="text-gray-600 text-sm">© 2025 The Guitar Directory. Created by Mattia Lobrano.</p>
         <nav class="mt-2">
             <a href="privacy.html" class="text-blue-500 text-sm hover:underline">Privacy Policy</a> |
@@ -61,23 +64,8 @@
                 document.getElementById('loginMsg').textContent = error.message;
             });
     });
-    </script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyDrXUu9RHG2ez7L_5PGOlhjpCIt0ZTISAY",
-    authDomain: "the-guitar-directory.firebaseapp.com",
-    projectId: "the-guitar-directory",
-    storageBucket: "the-guitar-directory.firebasestorage.app",
-    messagingSenderId: "1056171861791",
-    appId: "1:1056171861791:web:063fddcdb7e2b80683322a",
-    measurementId: "G-Y5VN6Y10TB"
-  };
-  firebase.initializeApp(firebaseConfig);
-</script>
-    <script>
-    // Check if user is logged in
+
+    // Navigation auth UI
     firebase.auth().onAuthStateChanged(user => {
         const loginLink = document.getElementById('loginLink');
         const registerLink = document.getElementById('registerLink');
@@ -104,6 +92,20 @@
             window.location.href = 'index.html';
         });
     });
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyDrXUu9RHG2ez7L_5PGOlhjpCIt0ZTISAY",
+        authDomain: "the-guitar-directory.firebaseapp.com",
+        projectId: "the-guitar-directory",
+        storageBucket: "the-guitar-directory.firebasestorage.app",
+        messagingSenderId: "1056171861791",
+        appId: "1:1056171861791:web:063fddcdb7e2b80683322a",
+        measurementId: "G-Y5VN6Y10TB"
+      };
+      firebase.initializeApp(firebaseConfig);
     </script>
 </body>
 </html>
