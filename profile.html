@@ -54,6 +54,21 @@
             </a>
         </div>
     </footer>
+        <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyDrXUu9RHG2ez7L_5PGOlhjpCIt0ZTISAY",
+        authDomain: "the-guitar-directory.firebaseapp.com",
+        projectId: "the-guitar-directory",
+        storageBucket: "the-guitar-directory.firebasestorage.app",
+        messagingSenderId: "1056171861791",
+        appId: "1:1056171861791:web:063fddcdb7e2b80683322a",
+        measurementId: "G-Y5VN6Y10TB"
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
     <!-- Firebase Auth UI Logic -->
     <script>
     // Navigation auth UI
@@ -189,21 +204,6 @@ document.addEventListener('DOMContentLoaded', renderFavoriteSongs);
         });
     });
 </script>
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-    <script>
-      const firebaseConfig = {
-        apiKey: "AIzaSyDrXUu9RHG2ez7L_5PGOlhjpCIt0ZTISAY",
-        authDomain: "the-guitar-directory.firebaseapp.com",
-        projectId: "the-guitar-directory",
-        storageBucket: "the-guitar-directory.firebasestorage.app",
-        messagingSenderId: "1056171861791",
-        appId: "1:1056171861791:web:063fddcdb7e2b80683322a",
-        measurementId: "G-Y5VN6Y10TB"
-      };
-      firebase.initializeApp(firebaseConfig);
-    </script>
     <!-- Add this just before </body> -->
 <div id="cookieConsent" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-white/95 border border-blue-200 rounded-xl shadow-xl px-6 py-4 flex flex-col md:flex-row items-center gap-4 max-w-lg w-full transition-all duration-300 hidden">
     <span class="text-gray-700 text-sm flex-1">
