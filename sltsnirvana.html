@@ -8,6 +8,22 @@
     <meta name="author" content="Mattia Lobrano">
     <link rel="icon" href="The Guitar Directory (1).png" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 1. Firebase SDKs and initialization FIRST (in <head> or before any custom scripts) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDrXUu9RHG2ez7L_5PGOlhjpCIt0ZTISAY",
+    authDomain: "the-guitar-directory.firebaseapp.com",
+    projectId: "the-guitar-directory",
+    storageBucket: "the-guitar-directory.firebasestorage.app",
+    messagingSenderId: "1056171861791",
+    appId: "1:1056171861791:web:063fddcdb7e2b80683322a",
+    measurementId: "G-Y5VN6Y10TB"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
 </head>
 <body class="bg-gradient-to-tr from-blue-100 via-white to-blue-200 min-h-screen text-gray-800 font-sans">
     <!-- Header -->
@@ -45,51 +61,48 @@
 <button id="favBtn" class="text-2xl text-yellow-400 hover:text-yellow-500 transition" title="Add to favorites" aria-label="Add to favorites" data-title="Smells Like Teen Spirit" data-link="sltsnirvana.html" onclick="addToFavorites(this)">
     <span id="favStar">☆</span> Add to Favorites
 </button>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<!-- ...after your favorite button... -->
 <script>
-function updateFavBtn() {
+firebase.auth().onAuthStateChanged(function(user) {
     const btn = document.getElementById('favBtn');
     const star = document.getElementById('favStar');
-    const user = firebase.auth().currentUser;
+    if (!btn || !star) return;
     if (!user) {
         star.textContent = '☆';
         btn.title = "Log in to add to favorites";
         btn.setAttribute('aria-label', btn.title);
         btn.disabled = true;
+        btn.onclick = function() {
+            alert("You must be logged in to use favorites!");
+        };
         return;
     }
-    firebase.database().ref('favorites/' + user.uid).once('value').then(snapshot => {
-        const favs = snapshot.val() || [];
-        const exists = favs.some(s => s.link === btn.dataset.link);
-        star.textContent = exists ? '★' : '☆';
-        btn.title = exists ? "Remove from favorites" : "Add to favorites";
-        btn.setAttribute('aria-label', btn.title);
-        btn.disabled = false;
-    });
-}
-
-document.getElementById('favBtn').onclick = function() {
-    const btn = this;
-    const user = firebase.auth().currentUser;
-    if (!user) {
-        alert("You must be logged in to use favorites!");
-        return;
+    // Enable button and set up click handler
+    btn.disabled = false;
+    function updateFavBtn() {
+        firebase.database().ref('favorites/' + user.uid).once('value').then(snapshot => {
+            const favs = snapshot.val() || [];
+            const exists = favs.some(s => s.link === btn.dataset.link);
+            star.textContent = exists ? '★' : '☆';
+            btn.title = exists ? "Remove from favorites" : "Add to favorites";
+            btn.setAttribute('aria-label', btn.title);
+        });
     }
-    firebase.database().ref('favorites/' + user.uid).once('value').then(snapshot => {
-        let favs = snapshot.val() || [];
-        const song = { title: btn.dataset.title, link: btn.dataset.link };
-        const idx = favs.findIndex(s => s.link === song.link);
-        if (idx === -1) {
-            favs.push(song);
-        } else {
-            favs.splice(idx, 1);
-        }
-        firebase.database().ref('favorites/' + user.uid).set(favs).then(updateFavBtn);
-    });
-};
-
-firebase.auth().onAuthStateChanged(updateFavBtn);
-document.addEventListener('DOMContentLoaded', updateFavBtn);
+    btn.onclick = function() {
+        firebase.database().ref('favorites/' + user.uid).once('value').then(snapshot => {
+            let favs = snapshot.val() || [];
+            const song = { title: btn.dataset.title, link: btn.dataset.link };
+            const idx = favs.findIndex(s => s.link === song.link);
+            if (idx === -1) {
+                favs.push(song);
+            } else {
+                favs.splice(idx, 1);
+            }
+            firebase.database().ref('favorites/' + user.uid).set(favs).then(updateFavBtn);
+        });
+    };
+    updateFavBtn();
+});
 </script>
                 <h2 class="text-2xl font-semibold text-blue-700 mb-4">About the Song</h2>
                 <p class="text-lg text-gray-700 mb-4">
@@ -264,21 +277,6 @@ document.addEventListener('DOMContentLoaded', updateFavBtn);
             window.location.href = 'index.html';
         });
     });
-</script>
-        <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyDrXUu9RHG2ez7L_5PGOlhjpCIt0ZTISAY",
-    authDomain: "the-guitar-directory.firebaseapp.com",
-    projectId: "the-guitar-directory",
-    storageBucket: "the-guitar-directory.firebasestorage.app",
-    messagingSenderId: "1056171861791",
-    appId: "1:1056171861791:web:063fddcdb7e2b80683322a",
-    measurementId: "G-Y5VN6Y10TB"
-  };
-  firebase.initializeApp(firebaseConfig);
-</script>
 </script>
 <!-- Add this just before </body> -->
 <div id="cookieConsent" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-white/95 border border-blue-200 rounded-xl shadow-xl px-6 py-4 flex flex-col md:flex-row items-center gap-4 max-w-lg w-full transition-all duration-300 hidden">
