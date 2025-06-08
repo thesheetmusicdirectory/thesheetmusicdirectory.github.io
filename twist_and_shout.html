@@ -45,6 +45,34 @@
 <button id="favBtn" class="text-2xl text-yellow-400 hover:text-yellow-500 transition" title="Add to favorites" aria-label="Add to favorites" data-title="Twist and Shout" data-link="twist_and_shout.html" onclick="addToFavorites(this)">
     <span id="favStar">☆</span> Add to Favorites
 </button>
+    <script>
+    // Gestione preferiti per la pagina della canzone
+    function updateFavBtn() {
+        const btn = document.getElementById('favBtn');
+        const star = document.getElementById('favStar');
+        let favs = [];
+        try { favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]'); } catch { favs = []; }
+        const exists = favs.some(s => s.link === btn.dataset.link);
+        star.textContent = exists ? '★' : '☆';
+        btn.title = exists ? "Remove from favorites" : "Add to favorites";
+        btn.setAttribute('aria-label', btn.title);
+    }
+    document.getElementById('favBtn').onclick = function() {
+        const btn = this;
+        let favs = [];
+        try { favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]'); } catch { favs = []; }
+        const song = { title: btn.dataset.title, link: btn.dataset.link };
+        const idx = favs.findIndex(s => s.link === song.link);
+        if (idx === -1) {
+            favs.push(song);
+        } else {
+            favs.splice(idx, 1);
+        }
+        localStorage.setItem('favoriteSongs', JSON.stringify(favs));
+        updateFavBtn();
+    };
+    document.addEventListener('DOMContentLoaded', updateFavBtn);
+</script>
                 <h2 class="text-2xl font-semibold text-blue-700 mb-4">About the Song</h2>
                 <p class="text-lg text-gray-700 mb-4">
                     Explore the iconic song "Twist and Shout" by The Beatles. Find tabs and listen to the audio below.
@@ -149,34 +177,6 @@
             }
         });
     </script>
-    <script>
-    // Gestione preferiti per la pagina della canzone
-    function updateFavBtn() {
-        const btn = document.getElementById('favBtn');
-        const star = document.getElementById('favStar');
-        let favs = [];
-        try { favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]'); } catch { favs = []; }
-        const exists = favs.some(s => s.link === btn.dataset.link);
-        star.textContent = exists ? '★' : '☆';
-        btn.title = exists ? "Remove from favorites" : "Add to favorites";
-        btn.setAttribute('aria-label', btn.title);
-    }
-    document.getElementById('favBtn').onclick = function() {
-        const btn = this;
-        let favs = [];
-        try { favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]'); } catch { favs = []; }
-        const song = { title: btn.dataset.title, link: btn.dataset.link };
-        const idx = favs.findIndex(s => s.link === song.link);
-        if (idx === -1) {
-            favs.push(song);
-        } else {
-            favs.splice(idx, 1);
-        }
-        localStorage.setItem('favoriteSongs', JSON.stringify(favs));
-        updateFavBtn();
-    };
-    document.addEventListener('DOMContentLoaded', updateFavBtn);
-</script>
     <script>
     // Helper functions for cookies
     function setCookie(name, value, days) {
