@@ -57,6 +57,7 @@
         <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
     <script>
       const firebaseConfig = {
         apiKey: "AIzaSyDrXUu9RHG2ez7L_5PGOlhjpCIt0ZTISAY",
@@ -104,31 +105,44 @@ function renderFavoriteSongs() {
     const list = document.getElementById('favoriteSongsList');
     const msg = document.getElementById('noFavoritesMsg');
     list.innerHTML = '';
-    let favs = [];
-    try {
-        favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]');
-    } catch { favs = []; }
-    if (favs.length === 0) {
-        msg.textContent = "You have no favorite songs yet.";
+function renderFavoriteSongs() {
+    const list = document.getElementById('favoriteSongsList');
+    const msg = document.getElementById('noFavoritesMsg');
+    list.innerHTML = '';
+    const user = firebase.auth().currentUser;
+    if (!user) {
+        msg.textContent = "You must be logged in.";
         return;
     }
-    msg.textContent = "";
-    favs.forEach(song => {
-        const li = document.createElement('li');
-        li.className = "flex items-center gap-2";
-        li.innerHTML = `<a href="${song.link}" class="text-blue-600 hover:underline font-semibold">${song.title}</a>
-            <button aria-label="Remove" title="Remove from favorites" class="remove-fav text-red-500 hover:text-red-700 text-xl" data-link="${song.link}">&times;</button>`;
-        list.appendChild(li);
+    firebase.database().ref('favorites/' + user.uid).once('value').then(snapshot => {
+        const favs = snapshot.val() || [];
+        if (favs.length === 0) {
+            msg.textContent = "You have no favorite songs yet.";
+            return;
+        }
+        msg.textContent = "";
+        favs.forEach(song => {
+            const li = document.createElement('li');
+            li.className = "flex items-center gap-2";
+            li.innerHTML = `<a href="${song.link}" class="text-blue-600 hover:underline font-semibold">${song.title}</a>
+                <button aria-label="Remove" title="Remove from favorites" class="remove-fav text-red-500 hover:text-red-700 text-xl" data-link="${song.link}">&times;</button>`;
+            list.appendChild(li);
+        });
+        // Remove favorite handler
+        document.querySelectorAll('.remove-fav').forEach(btn => {
+            btn.onclick = function() {
+                firebase.database().ref('favorites/' + user.uid).once('value').then(snapshot => {
+                    let favs = snapshot.val() || [];
+                    favs = favs.filter(s => s.link !== btn.dataset.link);
+                    firebase.database().ref('favorites/' + user.uid).set(favs, renderFavoriteSongs);
+                });
+            };
+        });
     });
-    // Remove favorite handler
-    document.querySelectorAll('.remove-fav').forEach(btn => {
-        btn.onclick = function() {
-            let favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]');
-            favs = favs.filter(s => s.link !== btn.dataset.link);
-            localStorage.setItem('favoriteSongs', JSON.stringify(favs));
-            renderFavoriteSongs();
-        };
-    });
+}
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) renderFavoriteSongs();
+});
 }
 document.addEventListener('DOMContentLoaded', renderFavoriteSongs);
 </script>
