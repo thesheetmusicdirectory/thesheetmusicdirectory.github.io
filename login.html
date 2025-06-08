@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login - The Guitar Directory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Firebase scripts and config here (see step 2) -->
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <!-- Copy your header here -->
+              <!-- Header -->
+    <header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <div class="flex items-center gap-3">
+                <img src="The Guitar Directory (1).png" alt="Logo" class="w-12 h-12 object-contain rounded-full shadow">
+                <span class="text-2xl font-bold text-blue-700 tracking-tight">The Guitar Directory</span>
+            </div>
+<nav class="flex gap-8">
+    <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
+    <a href="content.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Content</a>
+    <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
+    <a href="comingsoon.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Coming Soon</a>
+    <a href="login.html" id="loginLink" class="text-blue-700 hover:text-blue-900 font-medium transition">Login</a>
+    <a href="register.html" id="registerLink" class="text-blue-700 hover:text-blue-900 font-medium transition">Register</a>
+    <a href="profile.html" id="profileLink" class="text-blue-700 hover:text-blue-900 font-medium transition hidden">Profile</a>
+    <button id="logoutBtn" class="text-blue-700 hover:text-blue-900 font-medium transition hidden">Logout</button>
+</nav>
+    <main class="flex flex-1 items-center justify-center">
+        <form id="loginForm" class="bg-white p-8 rounded-xl shadow-xl w-full max-w-md flex flex-col gap-4">
+            <h1 class="text-2xl font-bold text-blue-700 mb-4">Login</h1>
+            <input type="email" id="loginEmail" placeholder="Email" required class="border p-2 rounded" />
+            <input type="password" id="loginPassword" placeholder="Password" required class="border p-2 rounded" />
+            <button type="submit" class="bg-blue-600 text-white rounded p-2 font-bold">Login</button>
+            <p id="loginMsg" class="text-red-500"></p>
+        </form>
+    </main>
+    <!-- Copy your footer here -->
+              <footer class="bg-white text-center py-4 mt-10 border-t border-gray-300">
+        <p class="text-gray-600 text-sm">© 2025 The Guitar Directory. Created by Mattia Lobrano.</p>
+        <nav class="mt-2">
+            <a href="privacy.html" class="text-blue-500 text-sm hover:underline">Privacy Policy</a> |
+            <a href="terms.html" class="text-blue-500 text-sm hover:underline">Terms and Conditions</a>
+        </nav>
+        <div class="mt-4 flex justify-center items-center gap-4">
+            <a href="https://www.tiktok.com/@the_guitar_directory" target="_blank" class="flex items-center gap-2">
+                <img src="tiktok.png" alt="TikTok" class="w-6 h-6">
+                <span class="text-blue-500 text-sm hover:underline">Follow us on TikTok</span>
+            </a>
+        </div>
+    </footer>
+    <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value.trim();
+        const password = document.getElementById('loginPassword').value;
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(() => {
+                window.location.href = 'profile.html';
+            })
+            .catch(error => {
+                document.getElementById('loginMsg').textContent = error.message;
+            });
+    });
+    </script>
+                <script type="module">
+                // firebase
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDrXUu9RHG2ez7L_5PGOlhjpCIt0ZTISAY",
+    authDomain: "the-guitar-directory.firebaseapp.com",
+    projectId: "the-guitar-directory",
+    storageBucket: "the-guitar-directory.firebasestorage.app",
+    messagingSenderId: "1056171861791",
+    appId: "1:1056171861791:web:063fddcdb7e2b80683322a",
+    measurementId: "G-Y5VN6Y10TB"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+    <script>
+    // Check if user is logged in
+    firebase.auth().onAuthStateChanged(user => {
+        const loginLink = document.getElementById('loginLink');
+        const registerLink = document.getElementById('registerLink');
+        const profileLink = document.getElementById('profileLink');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        if (user) {
+            loginLink.classList.add('hidden');
+            registerLink.classList.add('hidden');
+            profileLink.classList.remove('hidden');
+            logoutBtn.classList.remove('hidden');
+            profileLink.href = 'profile.html';
+        } else {
+            loginLink.classList.remove('hidden');
+            registerLink.classList.remove('hidden');
+            profileLink.classList.add('hidden');
+            logoutBtn.classList.add('hidden');
+        }
+    });
+
+    // Logout functionality
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+        firebase.auth().signOut().then(() => {
+            window.location.href = 'index.html';
+        });
+    });
+    </script>
+</body>
+</html>

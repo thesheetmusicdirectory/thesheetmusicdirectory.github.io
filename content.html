@@ -181,5 +181,28 @@
             }
         });
     </script>
+        <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDrXUu9RHG2ez7L_5PGOlhjpCIt0ZTISAY",
+    authDomain: "the-guitar-directory.firebaseapp.com",
+    projectId: "the-guitar-directory",
+    storageBucket: "the-guitar-directory.firebasestorage.app",
+    messagingSenderId: "1056171861791",
+    appId: "1:1056171861791:web:063fddcdb7e2b80683322a",
+    measurementId: "G-Y5VN6Y10TB"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 </body>
 </html>
