@@ -38,6 +38,11 @@
             <img src="s-l400.jpg" alt="Down Under" class="w-full md:w-[480px] h-auto rounded-3xl shadow-xl border border-blue-100">
             <div class="bg-white/95 p-10 rounded-3xl shadow-xl border border-blue-100 flex-1">
                 <h1 class="text-3xl font-bold text-blue-700 mb-4">Down Under</h1>
+                <!-- AGGIUNGI QUESTO DOVE VUOI IL BOTTONE (es. sotto il titolo della canzone) -->
+<!-- Sostituisci i valori di data-title e data-link con quelli della canzone corrente -->
+<button id="favBtn" class="text-2xl text-yellow-400 hover:text-yellow-500 transition" title="Add to favorites" aria-label="Add to favorites" data-title="Down Under" data-link="down_under.html" onclick="addToFavorites(this)">
+    <span id="favStar">☆</span> Add to Favorites
+</button>
                 <h2 class="text-2xl font-semibold text-blue-700 mb-4">About the Song</h2>
                 <p class="text-lg text-gray-700 mb-4">
                     Explore the iconic song "Down Under" by Men at Work. Find tabs and listen to the audio below.
@@ -158,6 +163,104 @@
             }
         });
     </script>
+    <script>
+    // Gestione preferiti per la pagina della canzone
+    function updateFavBtn() {
+        const btn = document.getElementById('favBtn');
+        const star = document.getElementById('favStar');
+        let favs = [];
+        try { favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]'); } catch { favs = []; }
+        const exists = favs.some(s => s.link === btn.dataset.link);
+        star.textContent = exists ? '★' : '☆';
+        btn.title = exists ? "Remove from favorites" : "Add to favorites";
+        btn.setAttribute('aria-label', btn.title);
+    }
+    document.getElementById('favBtn').onclick = function() {
+        const btn = this;
+        let favs = [];
+        try { favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]'); } catch { favs = []; }
+        const song = { title: btn.dataset.title, link: btn.dataset.link };
+        const idx = favs.findIndex(s => s.link === song.link);
+        if (idx === -1) {
+            favs.push(song);
+        } else {
+            favs.splice(idx, 1);
+        }
+        localStorage.setItem('favoriteSongs', JSON.stringify(favs));
+        updateFavBtn();
+    };
+    document.addEventListener('DOMContentLoaded', updateFavBtn);
+</script>
+    <script>
+    // Helper functions for cookies
+    function setCookie(name, value, days) {
+        let expires = "";
+        if (days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+    function getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = document.cookie.split(';');
+        for(let i=0;i < ca.length;i++) {
+            let c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {   
+        document.cookie = name+'=; Max-Age=-99999999; path=/';  
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value.trim();
+        const password = document.getElementById('loginPassword').value;
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                setCookie('guitarUser', email, 7); // Set cookie for 7 days
+                window.location.href = 'profile.html';
+            })
+            .catch(error => {
+                document.getElementById('loginMsg').textContent = error.message;
+            });
+    });
+
+    // Navigation auth UI
+    firebase.auth().onAuthStateChanged(user => {
+        const loginLink = document.getElementById('loginLink');
+        const registerLink = document.getElementById('registerLink');
+        const profileLink = document.getElementById('profileLink');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        if (user) {
+            setCookie('guitarUser', user.email, 7);
+            loginLink.classList.add('hidden');
+            registerLink.classList.add('hidden');
+            profileLink.classList.remove('hidden');
+            logoutBtn.classList.remove('hidden');
+            profileLink.href = 'profile.html';
+        } else {
+            eraseCookie('guitarUser');
+            loginLink.classList.remove('hidden');
+            registerLink.classList.remove('hidden');
+            profileLink.classList.add('hidden');
+            logoutBtn.classList.add('hidden');
+        }
+    });
+
+    // Logout functionality
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+        firebase.auth().signOut().then(() => {
+            eraseCookie('guitarUser');
+            window.location.href = 'index.html';
+        });
+    });
+</script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script>
@@ -172,6 +275,28 @@
   };
   firebase.initializeApp(firebaseConfig);
 </script>
+</script>
+<!-- Add this just before </body> -->
+<div id="cookieConsent" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-white/95 border border-blue-200 rounded-xl shadow-xl px-6 py-4 flex flex-col md:flex-row items-center gap-4 max-w-lg w-full transition-all duration-300 hidden">
+    <span class="text-gray-700 text-sm flex-1">
+        This website uses cookies to enhance your experience. By continuing to browse, you accept our use of cookies.
+    </span>
+    <button id="acceptCookies" class="bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg px-4 py-2 font-bold shadow hover:from-blue-600 hover:to-blue-800 transition">
+        Accept
+    </button>
+</div>
+<script>
+    // Show cookie consent popup if not accepted
+    function showCookieConsent() {
+        if (!getCookie('cookieConsent')) {
+            document.getElementById('cookieConsent').classList.remove('hidden');
+        }
+    }
+    document.getElementById('acceptCookies').addEventListener('click', function() {
+        setCookie('cookieConsent', 'accepted', 365);
+        document.getElementById('cookieConsent').classList.add('hidden');
+    });
+    document.addEventListener('DOMContentLoaded', showCookieConsent);
 </script>
 </body>
 </html>
