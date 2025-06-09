@@ -56,12 +56,11 @@
             <img src="81fPurYFWCL._UF894,1000_QL80_.jpg" alt="The Beatles" class="w-full md:w-[400px] h-auto rounded-3xl shadow-xl border border-blue-100">
             <div class="bg-white/95 p-10 rounded-3xl shadow-xl border border-blue-100 flex-1 text-center md:text-left">
                 <h1 class="text-3xl font-bold text-blue-700 mb-4">Twist and Shout</h1>
-                <!-- AGGIUNGI QUESTO DOVE VUOI IL BOTTONE (es. sotto il titolo della canzone) -->
-<!-- Sostituisci i valori di data-title e data-link con quelli della canzone corrente -->
-<button id="favBtn" class="text-2xl text-yellow-400 hover:text-yellow-500 transition" title="Add to favorites" aria-label="Add to favorites" data-title="Twist and Shout" data-link="twist_and_shout.html" onclick="addToFavorites(this)">
+<!-- Your button (NO onclick attribute!) -->
+<button id="favBtn" class="text-2xl text-yellow-400 hover:text-yellow-500 transition" title="Add to favorites" aria-label="Add to favorites" data-title="Smells Like Teen Spirit" data-link="sltsnirvana.html">
     <span id="favStar">☆</span> Add to Favorites
 </button>
-<!-- ...after your favorite button... -->
+
 <script>
 firebase.auth().onAuthStateChanged(function(user) {
     const btn = document.getElementById('favBtn');
