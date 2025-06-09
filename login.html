@@ -114,12 +114,15 @@
     });
 
     // Logout functionality
-    document.getElementById('logoutBtn').addEventListener('click', () => {
+const logoutBtn = document.getElementById('logoutBtn');
+if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
         firebase.auth().signOut().then(() => {
             eraseCookie('guitarUser');
             window.location.href = 'index.html';
         });
     });
+}
 </script>
 
     </script>
