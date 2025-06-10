@@ -6,48 +6,47 @@
     <link rel="icon" href="The Guitar Directory (1).png" type="image/x-icon">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 1. Firebase SDKs and initialization FIRST (in <head> or before any custom scripts) -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-<script>
-const firebaseConfig = {
-    apiKey: "AIzaSyDrXUu9RHG2ez7L_5PGOlhjpCIt0ZTISAY",
-    authDomain: "the-guitar-directory.firebaseapp.com",
-    projectId: "the-guitar-directory",
-    storageBucket: "the-guitar-directory.firebasestorage.app",
-    messagingSenderId: "1056171861791",
-    appId: "1:1056171861791:web:063fddcdb7e2b80683322a",
-    measurementId: "G-Y5VN6Y10TB",
-    databaseURL: "https://the-guitar-directory-default-rtdb.firebaseio.com/"
-};
-  firebase.initializeApp(firebaseConfig);
-</script>
+
 </head>
 <body class="bg-gradient-to-tr from-blue-100 via-white to-blue-200 min-h-screen text-gray-800 font-sans">
     <!-- Header -->
-    <header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-            <div class="flex items-center gap-3">
-                <img src="The Guitar Directory (1).png" alt="Logo" class="w-12 h-12 object-contain rounded-full shadow">
-                <span class="text-2xl font-bold text-blue-700 tracking-tight">The Guitar Directory</span>
-            </div>
-            <nav class="flex gap-8">
-                <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
-                <a href="content.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Content</a>
-                <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
-                <a href="comingsoon.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Coming Soon</a>
-            </nav>
+<header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+        <div class="flex items-center gap-3">
+            <img src="The Guitar Directory (1).png" alt="Logo" class="w-12 h-12 object-contain rounded-full shadow">
+            <span class="text-2xl font-bold text-blue-700 tracking-tight">The Guitar Directory</span>
         </div>
-        <div class="max-w-2xl mx-auto px-6 pb-4">
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search songs..."
-                class="w-full p-3 border border-blue-100 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-            />
-        </div>
-    </header>
+        <!-- Hamburger Button (mobile only) -->
+        <button id="hamburgerBtn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded hover:bg-blue-100 transition" aria-label="Open menu">
+            <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
+            <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
+            <span class="block w-6 h-0.5 bg-blue-700"></span>
+        </button>
+        <!-- Desktop Nav -->
+        <nav id="mainNav" class="hidden md:flex gap-8">
+            <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
+            <a href="content.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Content</a>
+            <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
+            <a href="profile.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Profile</a>
+        </nav>
+    </div>
+    <!-- Mobile Nav (hidden by default) -->
+    <nav id="mobileNav" class="md:hidden fixed top-0 left-0 w-full h-full bg-white/95 z-50 flex flex-col items-center pt-24 gap-8 text-xl font-medium text-blue-700 transition-all duration-300 -translate-y-full">
+        <a href="index.html" class="hover:text-blue-900 transition">Home</a>
+        <a href="content.html" class="hover:text-blue-900 transition">Content</a>
+        <a href="videos.html" class="hover:text-blue-900 transition">Videos</a>
+        <a href="profile.html" class="hover:text-blue-900 transition">Profile</a>
+        <button id="closeMobileNav" class="absolute top-6 right-6 text-3xl text-blue-700" aria-label="Close menu">&times;</button>
+    </nav>
+    <div class="max-w-2xl mx-auto px-6 pb-4">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search songs..."
+            class="w-full p-3 border border-blue-100 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+        />
+    </div>
+</header>
 
     <!-- Content Section -->
     <main class="flex flex-col items-center justify-center py-10 px-5 gap-10 max-w-6xl mx-auto">
@@ -55,53 +54,6 @@ const firebaseConfig = {
             <img src="ab67616d0000b273a83d8a82569586a65bcfd1b2.jpg" alt="Highway Star" class="w-full md:w-[480px] h-auto rounded-3xl shadow-xl border border-blue-100">
             <div class="bg-white/95 p-10 rounded-3xl shadow-xl border border-blue-100 flex-1">
                 <h1 class="text-3xl font-bold text-blue-700 mb-4">Highway Star</h1>
-                <!-- AGGIUNGI QUESTO DOVE VUOI IL BOTTONE (es. sotto il titolo della canzone) -->
-<button id="favBtn" class="text-2xl text-yellow-400 hover:text-yellow-500 transition" title="Add to favorites" aria-label="Add to favorites" data-title="Smells Like Teen Spirit" data-link="sltsnirvana.html">
-    <span id="favStar">☆</span> Add to Favorites
-</button>
-<!-- ...after your favorite button... -->
-<script>
-firebase.auth().onAuthStateChanged(function(user) {
-    const btn = document.getElementById('favBtn');
-    const star = document.getElementById('favStar');
-    if (!btn || !star) return;
-    if (!user) {
-        star.textContent = '☆';
-        btn.title = "Log in to add to favorites";
-        btn.setAttribute('aria-label', btn.title);
-        btn.disabled = true;
-        btn.onclick = function() {
-            alert("You must be logged in to use favorites!");
-        };
-        return;
-    }
-    // Enable button and set up click handler
-    btn.disabled = false;
-    function updateFavBtn() {
-        firebase.database().ref('favorites/' + user.uid).once('value').then(snapshot => {
-            const favs = snapshot.val() || [];
-            const exists = favs.some(s => s.link === btn.dataset.link);
-            star.textContent = exists ? '★' : '☆';
-            btn.title = exists ? "Remove from favorites" : "Add to favorites";
-            btn.setAttribute('aria-label', btn.title);
-        });
-    }
-    btn.onclick = function() {
-        firebase.database().ref('favorites/' + user.uid).once('value').then(snapshot => {
-            let favs = snapshot.val() || [];
-            const song = { title: btn.dataset.title, link: btn.dataset.link };
-            const idx = favs.findIndex(s => s.link === song.link);
-            if (idx === -1) {
-                favs.push(song);
-            } else {
-                favs.splice(idx, 1);
-            }
-            firebase.database().ref('favorites/' + user.uid).set(favs).then(updateFavBtn);
-        });
-    };
-    updateFavBtn();
-});
-</script>
                 <h2 class="text-2xl font-semibold text-blue-700 mb-4">About the Song</h2>
                 <p class="text-lg text-gray-700 mb-4">
                     Explore the legendary song "Highway Star" by Deep Purple. Find tabs and listen to the audio below.
@@ -247,53 +199,9 @@ firebase.auth().onAuthStateChanged(function(user) {
         document.cookie = name+'=; Max-Age=-99999999; path=/';  
     }
 
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = document.getElementById('loginEmail').value.trim();
-        const password = document.getElementById('loginPassword').value;
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                setCookie('guitarUser', email, 7); // Set cookie for 7 days
-                window.location.href = 'profile.html';
-            })
-            .catch(error => {
-                document.getElementById('loginMsg').textContent = error.message;
-            });
-    });
 
-    // Navigation auth UI
-    firebase.auth().onAuthStateChanged(user => {
-        const loginLink = document.getElementById('loginLink');
-        const registerLink = document.getElementById('registerLink');
-        const profileLink = document.getElementById('profileLink');
-        const logoutBtn = document.getElementById('logoutBtn');
 
-        if (user) {
-            setCookie('guitarUser', user.email, 7);
-            loginLink.classList.add('hidden');
-            registerLink.classList.add('hidden');
-            profileLink.classList.remove('hidden');
-            logoutBtn.classList.remove('hidden');
-            profileLink.href = 'profile.html';
-        } else {
-            eraseCookie('guitarUser');
-            loginLink.classList.remove('hidden');
-            registerLink.classList.remove('hidden');
-            profileLink.classList.add('hidden');
-            logoutBtn.classList.add('hidden');
-        }
-    });
 
-    // Logout functionality
-const logoutBtn = document.getElementById('logoutBtn');
-if (logoutBtn) {
-    logoutBtn.addEventListener('click', () => {
-        firebase.auth().signOut().then(() => {
-            eraseCookie('guitarUser');
-            window.location.href = 'index.html';
-        });
-    });
-}
 </script>
 <!-- Add this just before </body> -->
 <div id="cookieConsent" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-white/95 border border-blue-200 rounded-xl shadow-xl px-6 py-4 flex flex-col md:flex-row items-center gap-4 max-w-lg w-full transition-all duration-300 hidden">
@@ -316,6 +224,33 @@ if (logoutBtn) {
         document.getElementById('cookieConsent').classList.add('hidden');
     });
     document.addEventListener('DOMContentLoaded', showCookieConsent);
+</script>
+<script>
+function updateFavBtn() {
+    const btn = document.getElementById('favBtn');
+    const star = document.getElementById('favStar');
+    let favs = [];
+    try { favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]'); } catch { favs = []; }
+    const exists = favs.some(s => s.link === btn.dataset.link);
+    star.textContent = exists ? '★' : '☆';
+    btn.title = exists ? "Remove from favorites" : "Add to favorites";
+    btn.setAttribute('aria-label', btn.title);
+}
+document.getElementById('favBtn').onclick = function() {
+    const btn = this;
+    let favs = [];
+    try { favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]'); } catch { favs = []; }
+    const song = { title: btn.dataset.title, link: btn.dataset.link };
+    const idx = favs.findIndex(s => s.link === song.link);
+    if (idx === -1) {
+        favs.push(song);
+    } else {
+        favs.splice(idx, 1);
+    }
+    localStorage.setItem('favoriteSongs', JSON.stringify(favs));
+    updateFavBtn();
+};
+document.addEventListener('DOMContentLoaded', updateFavBtn);
 </script>
 </body>
 </html>

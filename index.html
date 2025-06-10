@@ -9,54 +9,49 @@
     <meta name="keywords" content="guitar, tabs, videos, songs, directory">
     <meta name="author" content="Mattia Lobrano">
     <link rel="icon" href="The Guitar Directory (1).png" type="image/x-icon">
-    <!-- 1. Firebase SDKs and initialization FIRST (in <head> or before any custom scripts) -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-<script>
-const firebaseConfig = {
-    apiKey: "AIzaSyDrXUu9RHG2ez7L_5PGOlhjpCIt0ZTISAY",
-    authDomain: "the-guitar-directory.firebaseapp.com",
-    projectId: "the-guitar-directory",
-    storageBucket: "the-guitar-directory.firebasestorage.app",
-    messagingSenderId: "1056171861791",
-    appId: "1:1056171861791:web:063fddcdb7e2b80683322a",
-    measurementId: "G-Y5VN6Y10TB",
-    databaseURL: "https://the-guitar-directory-default-rtdb.firebaseio.com/"
-};
-  firebase.initializeApp(firebaseConfig);
-</script>
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-tr from-blue-100 via-white to-blue-200 min-h-screen text-gray-800 font-sans">
     <!-- Header -->
-    <header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-            <div class="flex items-center gap-3">
-                <img src="The Guitar Directory (1).png" alt="Logo" class="w-12 h-12 object-contain rounded-full shadow">
-                <span class="text-2xl font-bold text-blue-700 tracking-tight">The Guitar Directory</span>
-            </div>
-<nav class="flex gap-8">
-    <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
-    <a href="content.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Content</a>
-    <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
-    <a href="comingsoon.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Coming Soon</a>
-    <a href="login.html" id="loginLink" class="text-blue-700 hover:text-blue-900 font-medium transition">Login</a>
-    <a href="register.html" id="registerLink" class="text-blue-700 hover:text-blue-900 font-medium transition">Register</a>
-    <a href="profile.html" id="profileLink" class="text-blue-700 hover:text-blue-900 font-medium transition hidden">Profile</a>
-    <button id="logoutBtn" class="text-blue-700 hover:text-blue-900 font-medium transition hidden">Logout</button>
-</nav>
+<header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+        <div class="flex items-center gap-3">
+            <img src="The Guitar Directory (1).png" alt="Logo" class="w-12 h-12 object-contain rounded-full shadow">
+            <span class="text-2xl font-bold text-blue-700 tracking-tight">The Guitar Directory</span>
         </div>
-        <div class="max-w-2xl mx-auto px-6 pb-4">
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search songs..."
-                class="w-full p-3 border border-blue-100 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-            />
-        </div>
-    </header>
+        <!-- Hamburger Button (mobile only) -->
+        <button id="hamburgerBtn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded hover:bg-blue-100 transition" aria-label="Open menu">
+            <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
+            <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
+            <span class="block w-6 h-0.5 bg-blue-700"></span>
+        </button>
+        <!-- Desktop Nav -->
+        <nav id="mainNav" class="hidden md:flex gap-8">
+            <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
+            <a href="content.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Content</a>
+            <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
+            <a href="profile.html" class="text-blue-700 hover:text-blue-900 font-medium transition hidden">Profile</a>
+        </nav>
+    </div>
+    <!-- Mobile Nav (hidden by default) -->
+    <nav id="mobileNav" class="md:hidden fixed top-0 left-0 w-full h-full bg-white/95 z-50 flex flex-col items-center pt-24 gap-8 text-xl font-medium text-blue-700 transition-all duration-300 -translate-y-full">
+        <a href="index.html" class="hover:text-blue-900 transition">Home</a>
+        <a href="content.html" class="hover:text-blue-900 transition">Content</a>
+        <a href="videos.html" class="hover:text-blue-900 transition">Videos</a>
+        <a href="profile.html" class="hover:text-blue-900 transition">Profile</a>
+        <button id="closeMobileNav" class="absolute top-6 right-6 text-3xl text-blue-700" aria-label="Close menu">&times;</button>
+    </nav>
+    <div class="max-w-2xl mx-auto px-6 pb-4">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search songs..."
+            class="w-full p-3 border border-blue-100 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+        />
+    </div>
+</header>
 
     <!-- Content Section -->
     <main class="flex flex-col items-center justify-center py-10 px-5 gap-10 max-w-6xl mx-auto">
@@ -269,53 +264,9 @@ const firebaseConfig = {
         document.cookie = name+'=; Max-Age=-99999999; path=/';  
     }
 
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = document.getElementById('loginEmail').value.trim();
-        const password = document.getElementById('loginPassword').value;
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                setCookie('guitarUser', email, 7); // Set cookie for 7 days
-                window.location.href = 'profile.html';
-            })
-            .catch(error => {
-                document.getElementById('loginMsg').textContent = error.message;
-            });
-    });
 
-    // Navigation auth UI
-    firebase.auth().onAuthStateChanged(user => {
-        const loginLink = document.getElementById('loginLink');
-        const registerLink = document.getElementById('registerLink');
-        const profileLink = document.getElementById('profileLink');
-        const logoutBtn = document.getElementById('logoutBtn');
 
-        if (user) {
-            setCookie('guitarUser', user.email, 7);
-            loginLink.classList.add('hidden');
-            registerLink.classList.add('hidden');
-            profileLink.classList.remove('hidden');
-            logoutBtn.classList.remove('hidden');
-            profileLink.href = 'profile.html';
-        } else {
-            eraseCookie('guitarUser');
-            loginLink.classList.remove('hidden');
-            registerLink.classList.remove('hidden');
-            profileLink.classList.add('hidden');
-            logoutBtn.classList.add('hidden');
-        }
-    });
 
-    // Logout functionality
-const logoutBtn = document.getElementById('logoutBtn');
-if (logoutBtn) {
-    logoutBtn.addEventListener('click', () => {
-        firebase.auth().signOut().then(() => {
-            eraseCookie('guitarUser');
-            window.location.href = 'index.html';
-        });
-    });
-}
 </script>
 <!-- Add this just before </body> -->
 <div id="cookieConsent" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-white/95 border border-blue-200 rounded-xl shadow-xl px-6 py-4 flex flex-col md:flex-row items-center gap-4 max-w-lg w-full transition-all duration-300 hidden">
@@ -338,6 +289,29 @@ if (logoutBtn) {
         document.getElementById('cookieConsent').classList.add('hidden');
     });
     document.addEventListener('DOMContentLoaded', showCookieConsent);
+</script>
+<script>
+    // Hamburger menu logic
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const closeMobileNav = document.getElementById('closeMobileNav');
+
+    hamburgerBtn.addEventListener('click', () => {
+        mobileNav.classList.remove('-translate-y-full');
+        mobileNav.classList.add('translate-y-0');
+    });
+    closeMobileNav.addEventListener('click', () => {
+        mobileNav.classList.add('-translate-y-full');
+        mobileNav.classList.remove('translate-y-0');
+    });
+
+    // Optional: close mobile nav when clicking a link
+    mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNav.classList.add('-translate-y-full');
+            mobileNav.classList.remove('translate-y-0');
+        });
+    });
 </script>
 </body>
 </html>
