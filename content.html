@@ -247,5 +247,28 @@
     });
     document.addEventListener('DOMContentLoaded', showCookieConsent);
 </script>
+<script>
+    // Hamburger menu logic
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const closeMobileNav = document.getElementById('closeMobileNav');
+
+    hamburgerBtn.addEventListener('click', () => {
+        mobileNav.classList.remove('-translate-y-full');
+        mobileNav.classList.add('translate-y-0');
+    });
+    closeMobileNav.addEventListener('click', () => {
+        mobileNav.classList.add('-translate-y-full');
+        mobileNav.classList.remove('translate-y-0');
+    });
+
+    // Optional: close mobile nav when clicking a link
+    mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNav.classList.add('-translate-y-full');
+            mobileNav.classList.remove('translate-y-0');
+        });
+    });
+</script>
 </body>
 </html>
