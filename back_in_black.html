@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Back in Black - AC/DC - The Guitar Directory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the iconic song 'Back in Black' by AC/DC. Find tabs, listen to the audio, and more.">
+    <meta name="keywords" content="acdc, back in black, guitar, tabs, song">
+    <meta name="author" content="Mattia Lobrano">
+    <link rel="icon" href="The Guitar Directory (1).png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-tr from-blue-100 via-white to-blue-200 min-h-screen text-gray-800 font-sans">
+    <!-- Header -->
+    <header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="The Guitar Directory (1).png" alt="Logo"
+                    class="w-12 h-12 object-cover rounded-xl shadow border border-blue-200">
+                <span class="text-2xl font-bold text-blue-700 tracking-tight">The Guitar Directory</span>
+            </a>
+            <!-- Hamburger Button (mobile only) -->
+            <button id="hamburgerBtn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded hover:bg-blue-100 transition" aria-label="Open menu">
+                <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
+                <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
+                <span class="block w-6 h-0.5 bg-blue-700"></span>
+            </button>
+            <!-- Desktop Nav -->
+            <nav id="mainNav" class="hidden md:flex gap-8">
+                <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
+                <a href="content.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Content</a>
+                <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
+                <a href="profile.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Profile</a>
+            </nav>
+        </div>
+        <!-- Mobile Nav (hidden by default) -->
+        <nav id="mobileNav" class="md:hidden fixed top-0 left-0 w-full h-full bg-white/95 z-50 flex flex-col items-center pt-24 gap-8 text-xl font-medium text-blue-700 transition-all duration-300 -translate-y-full">
+            <a href="index.html" class="hover:text-blue-900 transition">Home</a>
+            <a href="content.html" class="hover:text-blue-900 transition">Content</a>
+            <a href="videos.html" class="hover:text-blue-900 transition">Videos</a>
+            <a href="profile.html" class="hover:text-blue-900 transition">Profile</a>
+            <button id="closeMobileNav" class="absolute top-6 right-6 text-3xl text-blue-700" aria-label="Close menu">&times;</button>
+        </nav>
+        <div class="max-w-2xl mx-auto px-6 pb-4">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search songs..."
+                class="w-full p-3 border border-blue-100 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+            />
+        </div>
+    </header>
+
+    <!-- Content Section -->
+    <main class="flex flex-col items-center justify-center py-10 px-5 gap-10 max-w-6xl mx-auto">
+        <section class="flex flex-col md:flex-row items-center gap-10 w-full">
+            <img src="back_in_black.jpg" alt="Back in Black - AC/DC" class="w-full md:w-[400px] h-auto rounded-3xl shadow-xl border border-blue-100">
+            <div class="bg-white/95 p-10 rounded-3xl shadow-xl border border-blue-100 flex-1 text-center md:text-left">
+                <h1 class="text-3xl font-bold text-blue-700 mb-4">Back in Black</h1>
+                <!-- Favorite Button -->
+                <button id="favBtn" class="text-2xl text-yellow-400 hover:text-yellow-500 transition mb-4"
+                    title="Add to favorites" aria-label="Add to favorites"
+                    data-title="Back in Black" data-link="back_in_black.html">
+                    <span id="favStar">☆</span> Add to Favorites
+                </button>
+                <h2 class="text-2xl font-semibold text-blue-700 mb-4">About the Song</h2>
+                <p class="text-lg text-gray-700 mb-4">
+                    "Back in Black" is a classic rock anthem by AC/DC, released in 1980. Known for its iconic riff and powerful vocals, it's a staple for guitarists everywhere.
+                </p>
+                <h3 class="text-xl font-semibold text-blue-700 mt-6 mb-2">Tabs</h3>
+                <p class="text-lg text-gray-700 mb-4">
+                    Explore the tabs for "Back in Black" on
+                    <a href="https://tabs.ultimate-guitar.com/tab/ac-dc/back-in-black-tabs-5472" class="text-blue-500 font-bold hover:underline" target="_blank">Ultimate Guitar</a>.
+                </p>
+                <h3 class="text-xl font-semibold text-blue-700 mt-6 mb-2">Listen to the Song</h3>
+                <div class="flex justify-center my-4">
+                    <audio controls class="w-full max-w-2xl rounded-lg shadow-lg mb-6">
+                        <source src="Acdc-Dc-BackInBlack.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <p class="text-lg text-gray-700">
+                    For more information about the song, visit the
+                    <a href="https://en.wikipedia.org/wiki/Back_in_Black" class="text-blue-500 font-bold hover:underline" target="_blank">Wikipedia page</a>.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Favorite Button Script -->
+    <script>
+    function updateFavBtn() {
+        const btn = document.getElementById('favBtn');
+        const star = document.getElementById('favStar');
+        let favs = [];
+        try { favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]'); } catch { favs = []; }
+        const exists = favs.some(s => s.link === btn.dataset.link);
+        star.textContent = exists ? '★' : '☆';
+        btn.title = exists ? "Remove from favorites" : "Add to favorites";
+        btn.setAttribute('aria-label', btn.title);
+    }
+    document.getElementById('favBtn').onclick = function() {
+        const btn = this;
+        let favs = [];
+        try { favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]'); } catch { favs = []; }
+        const song = { title: btn.dataset.title, link: btn.dataset.link };
+        const idx = favs.findIndex(s => s.link === song.link);
+        if (idx === -1) {
+            favs.push(song);
+        } else {
+            favs.splice(idx, 1);
+        }
+        localStorage.setItem('favoriteSongs', JSON.stringify(favs));
+        updateFavBtn();
+    };
+    document.addEventListener('DOMContentLoaded', updateFavBtn);
+    </script>
+</body>
+</html>
