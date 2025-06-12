@@ -1,17 +1,17 @@
 [
-    {
-        "title": "Bohemian Rhapsody",
-        "image": "Bohemian-Rhapsody.jpg",
-        "link": "bohemian_rhapsody.html"
-    },
-    {
-        "title": "Thunderstruck",
-        "image": "thunderstruck.jpg",
-        "link": "thunderstruck.html"
-    },
-        {
-            "title": "Hey Jude",
-            "image": "hey_jude.jpg",
-            "link": "hey_jude.html"
-        }
-    ]
+  {
+    "title": "Back in Black",
+    "link": "back_in_black.html",
+    "image": "back_in_black.jpg"
+  },
+  {
+    "title": "House of the Rising Sun",
+    "link": "house_of_the_rising_sun.html",
+    "image": "house_of_the_rising_sun.jpg"
+  },
+  {
+    "title": "Hey Jude",
+    "link": "hey_jude.html",
+    "image": "hey_jude.jpg"
+  }
+]
