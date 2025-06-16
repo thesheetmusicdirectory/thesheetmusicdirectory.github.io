@@ -1,100 +1,318 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Hey Jude - The Beatles - The Guitar Directory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the classic song 'Hey Jude' by The Beatles. Find tabs, listen to the audio, and more.">
+    <meta name="keywords" content="the beatles, hey jude, guitar, tabs, song">
+    <meta name="author" content="Mattia Lobrano">
     <link rel="icon" href="The Guitar Directory (1).png" type="image/x-icon">
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles to ensure proper layout */
+        .tab-container {
+            position: relative;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: 1rem;
+        }
+        .tab-content pre {
+            white-space: pre;
+            font-family: 'SF Mono', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+            padding: 1.5rem;
+            margin: 0;
+        }
+        /* Custom style for search input focus */
+        .search-input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+            outline: none;
+        }
 
+        /* --- STILI SPECIFICI PER LA STAMPA --- */
+        @media print {
+            body {
+                background: none !important; /* Rimuove lo sfondo del gradiente */
+                color: black !important; /* Assicura testo nero */
+            }
+
+            /* Nasconde gli elementi che non vuoi stampare */
+            header,
+            #mobileNav,
+            .flex-wrap.justify-center.items-center.gap-4, /* Contiene i pulsanti metronomo e preferiti */
+            .flex-wrap.justify-center.items-center.gap-4.pt-2.border-t.border-gray-200, /* Contiene il pulsante Print Tab */
+            footer,
+            .search-input, /* La barra di ricerca */
+            .tab-container + div { /* Se ci sono altri div dopo il tab-container che non vuoi */
+                display: none !important;
+            }
+
+            /* Assicura che solo la sezione della tablatura sia visibile */
+            main section {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                overflow: visible !important;
+            }
+
+            /* Rende la tablatura il focus principale */
+            .tab-container {
+                width: 100% !important;
+                max-width: none !important;
+                box-shadow: none !important;
+                border: none !important;
+                overflow: visible !important;
+                padding-bottom: 0 !important;
+            }
+
+            .tab-content pre {
+                padding: 0 !important;
+                font-size: 0.8rem !important; /* Riduci la dimensione del font per far stare più tablatura */
+                line-height: 1.2 !important; /* Riduci l'interlinea */
+            }
+        }
+    </style>
 </head>
 <body class="bg-gradient-to-tr from-blue-100 via-white to-blue-200 min-h-screen text-gray-800 font-sans">
-    <!-- Header -->
-<header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-<a href="index.html" class="flex items-center gap-3">
-    <img src="The Guitar Directory (1).png" alt="Logo"
-        class="w-12 h-12 object-cover rounded-xl shadow border border-blue-200">
-    <span class="text-2xl font-bold text-blue-700 tracking-tight">The Guitar Directory</span>
-</a>
-        <!-- Hamburger Button (mobile only) -->
-        <button id="hamburgerBtn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded hover:bg-blue-100 transition" aria-label="Open menu">
-            <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
-            <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
-            <span class="block w-6 h-0.5 bg-blue-700"></span>
-        </button>
-        <!-- Desktop Nav -->
-        <nav id="mainNav" class="hidden md:flex gap-8">
-            <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
-            <a href="content.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Content</a>
-            <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
-            <a href="profile.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Profile</a>
-        </nav>
-    </div>
-    <!-- Mobile Nav (hidden by default) -->
-    <nav id="mobileNav" class="md:hidden fixed top-0 left-0 w-full h-full bg-white/95 z-50 flex flex-col items-center pt-24 gap-8 text-xl font-medium text-blue-700 transition-all duration-300 -translate-y-full">
-        <a href="index.html" class="hover:text-blue-900 transition">Home</a>
-        <a href="content.html" class="hover:text-blue-900 transition">Content</a>
-        <a href="videos.html" class="hover:text-blue-900 transition">Videos</a>
-        <a href="profile.html" class="hover:text-blue-900 transition">Profile</a>
-        <button id="closeMobileNav" class="absolute top-6 right-6 text-3xl text-blue-700" aria-label="Close menu">&times;</button>
-    </nav>
-    <div class="max-w-2xl mx-auto px-6 pb-4">
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Search songs..."
-            class="w-full p-3 border border-blue-100 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-        />
-    </div>
-</header>
 
-    <!-- Content Section -->
+    <header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="The Guitar Directory (1).png" alt="Logo"
+                    class="w-12 h-12 object-cover rounded-xl shadow border border-blue-200">
+                <span class="self-center text-2xl font-bold text-blue-700 tracking-tight">The Guitar Directory</span>
+            </a>
+            <button id="hamburgerBtn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded hover:bg-blue-100 transition" aria-label="Open menu">
+                <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
+                <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
+                <span class="block w-6 h-0.5 bg-blue-700"></span>
+            </button>
+            <nav id="mainNav" class="hidden md:flex gap-8">
+                <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
+                <a href="content.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Content</a>
+                <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
+                <a href="profile.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Profile</a>
+            </nav>
+        </div>
+        <nav id="mobileNav" class="md:hidden fixed top-0 left-0 w-full h-full bg-white/95 z-50 flex flex-col items-center pt-24 gap-8 text-xl font-medium text-blue-700 transition-all duration-300 -translate-y-full">
+            <a href="index.html" class="hover:text-blue-900 transition">Home</a>
+            <a href="content.html" class="hover:text-blue-900 transition">Content</a>
+            <a href="videos.html" class="hover:text-blue-900 transition">Videos</a>
+            <a href="profile.html" class="hover:text-blue-900 transition">Profile</a>
+            <button id="closeMobileNav" class="absolute top-6 right-6 text-3xl text-blue-700" aria-label="Close menu">&times;</button>
+        </nav>
+        <div class="max-w-2xl mx-auto px-6 pb-4">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search songs..."
+                class="w-full p-3 border border-blue-100 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+            />
+        </div>
+    </header>
+
     <main class="flex flex-col items-center justify-center py-10 px-5 gap-10 max-w-6xl mx-auto">
-        <section class="flex flex-col md:flex-row items-center gap-10 w-full">
-            <img src="hey_jude.jpg" alt="Hey Jude" class="w-full md:w-[480px] h-auto rounded-3xl shadow-xl border border-blue-100">
-            <div class="bg-white/95 p-10 rounded-3xl shadow-xl border border-blue-100 flex-1">
-                <h1 class="text-3xl font-bold text-blue-700 mb-4">Hey Jude</h1>
-                <!-- Place this under the song title -->
-<button id="favBtn" class="text-2xl text-yellow-400 hover:text-yellow-500 transition mb-4"
-    title="Add to favorites" aria-label="Add to favorites"
-    data-title="Hey Jude" data-link="hey_jude.html">
-    <span id="favStar">☆</span> Add to Favorites
-</button>
-                <h2 class="text-2xl font-semibold text-blue-700 mb-4">About the Song</h2>
-                <p class="text-lg text-gray-700 mb-4">
-                    Explore the iconic song "Hey Jude" by The Beatles. Find tabs and listen to the audio below.
-                </p>
-                <h3 class="text-xl font-semibold text-blue-700 mt-6 mb-2">Tabs</h3>
-                <p class="text-lg text-gray-700 mb-4">
-                    Explore the tabs for "Hey Jude" on
-                    <a href="https://tabs.ultimate-guitar.com/tab/the-beatles/hey-jude-tabs-54219" class="text-blue-500 font-bold hover:underline">Ultimate Guitar</a>.
-                </p>
-                <h3 class="text-xl font-semibold text-blue-700 mt-6 mb-2">Listen to the Song</h3>
-                <div class="flex justify-center my-4">
-                    <audio controls class="w-full max-w-2xl rounded-lg shadow-lg mb-6">
-                        <source src="Beatles - Hey Jude.mp3" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
+        <section class="flex flex-col items-center p-8 bg-gray-50 overflow-auto w-full max-w-4xl rounded-3xl shadow-xl border border-blue-100">
+            <div class="flex flex-wrap items-baseline justify-center gap-x-4 gap-y-2 mb-4 text-center">
+                <h1 class="text-4xl font-extrabold text-gray-900 leading-tight">Hey Jude</h1>
+                <span class="text-xl font-bold text-gray-600">- The Beatles</span>
+                <span class="px-3 py-1 bg-yellow-500 text-white rounded-full text-sm font-semibold ml-2">Intermediate</span>
+                <span class="px-3 py-1 bg-blue-600 text-white rounded-full text-sm font-semibold ml-2">Guitar</span>
+            </div>
+            
+            <div class="text-gray-600 text-md mb-6 flex gap-4">
+                <span><strong>Tuning:</strong> Standard (E A D G B E)</span>
+                <span><strong>BPM:</strong> 72</span>
+            </div>
+
+            <div class="flex flex-col gap-4 mb-6 w-full max-w-3xl">
+                <div class="flex flex-wrap justify-center items-center gap-4">
+                    <button id="metronomeToggleBtn" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors shadow-md min-w-[150px]" aria-label="Start or Stop Metronome">Start Metronome</button>
+                    
+                    <button id="favBtn" 
+                            class="bg-pink-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-pink-600 transition-colors shadow-md min-w-[150px] flex items-center justify-center gap-2"
+                            data-title="Hey Jude"
+                            data-link="hey_jude.html"
+                            title="Add to favorites"
+                            aria-label="Add to favorites">
+                        <span id="favStar">☆</span>
+                        Favorites
+                    </button>
                 </div>
-                <p class="text-lg text-gray-700">
-                    For more information about the song, visit the
-                    <a href="https://en.wikipedia.org/wiki/Hey_Jude" class="text-blue-500 font-bold hover:underline">Wikipedia page</a>.
+
+                <div class="flex flex-wrap justify-center items-center gap-4 pt-2 border-t border-gray-200">
+                    <button id="printTabBtn" class="bg-blue-100 text-blue-800 px-6 py-3 rounded-lg font-medium hover:bg-blue-200 transition-colors shadow-md" aria-label="Print tab">Print Tab</button>
+                </div>
+            </div>
+
+            <div class="tab-container bg-gray-50 border border-gray-200 rounded-lg shadow-xl w-full max-w-3xl mb-8">
+                <div id="fullTabCombined" class="tab-content">
+                    <pre id="tabPreFull" class="p-6 text-base font-mono text-gray-800 bg-transparent m-0">
+[Verse 1]
+ 
+ Hey Jude, don't make it bad          |  Hey Jude, don't be afraid
+ Take a sad song and make it better   |  You were made to go out and get her
+ Remember to let her into your heart  | The minute you let her under your skin
+ Then you can start to make it better | Then you begin to make it better
+e|---------------------------------------------------------------------------|
+B|-----------------------------6--6-5-----------------------8-6-5-6----------|
+G|--5----------5-7--------------------5-7-5--------5-7-7--7---------7-5------|
+D|-----7-----7-----5----5-7-8---------------8-7------------------------------|
+A|---------------------------------------------------------------------------|
+E|---------------------------------------------------------------------------|
+ 
+e|---------------------------------------------------------------------------|
+B|---------------------------------------------------------------------------|
+G|--------7-5---5------------------------------------------------------------|
+D|----5-7---------8-7--------------------------------------------------------|
+A|--8------------------7-8---------------------------------------------------|
+E|---------------------------------------------------------------------------|
+                                                                               (x2)
+ 
+ And any time you feel the pain, hey Jude, refrain
+ Don't carry the world upon your shoulders
+------------------------------------------------------------------------------
+ For well you know that it's a fool who plays it cool
+ By making his world a little colder
+e|---------------------------------------------------------------------------|
+B|-----6-------------6-----6-----6-------------------------------------------|
+G|---5----8-7-5-5--7---7-----------7-5---5--7-5------------------------------|
+D|---------------8-----------8---------8--------8-7--------------------------|
+A|--------------------------------------------------8------------------------|
+E|---------------------------------------------------------------------------|
+                                                                               (x2)
+ 
+[Chorus]
+ 
+ Nah, nah nah nah, nah nah nah, nah nah
+e|---------------------------------------------------------------------------|
+B|-------------5-6-8-8-------------------------------------------------------|
+G|----5-7-8-8----------------------------------------------------------------|
+D|---------------------------------------------------------------------------|
+A|--8------------------------------------------------------------------------|
+E|---------------------------------------------------------------------------|
+ 
+ 
+[Verse 2]
+ 
+ Hey Jude, don't let me down
+ You have found her, now go and get her
+ Remember to let her into your heart
+ Then you can start to make it better
+e|---------------------------------------------------------------------------|
+B|-----------------------------6--6-5-----------------------8-6-5-6----------|
+G|--5----------5-7--------------------5-7-5--------5-7-7--7---------7-5------|
+D|-----7-----7-----5----5-7-8---------------8-7------------------------------|
+A|---------------------------------------------------------------------------|
+E|---------------------------------------------------------------------------|
+ 
+e|---------------------------------------------------------------------------|
+B|---------------------------------------------------------------------------|
+G|--------7-5---5------------------------------------------------------------|
+D|----5-7---------8-7--------------------------------------------------------|
+A|--8------------------7-8---------------------------------------------------|
+E|---------------------------------------------------------------------------|
+ 
+ 
+ So let it out and let it in, hey Jude, begin
+ You're waiting for someone to perform with
+------------------------------------------------------------------------------
+ And don't you know that it's just you, hey Jude, you'll do
+ The movement you need is on your shoulder
+e|---------------------------------------------------------------------------|
+B|-----6--------------6----6-----6-------------------------------------------|
+G|---5----8-7-5-5--7----7----------7-5---5--7-5------------------------------|
+D|---------------8-----------8---------8--------8-7--------------------------|
+A|--------------------------------------------------8------------------------|
+E|---------------------------------------------------------------------------|
+ 
+e|---------6-----------------------------------------------------------------|
+B|-----6-8---6-8-8-6---6----8--------6---------------------------------------|
+G|---5--------------7----7----7p5------7-5---5--7-5--------------------------|
+D|-------------------------------5---------8--------8-7----------------------|
+A|------------------------------------------------------8--------------------|
+E|---------------------------------------------------------------------------|
+ 
+ 
+[Chorus]
+ 
+ Nah, nah nah nah, nah, nah nah nah, nah, yeah
+e|---------------------------------------------------------------------------|
+B|-------------5-6-8-8-------------------------------------------------------|
+G|----5-7-8-8----------------------------------------------------------------|
+D|---------------------------------------------------------------------------|
+A|--8------------------------------------------------------------------------|
+E|---------------------------------------------------------------------------|
+ 
+ 
+[Verse 3]
+ 
+ Hey Jude, don't make it bad
+ Take a sad song and make it better
+ Remember to let her under your skin
+ Then you'll begin to make it
+ Better better better better better better, oh
+e|---------------------------------------------------------------------------|
+B|----6----------------------------6--6-5-----------------------8-6-5-6------|
+G|--7---7-(5)-------5-7--------------------5-7-5-------5-7-7--7--------7-5---|
+D|-----------(7)--7-----5----5-7-8---------------8-7-------------------------|
+A|---------------------------------------------------------------------------|
+E|---------------------------------------------------------------------------|
+ 
+e|-------------------------------------------5--7-8---13---------------------|
+B|------------------------------------5-6--8---------------------------------|
+G|--------7-5---5----------------4-5-----------------------------------------|
+D|----5-7---------8-7-------5-7----------------------------------------------|
+A|--8------------------7-8---------------------------------------------------|
+E|---------------------------------------------------------------------------|
+ 
+ 
+[Chorus]
+ 
+ Nah nah, nah nah nah nah, nah nah nah, hey Jude
+e|---------------------------------------------------------------------------|
+B|---------8-6-8-6------8-6-8-6----------------------------------------------|
+G|-------5-----------------------8p7-5---------------------------------------|
+D|-----7---------------------------------------------------------------------|
+A|--8------------------------------------------------------------------------|
+E|---------------------------------------------------------------------------|
+                                                                               (x18)
+ 
+************************************
+ 
+| p    Pull-off
+| (n)  Ghost note
+| x    Mute note
+ 
+************************************
+                    </pre>
+                </div>
+            </div>
+            
+            <div class="mt-6 text-center text-gray-600">
+                <p>Learn more about this song on its
+                    <a href="https://en.wikipedia.org/wiki/Hey_Jude" class="text-blue-500 font-bold hover:underline" target="_blank">Wikipedia page</a>.
+                </p>
+                <p class="mt-2">Looking for different tabs? Check out versions on
+                    <a href="https://www.ultimate-guitar.com/artist/the_beatles_4550/hey_jude_10098" class="text-green-600 font-bold hover:underline" target="_blank">Ultimate Guitar</a>.
                 </p>
             </div>
         </section>
     </main>
 
-    <!-- Search Modal -->
     <div id="searchModal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
-        <div class="bg-white p-8 rounded-2xl shadow-2xl w-11/12 md:w-1/2 text-center relative">
-            <button id="closeModal" class="absolute top-4 right-4 text-red-500 font-bold text-xl">×</button>
+        <div class="bg-white p-8 rounded-2xl shadow-2xl w-11/12 md:w-1/2">
+            <button id="closeModal" class="text-red-500 font-bold float-right text-xl">×</button>
             <h2 class="text-2xl font-semibold text-blue-700 mb-4">Search Results</h2>
-            <div id="searchResults" class="flex flex-col items-center gap-4">
-                <!-- Search results will be dynamically loaded here -->
-            </div>
+            <div id="searchResults" class="flex flex-wrap justify-center gap-6">
+                </div>
         </div>
     </div>
+
     <footer class="bg-white text-center py-4 mt-10 border-t border-gray-300">
         <p class="text-gray-600 text-sm">© 2025 The Guitar Directory. Created by Mattia Lobrano.</p>
         <nav class="mt-2">
@@ -108,178 +326,153 @@
             </a>
         </div>
     </footer>
-    <button id="backToTop" class="fixed bottom-5 left-5 bg-blue-500 text-white p-3 rounded-full shadow-md hidden">
-        ↑
-    </button>
+
+    <audio id="metronomeLoopAudio" src="click_74bpm_4-4time_533beats_ZusIOW.mp3" loop preload="auto"></audio>
+
     <script>
-        // Back to Top
-        const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTop.classList.remove('hidden');
-            } else {
-                backToTop.classList.add('hidden');
-            }
-        });
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        // --- DOM Element References ---
+        const printTabBtn = document.getElementById('printTabBtn');
+        const metronomeToggleBtn = document.getElementById('metronomeToggleBtn');
+        const metronomeLoopAudio = document.getElementById('metronomeLoopAudio');
+        let isMetronomePlaying = false;
 
-        // Search functionality with modal
-        const searchInput = document.getElementById('searchInput');
-        const searchModal = document.getElementById('searchModal');
-        const searchResults = document.getElementById('searchResults');
-        const closeModal = document.getElementById('closeModal');
+        // Hamburger menu functionality
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMobileNav = document.getElementById('closeMobileNav');
 
-        // Close modal
-        closeModal.addEventListener('click', () => {
-            searchModal.classList.add('hidden');
-            searchResults.innerHTML = '';
+        hamburgerBtn.addEventListener('click', () => {
+            mobileNav.classList.remove('-translate-y-full');
+            mobileNav.classList.add('translate-y-0');
         });
 
-        // Search input event
-        searchInput.addEventListener('input', async () => {
-            const keyword = searchInput.value.toLowerCase().trim();
-            if (keyword === '') {
-                searchModal.classList.add('hidden');
-                return;
-            }
-
-            searchModal.classList.remove('hidden');
-            searchResults.innerHTML = '';
-
-            try {
-                const response = await fetch('content.html');
-                const contentHtml = await response.text();
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(contentHtml, 'text/html');
-                const links = doc.querySelectorAll('a[href$=".html"]');
-
-                let hasResults = false;
-
-                links.forEach(link => {
-                    const text = link.textContent.toLowerCase();
-                    if (text.includes(keyword)) {
-                        hasResults = true;
-                        const resultItem = document.createElement('div');
-                        resultItem.className = 'text-lg text-gray-600';
-                        resultItem.innerHTML = `
-                            <a href="${link.getAttribute('href')}" class="text-blue-500 hover:underline">
-                                ${link.textContent}
-                            </a>
-                        `;
-                        searchResults.appendChild(resultItem);
-                    }
-                });
-
-                if (!hasResults) {
-                    searchResults.innerHTML = '<p class="text-gray-600">No results found.</p>';
-                }
-            } catch (error) {
-                console.error('Error fetching songs:', error);
-                searchResults.innerHTML = '<p class="text-red-500">Error loading results.</p>';
-            }
-        });
-    </script>
-    <script>
-    // Helper functions for cookies
-    function setCookie(name, value, days) {
-        let expires = "";
-        if (days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days*24*60*60*1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-    function getCookie(name) {
-        const nameEQ = name + "=";
-        const ca = document.cookie.split(';');
-        for(let i=0;i < ca.length;i++) {
-            let c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1,c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-        }
-        return null;
-    }
-    function eraseCookie(name) {   
-        document.cookie = name+'=; Max-Age=-99999999; path=/';  
-    }
-
-
-
-</script>
-<!-- Add this just before </body> -->
-<div id="cookieConsent" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-white/95 border border-blue-200 rounded-xl shadow-xl px-6 py-4 flex flex-col md:flex-row items-center gap-4 max-w-lg w-full transition-all duration-300 hidden">
-    <span class="text-gray-700 text-sm flex-1">
-        This website uses cookies to enhance your experience. By continuing to browse, you accept our use of cookies.
-    </span>
-    <button id="acceptCookies" class="bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg px-4 py-2 font-bold shadow hover:from-blue-600 hover:to-blue-800 transition">
-        Accept
-    </button>
-</div>
-<script>
-    // Show cookie consent popup if not accepted
-    function showCookieConsent() {
-        if (!getCookie('cookieConsent')) {
-            document.getElementById('cookieConsent').classList.remove('hidden');
-        }
-    }
-    document.getElementById('acceptCookies').addEventListener('click', function() {
-        setCookie('cookieConsent', 'accepted', 365);
-        document.getElementById('cookieConsent').classList.add('hidden');
-    });
-    document.addEventListener('DOMContentLoaded', showCookieConsent);
-</script>
-<script>
-function updateFavBtn() {
-    const btn = document.getElementById('favBtn');
-    const star = document.getElementById('favStar');
-    let favs = [];
-    try { favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]'); } catch { favs = []; }
-    const exists = favs.some(s => s.link === btn.dataset.link);
-    star.textContent = exists ? '★' : '☆';
-    btn.title = exists ? "Remove from favorites" : "Add to favorites";
-    btn.setAttribute('aria-label', btn.title);
-}
-document.getElementById('favBtn').onclick = function() {
-    const btn = this;
-    let favs = [];
-    try { favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]'); } catch { favs = []; }
-    const song = { title: btn.dataset.title, link: btn.dataset.link };
-    const idx = favs.findIndex(s => s.link === song.link);
-    if (idx === -1) {
-        favs.push(song);
-    } else {
-        favs.splice(idx, 1);
-    }
-    localStorage.setItem('favoriteSongs', JSON.stringify(favs));
-    updateFavBtn();
-};
-document.addEventListener('DOMContentLoaded', updateFavBtn);
-</script>
-<script>
-    // Hamburger menu logic
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    const closeMobileNav = document.getElementById('closeMobileNav');
-
-    hamburgerBtn.addEventListener('click', () => {
-        mobileNav.classList.remove('-translate-y-full');
-        mobileNav.classList.add('translate-y-0');
-    });
-    closeMobileNav.addEventListener('click', () => {
-        mobileNav.classList.add('-translate-y-full');
-        mobileNav.classList.remove('translate-y-0');
-    });
-
-    // Optional: close mobile nav when clicking a link
-    mobileNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileNav.classList.add('-translate-y-full');
+        closeMobileNav.addEventListener('click', () => {
             mobileNav.classList.remove('translate-y-0');
+            mobileNav.classList.add('-translate-y-full');
         });
-    });
-</script>
+
+        // Search Modal Logic
+        async function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchModal = document.getElementById('searchModal');
+            const searchResults = document.getElementById('searchResults');
+            const closeModal = document.getElementById('closeModal');
+
+            closeModal.addEventListener('click', () => {
+                searchModal.classList.add('hidden');
+                searchResults.innerHTML = '';
+            });
+
+            searchInput.addEventListener('input', async () => {
+                const keyword = searchInput.value.toLowerCase().trim();
+                if (keyword === '') {
+                    searchModal.classList.add('hidden');
+                    return;
+                }
+                searchModal.classList.remove('hidden');
+                searchResults.innerHTML = '';
+                try {
+                    // For simplicity and consistency, hardcode a small list of known songs for search
+                    // IMPORTANT: You should keep this list updated in all your song pages
+                    // or ideally, load it from a single source (e.g., songsData in content.html).
+                    const allSongsForSearch = [
+                        { title: "Bohemian Rhapsody", link: "bohemian_rhapsody.html" },
+                        { title: "Back in Black", link: "back_in_black.html" },
+                        { title: "Smells Like Teen Spirit", link: "smells_like_teen_spirit.html" },
+                        { title: "Dirty Deeds Done Dirt Cheap", link: "dirty_deeds_done_dirt_cheap.html" },
+                        { title: "Down Under", link: "down_under.html" },
+                        { title: "Hey Jude", link: "hey_jude.html" },
+                        { title: "Thunderstruck", link: "thunderstruck.html" },
+                        // Add more songs here as you create their pages
+                    ];
+
+                    const filteredSongs = allSongsForSearch.filter(song =>
+                        song.title.toLowerCase().includes(keyword)
+                    );
+
+                    if (filteredSongs.length > 0) {
+                        filteredSongs.forEach(song => {
+                            const songItem = document.createElement('div');
+                            songItem.className = 'song-item flex flex-col items-center';
+                            songItem.innerHTML = `
+                                <p class="text-lg text-gray-700 mt-4 text-center">
+                                    <a href="${song.link}" class="text-blue-700 hover:underline font-semibold">
+                                        ${song.title}
+                                    </a>
+                                </p>
+                            `;
+                            searchResults.appendChild(songItem);
+                        });
+                    } else {
+                        searchResults.innerHTML = '<p class="text-gray-700">No results found.</p>';
+                    }
+                } catch (error) {
+                    console.error('Error fetching songs for search:', error);
+                    searchResults.innerHTML = '<p class="text-red-500">Error loading search results.</p>';
+                }
+            });
+        }
+        document.addEventListener('DOMContentLoaded', setupSearch);
+
+        // --- Simple MP3 Metronome Logic ---
+        metronomeToggleBtn.addEventListener('click', () => {
+            if (isMetronomePlaying) {
+                metronomeLoopAudio.pause();
+                metronomeLoopAudio.currentTime = 0; // Reset for next play
+                metronomeToggleBtn.textContent = 'Start Metronome';
+                metronomeToggleBtn.classList.remove('bg-red-600', 'hover:bg-red-700');
+                metronomeToggleBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+            } else {
+                metronomeLoopAudio.play().catch(error => {
+                    console.error("Metronome audio playback failed:", error);
+                    alert("Impossibile avviare il metronomo. Assicurati che il file 'metronome_loop.mp3' sia presente e che il browser permetta l'autoplay.");
+                });
+                metronomeToggleBtn.textContent = 'Stop Metronome';
+                metronomeToggleBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                metronomeToggleBtn.classList.add('bg-red-600', 'hover:bg-red-700');
+            }
+            isMetronomePlaying = !isMetronomePlaying;
+        });
+
+        // Print Tab button functionality
+        printTabBtn.addEventListener('click', () => {
+            window.print(); 
+        });
+
+        // --- Favorite Button Script ---
+        function updateFavBtn() {
+            const btn = document.getElementById('favBtn');
+            const star = document.getElementById('favStar');
+            let favs = [];
+            try { favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]'); } catch { favs = []; }
+            const exists = favs.some(s => s.link === btn.dataset.link);
+            star.textContent = exists ? '★' : '☆'; // Filled star or outline star
+            btn.title = exists ? "Remove from favorites" : "Add to favorites";
+            btn.setAttribute('aria-label', btn.title);
+        }
+
+        document.getElementById('favBtn').onclick = function() {
+            const btn = this;
+            let favs = [];
+            try { favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]'); } catch { favs = []; }
+            const song = { title: btn.dataset.title, link: btn.dataset.link };
+            const idx = favs.findIndex(s => s.link === song.link); // Check if song already exists
+
+            if (idx === -1) {
+                favs.push(song); // Add if not found
+                alert(`${song.title} added to favorites!`);
+            } else {
+                favs.splice(idx, 1); // Remove if found
+                alert(`${song.title} removed from favorites!`);
+            }
+            localStorage.setItem('favoriteSongs', JSON.stringify(favs));
+            updateFavBtn(); // Update button state
+        };
+
+        // Initial setup for favorite button on page load
+        document.addEventListener('DOMContentLoaded', updateFavBtn);
+
+    </script>
+
 </body>
 </html>

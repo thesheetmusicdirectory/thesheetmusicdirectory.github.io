@@ -1,124 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Content - The Guitar Directory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Browse all guitar songs, tabs, and lessons.">
-    <meta name="keywords" content="guitar, content, tabs, lessons, directory">
+    <meta name="description" content="Browse all guitar songs, tabs, and lessons by genre and difficulty.">
+    <meta name="keywords" content="guitar, content, tabs, lessons, directory, genres, difficulty">
     <meta name="author" content="Mattia Lobrano">
     <link rel="icon" href="The Guitar Directory (1).png" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <style>
+        .song-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Ensures content pushes to top/bottom */
+            height: 100%; /* Make sure cards in a row have similar height */
+        }
+    </style>
 </head>
 <body class="bg-gradient-to-tr from-blue-100 via-white to-blue-200 min-h-screen text-gray-800 font-sans">
-    <!-- Header -->
- <header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-<a href="index.html" class="flex items-center gap-3">
-    <img src="The Guitar Directory (1).png" alt="Logo"
-        class="w-12 h-12 object-cover rounded-xl shadow border border-blue-200">
-    <span class="text-2xl font-bold text-blue-700 tracking-tight">The Guitar Directory</span>
-</a>
-        <!-- Hamburger Button (mobile only) -->
-        <button id="hamburgerBtn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded hover:bg-blue-100 transition" aria-label="Open menu">
-            <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
-            <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
-            <span class="block w-6 h-0.5 bg-blue-700"></span>
-        </button>
-        <!-- Desktop Nav -->
-        <nav id="mainNav" class="hidden md:flex gap-8">
-            <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
-            <a href="content.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Content</a>
-            <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
-            <a href="profile.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Profile</a>
+
+    <header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="The Guitar Directory (1).png" alt="Logo"
+                    class="w-12 h-12 object-cover rounded-xl shadow border border-blue-200">
+                <span class="self-center text-2xl font-bold text-blue-700 tracking-tight">The Guitar Directory</span>
+            </a>
+            <button id="hamburgerBtn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded hover:bg-blue-100 transition" aria-label="Open menu">
+                <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
+                <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
+                <span class="block w-6 h-0.5 bg-blue-700"></span>
+            </button>
+            <nav id="mainNav" class="hidden md:flex gap-8">
+                <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
+                <a href="content.html" class="text-blue-900 hover:text-blue-900 font-bold transition">Content</a>
+                <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
+                <a href="profile.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Profile</a>
+            </nav>
+        </div>
+        <nav id="mobileNav" class="md:hidden fixed top-0 left-0 w-full h-full bg-white/95 z-50 flex flex-col items-center pt-24 gap-8 text-xl font-medium text-blue-700 transition-all duration-300 -translate-y-full">
+            <a href="index.html" class="hover:text-blue-900 transition">Home</a>
+            <a href="content.html" class="hover:text-blue-900 transition">Content</a>
+            <a href="videos.html" class="hover:text-blue-900 transition">Videos</a>
+            <a href="profile.html" class="hover:text-blue-900 transition">Profile</a>
+            <button id="closeMobileNav" class="absolute top-6 right-6 text-3xl text-blue-700" aria-label="Close menu">&times;</button>
         </nav>
-    </div>
-    <!-- Mobile Nav (hidden by default) -->
-    <nav id="mobileNav" class="md:hidden fixed top-0 left-0 w-full h-full bg-white/95 z-50 flex flex-col items-center pt-24 gap-8 text-xl font-medium text-blue-700 transition-all duration-300 -translate-y-full">
-        <a href="index.html" class="hover:text-blue-900 transition">Home</a>
-        <a href="content.html" class="hover:text-blue-900 transition">Content</a>
-        <a href="videos.html" class="hover:text-blue-900 transition">Videos</a>
-        <a href="profile.html" class="hover:text-blue-900 transition">Profile</a>
-        <button id="closeMobileNav" class="absolute top-6 right-6 text-3xl text-blue-700" aria-label="Close menu">&times;</button>
-    </nav>
-    <div class="max-w-2xl mx-auto px-6 pb-4">
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Search songs..."
-            class="w-full p-3 border border-blue-100 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-        />
-    </div>
-</header>
+        <div class="max-w-2xl mx-auto px-6 pb-4">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search songs..."
+                class="w-full p-3 border border-blue-100 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+            />
+        </div>
+    </header>
 
-    <!-- Content Section -->
-    <main class="flex flex-col items-center justify-center py-10 px-5 gap-10 max-w-6xl mx-auto" id="contentList">
-        <section class="bg-white/95 p-10 rounded-3xl shadow-xl border border-blue-100 w-full text-center">
-            <h2 class="text-3xl font-bold text-blue-700 mb-8">Content</h2>
-            <p class="text-lg text-gray-700 mb-8">Browse all available songs, tabs, and lessons in the directory.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 justify-items-center">
-                <!-- Nirvana -->
-                <div class="flex flex-col items-center">
-                    <img src="adesivi-nirvana-logo.jpg" alt="Nirvana" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
-                    <a href="sltsnirvana.html" class="text-blue-700 hover:underline font-semibold text-lg mb-2">Smells Like Teen Spirit - Nirvana</a>
-                </div>
-                <!-- AC/DC -->
-                <div class="flex flex-col items-center">
-                    <img src="Black-Ice-ACDC-800x445.jpg" alt="AC/DC" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
-                    <a href="Dirty Deeds Done Dirt Cheap.html" class="text-blue-700 hover:underline font-semibold text-lg mb-2">Dirty Deeds Done Dirt Cheap - AC/DC</a>
-                    <a href="thunderstruck.html" class="text-blue-700 hover:underline font-semibold text-lg">Thunderstruck - AC/DC</a>
-                    <a href="back_in_black.html" class="text-blue-700 hover:underline font-semibold text-lg">Back in Black - AC/DC</a>
-                </div>
-                <!-- Deep Purple -->
-                <div class="flex flex-col items-center">
-                    <img src="logo-deep-purple-on-air.webp" alt="Deep Purple" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
-                    <a href="highway_star.html" class="text-blue-700 hover:underline font-semibold text-lg">Highway Star - Deep Purple</a>
-                </div>
-                <!-- Men at Work -->
-                <div class="flex flex-col items-center">
-                    <img src="MAW3-medium-1024x617.jpg" alt="Men at Work" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
-                    <a href="down_under.html" class="text-blue-700 hover:underline font-semibold text-lg">Down Under - Men At Work</a>
-                </div>
-                <!-- Lynyrd Skynyrd -->
-                <div class="flex flex-col items-center">
-                    <img src="0a3a5df7-5330-419c-8805-941c22aa3423_TABLET_LANDSCAPE_LARGE_16_9.jpg" alt="Lynyrd Skynyrd" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
-                    <a href="free_bird.html" class="text-blue-700 hover:underline font-semibold text-lg">Free Bird - Lynyrd Skynyrd</a>
-                </div>
-                <!-- The Beatles -->
-                <div class="flex flex-col items-center">
-                    <img src="5814efca-2039-465f-a0cd-0520cde7f3d2.jpg" alt="The Beatles" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
-                    <a href="twist_and_shout.html" class="text-blue-700 hover:underline font-semibold text-lg mb-2">Twist And Shout - The Beatles</a>
-                    <a href="i_want_to_hold_your_hand.html" class="text-blue-700 hover:underline font-semibold text-lg mb-2">I Want To Hold Your Hand - The Beatles</a>
-                    <a href="hey_jude.html" class="text-blue-700 hover:underline font-semibold text-lg">Hey Jude - The Beatles</a>
-                </div>
-                <!-- Chuck Berry -->
-                <div class="flex flex-col items-center">
-                    <img src="chuck-berry-il-giorno-in-cui-il-rock-ha-trovato-il-suo-eroe-wide-site-lgt5z.jpg" alt="Chuck Berry" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
-                    <a href="johnny_b_goode.html" class="text-blue-700 hover:underline font-semibold text-lg">Johnny B. Goode - Chuck Berry</a>
-                </div>
-                <!-- Queen -->
-                <div class="flex flex-col items-center">
-                    <img src="queenev.jpg" alt="Queen" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
-                    <a href="bohemian_rhapsody.html" class="text-blue-700 hover:underline font-semibold text-lg">Bohemian Rhapsody - Queen</a>
-                </div>
-            </div>
-            <div class="mt-10">
-                <h2 class="text-2xl font-bold text-blue-700 mb-2">More content coming soon!</h2>
-                <p class="text-lg text-gray-700">We're always adding new songs and lessons to the directory.</p>
-            </div>
-        </section>
-    </main>
+    <main class="flex flex-col items-center justify-center py-10 px-5 gap-8 max-w-7xl mx-auto">
+        <h1 class="text-4xl font-extrabold text-gray-900 mb-6 text-center">Explore Our Tabs & Lessons</h1>
 
-    <!-- Search Modal -->
-    <div id="searchModal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
-        <div class="bg-white p-8 rounded-2xl shadow-2xl w-11/12 md:w-1/2 text-center relative">
-            <button id="closeModal" class="absolute top-4 right-4 text-red-500 font-bold text-xl">×</button>
-            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Search Results</h2>
-            <div id="searchResults" class="flex flex-col items-center gap-4">
-                <!-- Search results will be dynamically loaded here -->
+        <div class="w-full max-w-4xl bg-white/70 p-6 rounded-2xl shadow-lg border border-blue-100 flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
+                <label for="genreFilter" class="font-semibold text-gray-700 text-lg">Genre:</label>
+                <select id="genreFilter" class="p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent w-full sm:w-auto">
+                    <option value="All">All Genres</option>
+                    <option value="Rock">Rock</option>
+                    <option value="Hard Rock">Hard Rock</option>
+                    <option value="Classic Rock">Classic Rock</option>
+                    <option value="Pop">Pop</option>
+                    <option value="Blues">Blues</option>
+                    <option value="Metal">Metal</option>
+                    <option value="Acoustic">Acoustic</option>
+                    <option value="Grunge/Alternative">Grunge/Alternative</option>
+                    <option value="Southern Rock">Southern Rock</option>
+                </select>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
+                <label for="difficultyFilter" class="font-semibold text-gray-700 text-lg">Difficulty:</label>
+                <select id="difficultyFilter" class="p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent w-full sm:w-auto">
+                    <option value="All">All Difficulties</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
             </div>
         </div>
+
+        <div id="songList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl px-4">
+            <p class="text-center text-gray-600 col-span-full">No songs found matching your criteria.</p>
+        </div>
+    </main>
+
+    <div id="cookieConsent" class="fixed bottom-0 left-0 right-0 bg-blue-800 text-white p-4 flex flex-col sm:flex-row items-center justify-between gap-4 z-50 hidden">
+        <p class="text-sm text-center sm:text-left">
+            This website uses cookies to ensure you get the best experience. By continuing to use this site, you agree to our <a href="privacy.html" class="underline font-bold">Privacy Policy</a>.
+        </p>
+        <button id="acceptCookies" class="px-6 py-2 bg-white text-blue-800 rounded-lg shadow-md hover:bg-gray-100 font-semibold transition-colors duration-200">
+            Accept
+        </button>
     </div>
+
+    <div id="searchModal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
+        <div class="bg-white p-8 rounded-2xl shadow-2xl w-11/12 md:w-1/2">
+            <button id="closeModal" class="text-red-500 font-bold float-right text-xl">×</button>
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Search Results</h2>
+            <div id="searchResults" class="flex flex-wrap justify-center gap-6">
+                </div>
+        </div>
+    </div>
+
     <footer class="bg-white text-center py-4 mt-10 border-t border-gray-300">
         <p class="text-gray-600 text-sm">© 2025 The Guitar Directory. Created by Mattia Lobrano.</p>
         <nav class="mt-2">
@@ -132,145 +123,166 @@
             </a>
         </div>
     </footer>
-    <button id="backToTop" class="fixed bottom-5 left-5 bg-blue-500 text-white p-3 rounded-full shadow-md hidden">
-        ↑
-    </button>
+
     <script>
-        // Back to Top
-        const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTop.classList.remove('hidden');
-            } else {
-                backToTop.classList.add('hidden');
+        // --- Cookie Consent Logic ---
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
             }
-        });
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        function showCookieConsent() {
+            if (!getCookie('cookieConsent')) {
+                document.getElementById('cookieConsent').classList.remove('hidden');
+            }
+        }
+        document.getElementById('acceptCookies').addEventListener('click', function() {
+            setCookie('cookieConsent', 'accepted', 365);
+            document.getElementById('cookieConsent').classList.add('hidden');
         });
 
-        // Search functionality with modal
-        const searchInput = document.getElementById('searchInput');
+        // --- Hamburger menu functionality ---
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMobileNav = document.getElementById('closeMobileNav');
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileNav.classList.remove('-translate-y-full');
+            mobileNav.classList.add('translate-y-0');
+        });
+
+        closeMobileNav.addEventListener('click', () => {
+            mobileNav.classList.remove('translate-y-0');
+            mobileNav.classList.add('-translate-y-full');
+        });
+
+        // Optional: close mobile nav when clicking a link
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.add('-translate-y-full');
+                mobileNav.classList.remove('translate-y-0');
+            });
+        });
+
+        // --- Song Data ---
+        const songsData = [
+            { title: "Smells Like Teen Spirit", artist: "Nirvana", genre: "Grunge/Alternative", difficulty: "Intermediate", link: "sltsnirvana.html" },
+            { title: "Dirty Deeds Done Dirt Cheap", artist: "AC/DC", genre: "Hard Rock", difficulty: "Beginner", link: "Dirty Deeds Done Dirt Cheap.html" },
+            { title: "Thunderstruck", artist: "AC/DC", genre: "Hard Rock", difficulty: "Advanced", link: "thunderstruck.html" },
+            { title: "Back in Black", artist: "AC/DC", genre: "Hard Rock", difficulty: "Intermediate", link: "back_in_black.html" },
+            { title: "Highway Star", artist: "Deep Purple", genre: "Hard Rock", difficulty: "Advanced", link: "highway_star.html" },
+            { title: "Down Under", artist: "Men At Work", genre: "Pop", difficulty: "Beginner", link: "down_under.html" },
+            { title: "Free Bird", artist: "Lynyrd Skynyrd", genre: "Southern Rock", difficulty: "Advanced", link: "free_bird.html" },
+            { title: "Twist And Shout", artist: "The Beatles", genre: "Rock", difficulty: "Beginner", link: "twist_and_shout.html" },
+            { title: "I Want To Hold Your Hand", artist: "The Beatles", genre: "Pop", difficulty: "Beginner", link: "i_want_to_hold_your_hand.html" },
+            { title: "Hey Jude", artist: "The Beatles", genre: "Classic Rock", difficulty: "Intermediate", link: "hey_jude.html" },
+            { title: "Johnny B. Goode", artist: "Chuck Berry", genre: "Rock", difficulty: "Intermediate", link: "johnny_b_goode.html" },
+            { title: "Bohemian Rhapsody", artist: "Queen", genre: "Classic Rock", difficulty: "Advanced", link: "bohemian_rhapsody.html" }
+        ];
+
+        // --- Filter and Display Logic ---
+        const genreFilter = document.getElementById('genreFilter');
+        const difficultyFilter = document.getElementById('difficultyFilter');
+        const songListDiv = document.getElementById('songList');
+        const searchInput = document.getElementById('searchInput'); // Main search bar in header
+
+        function displaySongs() {
+            const selectedGenre = genreFilter.value;
+            const selectedDifficulty = difficultyFilter.value;
+            const searchTerm = searchInput.value.toLowerCase().trim();
+
+            const filteredSongs = songsData.filter(song => {
+                const matchesGenre = (selectedGenre === 'All' || song.genre === selectedGenre);
+                const matchesDifficulty = (selectedDifficulty === 'All' || song.difficulty === selectedDifficulty);
+                const matchesSearch = song.title.toLowerCase().includes(searchTerm) || 
+                                      song.artist.toLowerCase().includes(searchTerm);
+                return matchesGenre && matchesDifficulty && matchesSearch;
+            });
+
+            songListDiv.innerHTML = ''; // Clear previous songs
+
+            if (filteredSongs.length === 0) {
+                songListDiv.innerHTML = '<p class="text-center text-gray-600 col-span-full mt-8">No songs found matching your criteria.</p>';
+                return;
+            }
+
+            filteredSongs.forEach(song => {
+                const songCard = document.createElement('div');
+                songCard.className = 'song-card bg-white p-6 rounded-xl shadow-lg border border-blue-100 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 flex flex-col justify-between';
+                songCard.innerHTML = `
+                    <div class="flex-grow">
+                        <h3 class="text-2xl font-bold text-blue-700 mb-2">${song.title}</h3>
+                        <p class="text-gray-600 mb-3">${song.artist}</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-purple-200 text-purple-800 rounded-full text-sm font-semibold">${song.genre}</span>
+                            <span class="px-3 py-1 ${getDifficultyColor(song.difficulty)} rounded-full text-sm font-semibold">${song.difficulty}</span>
+                        </div>
+                    </div>
+                    <a href="${song.link}" class="mt-4 inline-block bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center self-start">
+                        View Tab
+                    </a>
+                `;
+                songListDiv.appendChild(songCard);
+            });
+        }
+
+        function getDifficultyColor(difficulty) {
+            switch (difficulty) {
+                case 'Beginner': return 'bg-green-200 text-green-800';
+                case 'Intermediate': return 'bg-yellow-200 text-yellow-800';
+                case 'Advanced': return 'bg-red-200 text-red-800';
+                default: return 'bg-gray-200 text-gray-800';
+            }
+        }
+
+        // Event listeners for filters and search
+        genreFilter.addEventListener('change', displaySongs);
+        difficultyFilter.addEventListener('change', displaySongs);
+        searchInput.addEventListener('input', displaySongs);
+
+        // --- Search Modal Logic (copied from other pages) ---
         const searchModal = document.getElementById('searchModal');
         const searchResults = document.getElementById('searchResults');
         const closeModal = document.getElementById('closeModal');
-        const contentList = document.getElementById('contentList');
 
         closeModal.addEventListener('click', () => {
             searchModal.classList.add('hidden');
             searchResults.innerHTML = '';
+            // Reset main search input if closing modal
+            searchInput.value = ''; 
+            displaySongs(); // Re-display all songs
         });
 
-        searchInput.addEventListener('input', () => {
-            const keyword = searchInput.value.toLowerCase().trim();
-            if (keyword === '') {
-                searchModal.classList.add('hidden');
-                return;
-            }
-
-            searchModal.classList.remove('hidden');
-            searchResults.innerHTML = '';
-
-            const sections = contentList.querySelectorAll('div');
-
-            let hasResults = false;
-
-            sections.forEach(section => {
-                const links = section.querySelectorAll('a');
-
-                links.forEach(link => {
-                    const text = link.textContent.toLowerCase();
-                    if (text.includes(keyword)) {
-                        hasResults = true;
-                        const resultItem = document.createElement('div');
-                        resultItem.className = 'text-lg text-gray-600';
-                        resultItem.innerHTML = `
-                            <a href="${link.getAttribute('href')}" class="text-blue-500 hover:underline">
-                                ${link.textContent}
-                            </a>
-                        `;
-                        searchResults.appendChild(resultItem);
-                    }
-                });
-            });
-
-            if (!hasResults) {
-                searchResults.innerHTML = '<p class="text-gray-600">No results found.</p>';
-            }
+        searchInput.addEventListener('focus', () => {
+            // This event listener for 'focus' on the main search input is not strictly needed
+            // if the search only filters the current page. The 'input' event listener handles it.
+            // If you intend to use a modal for a global search across all pages,
+            // this `focus` event could trigger opening the modal and then the search would happen there.
+            // For now, it just filters the song list on this page.
         });
+
+        // Initial display of songs on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            showCookieConsent();
+            displaySongs(); // Call displaySongs on initial load
+        });
+
     </script>
-    <script>
-    // Helper functions for cookies
-    function setCookie(name, value, days) {
-        let expires = "";
-        if (days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days*24*60*60*1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-    function getCookie(name) {
-        const nameEQ = name + "=";
-        const ca = document.cookie.split(';');
-        for(let i=0;i < ca.length;i++) {
-            let c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1,c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-        }
-        return null;
-    }
-    function eraseCookie(name) {   
-        document.cookie = name+'=; Max-Age=-99999999; path=/';  
-    }
-
-
-
-</script>
-<!-- Add this just before </body> -->
-<div id="cookieConsent" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-white/95 border border-blue-200 rounded-xl shadow-xl px-6 py-4 flex flex-col md:flex-row items-center gap-4 max-w-lg w-full transition-all duration-300 hidden">
-    <span class="text-gray-700 text-sm flex-1">
-        This website uses cookies to enhance your experience. By continuing to browse, you accept our use of cookies.
-    </span>
-    <button id="acceptCookies" class="bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg px-4 py-2 font-bold shadow hover:from-blue-600 hover:to-blue-800 transition">
-        Accept
-    </button>
-</div>
-<script>
-    // Show cookie consent popup if not accepted
-    function showCookieConsent() {
-        if (!getCookie('cookieConsent')) {
-            document.getElementById('cookieConsent').classList.remove('hidden');
-        }
-    }
-    document.getElementById('acceptCookies').addEventListener('click', function() {
-        setCookie('cookieConsent', 'accepted', 365);
-        document.getElementById('cookieConsent').classList.add('hidden');
-    });
-    document.addEventListener('DOMContentLoaded', showCookieConsent);
-</script>
-<script>
-    // Hamburger menu logic
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    const closeMobileNav = document.getElementById('closeMobileNav');
-
-    hamburgerBtn.addEventListener('click', () => {
-        mobileNav.classList.remove('-translate-y-full');
-        mobileNav.classList.add('translate-y-0');
-    });
-    closeMobileNav.addEventListener('click', () => {
-        mobileNav.classList.add('-translate-y-full');
-        mobileNav.classList.remove('translate-y-0');
-    });
-
-    // Optional: close mobile nav when clicking a link
-    mobileNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileNav.classList.add('-translate-y-full');
-            mobileNav.classList.remove('translate-y-0');
-        });
-    });
-</script>
 </body>
 </html>
