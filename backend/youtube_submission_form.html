@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YouTube Submission Form</title>
+</head>
+<body>
+    <h1>Submit a YouTube Video</h1>
+    <form id="ytForm">
+        <div>
+            <label for="youtubeUrl">YouTube URL:</label>
+            <input type="text" id="youtubeUrl" required style="width:300px;">
+        </div>
+        <div>
+            <label for="bpm">BPM (optional):</label>
+            <input type="number" id="bpm" min="1" max="300">
+        </div>
+        <div>
+            <label for="totalBeats">Total Beats (optional):</label>
+            <input type="number" id="totalBeats" min="1">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="response"></div>
+
+    <script>
+        document.getElementById('ytForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const youtubeUrl = document.getElementById('youtubeUrl').value;
+            const bpm = document.getElementById('bpm').value;
+            const totalBeats = document.getElementById('totalBeats').value;
+            const responseDiv = document.getElementById('response');
+            responseDiv.textContent = 'Submitting...';
+            try {
+                const res = await fetch('/submit', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({youtubeUrl, bpm, totalBeats})
+                });
+                const text = await res.text();
+                responseDiv.textContent = text;
+            } catch (err) {
+                responseDiv.textContent = 'Error submitting form.';
+            }
+        };
+    </script>
+</body>
+</html>
