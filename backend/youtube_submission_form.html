@@ -32,7 +32,7 @@
             const responseDiv = document.getElementById('response');
             responseDiv.textContent = 'Submitting...';
             try {
-                const res = await fetch('/submit', {
+                const res = await fetch('https://theguitardirectory-github-io.onrender.com/submit', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({youtubeUrl, bpm, totalBeats})
