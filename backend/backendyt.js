@@ -76,5 +76,8 @@ app.post('/submit', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+app.get('/', (req, res) => {
+  res.send('Backend API is running!');
+});
 
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));
