@@ -21,7 +21,7 @@ To use this project:
 2. Navigate through the links to explore tabs and audio files for various songs.
 3. Alternatively, visit the live GitHub Pages site:
    ```
-   https://theguitardirectory.github.io/The_Guitar_Directory/
+   https://theguitardirectory.github.io
    ```
 
 ## Features
