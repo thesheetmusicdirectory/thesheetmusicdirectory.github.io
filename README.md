@@ -1,7 +1,7 @@
-# The Guitar Directory
+# The Sheet Music Directory
 
 ## Overview
-The Guitar Directory is a collection of guitar tabs, audio files, and information for popular songs. It is designed to help guitar enthusiasts learn and explore songs with ease. The project includes HTML pages for each song, styled with CSS, and hosted as a GitHub Pages site.
+The Sheet Music Directory is a collection of guitar tabs, audio files, and information for popular songs. It is designed to help guitar enthusiasts learn and explore songs with ease. The project includes HTML pages for each song, styled with CSS, and hosted as a GitHub Pages site.
 
 ## Installation
 To install this project, follow these steps:

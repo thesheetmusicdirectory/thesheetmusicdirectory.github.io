@@ -1,6 +1,6 @@
 {
-    "name": "The Guitar Directory",
-    "short_name": "GuitarDirectory",
+    "name": "The Sheet Music Directory",
+    "short_name": "Free Sheet Music",
     "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#ffffff",
