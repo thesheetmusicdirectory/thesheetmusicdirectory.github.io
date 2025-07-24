@@ -90,6 +90,15 @@
             </div>
         </div>
 
+        <div class="flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
+            <label for="instrumentFilter" class="font-semibold text-gray-700 text-lg">Instrument:</label>
+            <select id="instrumentFilter" class="p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent w-full sm:w-auto">
+                <option value="All">All Instruments</option>
+                <option value="Guitar">Guitar</option>
+                <option value="Piano">Piano</option>
+            </select>
+        </div>
+
         <div id="songList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl px-4">
             <p class="text-center text-gray-600 col-span-full">No songs found matching your criteria.</p>
         </div>
@@ -185,18 +194,18 @@
 
         // --- Song Data ---
         const songsData = [
-            { title: "Smells Like Teen Spirit", artist: "Nirvana", genre: "Grunge/Alternative", difficulty: "Intermediate", link: "sltsnirvana.html" },
-            { title: "Dirty Deeds Done Dirt Cheap", artist: "AC/DC", genre: "Hard Rock", difficulty: "Beginner", link: "Dirty Deeds Done Dirt Cheap.html" },
-            { title: "Thunderstruck", artist: "AC/DC", genre: "Hard Rock", difficulty: "Advanced", link: "thunderstruck.html" },
-            { title: "Back in Black", artist: "AC/DC", genre: "Hard Rock", difficulty: "Intermediate", link: "back_in_black.html" },
-            { title: "Highway Star", artist: "Deep Purple", genre: "Hard Rock", difficulty: "Advanced", link: "highway_star.html" },
-            { title: "Down Under", artist: "Men At Work", genre: "Pop", difficulty: "Beginner", link: "down_under.html" },
-            { title: "Free Bird", artist: "Lynyrd Skynyrd", genre: "Southern Rock", difficulty: "Advanced", link: "free_bird.html" },
-            { title: "Twist And Shout", artist: "The Beatles", genre: "Rock", difficulty: "Beginner", link: "twist_and_shout.html" },
-            { title: "I Want To Hold Your Hand", artist: "The Beatles", genre: "Pop", difficulty: "Beginner", link: "i_want_to_hold_your_hand.html" },
-            { title: "Hey Jude", artist: "The Beatles", genre: "Classic Rock", difficulty: "Intermediate", link: "hey_jude.html" },
-            { title: "Johnny B. Goode", artist: "Chuck Berry", genre: "Rock", difficulty: "Intermediate", link: "johnny_b_goode.html" },
-            { title: "Bohemian Rhapsody", artist: "Queen", genre: "Classic Rock", difficulty: "Advanced", link: "bohemian_rhapsody.html" }
+            { title: "Smells Like Teen Spirit", artist: "Nirvana", genre: "Grunge/Alternative", difficulty: "Intermediate", instrument: "Guitar", link: "sltsnirvana.html" },
+            { title: "Dirty Deeds Done Dirt Cheap", artist: "AC/DC", genre: "Hard Rock", difficulty: "Beginner", instrument: "Guitar", link: "Dirty Deeds Done Dirt Cheap.html" },
+            { title: "Thunderstruck", artist: "AC/DC", genre: "Hard Rock", difficulty: "Advanced", instrument: "Guitar", link: "thunderstruck.html" },
+            { title: "Back in Black", artist: "AC/DC", genre: "Hard Rock", difficulty: "Intermediate", instrument: "Guitar", link: "back_in_black.html" },
+            { title: "Highway Star", artist: "Deep Purple", genre: "Hard Rock", difficulty: "Advanced", instrument: "Guitar", link: "highway_star.html" },
+            { title: "Down Under", artist: "Men At Work", genre: "Pop", difficulty: "Beginner", instrument: "Guitar", link: "down_under.html" },
+            { title: "Free Bird", artist: "Lynyrd Skynyrd", genre: "Southern Rock", difficulty: "Advanced", instrument: "Guitar", link: "free_bird.html" },
+            { title: "Twist And Shout", artist: "The Beatles", genre: "Rock", difficulty: "Beginner", instrument: "Guitar", link: "twist_and_shout.html" },
+            { title: "I Want To Hold Your Hand", artist: "The Beatles", genre: "Pop", difficulty: "Beginner", instrument: "Guitar", link: "i_want_to_hold_your_hand.html" },
+            { title: "Hey Jude", artist: "The Beatles", genre: "Classic Rock", difficulty: "Intermediate", instrument: "Guitar", link: "hey_jude.html" },
+            { title: "Johnny B. Goode", artist: "Chuck Berry", genre: "Rock", difficulty: "Intermediate", instrument: "Guitar", link: "johnny_b_goode.html" },
+            { title: "Bohemian Rhapsody", artist: "Queen", genre: "Classic Rock", difficulty: "Advanced", instrument: "Guitar", link: "bohemian_rhapsody.html" }
         ];
 
         // --- Filter and Display Logic ---
@@ -206,44 +215,47 @@
         const searchInput = document.getElementById('searchInput'); // Main search bar in header
 
         function displaySongs() {
-            const selectedGenre = genreFilter.value;
-            const selectedDifficulty = difficultyFilter.value;
-            const searchTerm = searchInput.value.toLowerCase().trim();
+    const selectedGenre = genreFilter.value;
+    const selectedDifficulty = difficultyFilter.value;
+    const selectedInstrument = instrumentFilter.value;
+    const searchTerm = searchInput.value.toLowerCase().trim();
 
-            const filteredSongs = songsData.filter(song => {
-                const matchesGenre = (selectedGenre === 'All' || song.genre === selectedGenre);
-                const matchesDifficulty = (selectedDifficulty === 'All' || song.difficulty === selectedDifficulty);
-                const matchesSearch = song.title.toLowerCase().includes(searchTerm) || 
-                                      song.artist.toLowerCase().includes(searchTerm);
-                return matchesGenre && matchesDifficulty && matchesSearch;
-            });
+    const filteredSongs = songsData.filter(song => {
+        const matchesGenre = (selectedGenre === 'All' || song.genre === selectedGenre);
+        const matchesDifficulty = (selectedDifficulty === 'All' || song.difficulty === selectedDifficulty);
+        const matchesInstrument = (selectedInstrument === 'All' || song.instrument === selectedInstrument);
+        const matchesSearch = song.title.toLowerCase().includes(searchTerm) || 
+                              song.artist.toLowerCase().includes(searchTerm);
+        return matchesGenre && matchesDifficulty && matchesInstrument && matchesSearch;
+    });
 
-            songListDiv.innerHTML = ''; // Clear previous songs
+    songListDiv.innerHTML = ''; // Clear previous songs
 
-            if (filteredSongs.length === 0) {
-                songListDiv.innerHTML = '<p class="text-center text-gray-600 col-span-full mt-8">No songs found matching your criteria.</p>';
-                return;
-            }
+    if (filteredSongs.length === 0) {
+        songListDiv.innerHTML = '<p class="text-center text-gray-600 col-span-full mt-8">No songs found matching your criteria.</p>';
+        return;
+    }
 
-            filteredSongs.forEach(song => {
-                const songCard = document.createElement('div');
-                songCard.className = 'song-card bg-white p-6 rounded-xl shadow-lg border border-blue-100 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 flex flex-col justify-between';
-                songCard.innerHTML = `
-                    <div class="flex-grow">
-                        <h3 class="text-2xl font-bold text-blue-700 mb-2">${song.title}</h3>
-                        <p class="text-gray-600 mb-3">${song.artist}</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-purple-200 text-purple-800 rounded-full text-sm font-semibold">${song.genre}</span>
-                            <span class="px-3 py-1 ${getDifficultyColor(song.difficulty)} rounded-full text-sm font-semibold">${song.difficulty}</span>
-                        </div>
-                    </div>
-                    <a href="${song.link}" class="mt-4 inline-block bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center self-start">
-                        View Tab
-                    </a>
-                `;
-                songListDiv.appendChild(songCard);
-            });
-        }
+    filteredSongs.forEach(song => {
+        const songCard = document.createElement('div');
+        songCard.className = 'song-card bg-white p-6 rounded-xl shadow-lg border border-blue-100 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 flex flex-col justify-between';
+        songCard.innerHTML = `
+            <div class="flex-grow">
+                <h3 class="text-2xl font-bold text-blue-700 mb-2">${song.title}</h3>
+                <p class="text-gray-600 mb-3">${song.artist}</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-3 py-1 bg-purple-200 text-purple-800 rounded-full text-sm font-semibold">${song.genre}</span>
+                    <span class="px-3 py-1 ${getDifficultyColor(song.difficulty)} rounded-full text-sm font-semibold">${song.difficulty}</span>
+                    <span class="px-3 py-1 bg-blue-200 text-blue-800 rounded-full text-sm font-semibold">${song.instrument}</span>
+                </div>
+            </div>
+            <a href="${song.link}" class="mt-4 inline-block bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center self-start">
+                View Tab
+            </a>
+        `;
+        songListDiv.appendChild(songCard);
+    });
+}
 
         function getDifficultyColor(difficulty) {
             switch (difficulty) {
@@ -285,6 +297,8 @@
             showCookieConsent();
             displaySongs(); // Call displaySongs on initial load
         });
+        const instrumentFilter = document.getElementById('instrumentFilter');
+instrumentFilter.addEventListener('change', displaySongs);
 
     </script>
 </body>
