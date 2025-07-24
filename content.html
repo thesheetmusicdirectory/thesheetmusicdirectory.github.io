@@ -194,19 +194,20 @@
 
         // --- Song Data ---
         const songsData = [
-            { title: "Smells Like Teen Spirit", artist: "Nirvana", genre: "Grunge/Alternative", difficulty: "Intermediate", instrument: "Guitar", link: "sltsnirvana.html" },
-            { title: "Dirty Deeds Done Dirt Cheap", artist: "AC/DC", genre: "Hard Rock", difficulty: "Beginner", instrument: "Guitar", link: "Dirty Deeds Done Dirt Cheap.html" },
-            { title: "Thunderstruck", artist: "AC/DC", genre: "Hard Rock", difficulty: "Advanced", instrument: "Guitar", link: "thunderstruck.html" },
-            { title: "Back in Black", artist: "AC/DC", genre: "Hard Rock", difficulty: "Intermediate", instrument: "Guitar", link: "back_in_black.html" },
-            { title: "Highway Star", artist: "Deep Purple", genre: "Hard Rock", difficulty: "Advanced", instrument: "Guitar", link: "highway_star.html" },
-            { title: "Down Under", artist: "Men At Work", genre: "Pop", difficulty: "Beginner", instrument: "Guitar", link: "down_under.html" },
-            { title: "Free Bird", artist: "Lynyrd Skynyrd", genre: "Southern Rock", difficulty: "Advanced", instrument: "Guitar", link: "free_bird.html" },
-            { title: "Twist And Shout", artist: "The Beatles", genre: "Rock", difficulty: "Beginner", instrument: "Guitar", link: "twist_and_shout.html" },
-            { title: "I Want To Hold Your Hand", artist: "The Beatles", genre: "Pop", difficulty: "Beginner", instrument: "Guitar", link: "i_want_to_hold_your_hand.html" },
-            { title: "Hey Jude", artist: "The Beatles", genre: "Classic Rock", difficulty: "Intermediate", instrument: "Guitar", link: "hey_jude.html" },
-            { title: "Johnny B. Goode", artist: "Chuck Berry", genre: "Rock", difficulty: "Intermediate", instrument: "Guitar", link: "johnny_b_goode.html" },
-            { title: "Bohemian Rhapsody", artist: "Queen", genre: "Classic Rock", difficulty: "Advanced", instrument: "Guitar", link: "bohemian_rhapsody.html" }
-        ];
+    { title: "Smells Like Teen Spirit", artist: "Nirvana", genre: "Grunge/Alternative", difficulty: "Intermediate", instrument: "Guitar", link: "sltsnirvana.html" },
+    { title: "Dirty Deeds Done Dirt Cheap", artist: "AC/DC", genre: "Hard Rock", difficulty: "Beginner", instrument: "Guitar", link: "Dirty Deeds Done Dirt Cheap.html" },
+    { title: "Thunderstruck", artist: "AC/DC", genre: "Hard Rock", difficulty: "Advanced", instrument: "Guitar", link: "thunderstruck.html" },
+    { title: "Back in Black", artist: "AC/DC", genre: "Hard Rock", difficulty: "Intermediate", instrument: "Guitar", link: "back_in_black.html" },
+    { title: "Highway Star", artist: "Deep Purple", genre: "Hard Rock", difficulty: "Advanced", instrument: "Guitar", link: "highway_star.html" },
+    { title: "Down Under", artist: "Men At Work", genre: "Pop", difficulty: "Beginner", instrument: "Guitar", link: "down_under.html" },
+    { title: "Free Bird", artist: "Lynyrd Skynyrd", genre: "Southern Rock", difficulty: "Advanced", instrument: "Guitar", link: "free_bird.html" },
+    { title: "Twist And Shout", artist: "The Beatles", genre: "Rock", difficulty: "Beginner", instrument: "Guitar", link: "twist_and_shout.html" },
+    { title: "I Want To Hold Your Hand", artist: "The Beatles", genre: "Pop", difficulty: "Beginner", instrument: "Guitar", link: "i_want_to_hold_your_hand.html" },
+    { title: "Hey Jude", artist: "The Beatles", genre: "Classic Rock", difficulty: "Intermediate", instrument: "Guitar", link: "hey_jude.html" },
+    { title: "Johnny B. Goode", artist: "Chuck Berry", genre: "Rock", difficulty: "Intermediate", instrument: "Guitar", link: "johnny_b_goode.html" },
+    { title: "Bohemian Rhapsody", artist: "Queen", genre: "Classic Rock", difficulty: "Advanced", instrument: "Guitar", link: "bohemian_rhapsody.html" },
+    { title: "Bob-Omb Battlefield", artist: "Koji Kondo", genre: "Video Game", difficulty: "Intermediate", instrument: "Piano", link: "[N64] - Super Mario 64 - Bob-Omb Battlefield-1.pdf" } // New song added
+];
 
         // --- Filter and Display Logic ---
         const genreFilter = document.getElementById('genreFilter');
@@ -250,7 +251,7 @@
                 </div>
             </div>
             <a href="${song.link}" class="mt-4 inline-block bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center self-start">
-                View Tab
+                ${song.instrument === 'Piano' ? 'Download PDF' : 'View Tab'}
             </a>
         `;
         songListDiv.appendChild(songCard);
