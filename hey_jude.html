@@ -1,4 +1,4 @@
-Copilot_20250722_164706.png<!DOCTYPE html><!DOCTYPE html>Copilot_20250722_164706.png<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -330,14 +330,14 @@ E|---------------------------------------------------------------------------|
         </div>
     </footer>
 
-    <audio id="metronomeLoopAudio" src="click_74bpm_4-4time_533beats_ZusIOW.mp3" loop preload="auto"></audio>
+    nomeLoopAudio" src="click_74bpm_4-4time_533beats_ZusIOW.mp3" loop preload="auto"></audio>
 
     <script>
         // --- DOM Element References ---
         const printTabBtn = document.getElementById('printTabBtn');
         const metronomeToggleBtn = document.getElementById('metronomeToggleBtn');
         const metronomeLoopAudio = document.getElementById('metronomeLoopAudio');
-        let isMetronomePlaying = false;
+        
 
         // Hamburger menu functionality
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -417,25 +417,49 @@ E|---------------------------------------------------------------------------|
         }
         document.addEventListener('DOMContentLoaded', setupSearch);
 
-        // --- Simple MP3 Metronome Logic ---
-        metronomeToggleBtn.addEventListener('click', () => {
-            if (isMetronomePlaying) {
-                metronomeLoopAudio.pause();
-                metronomeLoopAudio.currentTime = 0; // Reset for next play
-                metronomeToggleBtn.textContent = 'Start Metronome';
-                metronomeToggleBtn.classList.remove('bg-red-600', 'hover:bg-red-700');
-                metronomeToggleBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
-            } else {
-                metronomeLoopAudio.play().catch(error => {
-                    console.error("Metronome audio playback failed:", error);
-                    alert("Impossibile avviare il metronomo. Assicurati che il file 'metronome_loop.mp3' sia presente e che il browser permetta l'autoplay.");
-                });
-                metronomeToggleBtn.textContent = 'Stop Metronome';
-                metronomeToggleBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
-                metronomeToggleBtn.classList.add('bg-red-600', 'hover:bg-red-700');
-            }
-            isMetronomePlaying = !isMetronomePlaying;
-        });
+// --- Web Audio API Metronome ---
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+let metronomeInterval = null;
+let bpm = 115; // valore preso dal tuo HTML
+
+
+function playClick(accent = false) {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc.frequency.value = accent ? 2000 : 1000; // accento più acuto sul primo beat
+    gain.gain.value = 1;
+
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.05); // durata click
+}
+
+// Toggle metronome
+metronomeToggleBtn.addEventListener('click', () => {
+    if (isMetronomePlaying) {
+        clearInterval(metronomeInterval);
+        metronomeInterval = null;
+        metronomeToggleBtn.textContent = 'Start Metronome';
+        metronomeToggleBtn.classList.remove('bg-red-600', 'hover:bg-red-700');
+        metronomeToggleBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+    } else {
+        let beat = 0;
+        const intervalMs = (60 / bpm) * 1000;
+        metronomeInterval = setInterval(() => {
+            playClick(beat === 0); // primo beat accentato
+            beat = (beat + 1) % 4; // ciclo 4/4
+        }, intervalMs);
+
+        metronomeToggleBtn.textContent = 'Stop Metronome';
+        metronomeToggleBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+        metronomeToggleBtn.classList.add('bg-red-600', 'hover:bg-red-700');
+    }
+    isMetronomePlaying = !isMetronomePlaying;
+});
+
 
         // Print Tab button functionality
         printTabBtn.addEventListener('click', () => {
