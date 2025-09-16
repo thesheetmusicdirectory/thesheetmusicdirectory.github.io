@@ -572,6 +572,22 @@ metronomeToggleBtn.addEventListener('click', () => {
         // Initial setup for favorite button on page load
         document.addEventListener('DOMContentLoaded', updateFavBtn);
 
+        const bpmInput = document.getElementById('bpmInput');
+
+        bpmInput.addEventListener('change', () => {
+            bpm = parseInt(bpmInput.value, 10);
+            if (isMetronomePlaying) {
+                clearInterval(metronomeInterval); // restart with new BPM
+                let beat = 0;
+                const intervalMs = (60 / bpm) * 1000;
+                metronomeInterval = setInterval(() => {
+                    playClick(beat === 0);
+                    beat = (beat + 1) % 4;
+                }, intervalMs);
+            }
+        });
+
+
     </script>
 
 </body>
