@@ -330,8 +330,6 @@ E|---------------------------------------------------------------------------|
         </div>
     </footer>
 
-    nomeLoopAudio" src="click_74bpm_4-4time_533beats_ZusIOW.mp3" loop preload="auto"></audio>
-
     <script>
         // --- DOM Element References ---
         const printTabBtn = document.getElementById('printTabBtn');
@@ -417,24 +415,23 @@ E|---------------------------------------------------------------------------|
         }
         document.addEventListener('DOMContentLoaded', setupSearch);
 
-// --- Web Audio API Metronome ---
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-let metronomeInterval = null;
-let bpm = 115; // valore preso dal tuo HTML
+            // --- Web Audio API Metronome ---
+          const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          let metronomeInterval = null;
+          let bpm = 115; // valore preso dal tuo HTML
 
+        function playClick(accent = false) {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
 
-function playClick(accent = false) {
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
 
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
+          osc.frequency.value = accent ? 2000 : 1000; // accento più acuto sul primo beat
+          gain.gain.value = 1;
 
-    osc.frequency.value = accent ? 2000 : 1000; // accento più acuto sul primo beat
-    gain.gain.value = 1;
-
-    osc.start();
-    osc.stop(audioCtx.currentTime + 0.05); // durata click
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.05); // durata click
 }
 
 // Toggle metronome
