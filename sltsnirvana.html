@@ -146,11 +146,71 @@
                 </div>
 
                 <div class="flex flex-wrap justify-center items-center gap-4 pt-2 border-t border-gray-200">
-                    <button id="printTabBtn" class="bg-blue-100 text-blue-800 px-6 py-3 rounded-lg font-medium hover:bg-blue-200 transition-colors shadow-md" aria-label="Print tab">Print Tab</button>
-                </div>
-            </div>
+                    <!-- Print button -->
+                    <button id="printTabBtn"
+                            class="bg-blue-100 text-blue-800 px-6 py-3 rounded-lg font-medium hover:bg-blue-200 transition-colors shadow-md"
+                            aria-label="Print tab">
+                        🖨 Print
+                    </button>
 
-            <div class="tab-container bg-gray-50 border border-gray-200 rounded-lg shadow-xl w-full max-w-3xl mb-8">
+                    <!-- Download PDF button -->
+                    <button id="downloadPdfBtn"
+                            class="bg-green-100 text-green-800 px-6 py-3 rounded-lg font-medium hover:bg-green-200 transition-colors shadow-md"
+                            aria-label="Download PDF">
+                        ⬇ PDF
+                    </button>
+
+                    <!-- Share button -->
+                    <button id="shareTabBtn"
+                            class="bg-purple-100 text-purple-800 px-6 py-3 rounded-lg font-medium hover:bg-purple-200 transition-colors shadow-md"
+                            aria-label="Share tab">
+                        🔗 Share
+                    </button>
+                </div>
+
+                <!-- html2pdf.js -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+                <script>
+                    // Print function
+                    document.getElementById("printTabBtn").addEventListener("click", () => {
+                        window.print();
+                    });
+
+                    // Download PDF function (exactly like print view)
+                    document.getElementById("downloadPdfBtn").addEventListener("click", () => {
+                        const element = document.querySelector(".sheet-content"); // adjust to your main container
+                        const opt = {
+                            margin:       0.5,
+                            filename:     (document.title || "sheet") + ".pdf",
+                            image:        { type: 'jpeg', quality: 0.98 },
+                            html2canvas:  { scale: 2 },
+                            jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+                        };
+                        html2pdf().set(opt).from(element).save();
+                    });
+
+                    // Share function
+                    document.getElementById("shareTabBtn").addEventListener("click", () => {
+                        const fullUrl = window.location.href;
+                        const title = document.title || "Sheet Music";
+
+                        if (navigator.share) {
+                            navigator.share({
+                                title: title,
+                                text: "Check out this sheet music!",
+                                url: fullUrl
+                            });
+                        } else {
+                            navigator.clipboard.writeText(fullUrl).then(() => {
+                                alert("Link copied to clipboard!");
+                            });
+                        }
+                    });
+                </script>
+
+
+                <div class="tab-container bg-gray-50 border border-gray-200 rounded-lg shadow-xl w-full max-w-3xl mb-8">
                 <div id="fullTabCombined" class="tab-content">
                     <pre id="tabPreFull" class="p-6 text-base font-mono text-gray-800 bg-transparent m-0">
 Link to the full length version - https://www.youtube.com/watch?v=JirXTmnItd4

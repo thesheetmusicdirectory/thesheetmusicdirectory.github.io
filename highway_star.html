@@ -153,9 +153,77 @@ Copilot_20250722_164706.png<!DOCTYPE html><!DOCTYPE html>Copilot_20250722_164706
                 </div>
 
                 <div class="flex flex-wrap justify-center items-center gap-4 pt-2 border-t border-gray-200">
-                    <button id="printTabBtn" class="bg-blue-100 text-blue-800 px-6 py-3 rounded-lg font-medium hover:bg-blue-200 transition-colors shadow-md" aria-label="Print tab">Print Tab</button>
+                    <!-- Print button -->
+                    <button id="printTabBtn"
+                            class="bg-blue-100 text-blue-800 px-6 py-3 rounded-lg font-medium hover:bg-blue-200 transition-colors shadow-md"
+                            aria-label="Print tab">
+                        🖨 Print
+                    </button>
+
+                    <!-- Download PDF button -->
+                    <button id="downloadPdfBtn"
+                            class="bg-green-100 text-green-800 px-6 py-3 rounded-lg font-medium hover:bg-green-200 transition-colors shadow-md"
+                            aria-label="Download PDF">
+                        ⬇ PDF
+                    </button>
+
+                    <!-- Share button -->
+                    <button id="shareTabBtn"
+                            class="bg-purple-100 text-purple-800 px-6 py-3 rounded-lg font-medium hover:bg-purple-200 transition-colors shadow-md"
+                            aria-label="Share tab">
+                        🔗 Share
+                    </button>
                 </div>
-            </div>
+
+                <!-- jsPDF -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+                <script>
+                    const { jsPDF } = window.jspdf;
+
+                    // Print function
+                    document.getElementById("printTabBtn").addEventListener("click", () => {
+                        window.print();
+                    });
+
+                    // Generate PDF function
+                    document.getElementById("downloadPdfBtn").addEventListener("click", () => {
+                        const doc = new jsPDF();
+                        const title = document.title || "Sheet Music";
+
+                        doc.setFontSize(18);
+                        doc.text(title, 20, 30);
+
+                        const tabContent = document.querySelector(".sheet-content"); // adjust selector to your content
+                        if (tabContent) {
+                            doc.setFontSize(12);
+                            doc.text(tabContent.innerText, 20, 50);
+                        }
+
+                        doc.save(title + ".pdf");
+                    });
+
+                    // Share function
+                    document.getElementById("shareTabBtn").addEventListener("click", () => {
+                        const fullUrl = window.location.href;
+                        const title = document.title || "Sheet Music";
+
+                        if (navigator.share) {
+                            // Mobile native share
+                            navigator.share({
+                                title: title,
+                                text: "Check out this sheet music!",
+                                url: fullUrl
+                            });
+                        } else {
+                            // Fallback: copy link to clipboard
+                            navigator.clipboard.writeText(fullUrl).then(() => {
+                                alert("Link copied to clipboard!");
+                            });
+                        }
+                    });
+                </script>
+
 
             <div class="tab-container bg-gray-50 border border-gray-200 rounded-lg shadow-xl w-full max-w-3xl mb-8">
                 <div id="fullTabCombined" class="tab-content">
