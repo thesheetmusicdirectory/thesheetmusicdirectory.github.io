@@ -134,7 +134,12 @@
             <div class="flex flex-col gap-4 mb-6 w-full max-w-3xl">
                 <div class="flex flex-wrap justify-center items-center gap-4">
                     <button id="metronomeToggleBtn" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors shadow-md min-w-[150px]" aria-label="Start or Stop Metronome">Start Metronome</button>
-                    
+
+                    <div class="mt-2 flex justify-center items-center gap-2">
+                        <label for="bpmInput">BPM:</label>
+                        <input type="number" id="bpmInput" value="115" min="40" max="300" class="border rounded p-1 w-16 text-center">
+                    </div>
+
                     <button id="favBtn" 
                             class="bg-pink-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-pink-600 transition-colors shadow-md min-w-[150px] flex items-center justify-center gap-2"
                             data-title="Highway to Hell"
