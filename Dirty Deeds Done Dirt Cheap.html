@@ -612,6 +612,8 @@ function playClick(accent = false) {
     osc.start();
     osc.stop(audioCtx.currentTime + 0.05); // durata click
 }
+        let isMetronomePlaying = false; // dichiarazione globale
+
 
 // Toggle metronome
 metronomeToggleBtn.addEventListener('click', () => {
