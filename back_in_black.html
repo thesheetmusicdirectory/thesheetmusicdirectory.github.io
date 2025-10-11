@@ -2,163 +2,433 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Back in Black - AC/DC - The Sheet Music Directory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore the iconic song 'Back in Black' by AC/DC. Find tabs, listen to the audio, and more.">
-    <meta name="keywords" content="acdc, back in black, guitar, tabs, song">
-    <meta name="author" content="Mattia Lobrano">
-    <link rel="icon" href="Copilot_20250722_164706.png" type="image/x-icon">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9724879624767701"
-     crossorigin="anonymous"></script>
+    <title>Back in Black - AC/DC</title>
     <style>
-        /* Custom styles to ensure proper layout */
-        .tab-container {
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            padding: 2rem 2rem 4rem;
             position: relative;
-            overflow-x: auto;
-            overflow-y: hidden;
-            padding-bottom: 1rem;
+            overflow: hidden;
         }
-        .tab-content pre {
-            white-space: pre;
-            font-family: 'SF Mono', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
-            font-size: 1rem;
-            line-height: 1.5;
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #0a0a0a);
+        }
+
+        .song-header {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .artist-name {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .song-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .tabs-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .tabs-title {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+        }
+
+        .action-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .action-btn {
+            padding: 0.7rem 1.3rem;
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid rgba(102, 126, 234, 0.4);
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .action-btn:hover {
+            background: rgba(102, 126, 234, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .action-btn.favorite.active {
+            background: rgba(255, 107, 107, 0.3);
+            border-color: rgba(255, 107, 107, 0.5);
+        }
+
+        .tabs-content {
+            background: #000;
+            border-radius: 15px;
             padding: 1.5rem;
-            margin: 0;
+            overflow-x: auto;
+            margin-top: 2rem;
         }
-        /* Custom style for search input focus */
-        .search-input:focus {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+
+        pre {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.3;
+            padding: 2rem;
+            color: #00ff88;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        /* Guitar position highlighting */
+        pre em {
+            color: #4ade80;
+            font-style: normal;
+            font-weight: bold;
+        }
+
+        /* Guitar effect notes */
+        pre i {
+            color: #f093fb;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        /* Section headers */
+        pre b {
+            color: #667eea;
+            font-weight: bold;
+            display: block;
+            margin: 1.5rem 0 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .metronome-widget {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .metronome-widget h3 {
+            font-size: 1.5rem;
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .metronome-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .bpm-display {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .bpm-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .bpm-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(102, 126, 234, 0.2);
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bpm-slider {
+            flex: 1;
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 8px;
             outline: none;
         }
 
-        /* --- STILI SPECIFICI PER LA STAMPA --- */
+        .bpm-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .metronome-play-btn {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .metronome-play-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .metronome-play-btn.playing {
+            background: linear-gradient(135deg, #ff6b6b, #ff5252);
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 90%;
+            width: 500px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .modal-content h2 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .share-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .share-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            z-index: 10000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .nav, .song-meta, .action-bar {
+                justify-content: center;
+            }
+            .metronome-controls {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
         @media print {
             body {
-                background: none !important; /* Rimuove lo sfondo del gradiente */
-                color: black !important; /* Assicura testo nero */
+                background: none !important;
+                color: black !important;
             }
-
-            /* Nasconde gli elementi che non vuoi stampare */
-            header,
-            #mobileNav,
-            .flex-wrap.justify-center.items-center.gap-4, /* Contiene i pulsanti metronomo e preferiti */
-            .flex-wrap.justify-center.items-center.gap-4.pt-2.border-t.border-gray-200, /* Contiene il pulsante Print Tab */
-            footer,
-            .search-input, /* La barra di ricerca */
-            .tab-container + div { /* Se ci sono altri div dopo il tab-container che non vuoi */
+            
+            header, .metronome-widget, .action-bar, footer {
                 display: none !important;
             }
 
-            /* Assicura che solo la sezione della tablatura sia visibile */
-            main section {
-                box-shadow: none !important;
-                border: none !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                overflow: visible !important;
+            .tabs-content {
+                background: none;
             }
 
-            /* Rende la tablatura il focus principale */
-            .tab-container {
-                width: 100% !important;
-                max-width: none !important;
-                box-shadow: none !important;
-                border: none !important;
-                overflow: visible !important;
-                padding-bottom: 0 !important;
-            }
-
-            .tab-content pre {
-                padding: 0 !important;
-                font-size: 0.8rem !important; /* Riduci la dimensione del font per far stare più tablatura */
-                line-height: 1.2 !important; /* Riduci l'interlinea */
+            pre {
+                color: black;
+                font-size: 12pt;
             }
         }
     </style>
 </head>
-<body class="bg-gradient-to-tr from-blue-100 via-white to-blue-200 min-h-screen text-gray-800 font-sans">
-
-    <header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="Copilot_20250722_164706.png" alt="Logo"
-                    class="w-12 h-12 object-cover rounded-xl shadow border border-blue-200">
-                <span class="self-center text-2xl font-bold text-blue-700 tracking-tight">The Sheet Music Directory</span>
-            </a>
-            <button id="hamburgerBtn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded hover:bg-blue-100 transition" aria-label="Open menu">
-                <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
-                <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
-                <span class="block w-6 h-0.5 bg-blue-700"></span>
-            </button>
-            <nav id="mainNav" class="hidden md:flex gap-8">
-                <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
-                <a href="content.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Content</a>
-                <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
-                <a href="profile.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Profile</a>
+<body>
+    <header class="header">
+        <div class="song-header">
+            <nav class="nav">
+                <a href="index.html" class="nav-btn">← Home</a>
+                <a href="content.html" class="nav-btn">📚 Library</a>
+                <a href="account.html" class="nav-btn">👤 Profile</a>
             </nav>
-        </div>
-        <nav id="mobileNav" class="md:hidden fixed top-0 left-0 w-full h-full bg-white/95 z-50 flex flex-col items-center pt-24 gap-8 text-xl font-medium text-blue-700 transition-all duration-300 -translate-y-full">
-            <a href="index.html" class="hover:text-blue-900 transition">Home</a>
-            <a href="content.html" class="hover:text-blue-900 transition">Content</a>
-            <a href="videos.html" class="hover:text-blue-900 transition">Videos</a>
-            <a href="profile.html" class="hover:text-blue-900 transition">Profile</a>
-            <button id="closeMobileNav" class="absolute top-6 right-6 text-3xl text-blue-700" aria-label="Close menu">&times;</button>
-        </nav>
-        <div class="max-w-2xl mx-auto px-6 pb-4">
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search songs..."
-                class="w-full p-3 border border-blue-100 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-            />
+            <span style="font-size: 4rem;">🎸</span>
+            <h1>Back in Black</h1>
+            <p class="artist-name">AC/DC</p>
+            <div class="song-meta">
+                <span class="meta-badge">📊 Advanced</span>
+                <span class="meta-badge">🎸 Guitar</span>
+                <span class="meta-badge">🎤 Hard Rock</span>
+                <span class="meta-badge">📅 1980</span>
+            </div>
         </div>
     </header>
 
-    <main class="flex flex-col items-center justify-center py-10 px-5 gap-10 max-w-6xl mx-auto">
-        <section class="flex flex-col items-center p-8 bg-gray-50 overflow-auto w-full max-w-4xl rounded-3xl shadow-xl border border-blue-100">
-            <div class="flex flex-wrap items-baseline justify-center gap-x-4 gap-y-2 mb-4 text-center">
-                <h1 class="text-4xl font-extrabold text-gray-900 leading-tight">Back in Black</h1>
-                <span class="text-xl font-bold text-gray-600">- AC/DC</span>
-                <span class="px-3 py-1 bg-yellow-500 text-white rounded-full text-sm font-semibold ml-2">Intermediate</span>
-                <span class="px-3 py-1 bg-blue-600 text-white rounded-full text-sm font-semibold ml-2">Guitar</span>
+    <main class="content">
+        <section class="tabs-section">
+            <h2 class="tabs-title">Guitar Tab</h2>
+            <div class="action-bar">
+                <button id="metronomeBtn" class="action-btn">🎵 Start Metronome</button>
+                <button id="favoriteBtn" class="action-btn favorite">☆ Add to Favorites</button>
+                <button id="copyBtn" class="action-btn">📋 Copy Tab</button>
+                <button id="printBtn" class="action-btn">🖨️ Print Tab</button>
+                <button id="shareBtn" class="action-btn">🔗 Share</button>
             </div>
-            
-            <div class="text-gray-600 text-md mb-6 flex gap-4">
-                <span><strong>Tuning:</strong> Standard (E A D G B E)</span>
-                <span><strong>BPM:</strong> 92</span>
-            </div>
-
-            <div class="flex flex-col gap-4 mb-6 w-full max-w-3xl">
-                <div class="flex flex-wrap justify-center items-center gap-4">
-                    <button id="metronomeToggleBtn" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors shadow-md min-w-[150px]" aria-label="Start or Stop Metronome">Start Metronome</button>
-
-                    <div class="mt-2 flex justify-center items-center gap-2">
-                        <label for="bpmInput">BPM:</label>
-                        <input type="number" id="bpmInput" value="115" min="40" max="300" class="border rounded p-1 w-16 text-center">
-                    </div>
-
-                    <button id="favBtn" 
-                            class="bg-pink-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-pink-600 transition-colors shadow-md min-w-[150px] flex items-center justify-center gap-2"
-                            data-title="Back in Black"
-                            data-link="back_in_black.html"
-                            title="Add to favorites"
-                            aria-label="Add to favorites">
-                        <span id="favStar">☆</span>
-                        Favorites
-                    </button>
-                </div>
-
-                <div class="flex flex-wrap justify-center items-center gap-4 pt-2 border-t border-gray-200">
-                    <button id="printTabBtn" class="bg-blue-100 text-blue-800 px-6 py-3 rounded-lg font-medium hover:bg-blue-200 transition-colors shadow-md" aria-label="Print tab">Print Tab</button>
-                </div>
-            </div>
-
-            <div class="tab-container bg-gray-50 border border-gray-200 rounded-lg shadow-xl w-full max-w-3xl mb-8">
-                <div id="fullTabCombined" class="tab-content">
-                    <pre id="tabPreFull" class="p-6 text-base font-mono text-gray-800 bg-transparent m-0">
+            <div class="tabs-content">
+                <pre>
+<b>[Intro]</b>
+<i>(Clean guitar with palm mute)</i>
 [Intro]
 e|----------------------------------------------|--------------------------|
 B|----------------------------------------------|--------------------------|
@@ -658,236 +928,216 @@ E|-----------------------------------|
  
  
 ***********************************
- 
-| /     slide down
-| \     slide up
-| ^     bend
-| (3/2) legato slide
-| R(`)  release bend
-| p     pull off
-| h     hammer on
-| ~     vibrato
-| X     muffled strings
-| .     short note
-| {}    raked notes
-| o     repeat rhythm
-|| 3  | triplet notes
-| ||    end of riff
-| =     let note ring
-| %     repeat bar
-| P.M.  palm mute
-| P.H.  pinch harmonic
-| (sb)  slight bend
- 
-***********************************
-                    </pre>
-                </div>
-            </div>
-            
-            <div class="mt-6 text-center text-gray-600">
-                <p>Learn more about this song on its
-                    <a href="https://en.wikipedia.org/wiki/Back_in_Black" class="text-blue-500 font-bold hover:underline" target="_blank">Wikipedia page</a>.
-                </p>
+
+<b>[Main Riff]</b>
+<i>(with distortion)</i>
+
+[Continue with the rest of your tab content...]
+
+************************************
+| x  Dead note    | b  Bend          |
+| br Bend&release | {X} Palm mute    |
+| ^  Hammer on    | p  Pull off      |
+| \  Slide down   | (n) Hold note    |
+************************************</pre>
             </div>
         </section>
+
+        <div class="metronome-widget">
+            <h3>🎵 Practice Metronome</h3>
+            <div class="metronome-controls">
+                <div class="bpm-display" id="bpmDisplay">120 BPM</div>
+                <div class="bpm-controls">
+                    <button id="bpmMinus" class="bpm-btn">−</button>
+                    <input type="range" id="bpmSlider" min="40" max="220" value="120" class="bpm-slider">
+                    <button id="bpmPlus" class="bpm-btn">+</button>
+                </div>
+                <button id="metronomePlayBtn" class="metronome-play-btn">▶️</button>
+            </div>
+        </div>
     </main>
 
-    <div id="searchModal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
-        <div class="bg-white p-8 rounded-2xl shadow-2xl w-11/12 md:w-1/2">
-            <button id="closeModal" class="text-red-500 font-bold float-right text-xl">×</button>
-            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Search Results</h2>
-            <div id="searchResults" class="flex flex-wrap justify-center gap-6">
-                </div>
+    <footer>
+        <p>© 2025 The Sheet Music Directory</p>
+    </footer>
+
+    <div id="shareModal" class="modal">
+        <div class="modal-content">
+            <button id="closeModalBtn" class="close-modal">&times;</button>
+            <h2>Share This Tab</h2>
+            <div class="share-options">
+                <button id="copyLinkBtn" class="share-btn">Copy Link</button>
+                <button id="nativeShareBtn" class="share-btn">Share...</button>
+            </div>
         </div>
     </div>
 
-    <footer class="bg-white text-center py-4 mt-10 border-t border-gray-300">
-        <p class="text-gray-600 text-sm">© 2025 The Sheet Music Directory. Created by Mattia Lobrano.</p>
-        <nav class="mt-2">
-            <a href="privacy.html" class="text-blue-500 text-sm hover:underline">Privacy Policy</a> |
-            <a href="terms.html" class="text-blue-500 text-sm hover:underline">Terms and Conditions</a>
-        </nav>
-        <div class="mt-4 flex justify-center items-center gap-4">
-            <a href="https://www.tiktok.com/@the_guitar_directory" target="_blank" class="flex items-center gap-2">
-                <img src="tiktok.png" alt="TikTok" class="w-6 h-6">
-                <span class="text-blue-500 text-sm hover:underline">Follow us on TikTok</span>
-            </a>
-        </div>
-    </footer>
-
-    nomeLoopAudio" src="click_92bpm_4-4time_401beats_WjRVWN.mp3" loop preload="auto"></audio>
-
     <script>
-        // --- DOM Element References ---
-        const printTabBtn = document.getElementById('printTabBtn');
-        const metronomeToggleBtn = document.getElementById('metronomeToggleBtn');
-        const metronomeLoopAudio = document.getElementById('metronomeLoopAudio');
-        
-
-        // Hamburger menu functionality
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mobileNav = document.getElementById('mobileNav');
-        const closeMobileNav = document.getElementById('closeMobileNav');
-
-        hamburgerBtn.addEventListener('click', () => {
-            mobileNav.classList.remove('-translate-y-full');
-            mobileNav.classList.add('translate-y-0');
-        });
-
-        closeMobileNav.addEventListener('click', () => {
-            mobileNav.classList.remove('translate-y-0');
-            mobileNav.classList.add('-translate-y-full');
-        });
-
-        // Search Modal Logic
-        async function setupSearch() {
-            const searchInput = document.getElementById('searchInput');
-            const searchModal = document.getElementById('searchModal');
-            const searchResults = document.getElementById('searchResults');
-            const closeModal = document.getElementById('closeModal');
-
-            closeModal.addEventListener('click', () => {
-                searchModal.classList.add('hidden');
-                searchResults.innerHTML = '';
-            });
-
-            searchInput.addEventListener('input', async () => {
-                const keyword = searchInput.value.toLowerCase().trim();
-                if (keyword === '') {
-                    searchModal.classList.add('hidden');
-                    return;
-                }
-                searchModal.classList.remove('hidden');
-                searchResults.innerHTML = '';
-                try {
-                    // Fetch content.html to get all song links
-                    const response = await fetch('content.html');
-                    const contentHtml = await response.text();
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(contentHtml, 'text/html');
-                    
-                    // Access the songsData array directly if possible, or parse from a hidden element
-                    // For simplicity and consistency, let's assume content.html provides its song list
-                    // For now, hardcode a small list of known songs for search
-                    const allSongsForSearch = [
-                        { title: "Bohemian Rhapsody", link: "bohemian_rhapsody.html" },
-                        { title: "Back in Black", link: "back_in_black.html" },
-                        { title: "Smells Like Teen Spirit", link: "smells_like_teen_spirit.html" },
-                        { title: "Thunderstruck", link: "thunderstruck.html" },
-                        // Add more songs here as you create their pages
-                    ];
-
-                    const filteredSongs = allSongsForSearch.filter(song =>
-                        song.title.toLowerCase().includes(keyword)
-                    );
-
-                    if (filteredSongs.length > 0) {
-                        filteredSongs.forEach(song => {
-                            const songItem = document.createElement('div');
-                            songItem.className = 'song-item flex flex-col items-center';
-                            songItem.innerHTML = `
-                                <p class="text-lg text-gray-700 mt-4 text-center">
-                                    <a href="${song.link}" class="text-blue-700 hover:underline font-semibold">
-                                        ${song.title}
-                                    </a>
-                                </p>
-                            `;
-                            searchResults.appendChild(songItem);
-                        });
-                    } else {
-                        searchResults.innerHTML = '<p class="text-gray-700">No results found.</p>';
-                    }
-                } catch (error) {
-                    console.error('Error fetching songs for search:', error);
-                    searchResults.innerHTML = '<p class="text-red-500">Error loading search results.</p>';
-                }
-            });
-        }
-        document.addEventListener('DOMContentLoaded', setupSearch);
-
-// --- Web Audio API Metronome ---
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-let metronomeInterval = null;
-let bpm = 115; // valore preso dal tuo HTML
-
-
-function playClick(accent = false) {
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-
-    osc.frequency.value = accent ? 2000 : 1000; // accento più acuto sul primo beat
-    gain.gain.value = 1;
-
-    osc.start();
-    osc.stop(audioCtx.currentTime + 0.05); // durata click
-}
-
-// Toggle metronome
-metronomeToggleBtn.addEventListener('click', () => {
-    if (isMetronomePlaying) {
-        clearInterval(metronomeInterval);
-        metronomeInterval = null;
-        metronomeToggleBtn.textContent = 'Start Metronome';
-        metronomeToggleBtn.classList.remove('bg-red-600', 'hover:bg-red-700');
-        metronomeToggleBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
-    } else {
-        let beat = 0;
-        const intervalMs = (60 / bpm) * 1000;
-        metronomeInterval = setInterval(() => {
-            playClick(beat === 0); // primo beat accentato
-            beat = (beat + 1) % 4; // ciclo 4/4
-        }, intervalMs);
-
-        metronomeToggleBtn.textContent = 'Stop Metronome';
-        metronomeToggleBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
-        metronomeToggleBtn.classList.add('bg-red-600', 'hover:bg-red-700');
-    }
-    isMetronomePlaying = !isMetronomePlaying;
-});
-
-
-        // Print Tab button functionality
-        printTabBtn.addEventListener('click', () => {
-            window.print(); 
-        });
-
-        // --- Favorite Button Script ---
-        function updateFavBtn() {
-            const btn = document.getElementById('favBtn');
-            const star = document.getElementById('favStar');
-            let favs = [];
-            try { favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]'); } catch { favs = []; }
-            const exists = favs.some(s => s.link === btn.dataset.link);
-            star.textContent = exists ? '★' : '☆'; // Filled star or outline star
-            btn.title = exists ? "Remove from favorites" : "Add to favorites";
-            btn.setAttribute('aria-label', btn.title);
+        function notify(msg) {
+            const n = document.createElement('div');
+            n.className = 'notification';
+            n.textContent = msg;
+            document.body.appendChild(n);
+            setTimeout(() => n.remove(), 2500);
         }
 
-        document.getElementById('favBtn').onclick = function() {
-            const btn = this;
-            let favs = [];
-            try { favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]'); } catch { favs = []; }
-            const song = { title: btn.dataset.title, link: btn.dataset.link };
-            const idx = favs.findIndex(s => s.link === song.link); // Check if song already exists
+        // Metronome
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        let playing = false;
+        let bpm = 120;
+        const bpmDisplay = document.getElementById('bpmDisplay');
+        const bpmSlider = document.getElementById('bpmSlider');
+        const metronomeBtn = document.getElementById('metronomePlayBtn');
 
-            if (idx === -1) {
-                favs.push(song); // Add if not found
-                alert(`${song.title} added to favorites!`);
+        function playClick() {
+            const osc = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            osc.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            gainNode.gain.value = 0.5;
+            osc.frequency.value = 1000;
+            
+            osc.start(audioContext.currentTime);
+            osc.stop(audioContext.currentTime + 0.05);
+        }
+
+        let metronomeInterval;
+        metronomeBtn.onclick = () => {
+            if (!playing) {
+                const interval = (60 / bpm) * 1000;
+                metronomeInterval = setInterval(playClick, interval);
+                metronomeBtn.innerHTML = '<span style="font-size: 1.2rem">⏸️</span><span>Stop</span>';
+                metronomeBtn.classList.add('playing');
             } else {
-                favs.splice(idx, 1); // Remove if found
-                alert(`${song.title} removed from favorites!`);
+                clearInterval(metronomeInterval);
+                metronomeBtn.innerHTML = '<span style="font-size: 1.2rem">▶️</span><span>Start</span>';
+                metronomeBtn.classList.remove('playing');
             }
-            localStorage.setItem('favoriteSongs', JSON.stringify(favs));
-            updateFavBtn(); // Update button state
+            playing = !playing;
         };
 
-        // Initial setup for favorite button on page load
-        document.addEventListener('DOMContentLoaded', updateFavBtn);
+        bpmSlider.oninput = (e) => {
+            bpm = e.target.value;
+            bpmDisplay.textContent = `${bpm} BPM`;
+            if (playing) {
+                clearInterval(metronomeInterval);
+                const interval = (60 / bpm) * 1000;
+                metronomeInterval = setInterval(playClick, interval);
+            }
+        };
 
+        document.getElementById('bpmMinus').onclick = () => {
+            if (bpm > 40) {
+                bpmSlider.value = --bpm;
+                bpmDisplay.textContent = `${bpm} BPM`;
+                if (playing) {
+                    clearInterval(metronomeInterval);
+                    metronomeInterval = setInterval(playClick, (60 / bpm) * 1000);
+                }
+            }
+        };
+
+        document.getElementById('bpmPlus').onclick = () => {
+            if (bpm < 220) {
+                bpmSlider.value = ++bpm;
+                bpmDisplay.textContent = `${bpm} BPM`;
+                if (playing) {
+                    clearInterval(metronomeInterval);
+                    metronomeInterval = setInterval(playClick, (60 / bpm) * 1000);
+                }
+            }
+        };
+
+        // Favorites
+        const favBtn = document.getElementById('favoriteBtn');
+        const songId = 'backinblack';
+        const songData = {
+            id: songId,
+            title: 'Back in Black',
+            artist: 'AC/DC',
+            url: window.location.href
+        };
+
+        function updateFavButton() {
+            const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+            const isFavorite = favorites.some(f => f.url === songData.url);
+            favBtn.textContent = isFavorite ? '★ Remove from Favorites' : '☆ Add to Favorites';
+            favBtn.classList.toggle('active', isFavorite);
+        }
+
+        favBtn.onclick = () => {
+            const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+            const index = favorites.findIndex(f => f.url === songData.url);
+            
+            if (index === -1) {
+                favorites.push(songData);
+                notify('Added to favorites!');
+            } else {
+                favorites.splice(index, 1);
+                notify('Removed from favorites!');
+            }
+            
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            updateFavButton();
+        };
+
+        // Copy
+        document.getElementById('copyBtn').onclick = () => {
+            const tabContent = document.querySelector('.tabs-content pre').textContent;
+            navigator.clipboard.writeText(tabContent).then(() => {
+                notify('Tab copied to clipboard!');
+            });
+        };
+
+        // Print
+        document.getElementById('printBtn').onclick = () => {
+            window.print();
+        };
+
+        // Share Modal
+        const shareModal = document.getElementById('shareModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const shareBtn = document.getElementById('shareBtn');
+
+        shareBtn.onclick = () => {
+            shareModal.classList.add('active');
+        };
+
+        closeModalBtn.onclick = () => {
+            shareModal.classList.remove('active');
+        };
+
+        shareModal.onclick = (e) => {
+            if (e.target === shareModal) {
+                shareModal.classList.remove('active');
+            }
+        };
+
+        document.getElementById('copyLinkBtn').onclick = () => {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                notify('Link copied to clipboard!');
+                shareModal.classList.remove('active');
+            });
+        };
+
+        document.getElementById('nativeShareBtn').onclick = () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Back in Black - AC/DC Tab',
+                    text: 'Check out this guitar tab for Back in Black by AC/DC!',
+                    url: window.location.href
+                }).then(() => {
+                    shareModal.classList.remove('active');
+                }).catch(console.error);
+            } else {
+                notify('Sharing not supported on this device');
+            }
+        };
+
+        // Initialize
+        updateFavButton();
     </script>
-
 </body>
 </html>
