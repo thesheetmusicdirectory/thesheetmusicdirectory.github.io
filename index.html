@@ -1,345 +1,876 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="manifest" href="manifest.json">
-    <title>The Sheet Music Directory</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="GQrQsdgZxieUltcTySgXI_aTjGUK9LP4BRnFI9veVGs" />
-    <meta name="description" content="The Sheet Music Directory">
-    <meta name="keywords" content="guitar, tabs, videos, songs, directory">
-    <meta name="author" content="Mattia Lobrano">
-    <link rel="icon" href="Copilot_20250722_164706.png" type="image/x-icon">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9724879624767701"
-     crossorigin="anonymous"></script>
-     <meta name="google-adsense-account" content="ca-pub-9724879624767701">
+    <title>The Sheet Music Directory</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="description" content="Your all-in-one resource for legendary guitar tabs, piano scores, audio, and videos.">
+    
+    <!-- iOS Specific Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Sheet Music">
+    
+    <!-- iOS Splash Screens (various sizes) -->
+    <link rel="apple-touch-icon" href="the_sheet_music_directory.png">
+    <link rel="apple-touch-startup-image" href="the_sheet_music_directory.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 119, 198, 0.3), transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(138, 119, 255, 0.3), transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, #0a0a0a);
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 2rem;
+            max-width: 900px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            animation: fadeInUp 0.8s ease-out, pulse 3s ease-in-out infinite;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(120deg, #ffffff 0%, #ffffff 40%, #f093fb 50%, #ffffff 60%, #ffffff 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease-out 0.2s both, shimmer 3s linear infinite;
+        }
+
+        .subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #667eea;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(102, 126, 234, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+        }
+
+        .features {
+            padding: 8rem 2rem;
+            background: #0a0a0a;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            opacity: 0.7;
+            margin-bottom: 5rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            animation: fadeInScale 0.6s ease-out both;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .feature-card:hover .feature-icon {
+            animation: spin 0.6s ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .feature-card p {
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        .about-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            position: relative;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to bottom, #0a0a0a, transparent);
+            pointer-events: none;
+        }
+
+        .about-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, #0a0a0a);
+            pointer-events: none;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .download-section {
+            padding: 8rem 2rem;
+            background: #0a0a0a;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .download-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .download-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+        }
+
+        .download-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .download-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .download-card p {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        footer {
+            padding: 4rem 2rem 2rem;
+            background: #050505;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .contact-link {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #f093fb;
+        }
+
+        .footer-note {
+            opacity: 0.5;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.4s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .modal-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(120deg, #667eea, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-content p {
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .install-steps {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .install-steps h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: #667eea;
+        }
+
+        .step {
+            display: flex;
+            align-items: start;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            flex: 1;
+            padding-top: 4px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 2rem 1.5rem;
+                max-height: 90vh;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 100vh;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gradient-to-tr from-blue-100 via-white to-blue-200 min-h-screen text-gray-800 font-sans">
-
-<!-- Header -->
-<header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        <a href="index.html" class="flex items-center gap-3">
-            <img src="Copilot_20250722_164706.png" alt="Logo"
-                class="w-12 h-12 object-cover rounded-xl shadow border border-blue-200">
-            <span class="text-2xl font-bold text-blue-700 tracking-tight">The Sheet Music Directory</span>
-        </a>
-        <!-- Hamburger Button (mobile only) -->
-        <button id="hamburgerBtn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded hover:bg-blue-100 transition" aria-label="Open menu">
-            <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
-            <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
-            <span class="block w-6 h-0.5 bg-blue-700"></span>
-        </button>
-        <!-- Desktop Nav -->
-        <nav id="mainNav" class="hidden md:flex gap-8">
-            <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
-            <a href="content.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Content</a>
-            <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
-            <a href="profile.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Profile</a>
-        </nav>
-    </div>
-    <!-- Mobile Nav (hidden by default) -->
-    <nav id="mobileNav" class="md:hidden fixed top-0 left-0 w-full h-full bg-white/95 z-50 flex flex-col items-center pt-24 gap-8 text-xl font-medium text-blue-700 transition-all duration-300 -translate-y-full">
-        <a href="index.html" class="hover:text-blue-900 transition">Home</a>
-        <a href="content.html" class="hover:text-blue-900 transition">Content</a>
-        <a href="videos.html" class="hover:text-blue-900 transition">Videos</a>
-        <a href="profile.html" class="hover:text-blue-900 transition">Profile</a>
-        <button id="closeMobileNav" class="absolute top-6 right-6 text-3xl text-blue-700" aria-label="Close menu">&times;</button>
-    </nav>
-</header>
-
-<!-- Hero Section -->
-<section class="bg-gradient-to-br from-blue-200 via-white to-blue-100 py-16 px-4 text-center shadow-inner">
-    <div class="max-w-3xl mx-auto">
-        <h1 class="text-4xl md:text-5xl font-extrabold text-blue-700 mb-4">Welcome to The Sheet Music Directory</h1>
-        <p class="text-xl text-gray-700 mb-6">
-            Your home for legendary guitar tabs, audio, and videos.<br>
-            Discover, listen, and play your favorite songs.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="content.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl shadow transition text-lg">Browse Songs</a>
-            <a href="videos.html" class="bg-white border border-blue-600 text-blue-700 font-bold py-3 px-8 rounded-xl shadow hover:bg-blue-50 transition text-lg">Watch Videos</a>
-        </div>
-    </div>
-</section>
-
-<!-- Search Bar -->
-<div class="max-w-2xl mx-auto px-6 pb-4 mt-8">
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="Search songs..."
-        class="w-full p-4 border border-blue-100 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-    />
-</div>
-
-<!-- About Section -->
-<main class="flex flex-col items-center justify-center py-10 px-5 gap-10 max-w-6xl mx-auto">
-    <section class="flex flex-col md:flex-row-reverse items-center gap-10 w-full">
-        <img src="Copilot_20250722_164706.png" alt="Guitar Directory Logo" class="w-full md:w-[420px] h-auto rounded-3xl shadow-xl border border-blue-100">
-        <div class="bg-white/95 p-10 rounded-3xl shadow-xl border border-blue-100 flex-1">
-            <h2 class="text-3xl font-bold text-blue-700 mb-4">About The Sheet Music Directory</h2>
-            <p class="text-lg text-gray-700 mb-4">
-                Welcome to <strong>The Sheet Music Directory</strong> – your all-in-one resource for legendary guitar tabs, piano scores, audio, and videos.<br><br>
-                Whether you're a beginner or a seasoned player, you'll find a curated collection of classic and modern songs, each with easy access to tabs and audio.<br><br>
-                This project was created and is maintained by <strong>Mattia Lobrano</strong> as a passion for music and web development. I strive to keep the site clean, fast, and easy to use for all guitarists.<br><br>
-                If you have feedback, suggestions, or want to contribute, please get in touch!
-            </p>
-            <h2 class="text-2xl font-bold text-blue-700 mt-6 mb-2">Contact</h2>
-            <p class="text-lg text-gray-700 mb-2">
-                Email: <a href="mailto:theguitardirectory@gmail.com" class="text-blue-500 hover:underline">theguitardirectory@gmail.com</a><br>
-                Personal: <a href="mailto:mattialobrano@gmail.com" class="text-blue-500 hover:underline">mattialobrano@gmail.com</a>
-            </p>
-            <p class="text-gray-500 text-sm mt-4">
-                Thank you for using <strong>The Sheet Music Directory</strong> and supporting independent projects!
-            </p>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo">🎸</div>
+            <h1>The Sheet Music Directory</h1>
+            <p class="subtitle">Your all-in-one resource for legendary guitar tabs, piano scores, audio, and videos. From classics to modern hits, everything you need in one place.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Explore Library</a>
+                <button id="installBtn" class="btn btn-secondary">Get the App</button>
+            </div>
         </div>
     </section>
 
-<!-- Download Section -->
-<section class="w-full flex justify-center mt-8">
-    <div class="flex flex-col md:flex-row bg-white/95 rounded-3xl shadow-xl border border-blue-100 w-full max-w-4xl overflow-hidden">
-        <!-- Web App Download -->
-        <div class="flex-1 flex flex-col items-center text-center p-8 border-b md:border-b-0 md:border-r border-blue-100">
-            <img src="install_desktop_80dp_1F1F1F_FILL0_wght0_GRAD0_opsz48.png" alt="Web App Install Example" class="w-20 h-20 mb-4 rounded shadow border border-blue-100 object-contain bg-blue-50">
-            <h3 class="text-2xl font-bold text-blue-700 mb-2">Web App Download</h3>
-            <p class="text-gray-700 mb-2">
-                Install The Sheet Music Directory as a web app for quick access and offline use.<br>
-                On Chrome or Edge, click the <span class="inline-block bg-blue-100 text-blue-700 px-2 py-1 rounded">Install</span> button in your browser’s address bar.<br>
-                On mobile, use your browser’s menu and select <strong>Add to Home Screen</strong>.
-            </p>
-        </div>
-        <!-- GitHub Download -->
-        <div class="flex-1 flex flex-col items-center text-center p-8">
-            <img src="1000_F_250305943_sDC6la1N1fDl3bLgfLxOkQwItIodsdMb.jpg" alt="GitHub Logo" class="w-20 h-20 mb-4 rounded shadow border border-blue-100 object-contain bg-gray-50">
-            <h3 class="text-2xl font-bold text-blue-700 mb-2">GitHub Download</h3>
-            <p class="text-gray-700 mb-2">
-                Want to contribute or run your own version? Download the full source code from GitHub.<br>
-                Star or fork the project to support development!
-            </p>
-            <a href="https://github.com/theguitardirectory/theguitardirectory.github.io" target="_blank"
-               class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl shadow transition text-lg mb-2 flex items-center gap-2">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.45.11-3.02 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98.01 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.57.23 2.73.11 3.02.74.8 1.19 1.83 1.19 3.09 0 4.43-2.69 5.41-5.25 5.7.42.36.79 1.09.79 2.2 0 1.59-.01 2.87-.01 3.26 0 .31.21.68.8.56C20.71 21.39 24 17.08 24 12c0-6.27-5.23-11.5-12-11.5z"/></svg>
-                View on GitHub
-            </a>
-            <code class="text-xs text-gray-500">github.com/theguitardirectory/theguitardirectory.github.io</code>
-        </div>
-    </div>
-</section>
-    <!-- New Songs Section ... (keep as is) -->
-
-    <!-- New Songs Section -->
-    <section class="bg-white/95 p-10 rounded-3xl shadow-xl border border-blue-100 w-full text-center">
-        <h2 class="text-3xl font-bold text-blue-700 mb-8">New Songs</h2>
-        <div id="songList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 justify-items-center">
-            <!-- Songs will be loaded here by JS -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Everything You Need</h2>
+            <p class="section-subtitle">Comprehensive resources for musicians of all levels</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🎵</span>
+                    <h3>Curated Collection</h3>
+                    <p>Access a carefully selected library of classic and modern songs with professionally transcribed tabs and sheet music.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🎧</span>
+                    <h3>Audio & Video</h3>
+                    <p>Listen to tracks and watch tutorials alongside your sheet music for the complete learning experience.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <h3>Fast & Clean</h3>
+                    <p>No clutter, no distractions. Just a fast, beautiful interface designed for musicians who want to play.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">📱</span>
+                    <h3>Works Everywhere</h3>
+                    <p>Access your music on any device. Install as a web app for offline use and lightning-fast performance.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🎹</span>
+                    <h3>Multi-Instrument</h3>
+                    <p>Guitar tabs, piano scores, and more. Whether you're shredding or tinkling the ivories, we've got you covered.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🎯</span>
+                    <h3>All Skill Levels</h3>
+                    <p>From beginners taking their first steps to seasoned players perfecting their craft, resources for everyone.</p>
+                </div>
+            </div>
         </div>
     </section>
-</main>
 
-<!-- Search Modal -->
-<div id="searchModal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
-    <div class="bg-white p-8 rounded-2xl shadow-2xl w-11/12 md:w-1/2">
-        <button id="closeModal" class="text-red-500 font-bold float-right text-xl">×</button>
-        <h2 class="text-2xl font-semibold text-blue-700 mb-4">Search Results</h2>
-        <div id="searchResults" class="flex flex-wrap justify-center gap-6">
-            <!-- Search results will be dynamically loaded here -->
+    <section class="about-section">
+        <div class="about-content">
+            <h2 class="section-title">Built by Musicians, for Musicians</h2>
+            <p>The Sheet Music Directory was created and maintained by Mattia Lobrano, combining a passion for music with clean, modern web development. This is an independent project focused on creating the best possible experience for musicians worldwide.</p>
+            <p>The goal is simple: keep it clean, keep it fast, and keep it useful for everyone who loves to play.</p>
+        </div>
+    </section>
+
+    <section class="download-section" id="download">
+        <div class="container">
+            <h2 class="section-title">Get Started</h2>
+            <p class="section-subtitle">Install or contribute to the project</p>
+            
+            <div class="download-grid">
+                <div class="download-card">
+                    <div class="download-icon">📲</div>
+                    <h3>Web App</h3>
+                    <p>Install as a progressive web app for quick access and offline use. Works on desktop and mobile.</p>
+                    <button id="installNowBtn" class="btn btn-primary">Install Now</button>
+                </div>
+                
+                <div class="download-card">
+                    <div class="download-icon">💻</div>
+                    <h3>GitHub</h3>
+                    <p>View the source code, contribute improvements, or fork the project to create your own version.</p>
+                    <a href="https://github.com/theguitardirectory/theguitardirectory.github.io" class="btn btn-secondary" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3 class="footer-title">Get in Touch</h3>
+            <div class="contact-links">
+                <a href="mailto:theguitardirectory@gmail.com" class="contact-link">theguitardirectory@gmail.com</a>
+                <span style="opacity: 0.3;">|</span>
+                <a href="mailto:mattialobrano@gmail.com" class="contact-link">mattialobrano@gmail.com</a>
+            </div>
+            <p style="opacity: 0.7; margin-top: 2rem;">Have feedback, suggestions, or want to contribute? We'd love to hear from you!</p>
+            <p class="footer-note">© 2025 The Sheet Music Directory. Created with ❤️ for musicians everywhere.</p>
+        </div>
+    </footer>
+
+    <!-- Install Instructions Modal -->
+    <div id="installModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">×</button>
+            <h2>📲 Install The Sheet Music Directory</h2>
+            <p>Get instant access to all your favorite tabs and sheet music with our web app!</p>
+            
+            <div class="install-steps" id="installInstructions">
+                <!-- Instructions will be inserted here by JavaScript -->
+            </div>
         </div>
     </div>
-</div>
 
-<footer class="bg-white text-center py-4 mt-10 border-t border-gray-300">
-    <p class="text-gray-600 text-sm">© 2025 The Sheet Music Directory. Created by Mattia Lobrano.</p>
-    <nav class="mt-2">
-        <a href="privacy.html" class="text-blue-500 text-sm hover:underline">Privacy Policy</a> |
-        <a href="terms.html" class="text-blue-500 text-sm hover:underline">Terms and Conditions</a>
-    </nav>
-    <div class="mt-4 flex justify-center items-center gap-4">
-        <a href="https://www.tiktok.com/@the_guitar_directory" target="_blank" class="flex items-center gap-2">
-            <img src="tiktok.png" alt="TikTok" class="w-6 h-6">
-            <span class="text-blue-500 text-sm hover:underline">Follow us on TikTok</span>
-        </a>
-    </div>
-</footer>
-<button id="backToTop" class="fixed bottom-5 left-5 bg-blue-500 text-white p-3 rounded-full shadow-md hidden">
-    ↑
-</button>
-
-<script>
-    async function loadNewSongs() {
-        const response = await fetch('new-songs.json');
-        const songs = await response.json();
-        const songList = document.getElementById('songList');
-        songList.innerHTML = '';
-        songs.forEach(song => {
-            const songItem = document.createElement('div');
-            songItem.className = 'song-item flex flex-col items-center';
-            songItem.innerHTML = `
-                <img src="${song.image}" alt="${song.title}" class="w-56 h-56 object-cover rounded-2xl shadow-lg border border-blue-100">
-                <p class="text-lg text-gray-700 mt-4 text-center">
-                    <a href="${song.link}" class="text-blue-700 hover:underline font-semibold">
-                        ${song.title}
-                    </a>
-                </p>
-            `;
-            songList.appendChild(songItem);
-        });
-    }
-    document.addEventListener('DOMContentLoaded', loadNewSongs);
-
-    // Back to Top
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            backToTop.classList.remove('hidden');
-        } else {
-            backToTop.classList.add('hidden');
-        }
-    });
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Search Modal Logic
-    async function setupSearch() {
-        const searchInput = document.getElementById('searchInput');
-        const searchModal = document.getElementById('searchModal');
-        const searchResults = document.getElementById('searchResults');
+    <script>
+        let deferredPrompt;
+        const installBtn = document.getElementById('installBtn');
+        const installNowBtn = document.getElementById('installNowBtn');
+        const modal = document.getElementById('installModal');
         const closeModal = document.getElementById('closeModal');
+        const instructionsDiv = document.getElementById('installInstructions');
 
-        closeModal.addEventListener('click', () => {
-            searchModal.classList.add('hidden');
-            searchResults.innerHTML = '';
-        });
+        // Detect device type
+        function isMobile() {
+            return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
 
-        searchInput.addEventListener('input', async () => {
-            const keyword = searchInput.value.toLowerCase().trim();
-            if (keyword === '') {
-                searchModal.classList.add('hidden');
-                return;
-            }
-            searchModal.classList.remove('hidden');
-            searchResults.innerHTML = '';
-            try {
-                const response = await fetch('content.html');
-                const contentHtml = await response.text();
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(contentHtml, 'text/html');
-                const songLinks = doc.querySelectorAll('a[href$=".html"]');
-                const songs = Array.from(songLinks).map(link => ({
-                    title: link.textContent.trim(),
-                    link: link.getAttribute('href')
-                }));
-                const filteredSongs = songs.filter(song =>
-                    song.title.toLowerCase().includes(keyword)
-                );
-                if (filteredSongs.length > 0) {
-                    filteredSongs.forEach(song => {
-                        const songItem = document.createElement('div');
-                        songItem.className = 'song-item flex flex-col items-center';
-                        songItem.innerHTML = `
-                            <p class="text-lg text-gray-700 mt-4 text-center">
-                                <a href="${song.link}" class="text-blue-700 hover:underline font-semibold">
-                                    ${song.title}
-                                </a>
-                            </p>
-                        `;
-                        searchResults.appendChild(songItem);
-                    });
+        // Get installation instructions based on device
+        function getInstructions() {
+            const mobile = isMobile();
+            
+            if (mobile) {
+                // Mobile instructions
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+                
+                if (isIOS) {
+                    return `
+                        <h3>📱 iOS Installation</h3>
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-text">Tap the <strong>Share button</strong> (square with arrow) at the bottom of Safari</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">Scroll down and tap <strong>"Add to Home Screen"</strong></div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">Tap <strong>"Add"</strong> in the top right corner</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-text">The app icon will appear on your home screen!</div>
+                        </div>
+                    `;
                 } else {
-                    searchResults.innerHTML = '<p class="text-gray-700">No results found.</p>';
+                    return `
+                        <h3>📱 Android Installation</h3>
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-text">Tap the <strong>three dots menu</strong> (⋮) in your browser</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">Select <strong>"Add to Home Screen"</strong> or <strong>"Install App"</strong></div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">Tap <strong>"Install"</strong> or <strong>"Add"</strong> to confirm</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-text">Launch the app from your home screen anytime!</div>
+                        </div>
+                    `;
                 }
-            } catch (error) {
-                console.error('Error fetching songs:', error);
-                searchResults.innerHTML = '<p class="text-red-500">Error loading results.</p>';
+            } else {
+                // Desktop instructions
+                const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+                const isEdge = /Edg/.test(navigator.userAgent);
+                
+                if (isChrome || isEdge) {
+                    return `
+                        <h3>💻 Desktop Installation (Chrome/Edge)</h3>
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-text">Look for the <strong>Install button</strong> (⊕) in your browser's address bar</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">Click the Install button</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">Click <strong>"Install"</strong> in the popup dialog</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-text">The app will open in its own window and appear in your apps menu!</div>
+                        </div>
+                    `;
+                } else {
+                    return `
+                        <h3>💻 Desktop Installation</h3>
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-text">Open this site in <strong>Chrome</strong> or <strong>Edge</strong> browser</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">Click the <strong>Install button</strong> (⊕) in the address bar</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">Click <strong>"Install"</strong> to add the app to your computer</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-text">Access the app anytime from your applications menu!</div>
+                        </div>
+                        <p style="margin-top: 1.5rem; opacity: 0.7; font-size: 0.9rem;"><em>Note: Safari doesn't support PWA installation on desktop. Please use Chrome or Edge.</em></p>
+                    `;
+                }
+            }
+        }
+
+        // Show modal with instructions
+        function showModal() {
+            instructionsDiv.innerHTML = getInstructions();
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close modal
+        function hideModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Listen for the beforeinstallprompt event
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+        });
+
+        // Handle install button click (hero section)
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.choiceResult;
+                console.log(`User response: ${outcome}`);
+                deferredPrompt = null;
+            } else {
+                showModal();
             }
         });
-    }
-    document.addEventListener('DOMContentLoaded', setupSearch);
-</script>
-<script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "The Sheet Music Directory",
-        "url": "https://yourwebsite.com",
-        "description": "A directory for guitar tabs, videos, and song information.",
-        "author": {
-            "@type": "Person",
-            "name": "Mattia Lobrano"
-        }
-    }
-</script>
-<script>
-// Helper functions for cookies
-function setCookie(name, value, days) {
-    let expires = "";
-    if (days) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-}
-function getCookie(name) {
-    const nameEQ = name + "=";
-    const ca = document.cookie.split(';');
-    for(let i=0;i < ca.length;i++) {
-        let c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-}
-function eraseCookie(name) {   
-    document.cookie = name+'=; Max-Age=-99999999; path=/';  
-}
-</script>
-<!-- Add this just before </body> -->
-<div id="cookieConsent" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-white/95 border border-blue-200 rounded-xl shadow-xl px-6 py-4 flex flex-col md:flex-row items-center gap-4 max-w-lg w-full transition-all duration-300 hidden">
-    <span class="text-gray-700 text-sm flex-1">
-        This website uses cookies to enhance your experience. By continuing to browse, you accept our use of cookies.
-    </span>
-    <button id="acceptCookies" class="bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg px-4 py-2 font-bold shadow hover:from-blue-600 hover:to-blue-800 transition">
-        Accept
-    </button>
-</div>
-<script>
-    // Show cookie consent popup if not accepted
-    function showCookieConsent() {
-        if (!getCookie('cookieConsent')) {
-            document.getElementById('cookieConsent').classList.remove('hidden');
-        }
-    }
-    document.getElementById('acceptCookies').addEventListener('click', function() {
-        setCookie('cookieConsent', 'accepted', 365);
-        document.getElementById('cookieConsent').classList.add('hidden');
-    });
-    document.addEventListener('DOMContentLoaded', showCookieConsent);
-</script>
-<script>
-    // Hamburger menu logic
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    const closeMobileNav = document.getElementById('closeMobileNav');
 
-    hamburgerBtn.addEventListener('click', () => {
-        mobileNav.classList.remove('-translate-y-full');
-        mobileNav.classList.add('translate-y-0');
-    });
-    closeMobileNav.addEventListener('click', () => {
-        mobileNav.classList.add('-translate-y-full');
-        mobileNav.classList.remove('translate-y-0');
-    });
-
-    // Optional: close mobile nav when clicking a link
-    mobileNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileNav.classList.add('-translate-y-full');
-            mobileNav.classList.remove('translate-y-0');
+        // Handle install now button click (download section)
+        installNowBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.choiceResult;
+                console.log(`User response: ${outcome}`);
+                deferredPrompt = null;
+            } else {
+                showModal();
+            }
         });
-    });
-</script>
+
+        // Close modal handlers
+        closeModal.addEventListener('click', hideModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                hideModal();
+            }
+        });
+
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                hideModal();
+            }
+        });
+
+        // Hide buttons after installation
+        window.addEventListener('appinstalled', () => {
+            deferredPrompt = null;
+        });
+    </script>
 </body>
 </html>
