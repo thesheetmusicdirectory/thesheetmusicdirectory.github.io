@@ -83,12 +83,11 @@
         }
 
         .header-nav {
-            position: absolute;
-            left: 2rem;
-            top: 2rem;
             display: flex;
+            justify-content: center;
             gap: 1rem;
             z-index: 10;
+            margin-bottom: 2rem;
         }
 
         .back-btn:hover {
@@ -287,10 +286,15 @@
         }
 
         @media (max-width: 768px) {
+            .header {
+                padding: 2rem 1rem;
+            }
+            .header-nav {
+                flex-wrap: wrap;
+            }
             .back-btn {
-                position: static;
-                margin-bottom: 2rem;
-                display: inline-block;
+                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
             }
 
             .filters {
