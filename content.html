@@ -2,305 +2,539 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Content - The Sheet Music Directory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Browse all guitar songs, tabs, and lessons by genre and difficulty.">
-    <meta name="keywords" content="guitar, content, tabs, lessons, directory, genres, difficulty">
-    <meta name="author" content="Mattia Lobrano">
-    <link rel="icon" href="Copilot_20250722_164706.png" type="image/x-icon">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9724879624767701"
-     crossorigin="anonymous"></script>
-     <meta name="google-adsense-account" content="ca-pub-9724879624767701">
+    <title>Browse Library - The Sheet Music Directory</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
     <style>
-        .song-card {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 119, 198, 0.3), transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #0a0a0a);
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .header-nav {
             display: flex;
-            flex-direction: column;
-            justify-content: space-between; /* Ensures content pushes to top/bottom */
-            height: 100%; /* Make sure cards in a row have similar height */
+            justify-content: center;
+            gap: 1rem;
+            z-index: 10;
+            margin-bottom: 2rem;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(120deg, #ffffff 0%, #ffffff 40%, #f093fb 50%, #ffffff 60%, #ffffff 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-section {
+            padding: 3rem 2rem;
+            background: #0a0a0a;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem 1rem 3.5rem;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            color: white;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .songs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .song-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .song-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .song-card:hover::before {
+            opacity: 1;
+        }
+
+        .song-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+        }
+
+        .song-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .song-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .song-artist {
+            font-size: 1rem;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .song-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            opacity: 0.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        footer {
+            padding: 3rem 2rem;
+            background: #050505;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-note {
+            opacity: 0.5;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 2rem 1rem;
+            }
+            .header-nav {
+                flex-wrap: wrap;
+            }
+            .back-btn {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
+            }
+
+            .filters {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .songs-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-<body class="bg-gradient-to-tr from-blue-100 via-white to-blue-200 min-h-screen text-gray-800 font-sans">
-
-    <header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="Copilot_20250722_164706.png" alt="Logo"
-                    class="w-12 h-12 object-cover rounded-xl shadow border border-blue-200">
-                <span class="self-center text-2xl font-bold text-blue-700 tracking-tight">The Sheet Music Directory</span>
-            </a>
-            <button id="hamburgerBtn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded hover:bg-blue-100 transition" aria-label="Open menu">
-                <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
-                <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
-                <span class="block w-6 h-0.5 bg-blue-700"></span>
-            </button>
-            <nav id="mainNav" class="hidden md:flex gap-8">
-                <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
-                <a href="content.html" class="text-blue-900 hover:text-blue-900 font-bold transition">Content</a>
-                <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
-                <a href="profile.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Profile</a>
-            </nav>
+<body>
+    <header class="header">
+        <div class="header-nav">
+            <a href="index.html" class="back-btn">← Home</a>
+            <a href="content.html" class="back-btn">📚 Library</a>
+            <a href="account.html" class="back-btn">👤 Profile</a>
         </div>
-        <nav id="mobileNav" class="md:hidden fixed top-0 left-0 w-full h-full bg-white/95 z-50 flex flex-col items-center pt-24 gap-8 text-xl font-medium text-blue-700 transition-all duration-300 -translate-y-full">
-            <a href="index.html" class="hover:text-blue-900 transition">Home</a>
-            <a href="content.html" class="hover:text-blue-900 transition">Content</a>
-            <a href="videos.html" class="hover:text-blue-900 transition">Videos</a>
-            <a href="profile.html" class="hover:text-blue-900 transition">Profile</a>
-            <button id="closeMobileNav" class="absolute top-6 right-6 text-3xl text-blue-700" aria-label="Close menu">&times;</button>
-        </nav>
-        <div class="max-w-2xl mx-auto px-6 pb-4">
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search songs..."
-                class="w-full p-3 border border-blue-100 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-            />
+        <div class="header-content">
+            <h1>Browse Library</h1>
+            <p class="subtitle">Explore our collection of guitar tabs and sheet music</p>
         </div>
     </header>
 
-    <main class="flex flex-col items-center justify-center py-10 px-5 gap-8 max-w-7xl mx-auto">
-        <h1 class="text-4xl font-extrabold text-gray-900 mb-6 text-center">Explore Our Tabs & Lessons</h1>
-
-        <div class="w-full max-w-4xl bg-white/70 p-6 rounded-2xl shadow-lg border border-blue-100 flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
-            <div class="flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
-                <label for="genreFilter" class="font-semibold text-gray-700 text-lg">Genre:</label>
-                <select id="genreFilter" class="p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent w-full sm:w-auto">
-                    <option value="All">All Genres</option>
-                    <option value="Rock">Rock</option>
-                    <option value="Hard Rock">Hard Rock</option>
-                    <option value="Classic Rock">Classic Rock</option>
-                    <option value="Pop">Pop</option>
-                    <option value="Blues">Blues</option>
-                    <option value="Metal">Metal</option>
-                    <option value="Acoustic">Acoustic</option>
-                    <option value="Grunge/Alternative">Grunge/Alternative</option>
-                    <option value="Southern Rock">Southern Rock</option>
-                </select>
+    <section class="search-section">
+        <div class="container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" id="searchInput" placeholder="Search for songs, artists, or genres...">
             </div>
-            
-            <div class="flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
-                <label for="difficultyFilter" class="font-semibold text-gray-700 text-lg">Difficulty:</label>
-                <select id="difficultyFilter" class="p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent w-full sm:w-auto">
-                    <option value="All">All Difficulties</option>
-                    <option value="Beginner">Beginner</option>
-                    <option value="Intermediate">Intermediate</option>
-                    <option value="Advanced">Advanced</option>
-                </select>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All Songs</button>
+                <button class="filter-btn" data-filter="rock">Rock</button>
+                <button class="filter-btn" data-filter="pop">Pop Rock</button>
+                <button class="filter-btn" data-filter="alternative">Alternative</button>
+                <button class="filter-btn" data-filter="folk">Folk</button>
+                <button class="filter-btn" data-filter="videogame">Video Game</button>
+                <button class="filter-btn" data-filter="guitar">Guitar</button>
+                <button class="filter-btn" data-filter="piano">Piano</button>
+            </div>
+
+            <div class="songs-grid" id="songsGrid">
+                <!-- Nirvana Songs -->
+                <a href="sltsnirvana.html" class="song-card" data-genre="rock alternative">
+                    <span class="song-icon">🎸</span>
+                    <h3 class="song-title">Smells Like Teen Spirit</h3>
+                    <p class="song-artist">Nirvana</p>
+                    <div class="song-meta">
+                        <span class="meta-item">📊 Intermediate</span>
+                        <span class="meta-item">🎸 Guitar</span>
+                    </div>
+                </a>
+
+                <!-- Video Game Songs -->
+                <a href="%5BN64%5D%20-%20Super%20Mario%2064%20-%20Bob-Omb%20Battlefield-1.pdf" class="song-card" data-genre="videogame piano">
+                    <span class="song-icon">🎹</span>
+                    <h3 class="song-title">Bob-Omb Battlefield</h3>
+                    <p class="song-artist">Koji Kondo</p>
+                    <div class="song-meta">
+                        <span class="meta-item">📊 Intermediate</span>
+                        <span class="meta-item">🎹 Piano</span>
+                        <span class="meta-item">📄 PDF</span>
+                    </div>
+                </a>
+
+                <!-- AC/DC Songs -->
+                <a href="back_in_black.html" class="song-card" data-genre="rock">
+                    <span class="song-icon">🎸</span>
+                    <h3 class="song-title">Back in Black</h3>
+                    <p class="song-artist">AC/DC</p>
+                    <div class="song-meta">
+                        <span class="meta-item">📊 Intermediate</span>
+                        <span class="meta-item">🎸 Guitar</span>
+                    </div>
+                </a>
+
+                <a href="highway_to_hell_acdc.html" class="song-card" data-genre="rock">
+                    <span class="song-icon">🎸</span>
+                    <h3 class="song-title">Highway to Hell</h3>
+                    <p class="song-artist">AC/DC</p>
+                    <div class="song-meta">
+                        <span class="meta-item">📊 Intermediate</span>
+                        <span class="meta-item">🎸 Guitar</span>
+                    </div>
+                </a>
+
+                <a href="Dirty%20Deeds%20Done%20Dirt%20Cheap.html" class="song-card" data-genre="rock">
+                    <span class="song-icon">🎸</span>
+                    <h3 class="song-title">Dirty Deeds Done Dirt Cheap</h3>
+                    <p class="song-artist">AC/DC</p>
+                    <div class="song-meta">
+                        <span class="meta-item">📊 Intermediate</span>
+                        <span class="meta-item">🎸 Guitar</span>
+                    </div>
+                </a>
+
+                <!-- Queen Songs -->
+                <a href="bohemian_rhapsody.html" class="song-card" data-genre="rock">
+                    <span class="song-icon">🎸</span>
+                    <h3 class="song-title">Bohemian Rhapsody</h3>
+                    <p class="song-artist">Queen</p>
+                    <div class="song-meta">
+                        <span class="meta-item">📊 Advanced</span>
+                        <span class="meta-item">🎸 Guitar</span>
+                    </div>
+                </a>
+
+                <!-- Deep Purple Songs -->
+                <a href="highway_star.html" class="song-card" data-genre="rock">
+                    <span class="song-icon">🎸</span>
+                    <h3 class="song-title">Highway Star</h3>
+                    <p class="song-artist">Deep Purple</p>
+                    <div class="song-meta">
+                        <span class="meta-item">📊 Advanced</span>
+                        <span class="meta-item">🎸 Guitar</span>
+                    </div>
+                </a>
+
+                <!-- The Beatles Songs -->
+                <a href="hey_jude.html" class="song-card" data-genre="pop rock">
+                    <span class="song-icon">🎸</span>
+                    <h3 class="song-title">Hey Jude</h3>
+                    <p class="song-artist">The Beatles</p>
+                    <div class="song-meta">
+                        <span class="meta-item">📊 Intermediate</span>
+                        <span class="meta-item">🎸 Guitar</span>
+                    </div>
+                </a>
+
+                <a href="i_want_to_hold_your_hand.html" class="song-card" data-genre="pop rock">
+                    <span class="song-icon">🎸</span>
+                    <h3 class="song-title">I Want to Hold Your Hand</h3>
+                    <p class="song-artist">The Beatles</p>
+                    <div class="song-meta">
+                        <span class="meta-item">📊 Beginner</span>
+                        <span class="meta-item">🎸 Guitar</span>
+                    </div>
+                </a>
+
+                <!-- Chuck Berry Songs -->
+                <a href="johnny_b_goode.html" class="song-card" data-genre="rock">
+                    <span class="song-icon">🎸</span>
+                    <h3 class="song-title">Johnny B. Goode</h3>
+                    <p class="song-artist">Chuck Berry</p>
+                    <div class="song-meta">
+                        <span class="meta-item">📊 Intermediate</span>
+                        <span class="meta-item">� Guitar</span>
+                    </div>
+                </a>
+
+                <!-- Men At Work Songs -->
+                <a href="down_under.html" class="song-card" data-genre="pop rock">
+                    <span class="song-icon">🎸</span>
+                    <h3 class="song-title">Down Under</h3>
+                    <p class="song-artist">Men At Work</p>
+                    <div class="song-meta">
+                        <span class="meta-item">📊 Beginner</span>
+                        <span class="meta-item">🎸 Guitar</span>
+                    </div>
+                </a>
+
+                <!-- The Animals Songs -->
+                <a href="house_of_the_rising_sun.html" class="song-card" data-genre="rock folk">
+                    <span class="song-icon">🎸</span>
+                    <h3 class="song-title">House of the Rising Sun</h3>
+                    <p class="song-artist">The Animals</p>
+                    <div class="song-meta">
+                        <span class="meta-item">📊 Intermediate</span>
+                        <span class="meta-item">🎸 Guitar</span>
+                    </div>
+                </a>
+
+                <!-- Lynyrd Skynyrd Songs -->
+                <a href="free_bird.html" class="song-card" data-genre="rock">
+                    <span class="song-icon">🎸</span>
+                    <h3 class="song-title">Free Bird</h3>
+                    <p class="song-artist">Lynyrd Skynyrd</p>
+                    <div class="song-meta">
+                        <span class="meta-item">📊 Advanced</span>
+                        <span class="meta-item">🎸 Guitar</span>
+                    </div>
+                </a>
             </div>
         </div>
+    </section>
 
-        <div class="flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
-            <label for="instrumentFilter" class="font-semibold text-gray-700 text-lg">Instrument:</label>
-            <select id="instrumentFilter" class="p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent w-full sm:w-auto">
-                <option value="All">All Instruments</option>
-                <option value="Guitar">Guitar</option>
-                <option value="Piano">Piano</option>
-            </select>
-        </div>
-
-        <div id="songList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl px-4">
-            <p class="text-center text-gray-600 col-span-full">No songs found matching your criteria.</p>
-        </div>
-    </main>
-
-    <div id="cookieConsent" class="fixed bottom-0 left-0 right-0 bg-blue-800 text-white p-4 flex flex-col sm:flex-row items-center justify-between gap-4 z-50 hidden">
-        <p class="text-sm text-center sm:text-left">
-            This website uses cookies to ensure you get the best experience. By continuing to use this site, you agree to our <a href="privacy.html" class="underline font-bold">Privacy Policy</a>.
-        </p>
-        <button id="acceptCookies" class="px-6 py-2 bg-white text-blue-800 rounded-lg shadow-md hover:bg-gray-100 font-semibold transition-colors duration-200">
-            Accept
-        </button>
-    </div>
-
-    <div id="searchModal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
-        <div class="bg-white p-8 rounded-2xl shadow-2xl w-11/12 md:w-1/2">
-            <button id="closeModal" class="text-red-500 font-bold float-right text-xl">×</button>
-            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Search Results</h2>
-            <div id="searchResults" class="flex flex-wrap justify-center gap-6">
-                </div>
-        </div>
-    </div>
-
-    <footer class="bg-white text-center py-4 mt-10 border-t border-gray-300">
-        <p class="text-gray-600 text-sm">© 2025 The Sheet Music Directory. Created by Mattia Lobrano.</p>
-        <nav class="mt-2">
-            <a href="privacy.html" class="text-blue-500 text-sm hover:underline">Privacy Policy</a> |
-            <a href="terms.html" class="text-blue-500 text-sm hover:underline">Terms and Conditions</a>
-        </nav>
-        <div class="mt-4 flex justify-center items-center gap-4">
-            <a href="https://www.tiktok.com/@the_guitar_directory" target="_blank" class="flex items-center gap-2">
-                <img src="tiktok.png" alt="TikTok" class="w-6 h-6">
-                <span class="text-blue-500 text-sm hover:underline">Follow us on TikTok</span>
-            </a>
-        </div>
+    <footer>
+        <p class="footer-note">© 2025 The Sheet Music Directory. Created with ❤️ for musicians everywhere.</p>
     </footer>
 
     <script>
-        // --- Cookie Consent Logic ---
-        function setCookie(name, value, days) {
-            let expires = "";
-            if (days) {
-                const date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + (value || "") + expires + "; path=/";
-        }
+        const searchInput = document.getElementById('searchInput');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const songsGrid = document.getElementById('songsGrid');
+        const songCards = document.querySelectorAll('.song-card');
 
-        function getCookie(name) {
-            const nameEQ = name + "=";
-            const ca = document.cookie.split(';');
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-            }
-            return null;
-        }
-
-        function showCookieConsent() {
-            if (!getCookie('cookieConsent')) {
-                document.getElementById('cookieConsent').classList.remove('hidden');
-            }
-        }
-        document.getElementById('acceptCookies').addEventListener('click', function() {
-            setCookie('cookieConsent', 'accepted', 365);
-            document.getElementById('cookieConsent').classList.add('hidden');
-        });
-
-        // --- Hamburger menu functionality ---
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mobileNav = document.getElementById('mobileNav');
-        const closeMobileNav = document.getElementById('closeMobileNav');
-
-        hamburgerBtn.addEventListener('click', () => {
-            mobileNav.classList.remove('-translate-y-full');
-            mobileNav.classList.add('translate-y-0');
-        });
-
-        closeMobileNav.addEventListener('click', () => {
-            mobileNav.classList.remove('translate-y-0');
-            mobileNav.classList.add('-translate-y-full');
-        });
-
-        // Optional: close mobile nav when clicking a link
-        mobileNav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileNav.classList.add('-translate-y-full');
-                mobileNav.classList.remove('translate-y-0');
+        // Search functionality
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            songCards.forEach(card => {
+                const title = card.querySelector('.song-title').textContent.toLowerCase();
+                const artist = card.querySelector('.song-artist').textContent.toLowerCase();
+                const genre = card.dataset.genre.toLowerCase();
+                
+                if (title.includes(searchTerm) || artist.includes(searchTerm) || genre.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
             });
         });
 
-        // --- Song Data ---
-        const songsData = [
-    { title: "Smells Like Teen Spirit", artist: "Nirvana", genre: "Grunge/Alternative", difficulty: "Intermediate", instrument: "Guitar", link: "sltsnirvana.html" },
-    { title: "Dirty Deeds Done Dirt Cheap", artist: "AC/DC", genre: "Hard Rock", difficulty: "Beginner", instrument: "Guitar", link: "Dirty Deeds Done Dirt Cheap.html" },
-    { title: "Thunderstruck", artist: "AC/DC", genre: "Hard Rock", difficulty: "Advanced", instrument: "Guitar", link: "thunderstruck.html" },
-    { title: "Back in Black", artist: "AC/DC", genre: "Hard Rock", difficulty: "Intermediate", instrument: "Guitar", link: "back_in_black.html" },
-    { title: "Highway Star", artist: "Deep Purple", genre: "Hard Rock", difficulty: "Advanced", instrument: "Guitar", link: "highway_star.html" },
-    { title: "Down Under", artist: "Men At Work", genre: "Pop", difficulty: "Beginner", instrument: "Guitar", link: "down_under.html" },
-    { title: "Free Bird", artist: "Lynyrd Skynyrd", genre: "Southern Rock", difficulty: "Advanced", instrument: "Guitar", link: "free_bird.html" },
-    { title: "Twist And Shout", artist: "The Beatles", genre: "Rock", difficulty: "Beginner", instrument: "Guitar", link: "twist_and_shout.html" },
-    { title: "I Want To Hold Your Hand", artist: "The Beatles", genre: "Pop", difficulty: "Beginner", instrument: "Guitar", link: "i_want_to_hold_your_hand.html" },
-    { title: "Hey Jude", artist: "The Beatles", genre: "Classic Rock", difficulty: "Intermediate", instrument: "Guitar", link: "hey_jude.html" },
-    { title: "Johnny B. Goode", artist: "Chuck Berry", genre: "Rock", difficulty: "Intermediate", instrument: "Guitar", link: "johnny_b_goode.html" },
-    { title: "Bohemian Rhapsody", artist: "Queen", genre: "Classic Rock", difficulty: "Advanced", instrument: "Guitar", link: "bohemian_rhapsody.html" },
-    { title: "Bob-Omb Battlefield", artist: "Koji Kondo", genre: "Video Game", difficulty: "Intermediate", instrument: "Piano", link: "[N64] - Super Mario 64 - Bob-Omb Battlefield-1.pdf" } // New song added
-];
-
-        // --- Filter and Display Logic ---
-        const genreFilter = document.getElementById('genreFilter');
-        const difficultyFilter = document.getElementById('difficultyFilter');
-        const songListDiv = document.getElementById('songList');
-        const searchInput = document.getElementById('searchInput'); // Main search bar in header
-
-        function displaySongs() {
-    const selectedGenre = genreFilter.value;
-    const selectedDifficulty = difficultyFilter.value;
-    const selectedInstrument = instrumentFilter.value;
-    const searchTerm = searchInput.value.toLowerCase().trim();
-
-    const filteredSongs = songsData.filter(song => {
-        const matchesGenre = (selectedGenre === 'All' || song.genre === selectedGenre);
-        const matchesDifficulty = (selectedDifficulty === 'All' || song.difficulty === selectedDifficulty);
-        const matchesInstrument = (selectedInstrument === 'All' || song.instrument === selectedInstrument);
-        const matchesSearch = song.title.toLowerCase().includes(searchTerm) || 
-                              song.artist.toLowerCase().includes(searchTerm);
-        return matchesGenre && matchesDifficulty && matchesInstrument && matchesSearch;
-    });
-
-    songListDiv.innerHTML = ''; // Clear previous songs
-
-    if (filteredSongs.length === 0) {
-        songListDiv.innerHTML = '<p class="text-center text-gray-600 col-span-full mt-8">No songs found matching your criteria.</p>';
-        return;
-    }
-
-    filteredSongs.forEach(song => {
-        const songCard = document.createElement('div');
-        songCard.className = 'song-card bg-white p-6 rounded-xl shadow-lg border border-blue-100 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 flex flex-col justify-between';
-        songCard.innerHTML = `
-            <div class="flex-grow">
-                <h3 class="text-2xl font-bold text-blue-700 mb-2">${song.title}</h3>
-                <p class="text-gray-600 mb-3">${song.artist}</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                    <span class="px-3 py-1 bg-purple-200 text-purple-800 rounded-full text-sm font-semibold">${song.genre}</span>
-                    <span class="px-3 py-1 ${getDifficultyColor(song.difficulty)} rounded-full text-sm font-semibold">${song.difficulty}</span>
-                    <span class="px-3 py-1 bg-blue-200 text-blue-800 rounded-full text-sm font-semibold">${song.instrument}</span>
-                </div>
-            </div>
-            <a href="${song.link}" class="mt-4 inline-block bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center self-start">
-                ${song.instrument === 'Piano' ? 'Download PDF' : 'View Tab'}
-            </a>
-        `;
-        songListDiv.appendChild(songCard);
-    });
-}
-
-        function getDifficultyColor(difficulty) {
-            switch (difficulty) {
-                case 'Beginner': return 'bg-green-200 text-green-800';
-                case 'Intermediate': return 'bg-yellow-200 text-yellow-800';
-                case 'Advanced': return 'bg-red-200 text-red-800';
-                default: return 'bg-gray-200 text-gray-800';
-            }
-        }
-
-        // Event listeners for filters and search
-        genreFilter.addEventListener('change', displaySongs);
-        difficultyFilter.addEventListener('change', displaySongs);
-        searchInput.addEventListener('input', displaySongs);
-
-        // --- Search Modal Logic (copied from other pages) ---
-        const searchModal = document.getElementById('searchModal');
-        const searchResults = document.getElementById('searchResults');
-        const closeModal = document.getElementById('closeModal');
-
-        closeModal.addEventListener('click', () => {
-            searchModal.classList.add('hidden');
-            searchResults.innerHTML = '';
-            // Reset main search input if closing modal
-            searchInput.value = ''; 
-            displaySongs(); // Re-display all songs
+        // Filter functionality
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                
+                songCards.forEach(card => {
+                    const genre = card.dataset.genre.toLowerCase();
+                    
+                    if (filter === 'all' || genre.includes(filter)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
         });
-
-        searchInput.addEventListener('focus', () => {
-            // This event listener for 'focus' on the main search input is not strictly needed
-            // if the search only filters the current page. The 'input' event listener handles it.
-            // If you intend to use a modal for a global search across all pages,
-            // this `focus` event could trigger opening the modal and then the search would happen there.
-            // For now, it just filters the song list on this page.
-        });
-
-        // Initial display of songs on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            showCookieConsent();
-            displaySongs(); // Call displaySongs on initial load
-        });
-        const instrumentFilter = document.getElementById('instrumentFilter');
-instrumentFilter.addEventListener('change', displaySongs);
-
     </script>
 </body>
 </html>

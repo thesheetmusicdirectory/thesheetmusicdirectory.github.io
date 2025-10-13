@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Account - The Sheet Music Directory</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 119, 198, 0.3), transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #0a0a0a);
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 2rem;
+            top: 2rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(-5px);
+        }
+
+        .profile-section {
+            position: relative;
+            z-index: 1;
+            margin-top: -50px;
+            padding: 0 2rem;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .profile-info h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-info p {
+            opacity: 0.7;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(120deg, #667eea, #f093fb);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .favorite-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+        }
+
+        .favorite-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: #667eea;
+        }
+
+        .favorite-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .favorite-icon {
+            font-size: 2rem;
+        }
+
+        .favorite-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .favorite-info p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .recent-activity {
+            margin: 3rem auto;
+            max-width: 800px;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(102, 126, 234, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-time {
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
+        .settings-section {
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+
+        .settings-group {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .settings-group h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .setting-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-label {
+            opacity: 0.8;
+        }
+
+        .toggle-switch {
+            width: 50px;
+            height: 26px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 13px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .toggle-switch.active {
+            background: #667eea;
+        }
+
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            top: 3px;
+            left: 3px;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-switch.active::before {
+            transform: translateX(24px);
+        }
+
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .back-btn {
+                position: static;
+                margin-bottom: 2rem;
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="back-btn">← Home</a>
+        <div class="header-content">
+            <h1>Your Account</h1>
+        </div>
+    </header>
+
+    <section class="profile-section">
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="profile-avatar">🎵</div>
+                <div class="profile-info">
+                    <h2>Your Name</h2>
+                    <p>Member since October 2025</p>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Favorite Songs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Playlists</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Practice Hours</div>
+                </div>
+            </div>
+            <button id="practice-btn" onclick="startPractice()" style="
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                border: none;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 20px;
+                cursor: pointer;
+                margin: 20px 0;
+                font-weight: bold;
+                transition: transform 0.2s;
+            ">▶️ Start Practice</button>
+
+            <h2 class="section-title">Your Favorites</h2>
+            <div class="favorites-grid">
+                <a href="bohemian_rhapsody.html" class="favorite-card">
+                    <div class="favorite-header">
+                        <span class="favorite-icon">🎸</span>
+                        <div class="favorite-info">
+                            <h3>Bohemian Rhapsody</h3>
+                            <p>Queen</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="back_in_black.html" class="favorite-card">
+                    <div class="favorite-header">
+                        <span class="favorite-icon">🎸</span>
+                        <div class="favorite-info">
+                            <h3>Back in Black</h3>
+                            <p>AC/DC</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="hey_jude.html" class="favorite-card">
+                    <div class="favorite-header">
+                        <span class="favorite-icon">🎸</span>
+                        <div class="favorite-info">
+                            <h3>Hey Jude</h3>
+                            <p>The Beatles</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="recent-activity">
+                <h2 class="section-title">Recent Activity</h2>
+                <div class="activity-item">
+                    <div class="activity-icon">🎵</div>
+                    <div class="activity-content">
+                        <p>Added "Bohemian Rhapsody" to favorites</p>
+                        <span class="activity-time">2 hours ago</span>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">👁️</div>
+                    <div class="activity-content">
+                        <p>Viewed "Back in Black" sheet music</p>
+                        <span class="activity-time">Yesterday</span>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">⭐</div>
+                    <div class="activity-content">
+                        <p>Added "Hey Jude" to favorites</p>
+                        <span class="activity-time">2 days ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h2 class="section-title">Settings</h2>
+                <div class="settings-group">
+                    <h3>Preferences</h3>
+                    <div class="setting-item">
+                        <span class="setting-label">Dark Mode</span>
+                        <div class="toggle-switch active"></div>
+                    </div>
+                    <div class="setting-item">
+                        <span class="setting-label">Auto-play Preview</span>
+                        <div class="toggle-switch active"></div>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <h3>Privacy</h3>
+                    <div class="setting-item">
+                        <span class="setting-label">Public Profile</span>
+                        <div class="toggle-switch"></div>
+                    </div>
+                    <div class="setting-item">
+                        <span class="setting-label">Show Activity Status</span>
+                        <div class="toggle-switch active"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Initialize local storage with default values if not exists
+        if (!localStorage.getItem('userSettings')) {
+            const defaultSettings = {
+                darkMode: true,
+                autoplayPreview: true,
+                publicProfile: false,
+                showActivityStatus: true
+            };
+            localStorage.setItem('userSettings', JSON.stringify(defaultSettings));
+        }
+
+        if (!localStorage.getItem('favorites')) {
+            const defaultFavorites = [
+                { id: 'bohemian-rhapsody', title: 'Bohemian Rhapsody', artist: 'Queen', icon: '🎸' },
+                { id: 'back-in-black', title: 'Back in Black', artist: 'AC/DC', icon: '🎸' },
+                { id: 'hey-jude', title: 'Hey Jude', artist: 'The Beatles', icon: '🎸' }
+            ];
+            localStorage.setItem('favorites', JSON.stringify(defaultFavorites));
+        }
+
+        if (!localStorage.getItem('recentActivity')) {
+            const defaultActivity = [
+                { type: '🎵', text: 'Added "Bohemian Rhapsody" to favorites', time: '2 hours ago' },
+                { type: '👁️', text: 'Viewed "Back in Black" sheet music', time: 'Yesterday' },
+                { type: '⭐', text: 'Added "Hey Jude" to favorites', time: '2 days ago' }
+            ];
+            localStorage.setItem('recentActivity', JSON.stringify(defaultActivity));
+        }
+
+        if (!localStorage.getItem('practiceData')) {
+            const defaultPracticeData = {
+                totalHours: 0,
+                sessions: []
+            };
+            localStorage.setItem('practiceData', JSON.stringify(defaultPracticeData));
+        }
+
+        // Load and update favorites
+        function updateFavorites() {
+            const favorites = JSON.parse(localStorage.getItem('favorites'));
+            const favoritesGrid = document.querySelector('.favorites-grid');
+            const favoriteCount = document.querySelector('.stat-number');
+            
+            favoritesGrid.innerHTML = favorites.map(fav => `
+                <div class="favorite-card" data-id="${fav.id}">
+                    <div class="favorite-header">
+                        <span class="favorite-icon">${fav.icon}</span>
+                        <div class="favorite-info">
+                            <h3>${fav.title}</h3>
+                            <p>${fav.artist}</p>
+                        </div>
+                    </div>
+                    <button onclick="removeFavorite('${fav.id}')" class="remove-btn" style="background: none; border: none; color: #f093fb; cursor: pointer; margin-top: 10px;">
+                        ❌ Remove
+                    </button>
+                </div>
+            `).join('');
+            
+            favoriteCount.textContent = favorites.length;
+        }
+
+        // Remove favorite
+        function removeFavorite(id) {
+            const favorites = JSON.parse(localStorage.getItem('favorites'));
+            const updatedFavorites = favorites.filter(fav => fav.id !== id);
+            localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+            
+            // Add to recent activity
+            const removedSong = favorites.find(fav => fav.id === id);
+            addActivity('❌', `Removed "${removedSong.title}" from favorites`);
+            
+            updateFavorites();
+            updateRecentActivity();
+        }
+
+        // Add activity
+        function addActivity(icon, text) {
+            const activities = JSON.parse(localStorage.getItem('recentActivity'));
+            activities.unshift({
+                type: icon,
+                text: text,
+                time: 'Just now'
+            });
+            
+            // Keep only last 10 activities
+            if (activities.length > 10) activities.pop();
+            
+            localStorage.setItem('recentActivity', JSON.stringify(activities));
+        }
+
+        // Practice tracking functions
+        function startPractice() {
+            const practiceData = JSON.parse(localStorage.getItem('practiceData'));
+            practiceData.sessions.push({
+                startTime: new Date().toISOString(),
+                song: document.querySelector('.favorite-card h3')?.textContent || 'General Practice'
+            });
+            localStorage.setItem('practiceData', JSON.stringify(practiceData));
+            addActivity('▶️', 'Started practice session');
+            updateRecentActivity();
+            document.getElementById('practice-btn').innerHTML = '⏹️ End Practice';
+            document.getElementById('practice-btn').onclick = endPractice;
+        }
+
+        function endPractice() {
+            const practiceData = JSON.parse(localStorage.getItem('practiceData'));
+            const lastSession = practiceData.sessions[practiceData.sessions.length - 1];
+            const startTime = new Date(lastSession.startTime);
+            const endTime = new Date();
+            const hoursSpent = (endTime - startTime) / (1000 * 60 * 60);
+            
+            practiceData.totalHours += hoursSpent;
+            lastSession.endTime = endTime.toISOString();
+            lastSession.duration = hoursSpent;
+            
+            localStorage.setItem('practiceData', JSON.stringify(practiceData));
+            addActivity('⏹️', `Practiced for ${Math.round(hoursSpent * 60)} minutes`);
+            updateRecentActivity();
+            updatePracticeHours();
+            
+            document.getElementById('practice-btn').innerHTML = '▶️ Start Practice';
+            document.getElementById('practice-btn').onclick = startPractice;
+        }
+
+        function updatePracticeHours() {
+            const practiceData = JSON.parse(localStorage.getItem('practiceData'));
+            const practiceHoursElement = document.querySelector('.stats-grid .stat-card:nth-child(3) .stat-number');
+            practiceHoursElement.textContent = Math.round(practiceData.totalHours);
+        }
+
+        // Update recent activity
+        function updateRecentActivity() {
+            const activities = JSON.parse(localStorage.getItem('recentActivity'));
+            const activityContainer = document.querySelector('.recent-activity');
+            
+            const activityHTML = activities.map(activity => `
+                <div class="activity-item">
+                    <div class="activity-icon">${activity.type}</div>
+                    <div class="activity-content">
+                        <p>${activity.text}</p>
+                        <span class="activity-time">${activity.time}</span>
+                    </div>
+                </div>
+            `).join('');
+            
+            activityContainer.innerHTML = `
+                <h2 class="section-title">Recent Activity</h2>
+                ${activityHTML}
+            `;
+        }
+
+        // Handle settings
+        document.querySelectorAll('.toggle-switch').forEach(toggle => {
+            const settingName = toggle.parentElement.querySelector('.setting-label').textContent.toLowerCase().replace(/\s+/g, '');
+            const settings = JSON.parse(localStorage.getItem('userSettings'));
+            
+            // Set initial state
+            if (settings[settingName]) {
+                toggle.classList.add('active');
+            }
+            
+            toggle.addEventListener('click', () => {
+                toggle.classList.toggle('active');
+                settings[settingName] = toggle.classList.contains('active');
+                localStorage.setItem('userSettings', JSON.stringify(settings));
+                
+                // Add to recent activity
+                const settingLabel = toggle.parentElement.querySelector('.setting-label').textContent;
+                const state = toggle.classList.contains('active') ? 'enabled' : 'disabled';
+                addActivity('⚙️', `${settingLabel} ${state}`);
+                updateRecentActivity();
+            });
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            updateFavorites();
+            updateRecentActivity();
+            updatePracticeHours();
+        });
+    </script>
+</body>
+</html>
