@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | The Sheet Music Directory</title>
+    <meta name="theme-color" content="#667eea">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .container { text-align: center; padding: 2rem; max-width: 600px; position: relative; z-index: 1; }
+        .error-code { font-size: clamp(8rem, 20vw, 15rem); font-weight: 900; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin-bottom: 1rem; animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(0.98); } }
+        .guitar-icon { font-size: 5rem; margin-bottom: 1rem; animation: swing 2s ease-in-out infinite; display: inline-block; }
+        @keyframes swing { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+        h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 1rem; color: #fff; }
+        p { font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem; line-height: 1.6; }
+        .buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: white; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6); }
+        .btn-secondary { background: rgba(255, 255, 255, 0.1); color: white; border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-3px); }
+        .suggestions { margin-top: 3rem; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; }
+        .suggestions h2 { font-size: 1.3rem; margin-bottom: 1rem; color: #667eea; }
+        .suggestions ul { list-style: none; }
+        .suggestions li { margin: 0.5rem 0; }
+        .suggestions a { color: #f093fb; text-decoration: none; transition: color 0.3s; }
+        .suggestions a:hover { color: #667eea; }
+        .background { position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; overflow: hidden; }
+        .background::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1), transparent 50%), radial-gradient(circle at 80% 80%, rgba(240, 147, 251, 0.1), transparent 50%); animation: float 20s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(30px, -30px) scale(1.1); } 66% { transform: translate(-20px, 20px) scale(0.9); } }
+        .notes { position: absolute; font-size: 2rem; opacity: 0.1; animation: floatNote 10s ease-in-out infinite; }
+        .note1 { top: 10%; left: 10%; animation-delay: 0s; }
+        .note2 { top: 20%; right: 15%; animation-delay: 2s; }
+        .note3 { bottom: 20%; left: 20%; animation-delay: 4s; }
+        .note4 { bottom: 15%; right: 10%; animation-delay: 6s; }
+        @keyframes floatNote { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(10deg); } }
+        @media (max-width: 768px) { .container { padding: 1rem; } .error-code { font-size: 8rem; } .buttons { flex-direction: column; width: 100%; } .btn { width: 100%; justify-content: center; } }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="notes note1">🎵</div>
+        <div class="notes note2">🎶</div>
+        <div class="notes note3">🎸</div>
+        <div class="notes note4">🎹</div>
+    </div>
+
+    <div class="container">
+        <div class="guitar-icon">🎸</div>
+        <div class="error-code">404</div>
+        <h1>Oops! This Page Hit a Wrong Note</h1>
+        <p>Looks like this page doesn't exist, or maybe it's taking a solo break. Don't worry, we'll get you back on track!</p>
+
+        <div class="buttons">
+            <a href="index.html" class="btn btn-primary">
+                <span>🏠</span>
+                <span>Go Home</span>
+            </a>
+            <a href="content.html" class="btn btn-secondary">
+                <span>📚</span>
+                <span>Browse Songs</span>
+            </a>
+        </div>
+
+        <div class="suggestions">
+            <h2>🎵 Popular Pages</h2>
+            <ul>
+                <li>→ <a href="index.html">Homepage</a></li>
+                <li>→ <a href="content.html">Browse All Songs</a></li>
+                <li>→ <a href="sltsnirvana.html">Smells Like Teen Spirit - Nirvana</a></li>
+                <li>→ <a href="highwaytohell.html">Highway to Hell - AC/DC</a></li>
+                <li>→ <a href="bohemianrhapsody.html">Bohemian Rhapsody - Queen</a></li>
+                <li>→ <a href="about.html">About Us</a></li>
+            </ul>
+        </div>
+
+        <p style="margin-top: 2rem; opacity: 0.6; font-size: 0.9rem;">
+            If you think this is a mistake, please <a href="mailto:theguitardirectory@gmail.com" style="color: #f093fb; text-decoration: none;">let us know</a>
+        </p>
+    </div>
+
+    <script>
+        // Add a fun Easter egg - play a sound on error code click
+        document.querySelector('.error-code').addEventListener('click', () => {
+            const notes = ['🎵', '🎶', '🎸', '🎹', '🥁', '🎺', '🎷'];
+            const randomNote = notes[Math.floor(Math.random() * notes.length)];
+            const noteEl = document.createElement('div');
+            noteEl.textContent = randomNote;
+            noteEl.style.cssText = `
+                position: fixed;
+                font-size: 3rem;
+                pointer-events: none;
+                z-index: 1000;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                animation: popNote 1s ease-out forwards;
+            `;
+            document.body.appendChild(noteEl);
+            setTimeout(() => noteEl.remove(), 1000);
+        });
+
+        // Add animation for pop note
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes popNote {
+                0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+                50% { transform: translate(-50%, -80px) scale(1.5); opacity: 1; }
+                100% { transform: translate(-50%, -120px) scale(0); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
