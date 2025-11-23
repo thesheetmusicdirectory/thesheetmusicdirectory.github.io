@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Down Under – Men at Work</title>
+    <title>{{SONG_TITLE}} – {{ARTIST_NAME}}</title>
     <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
@@ -38,31 +38,25 @@
             overflow-x: hidden
         }
 
-        .page-header {
-            padding: 4rem 2rem;
+        header {
             background: #fff;
-            text-align: center
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem
         }
 
-        .header-nav {
+        .nav {
             display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem
+            gap: 1.5rem
         }
 
-        .nav-link {
+        .nav a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            transition: 0.2s
+            font-size: .95rem;
+            transition: .2s
         }
 
-        .nav-link:hover,
-        .nav-link.active {
-            background: #f1f3f4;
+        .nav a:hover {
             color: var(--primary-color)
         }
 
@@ -182,7 +176,6 @@
             display: flex;
             gap: .75rem;
             flex-wrap: wrap;
-            justify-content: center;
             margin: 1.5rem 0;
             animation: fadeInUp .8s ease-out .5s both
         }
@@ -265,10 +258,10 @@
 </head>
 
 <body>
-    <header class="page-header">
-        <div class="header-nav">
-            <a href="index.html" class="nav-link">← Home</a>
-            <a href="content.html" class="nav-link">Library</a>
+    <header>
+        <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="content.html">Library</a>
         </div>
     </header>
     <section class="hero">
@@ -276,13 +269,13 @@
         <div class="hero-shape shape-2"></div>
         <div class="hero-shape shape-3"></div>
         <div class="hero-content">
-            <div class="song-icon">🎺</div>
-            <h1 class="song-title">Down Under</h1>
-            <p class="artist-name">Men at Work</p>
+            <div class="song-icon">{{ICON_EMOJI}}</div>
+            <h1 class="song-title">{{SONG_TITLE}}</h1>
+            <p class="artist-name">{{ARTIST_NAME}}</p>
             <div class="meta">
-                <span class="meta-badge"><span class="material-icons">show_chart</span>Intermediate</span>
-                <span class="meta-badge"><span class="material-icons">music_note</span>Guitar</span>
-                <span class="meta-badge"><span class="material-icons">album</span>New Wave</span>
+                <span class="meta-badge"><span class="material-icons">{{DIFFICULTY_ICON}}</span>{{DIFFICULTY}}</span>
+                <span class="meta-badge"><span class="material-icons">{{INSTRUMENT_ICON}}</span>{{INSTRUMENT}}</span>
+                <span class="meta-badge"><span class="material-icons">{{GENRE_ICON}}</span>{{GENRE}}</span>
             </div>
             <div class="action-bar">
                 <button class="btn" id="favoriteBtn"><span class="material-icons">favorite_border</span>
@@ -293,47 +286,7 @@
                 <button class="btn" id="shareBtn"><span class="material-icons">share</span> Share</button>
             </div>
             <section class="tabs" id="tabsSection">
-                <pre id="tabContent">
- 
-    |       |       |       |          |       |        |       |
-   Bm               A                  Bm               G       A
-e|----------------------------------|----------------------------------|
-B|----------3---------------2-------|----------3------------3-------2--|
-G|----------4---------------2-------|----------4------------0-------2--|
-D|------4-------4-------2-------2---|------4-------4--------0-------2--|
-A|--2---------------0---------------|--2------------------------0------|
-E|----------------------------------|-------------------3--------------|
-       traveLing... Burned..Crombie
- 
-    |       |       |       |          |       |        |       |
-e|----------------------------------|----------------------------------|
-B|----------3---------------2-------|----------3------------3-------2--|
-G|----------4---------------2-------|----------4------------0-------2--|
-D|------4-------4-------2-------2---|------4-------4--------0-------2--|
-A|--2---------------0---------------|--2------------------------0------|
-E|----------------------------------|-------------------3--------------|
-       on a Hippie...   Head Full...   Zombie
- 
-    |       |       |       |          |       |       |       |
-   D/A              A                  Bm              G       A
-e|----------5---5-5-----5-------5---|------7-------7-------3-------5---|
-B|----------7---7-7-----5-------5---|------7-------7-------3-------5---|
-G|----------7---7-7-----6-------6---|------7-------7-------4-------6---|
-D|----------7---7-7-----7-------7---|------9-------9-------5-------7---|
-A|----------5---5-5-----7-------7---|------9-------9-------5-------7---|
-E|--5---------------5-------5-------|--7-------7-------3-------5-------|
-     do you Come    Land... Under...
- 
-    |       |       |       |          |       |       |       |
-   D/A              A                  Bm              G       A
-e|------5-------5-------5-------5---|------7-------7-------3-------5---|
-B|------7-------7-------5-------5---|------7-------7-------3-------5---|
-G|------7-------7-------6-------6---|------7-------7-------4-------6---|
-D|------7-------7-------7-------7---|------9-------9-------5-------7---|
-A|------5-------5-------7-------7---|------9-------9-------5-------7---|
-E|--5-------5-------5-------5-------|--7-------7-------3-------5-------|
-      where Women glow  and Men Plun-  Der
-                    </pre>
+                <pre id="tabContent">{{TAB_CONTENT}}</pre>
             </section>
         </div>
     </section>
@@ -347,9 +300,9 @@ E|--5-------5-------5-------5-------|--7-------7-------3-------5-------|
         <p class="footer-note">© 2025 The Sheet Music Directory. Created with ❤️ for musicians everywhere.</p>
     </footer>
     <script>
-        // Favorite logic
+        // Favorite logic (same as previous template)
         const favBtn = document.getElementById('favoriteBtn');
-        const songId = 'downunder';
+        const songId = '{{SONG_ID}}';
         function updateFav() {
             const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
             favBtn.innerHTML = favs.includes(songId) ? '<span class="material-icons">favorite</span> Favorite' : '<span class="material-icons">favorite_border</span> Favorite';
@@ -361,10 +314,10 @@ E|--5-------5-------5-------5-------|--7-------7-------3-------5-------|
             updateFav();
         };
         updateFav();
-        // Copy, Print, PDF, Share placeholders
+        // Copy, Print, PDF placeholders
         document.getElementById('copyBtn').onclick = () => { navigator.clipboard.writeText(document.getElementById('tabContent').innerText).then(() => alert('Copied')).catch(() => alert('Copy failed')) };
         document.getElementById('printBtn').onclick = () => { window.print() };
-        document.getElementById('pdfBtn').onclick = () => { alert('PDF generation not implemented') };
+        document.getElementById('pdfBtn').onclick = () => { alert('PDF generation not implemented in this template') };
         document.getElementById('shareBtn').onclick = () => { alert('Share functionality not implemented') };
     </script>
 </body>

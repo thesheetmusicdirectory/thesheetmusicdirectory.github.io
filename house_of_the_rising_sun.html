@@ -1,805 +1,685 @@
-Copilot_20250722_164706.png<!DOCTYPE html><!DOCTYPE html>Copilot_20250722_164706.png<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>House of the Rising Sun - The Animals - The Sheet Music Directory</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">`n    <!-- Security Headers -->`n    <meta http-equiv="X-Content-Type-Options" content="nosniff">`n    <meta http-equiv="X-Frame-Options" content="DENY">`n    <meta http-equiv="X-XSS-Protection" content="1; mode=block">`n    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Explore the classic folk rock song 'House of the Rising Sun' by The Animals. Find tabs, listen to the audio, and more.">
-    <meta name="keywords" content="the animals, house of the rising sun, guitar, tabs, song">
-    <meta name="author" content="Mattia Lobrano">
-    <link rel="icon" href="Copilot_20250722_164706.png" type="image/x-icon">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9724879624767701"
-     crossorigin="anonymous"></script>
-     <meta name="google-adsense-account" content="ca-pub-9724879624767701">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of the Rising Sun – The Animals</title>
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
-        /* Custom styles to ensure proper layout */
-        .tab-container {
-            position: relative;
-            overflow-x: auto;
-            overflow-y: hidden;
-            padding-bottom: 1rem;
+        :root {
+            --primary-color: #1a73e8;
+            --primary-hover: #1557b0;
+            --text-color: #202124;
+            --text-secondary: #5f6368;
+            --bg-color: #ffffff;
+            --border-color: #dadce0;
+            --shadow-1: 0 1px 2px rgba(60, 64, 67, .3), 0 1px 3px rgba(60, 64, 67, .15);
         }
-        .tab-content pre {
-            white-space: pre;
-            font-family: 'SF Mono', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
-            font-size: 1rem;
-            line-height: 1.5;
-            padding: 1.5rem;
+
+        * {
             margin: 0;
-        }
-        /* Custom style for search input focus */
-        .search-input:focus {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
-            outline: none;
+            padding: 0;
+            box-sizing: border-box
         }
 
-        /* --- STILI SPECIFICI PER LA STAMPA --- */
-        @media print {
-            body {
-                background: none !important; /* Rimuove lo sfondo del gradiente */
-                color: black !important; /* Assicura testo nero */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            overflow-x: hidden
+        }
+
+        .page-header {
+            padding: 4rem 2rem;
+            background: #fff;
+            text-align: center
+        }
+
+        .header-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: 0.2s
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: #f1f3f4;
+            color: var(--primary-color)
+        }
+
+        .hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #fff;
+            overflow: hidden
+        }
+
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.05;
+            z-index: 0;
+            animation: float 6s ease-in-out infinite
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary-color);
+            top: -50px;
+            left: -50px;
+            animation-delay: 0s
+        }
+
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background: #34A853;
+            bottom: -100px;
+            right: -100px;
+            animation-delay: 2s
+        }
+
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            background: #EA4335;
+            top: 20%;
+            right: 10%;
+            animation-delay: 4s
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
             }
 
-            /* Nasconde gli elementi che non vuoi stampare */
-            header,
-            #mobileNav,
-            .flex-wrap.justify-center.items-center.gap-4, /* Contiene i pulsanti metronomo e preferiti */
-            .flex-wrap.justify-center.items-center.gap-4.pt-2.border-t.border-gray-200, /* Contiene il pulsante Print Tab */
-            footer,
-            .search-input, /* La barra di ricerca */
-            .tab-container + div { /* Se ci sono altri div dopo il tab-container che non vuoi */
-                display: none !important;
+            50% {
+                transform: translateY(-20px)
+            }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 1;
+            position: relative
+        }
+
+        .song-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp .8s ease-out .1s both
+        }
+
+        .song-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 300;
+            margin-bottom: .5rem;
+            color: var(--text-color);
+            animation: fadeInUp .8s ease-out .2s both
+        }
+
+        .artist-name {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            animation: fadeInUp .8s ease-out .3s both
+        }
+
+        .meta-badge {
+            background: #f8f9fa;
+            border: 1px solid var(--border-color);
+            padding: .5rem 1rem;
+            border-radius: 16px;
+            font-size: .9rem;
+            color: var(--text-secondary);
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            margin: 0 .3rem;
+            animation: fadeInUp .8s ease-out .4s both
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px)
             }
 
-            /* Assicura che solo la sezione della tablatura sia visibile */
-            main section {
-                box-shadow: none !important;
-                border: none !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                overflow: visible !important;
+            to {
+                opacity: 1;
+                transform: translateY(0)
             }
+        }
 
-            /* Rende la tablatura il focus principale */
-            .tab-container {
-                width: 100% !important;
-                max-width: none !important;
-                box-shadow: none !important;
-                border: none !important;
-                overflow: visible !important;
-                padding-bottom: 0 !important;
-            }
+        .action-bar {
+            display: flex;
+            gap: .75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 1.5rem 0;
+            animation: fadeInUp .8s ease-out .5s both
+        }
 
-            .tab-content pre {
-                padding: 0 !important;
-                font-size: 0.8rem !important; /* Riduci la dimensione del font per far stare più tablatura */
-                line-height: 1.2 !important; /* Riduci l'interlinea */
-            }
+        .btn {
+            padding: 0 16px;
+            height: 40px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            transition: .2s
+        }
+
+        .btn:hover {
+            background: #f8f9fa;
+            border-color: #d2e3fc;
+            color: var(--primary-color)
+        }
+
+        .tabs {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            animation: fadeInUp .8s ease-out .6s both
+        }
+
+        pre {
+            font-family: 'Courier New', monospace;
+            font-size: .85rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: var(--text-color)
+        }
+
+        footer {
+            padding: 4rem 2rem;
+            background: #fff;
+            border-top: 1px solid var(--border-color);
+            text-align: center
+        }
+
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--text-color)
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 1.5rem 0
+        }
+
+        .contact-link {
+            color: var(--text-secondary);
+            font-size: .9rem;
+            text-decoration: none
+        }
+
+        .contact-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline
+        }
+
+        .footer-note {
+            color: #9aa0a6;
+            font-size: .85rem;
+            margin-top: 2rem
         }
     </style>
 </head>
-<body class="bg-gradient-to-tr from-blue-100 via-white to-blue-200 min-h-screen text-gray-800 font-sans">
 
-    <header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="the_sheet_music_directory.png" alt="Logo"
-                    class="w-12 h-12 object-cover rounded-xl shadow border border-blue-200">
-                <span class="self-center text-2xl font-bold text-blue-700 tracking-tight">The Sheet Music Directory</span>
-            </a>
-            <button id="hamburgerBtn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded hover:bg-blue-100 transition" aria-label="Open menu">
-                <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
-                <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
-                <span class="block w-6 h-0.5 bg-blue-700"></span>
-            </button>
-            <nav id="mainNav" class="hidden md:flex gap-8">
-                <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
-                <a href="content.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Content</a>
-                <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
-                <a href="profile.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Profile</a>
-            </nav>
-        </div>
-        <nav id="mobileNav" class="md:hidden fixed top-0 left-0 w-full h-full bg-white/95 z-50 flex flex-col items-center pt-24 gap-8 text-xl font-medium text-blue-700 transition-all duration-300 -translate-y-full">
-            <a href="index.html" class="hover:text-blue-900 transition">Home</a>
-            <a href="content.html" class="hover:text-blue-900 transition">Content</a>
-            <a href="videos.html" class="hover:text-blue-900 transition">Videos</a>
-            <a href="profile.html" class="hover:text-blue-900 transition">Profile</a>
-            <button id="closeMobileNav" class="absolute top-6 right-6 text-3xl text-blue-700" aria-label="Close menu">&times;</button>
-        </nav>
-        <div class="max-w-2xl mx-auto px-6 pb-4">
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search songs..."
-                class="w-full p-3 border border-blue-100 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-            />
+<body>
+    <header class="page-header">
+        <div class="header-nav">
+            <a href="index.html" class="nav-link">← Home</a>
+            <a href="content.html" class="nav-link">Library</a>
         </div>
     </header>
-
-    <main class="flex flex-col items-center justify-center py-10 px-5 gap-10 max-w-6xl mx-auto">
-        <section class="flex flex-col items-center p-8 bg-gray-50 overflow-auto w-full max-w-4xl rounded-3xl shadow-xl border border-blue-100">
-            <div class="flex flex-wrap items-baseline justify-center gap-x-4 gap-y-2 mb-4 text-center">
-                <h1 class="text-4xl font-extrabold text-gray-900 leading-tight">House of the Rising Sun</h1>
-                <span class="text-xl font-bold text-gray-600">- The Animals</span>
-                <span class="px-3 py-1 bg-green-500 text-white rounded-full text-sm font-semibold ml-2">Beginner</span>
-                <span class="px-3 py-1 bg-blue-600 text-white rounded-full text-sm font-semibold ml-2">Guitar</span>
+    <section class="hero">
+        <div class="hero-shape shape-1"></div>
+        <div class="hero-shape shape-2"></div>
+        <div class="hero-shape shape-3"></div>
+        <div class="hero-content">
+            <div class="song-icon">🌅</div>
+            <h1 class="song-title">House of the Rising Sun</h1>
+            <p class="artist-name">The Animals</p>
+            <div class="meta">
+                <span class="meta-badge"><span class="material-icons">show_chart</span>Intermediate</span>
+                <span class="meta-badge"><span class="material-icons">music_note</span>Guitar</span>
+                <span class="meta-badge"><span class="material-icons">album</span>Folk Rock</span>
             </div>
-            
-            <div class="text-gray-600 text-md mb-6 flex gap-4">
-                <span><strong>Tuning:</strong> Standard (E A D G B E)</span>
-                <span><strong>BPM:</strong> 79</span>
+            <div class="action-bar">
+                <button class="btn" id="favoriteBtn"><span class="material-icons">favorite_border</span>
+                    Favorite</button>
+                <button class="btn" id="copyBtn"><span class="material-icons">content_copy</span> Copy</button>
+                <button class="btn" id="printBtn"><span class="material-icons">print</span> Print</button>
+                <button class="btn" id="pdfBtn"><span class="material-icons">picture_as_pdf</span> PDF</button>
+                <button class="btn" id="shareBtn"><span class="material-icons">share</span> Share</button>
             </div>
-
-            <div class="flex flex-col gap-4 mb-6 w-full max-w-3xl">
-                <div class="flex flex-wrap justify-center items-center gap-4">
-                    <button id="metronomeToggleBtn" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors shadow-md min-w-[150px]" aria-label="Start or Stop Metronome">Start Metronome</button>
-
-                    <div class="mt-2 flex justify-center items-center gap-2">
-                        <label for="bpmInput">BPM:</label>
-                        <input type="number" id="bpmInput" value="115" min="40" max="300" class="border rounded p-1 w-16 text-center">
-                    </div>
-
-                    <button id="favBtn" 
-                            class="bg-pink-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-pink-600 transition-colors shadow-md min-w-[150px] flex items-center justify-center gap-2"
-                            data-title="House of the Rising Sun"
-                            data-link="house_of_the_rising_sun.html"
-                            title="Add to favorites"
-                            aria-label="Add to favorites">
-                        <span id="favStar">☆</span>
-                        Favorites
-                    </button>
-                </div>
-
-                <div class="flex flex-wrap justify-center items-center gap-4 pt-2 border-t border-gray-200">
-                    <!-- Print button -->
-                    <button id="printTabBtn"
-                            class="bg-blue-100 text-blue-800 px-6 py-3 rounded-lg font-medium hover:bg-blue-200 transition-colors shadow-md"
-                            aria-label="Print tab">
-                        🖨 Print
-                    </button>
-
-                    <!-- Download PDF button -->
-                    <button id="downloadPdfBtn"
-                            class="bg-green-100 text-green-800 px-6 py-3 rounded-lg font-medium hover:bg-green-200 transition-colors shadow-md"
-                            aria-label="Download PDF">
-                        ⬇ PDF
-                    </button>
-
-                    <!-- Share button -->
-                    <button id="shareTabBtn"
-                            class="bg-purple-100 text-purple-800 px-6 py-3 rounded-lg font-medium hover:bg-purple-200 transition-colors shadow-md"
-                            aria-label="Share tab">
-                        🔗 Share
-                    </button>
-                </div>
-
-                <!-- html2pdf.js -->
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
-                <script>
-                    // Print function
-                    document.getElementById("printTabBtn").addEventListener("click", () => {
-                        window.print();
-                    });
-
-                    // Download PDF function (exactly like print view)
-                    document.getElementById("downloadPdfBtn").addEventListener("click", () => {
-                        const element = document.querySelector(".sheet-content"); // adjust to your main container
-                        const opt = {
-                            margin:       0.5,
-                            filename:     (document.title || "sheet") + ".pdf",
-                            image:        { type: 'jpeg', quality: 0.98 },
-                            html2canvas:  { scale: 2 },
-                            jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
-                        };
-                        html2pdf().set(opt).from(element).save();
-                    });
-
-                    // Share function
-                    document.getElementById("shareTabBtn").addEventListener("click", () => {
-                        const fullUrl = window.location.href;
-                        const title = document.title || "Sheet Music";
-
-                        if (navigator.share) {
-                            navigator.share({
-                                title: title,
-                                text: "Check out this sheet music!",
-                                url: fullUrl
-                            });
-                        } else {
-                            navigator.clipboard.writeText(fullUrl).then(() => {
-                                alert("Link copied to clipboard!");
-                            });
-                        }
-                    });
-                </script>
-
-
-            <div class="tab-container bg-gray-50 border border-gray-200 rounded-lg shadow-xl w-full max-w-3xl mb-8">
-                <div id="fullTabCombined" class="tab-content">
-                    <pre id="tabPreFull" class="p-6 text-base font-mono text-gray-800 bg-transparent m-0">
-[Intro]
-    Am              C               D               F
-e|----------0---------------0-------------2-2-------------1-1----------------|
-B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
-G|------2-------2-------0-------0-----2---------2-----2---------2------------|
-D|----2---------------2-------------0---------------3------------------------|
-A|--0---------------3--------------------------------------------------------|
-E|---------------------------------------------------------------------------|
- 
-    Am              E               Am              E
-e|----------0-------------------------------0--------------------------------|
-B|--------1---1-------------0-------------1---1-------------0----------------|
-G|------2-------2---------1---1---------2-------2---------1---1--------------|
-D|----2-----------------2-------2-----2-----------------2-------2------------|
-A|--0-----------------2-------------0-----------------2----------------------|
-E|------------------0-------------------------------0------------------------|
- 
-[Verse]
-    Am              C               D               F
-e|----------0---------------0-------------2-2-------------1-1----------------|
-B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
-G|------2-------2-------0-------2-----2---------2-----2---------2------------|
-D|----2---------------2-------------0---------------3------------------------|
-A|--0---------------3--------------------------------------------------------|
-E|---------------------------------------------------------------------------|
-    There is        a house         in New Orleans
- 
-    Am              C               E                E
-e|----------0---------------0------------------------------------------------|
-B|--------1---1-----------1---1-------------0----------------0---------------|
-G|------2-------2-------0-------0---------1---1------------1---1-------------|
-D|----2---------------2-----------------2-------2--------2-------2-----------|
-A|--0---------------3-----------------2----------------2---------------------|
-E|----------------------------------0----------------0-----------------------|
-    they call       the Rising Sun
- 
-    Am              C               D               F
-e|----------0---------------0-------------2-2-------------1-1----------------|
-B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
-G|------2-------2-------0-------0-----2---------2-----2---------2------------|
-D|----2---------------2-------------0---------------3------------------------|
-A|--0---------------3--------------------------------------------------------|
-E|---------------------------------------------------------------------------|
-    And it's been   the ruin        of many         a poor boy
- 
-    Am              E               Am              C
-e|----------0-------------------------------0---------------0----------------|
-B|--------1---1-------------0-------------1---1-----------1---1--------------|
-G|------2-------2---------1---1---------2-------2-------0-------0------------|
-D|----2-----------------2-------2-----2---------------2----------------------|
-A|--0-----------------2-------------0---------------3------------------------|
-E|------------------0--------------------------------------------------------|
-    And, God,       I know          I'm one
- 
- 
-[Interlude]
-    D               F               Am              E
-e|--------2-2-------------1-1---------------0--------------------------------|
-B|------3-----3---------1-----1-----------1---1-------------0----------------|
-G|----2---------2-----2---------2-------2-------2---------1---1--------------|
-D|--0---------------3-----------------2-----------------2-------2------------|
-A|----------------------------------0-----------------2----------------------|
-E|--------------------------------------------------0------------------------|
- 
-    Am              E
-e|----------0----------------------------------------------------------------|
-B|--------1---1-------------0------------------------------------------------|
-G|------2-------2---------1---1----------------------------------------------|
-D|----2-----------------2-------2--------------------------------------------|
-A|--0-----------------2------------------------------------------------------|
-E|------------------0--------------------------------------------------------|
- 
-[Verse 2]
-    Am              C               D               F
-e|----------0---------------0-------------2-2-------------1-1----------------|
-B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
-G|------2-------2-------0-------2-----2---------2-----2---------2------------|
-D|----2---------------2-------------0---------------3------------------------|
-A|--0---------------3--------------------------------------------------------|
-E|---------------------------------------------------------------------------|
-    My mother       was             a tailor
- 
-    Am              C               E                E
-e|----------0---------------0------------------------------------------------|
-B|--------1---1-----------1---1-------------0----------------0---------------|
-G|------2-------2-------0-------0---------1---1------------1---1-------------|
-D|----2---------------2-----------------2-------2--------2-------2-----------|
-A|--0---------------3-----------------2----------------2---------------------|
-E|----------------------------------0----------------0-----------------------|
-    She sewed       my new          blue jeans
- 
-    Am              C               D               F
-e|----------0---------------0-------------2-2-------------1-1----------------|
-B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
-G|------2-------2-------0-------0-----2---------2-----2---------2------------|
-D|----2---------------2-------------0---------------3------------------------|
-A|--0---------------3--------------------------------------------------------|
-E|---------------------------------------------------------------------------|
-    My father       was             a gamblin'      man
- 
-    Am              E               Am              C
-e|----------0-------------------------------0---------------0----------------|
-B|--------1---1-------------0-------------1---1-----------1---1--------------|
-G|------2-------2---------1---1---------2-------2-------0-------0------------|
-D|----2-----------------2-------2-----2---------------2----------------------|
-A|--0-----------------2-------------0---------------3------------------------|
-E|------------------0--------------------------------------------------------|
-    Down            in New          Orleans
- 
-[Interlude]
-    D               F               Am              E
-e|--------2-2-------------1-1---------------0--------------------------------|
-B|------3-----3---------1-----1-----------1---1-------------0----------------|
-G|----2---------2-----2---------2-------2-------2---------1---1--------------|
-D|--0---------------3-----------------2-----------------2-------2------------|
-A|----------------------------------0-----------------2----------------------|
-E|--------------------------------------------------0------------------------|
- 
-    Am              E
-e|----------0----------------------------------------------------------------|
-B|--------1---1-------------0------------------------------------------------|
-G|------2-------2---------1---1----------------------------------------------|
-D|----2-----------------2-------2--------------------------------------------|
-A|--0-----------------2------------------------------------------------------|
-E|------------------0--------------------------------------------------------|
- 
-[Verse 3]
-    Am              C               D               F
-e|----------0---------------0-------------2-2-------------1-1----------------|
-B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
-G|------2-------2-------0-------2-----2---------2-----2---------2------------|
-D|----2---------------2-------------0---------------3------------------------|
-A|--0---------------3--------------------------------------------------------|
-E|---------------------------------------------------------------------------|
-    Now the only    thing           a gambler needs
- 
-    Am              C               E                E
-e|----------0---------------0------------------------------------------------|
-B|--------1---1-----------1---1-------------0----------------0---------------|
-G|------2-------2-------0-------0---------1---1------------1---1-------------|
-D|----2---------------2-----------------2-------2--------2-------2-----------|
-A|--0---------------3-----------------2----------------2---------------------|
-E|----------------------------------0----------------0-----------------------|
-    is a suitcase   and             a trunk
- 
-    Am              C               D               F
-e|----------0---------------0-------------2-2-------------1-1----------------|
-B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
-G|------2-------2-------0-------0-----2---------2-----2---------2------------|
-D|----2---------------2-------------0---------------3------------------------|
-A|--0---------------3--------------------------------------------------------|
-E|---------------------------------------------------------------------------|
-    And the only   time             that he's       satisfied
- 
-    Am              E               Am              C
-e|----------0-------------------------------0---------------0----------------|
-B|--------1---1-------------0-------------1---1-----------1---1--------------|
-G|------2-------2---------1---1---------2-------2-------0-------0------------|
-D|----2-----------------2-------2-----2---------------2----------------------|
-A|--0-----------------2-------------0---------------3------------------------|
-E|------------------0--------------------------------------------------------|
-    is when         he's all        drunk
- 
-[Interlude]
-    D               F               Am              E
-e|--------2-2-------------1-1---------------0--------------------------------|
-B|------3-----3---------1-----1-----------1---1-------------0----------------|
-G|----2---------2-----2---------2-------2-------2---------1---1--------------|
-D|--0---------------3-----------------2-----------------2-------2------------|
-A|----------------------------------0-----------------2----------------------|
-E|--------------------------------------------------0------------------------|
- 
-    Am              E
-e|----------0----------------------------------------------------------------|
-B|--------1---1-------------0------------------------------------------------|
-G|------2-------2---------1---1----------------------------------------------|
-D|----2-----------------2-------2--------------------------------------------|
-A|--0-----------------2------------------------------------------------------|
-E|------------------0--------------------------------------------------------|
- 
-[Organ solo]
- 
-[Verse 4]
-    Am              C               D               F
-e|----------0---------------0-------------2-2-------------1-1----------------|
-B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
-G|------2-------2-------0-------2-----2---------2-----2---------2------------|
-D|----2---------------2-------------0---------------3------------------------|
-A|--0---------------3--------------------------------------------------------|
-E|---------------------------------------------------------------------------|
-    Oh, mother,     tell your       children
- 
-    Am              C               E                E
-e|----------0---------------0------------------------------------------------|
-B|--------1---1-----------1---1-------------0----------------0---------------|
-G|------2-------2-------0-------0---------1---1------------1---1-------------|
-D|----2---------------2-----------------2-------2--------2-------2-----------|
-A|--0---------------3-----------------2----------------2---------------------|
-E|----------------------------------0----------------0-----------------------|
-    not to do       what I          have done
- 
-    Am              C               D               F
-e|----------0---------------0-------------2-2-------------1-1----------------|
-B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
-G|------2-------2-------0-------0-----2---------2-----2---------2------------|
-D|----2---------------2-------------0---------------3------------------------|
-A|--0---------------3--------------------------------------------------------|
-E|---------------------------------------------------------------------------|
-    spend           your lives      in sin          and misery
- 
-    Am              E               Am              C
-e|----------0-------------------------------0---------------0----------------|
-B|--------1---1-------------0-------------1---1-----------1---1--------------|
-G|------2-------2---------1---1---------2-------2-------0-------0------------|
-D|----2-----------------2-------2-----2---------------2----------------------|
-A|--0-----------------2-------------0---------------3------------------------|
-E|------------------0--------------------------------------------------------|
-    in the house    of the Rising   Sun
- 
-[Interlude]
-    D               F               Am              E
-e|--------2-2-------------1-1---------------0--------------------------------|
-B|------3-----3---------1-----1-----------1---1-------------0----------------|
-G|----2---------2-----2---------2-------2-------2---------1---1--------------|
-D|--0---------------3-----------------2-----------------2-------2------------|
-A|----------------------------------0-----------------2----------------------|
-E|--------------------------------------------------0------------------------|
- 
-    Am              E
-e|----------0----------------------------------------------------------------|
-B|--------1---1-------------0------------------------------------------------|
-G|------2-------2---------1---1----------------------------------------------|
-D|----2-----------------2-------2--------------------------------------------|
-A|--0-----------------2------------------------------------------------------|
-E|------------------0--------------------------------------------------------|
- 
-[Verse 5]
- 
-Note: at this point, if you want, you can start strumming, D D D U D D D to the same
-as you were picking.  This is what the guitarist in the video does, but in the recording,
-picking continues.
- 
-    Am              C               D               F
-e|----------0---------------0-------------2-2-------------1-1----------------|
-B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
-G|------2-------2-------0-------2-----2---------2-----2---------2------------|
-D|----2---------------2-------------0---------------3------------------------|
-A|--0---------------3--------------------------------------------------------|
-E|---------------------------------------------------------------------------|
-    Well I've got one foot on       the platform
- 
-    Am              C               E                E
-e|----------0---------------0------------------------------------------------|
-B|--------1---1-----------1---1-------------0----------------0---------------|
-G|------2-------2-------0-------0---------1---1------------1---1-------------|
-D|----2---------------2-----------------2-------2--------2-------2-----------|
-A|--0---------------3-----------------2----------------2---------------------|
-E|----------------------------------0----------------0-----------------------|
-    the other       on              the train
- 
-    Am              C               D               F
-e|----------0---------------0-------------2-2-------------1-1----------------|
-B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
-G|------2-------2-------0-------0-----2---------2-----2---------2------------|
-D|----2---------------2-------------0---------------3------------------------|
-A|--0---------------3--------------------------------------------------------|
-E|---------------------------------------------------------------------------|
-    I'm going       back            to New Orleans
- 
-    Am              E               Am              C
-e|----------0-------------------------------0---------------0----------------|
-B|--------1---1-------------0-------------1---1-----------1---1--------------|
-G|------2-------2---------1---1---------2-------2-------0-------0------------|
-D|----2-----------------2-------2-----2---------------2----------------------|
-A|--0-----------------2-------------0---------------3------------------------|
-E|------------------0--------------------------------------------------------|
-    to wear         that ball       and chain
- 
-[Interlude]
-    D               F               Am              E
-e|--------2-2-------------1-1---------------0--------------------------------|
-B|------3-----3---------1-----1-----------1---1-------------0----------------|
-G|----2---------2-----2---------2-------2-------2---------1---1--------------|
-D|--0---------------3-----------------2-----------------2-------2------------|
-A|----------------------------------0-----------------2----------------------|
-E|--------------------------------------------------0------------------------|
- 
-    Am              E
-e|----------0----------------------------------------------------------------|
-B|--------1---1-------------0------------------------------------------------|
-G|------2-------2---------1---1----------------------------------------------|
-D|----2-----------------2-------2--------------------------------------------|
-A|--0-----------------2------------------------------------------------------|
-E|------------------0--------------------------------------------------------|
- 
-[Verse 6]
-    Am              C               D               F
-e|----------0---------------0-------------2-2-------------1-1----------------|
-B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
-G|------2-------2-------0-------2-----2---------2-----2---------2------------|
-D|----2---------------2-------------0---------------3------------------------|
-A|--0---------------3--------------------------------------------------------|
-E|---------------------------------------------------------------------------|
-    There is        a house         in New Orleans
- 
-    Am              C               E                E
-e|----------0---------------0------------------------------------------------|
-B|--------1---1-----------1---1-------------0----------------0---------------|
-G|------2-------2-------0-------0---------1---1------------1---1-------------|
-D|----2---------------2-----------------2-------2--------2-------2-----------|
-A|--0---------------3-----------------2----------------2---------------------|
-E|----------------------------------0----------------0-----------------------|
-    they call       the Rising Sun
- 
-    Am              C               D               F
-e|----------0---------------0-------------2-2-------------1-1----------------|
-B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
-G|------2-------2-------0-------0-----2---------2-----2---------2------------|
-D|----2---------------2-------------0---------------3------------------------|
-A|--0---------------3--------------------------------------------------------|
-E|---------------------------------------------------------------------------|
-    And it's been   the ruin        of many         a poor boy
- 
-    Am              E               Am              C
-e|----------0-------------------------------0---------------0----------------|
-B|--------1---1-------------0-------------1---1-----------1---1--------------|
-G|------2-------2---------1---1---------2-------2-------0-------0------------|
-D|----2-----------------2-------2-----2---------------2----------------------|
-A|--0-----------------2-------------0---------------3------------------------|
-E|------------------0--------------------------------------------------------|
-    And, God,       I know          I'm one
- 
-[Outro]
- 
-Strum each of these chords once while the organ plays: D F Am E Am E
- 
-The timing is quarter, eighth, eighth, eighth, quarter, quarter, quarter for each chord.
-You can listen to a recording at http://www.youtube.com/watch?v=IvI7h6pqBhA.  If you have
-any questions, e-mail me.
- 
- 
-************************************
- 
-| /  slide up
-| \  slide down
-| h  hammer-on
-| p  pull-off
-| ~  vibrato
-| +  harmonic
-| x  Mute note
- 
-************************************
+            <section class="tabs" id="tabsSection">
+                <pre id="tabContent">
+[Intro]
+    Am              C               D               F
+e|----------0---------------0-------------2-2-------------1-1----------------|
+B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
+G|------2-------2-------0-------0-----2---------2-----2---------2------------|
+D|----2---------------2-------------0---------------3------------------------|
+A|--0---------------3--------------------------------------------------------|
+E|---------------------------------------------------------------------------|
+ 
+    Am              E               Am              E
+e|----------0-------------------------------0--------------------------------|
+B|--------1---1-------------0-------------1---1-------------0----------------|
+G|------2-------2---------1---1---------2-------2---------1---1--------------|
+D|----2-----------------2-------2-----2-----------------2-------2------------|
+A|--0-----------------2-------------0-----------------2----------------------|
+E|------------------0-------------------------------0------------------------|
+ 
+[Verse]
+    Am              C               D               F
+e|----------0---------------0-------------2-2-------------1-1----------------|
+B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
+G|------2-------2-------0-------2-----2---------2-----2---------2------------|
+D|----2---------------2-------------0---------------3------------------------|
+A|--0---------------3--------------------------------------------------------|
+E|---------------------------------------------------------------------------|
+    There is        a house         in New Orleans
+ 
+    Am              C               E                E
+e|----------0---------------0------------------------------------------------|
+B|--------1---1-----------1---1-------------0----------------0---------------|
+G|------2-------2-------0-------0---------1---1------------1---1-------------|
+D|----2---------------2-----------------2-------2--------2-------2-----------|
+A|--0---------------3-----------------2----------------2---------------------|
+E|----------------------------------0----------------0-----------------------|
+    they call       the Rising Sun
+ 
+    Am              C               D               F
+e|----------0---------------0-------------2-2-------------1-1----------------|
+B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
+G|------2-------2-------0-------0-----2---------2-----2---------2------------|
+D|----2---------------2-------------0---------------3------------------------|
+A|--0---------------3--------------------------------------------------------|
+E|---------------------------------------------------------------------------|
+    And it's been   the ruin        of many         a poor boy
+ 
+    Am              E               Am              C
+e|----------0-------------------------------0---------------0----------------|
+B|--------1---1-------------0-------------1---1-----------1---1--------------|
+G|------2-------2---------1---1---------2-------2-------0-------0------------|
+D|----2-----------------2-------2-----2---------------2----------------------|
+A|--0-----------------2-------------0---------------3------------------------|
+E|------------------0--------------------------------------------------------|
+    And, God,       I know          I'm one
+ 
+ 
+[Interlude]
+    D               F               Am              E
+e|--------2-2-------------1-1---------------0--------------------------------|
+B|------3-----3---------1-----1-----------1---1-------------0----------------|
+G|----2---------2-----2---------2-------2-------2---------1---1--------------|
+D|--0---------------3-----------------2-----------------2-------2------------|
+A|----------------------------------0-----------------2----------------------|
+E|--------------------------------------------------0------------------------|
+ 
+    Am              E
+e|----------0----------------------------------------------------------------|
+B|--------1---1-------------0------------------------------------------------|
+G|------2-------2---------1---1----------------------------------------------|
+D|----2-----------------2-------2--------------------------------------------|
+A|--0-----------------2------------------------------------------------------|
+E|------------------0--------------------------------------------------------|
+ 
+[Verse 2]
+    Am              C               D               F
+e|----------0---------------0-------------2-2-------------1-1----------------|
+B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
+G|------2-------2-------0-------2-----2---------2-----2---------2------------|
+D|----2---------------2-------------0---------------3------------------------|
+A|--0---------------3--------------------------------------------------------|
+E|---------------------------------------------------------------------------|
+    My mother       was             a tailor
+ 
+    Am              C               E                E
+e|----------0---------------0------------------------------------------------|
+B|--------1---1-----------1---1-------------0----------------0---------------|
+G|------2-------2-------0-------0---------1---1------------1---1-------------|
+D|----2---------------2-----------------2-------2--------2-------2-----------|
+A|--0---------------3-----------------2----------------2---------------------|
+E|----------------------------------0----------------0-----------------------|
+    She sewed       my new          blue jeans
+ 
+    Am              C               D               F
+e|----------0---------------0-------------2-2-------------1-1----------------|
+B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
+G|------2-------2-------0-------0-----2---------2-----2---------2------------|
+D|----2---------------2-------------0---------------3------------------------|
+A|--0---------------3--------------------------------------------------------|
+E|---------------------------------------------------------------------------|
+    My father       was             a gamblin'      man
+ 
+    Am              E               Am              C
+e|----------0-------------------------------0---------------0----------------|
+B|--------1---1-------------0-------------1---1-----------1---1--------------|
+G|------2-------2---------1---1---------2-------2-------0-------0------------|
+D|----2-----------------2-------2-----2---------------2----------------------|
+A|--0-----------------2-------------0---------------3------------------------|
+E|------------------0--------------------------------------------------------|
+    Down            in New          Orleans
+ 
+[Interlude]
+    D               F               Am              E
+e|--------2-2-------------1-1---------------0--------------------------------|
+B|------3-----3---------1-----1-----------1---1-------------0----------------|
+G|----2---------2-----2---------2-------2-------2---------1---1--------------|
+D|--0---------------3-----------------2-----------------2-------2------------|
+A|----------------------------------0-----------------2----------------------|
+E|--------------------------------------------------0------------------------|
+ 
+    Am              E
+e|----------0----------------------------------------------------------------|
+B|--------1---1-------------0------------------------------------------------|
+G|------2-------2---------1---1----------------------------------------------|
+D|----2-----------------2-------2--------------------------------------------|
+A|--0-----------------2------------------------------------------------------|
+E|------------------0--------------------------------------------------------|
+ 
+[Verse 3]
+    Am              C               D               F
+e|----------0---------------0-------------2-2-------------1-1----------------|
+B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
+G|------2-------2-------0-------2-----2---------2-----2---------2------------|
+D|----2---------------2-------------0---------------3------------------------|
+A|--0---------------3--------------------------------------------------------|
+E|---------------------------------------------------------------------------|
+    Now the only    thing           a gambler needs
+ 
+    Am              C               E                E
+e|----------0---------------0------------------------------------------------|
+B|--------1---1-----------1---1-------------0----------------0---------------|
+G|------2-------2-------0-------0---------1---1------------1---1-------------|
+D|----2---------------2-----------------2-------2--------2-------2-----------|
+A|--0---------------3-----------------2----------------2---------------------|
+E|----------------------------------0----------------0-----------------------|
+    is a suitcase   and             a trunk
+ 
+    Am              C               D               F
+e|----------0---------------0-------------2-2-------------1-1----------------|
+B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
+G|------2-------2-------0-------0-----2---------2-----2---------2------------|
+D|----2---------------2-------------0---------------3------------------------|
+A|--0---------------3--------------------------------------------------------|
+E|---------------------------------------------------------------------------|
+    And the only   time             that he's       satisfied
+ 
+    Am              E               Am              C
+e|----------0-------------------------------0---------------0----------------|
+B|--------1---1-------------0-------------1---1-----------1---1--------------|
+G|------2-------2---------1---1---------2-------2-------0-------0------------|
+D|----2-----------------2-------2-----2---------------2----------------------|
+A|--0-----------------2-------------0---------------3------------------------|
+E|------------------0--------------------------------------------------------|
+    is when         he's all        drunk
+ 
+[Interlude]
+    D               F               Am              E
+e|--------2-2-------------1-1---------------0--------------------------------|
+B|------3-----3---------1-----1-----------1---1-------------0----------------|
+G|----2---------2-----2---------2-------2-------2---------1---1--------------|
+D|--0---------------3-----------------2-----------------2-------2------------|
+A|----------------------------------0-----------------2----------------------|
+E|--------------------------------------------------0------------------------|
+ 
+    Am              E
+e|----------0----------------------------------------------------------------|
+B|--------1---1-------------0------------------------------------------------|
+G|------2-------2---------1---1----------------------------------------------|
+D|----2-----------------2-------2--------------------------------------------|
+A|--0-----------------2------------------------------------------------------|
+E|------------------0--------------------------------------------------------|
+ 
+[Organ solo]
+ 
+[Verse 4]
+    Am              C               D               F
+e|----------0---------------0-------------2-2-------------1-1----------------|
+B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
+G|------2-------2-------0-------2-----2---------2-----2---------2------------|
+D|----2---------------2-------------0---------------3------------------------|
+A|--0---------------3--------------------------------------------------------|
+E|---------------------------------------------------------------------------|
+    Oh, mother,     tell your       children
+ 
+    Am              C               E                E
+e|----------0---------------0------------------------------------------------|
+B|--------1---1-----------1---1-------------0----------------0---------------|
+G|------2-------2-------0-------0---------1---1------------1---1-------------|
+D|----2---------------2-----------------2-------2--------2-------2-----------|
+A|--0---------------3-----------------2----------------2---------------------|
+E|----------------------------------0----------------0-----------------------|
+    not to do       what I          have done
+ 
+    Am              C               D               F
+e|----------0---------------0-------------2-2-------------1-1----------------|
+B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
+G|------2-------2-------0-------0-----2---------2-----2---------2------------|
+D|----2---------------2-------------0---------------3------------------------|
+A|--0---------------3--------------------------------------------------------|
+E|---------------------------------------------------------------------------|
+    spend           your lives      in sin          and misery
+ 
+    Am              E               Am              C
+e|----------0-------------------------------0---------------0----------------|
+B|--------1---1-------------0-------------1---1-----------1---1--------------|
+G|------2-------2---------1---1---------2-------2-------0-------0------------|
+D|----2-----------------2-------2-----2---------------2----------------------|
+A|--0-----------------2-------------0---------------3------------------------|
+E|------------------0--------------------------------------------------------|
+    in the house    of the Rising   Sun
+ 
+[Interlude]
+    D               F               Am              E
+e|--------2-2-------------1-1---------------0--------------------------------|
+B|------3-----3---------1-----1-----------1---1-------------0----------------|
+G|----2---------2-----2---------2-------2-------2---------1---1--------------|
+D|--0---------------3-----------------2-----------------2-------2------------|
+A|----------------------------------0-----------------2----------------------|
+E|--------------------------------------------------0------------------------|
+ 
+    Am              E
+e|----------0----------------------------------------------------------------|
+B|--------1---1-------------0------------------------------------------------|
+G|------2-------2---------1---1----------------------------------------------|
+D|----2-----------------2-------2--------------------------------------------|
+A|--0-----------------2------------------------------------------------------|
+E|------------------0--------------------------------------------------------|
+ 
+[Verse 5]
+ 
+Note: at this point, if you want, you can start strumming, D D D U D D D to the same
+as you were picking.  This is what the guitarist in the video does, but in the recording,
+picking continues.
+ 
+    Am              C               D               F
+e|----------0---------------0-------------2-2-------------1-1----------------|
+B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
+G|------2-------2-------0-------2-----2---------2-----2---------2------------|
+D|----2---------------2-------------0---------------3------------------------|
+A|--0---------------3--------------------------------------------------------|
+E|---------------------------------------------------------------------------|
+    Well I've got one foot on       the platform
+ 
+    Am              C               E                E
+e|----------0---------------0------------------------------------------------|
+B|--------1---1-----------1---1-------------0----------------0---------------|
+G|------2-------2-------0-------0---------1---1------------1---1-------------|
+D|----2---------------2-----------------2-------2--------2-------2-----------|
+A|--0---------------3-----------------2----------------2---------------------|
+E|----------------------------------0----------------0-----------------------|
+    the other       on              the train
+ 
+    Am              C               D               F
+e|----------0---------------0-------------2-2-------------1-1----------------|
+B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
+G|------2-------2-------0-------0-----2---------2-----2---------2------------|
+D|----2---------------2-------------0---------------3------------------------|
+A|--0---------------3--------------------------------------------------------|
+E|---------------------------------------------------------------------------|
+    I'm going       back            to New Orleans
+ 
+    Am              E               Am              C
+e|----------0-------------------------------0---------------0----------------|
+B|--------1---1-------------0-------------1---1-----------1---1--------------|
+G|------2-------2---------1---1---------2-------2-------0-------0------------|
+D|----2-----------------2-------2-----2---------------2----------------------|
+A|--0-----------------2-------------0---------------3------------------------|
+E|------------------0--------------------------------------------------------|
+    to wear         that ball       and chain
+ 
+[Interlude]
+    D               F               Am              E
+e|--------2-2-------------1-1---------------0--------------------------------|
+B|------3-----3---------1-----1-----------1---1-------------0----------------|
+G|----2---------2-----2---------2-------2-------2---------1---1--------------|
+D|--0---------------3-----------------2-----------------2-------2------------|
+A|----------------------------------0-----------------2----------------------|
+E|--------------------------------------------------0------------------------|
+ 
+    Am              E
+e|----------0----------------------------------------------------------------|
+B|--------1---1-------------0------------------------------------------------|
+G|------2-------2---------1---1----------------------------------------------|
+D|----2-----------------2-------2--------------------------------------------|
+A|--0-----------------2------------------------------------------------------|
+E|------------------0--------------------------------------------------------|
+ 
+[Verse 6]
+    Am              C               D               F
+e|----------0---------------0-------------2-2-------------1-1----------------|
+B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
+G|------2-------2-------0-------2-----2---------2-----2---------2------------|
+D|----2---------------2-------------0---------------3------------------------|
+A|--0---------------3--------------------------------------------------------|
+E|---------------------------------------------------------------------------|
+    There is        a house         in New Orleans
+ 
+    Am              C               E                E
+e|----------0---------------0------------------------------------------------|
+B|--------1---1-----------1---1-------------0----------------0---------------|
+G|------2-------2-------0-------0---------1---1------------1---1-------------|
+D|----2---------------2-----------------2-------2--------2-------2-----------|
+A|--0---------------3-----------------2----------------2---------------------|
+E|----------------------------------0----------------0-----------------------|
+    they call       the Rising Sun
+ 
+    Am              C               D               F
+e|----------0---------------0-------------2-2-------------1-1----------------|
+B|--------1---1-----------1---1---------3-----3---------1-----1--------------|
+G|------2-------2-------0-------0-----2---------2-----2---------2------------|
+D|----2---------------2-------------0---------------3------------------------|
+A|--0---------------3--------------------------------------------------------|
+E|---------------------------------------------------------------------------|
+    And it's been   the ruin        of many         a poor boy
+ 
+    Am              E               Am              C
+e|----------0-------------------------------0---------------0----------------|
+B|--------1---1-------------0-------------1---1-----------1---1--------------|
+G|------2-------2---------1---1---------2-------2-------0-------0------------|
+D|----2-----------------2-------2-----2---------------2----------------------|
+A|--0-----------------2-------------0---------------3------------------------|
+E|------------------0--------------------------------------------------------|
+    And, God,       I know          I'm one
+ 
+[Outro]
+ 
+Strum each of these chords once while the organ plays: D F Am E Am E
+ 
+The timing is quarter, eighth, eighth, eighth, quarter, quarter, quarter for each chord.
+You can listen to a recording at http://www.youtube.com/watch?v=IvI7h6pqBhA.  If you have
+any questions, e-mail me.
+ 
+ 
+************************************
+ 
+| /  slide up
+| \  slide down
+| h  hammer-on
+| p  pull-off
+| ~  vibrato
+| +  harmonic
+| x  Mute note
+ 
+************************************
                     </pre>
-                </div>
-            </div>
-            
-            <div class="mt-6 text-center text-gray-600">
-                <p>Learn more about this song on its
-                    <a href="https://en.wikipedia.org/wiki/The_House_of_the_Rising_Sun" class="text-blue-500 font-bold hover:underline" target="_blank">Wikipedia page</a>.
-                </p>
-                <p class="mt-2">Looking for different tabs? Check out versions on
-                    <a href="https://tabs.ultimate-guitar.com/tab/the-animals/house-of-the-rising-sun-tabs-39017" class="text-green-600 font-bold hover:underline" target="_blank">Ultimate Guitar</a>.
-                </p>
-            </div>
-        </section>
-    </main>
-
-    <div id="searchModal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
-        <div class="bg-white p-8 rounded-2xl shadow-2xl w-11/12 md:w-1/2">
-            <button id="closeModal" class="text-red-500 font-bold float-right text-xl">×</button>
-            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Search Results</h2>
-            <div id="searchResults" class="flex flex-wrap justify-center gap-6">
-                </div>
+            </section>
         </div>
-    </div>
-
-    <footer class="bg-white text-center py-4 mt-10 border-t border-gray-300">
-        <p class="text-gray-600 text-sm">© 2025 The Sheet Music Directory. Created by Mattia Lobrano.</p>
-        <nav class="mt-2">
-            <a href="privacy.html" class="text-blue-500 text-sm hover:underline">Privacy Policy</a> |
-            <a href="terms.html" class="text-blue-500 text-sm hover:underline">Terms and Conditions</a>
-        </nav>
-        <div class="mt-4 flex justify-center items-center gap-4">
-            <a href="https://www.tiktok.com/@the_guitar_directory" target="_blank" class="flex items-center gap-2">
-                <img src="tiktok.png" alt="TikTok" class="w-6 h-6">
-                <span class="text-blue-500 text-sm hover:underline">Follow us on TikTok</span>
-            </a>
+    </section>
+    <footer>
+        <h3 class="footer-title">Get in Touch</h3>
+        <div class="contact-links">
+            <a href="mailto:theguitardirectory@gmail.com" class="contact-link">theguitardirectory@gmail.com</a>
+            <span>|</span>
+            <a href="mailto:mattialobrano@gmail.com" class="contact-link">mattialobrano@gmail.com</a>
         </div>
+        <p class="footer-note">© 2025 The Sheet Music Directory. Created with ❤️ for musicians everywhere.</p>
     </footer>
-
-    nomeLoopAudio" src="click_79bpm_6-8time_701beats_C7TZOQ.mp3" loop preload="auto"></audio>
-
     <script>
-        // --- DOM Element References ---
-        const printTabBtn = document.getElementById('printTabBtn');
-        const metronomeToggleBtn = document.getElementById('metronomeToggleBtn');
-        const metronomeLoopAudio = document.getElementById('metronomeLoopAudio');
-        
-
-        // Hamburger menu functionality
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mobileNav = document.getElementById('mobileNav');
-        const closeMobileNav = document.getElementById('closeModal'); // Corrected from closeMobileNav
-
-        hamburgerBtn.addEventListener('click', () => {
-            mobileNav.classList.remove('-translate-y-full');
-            mobileNav.classList.add('translate-y-0');
-        });
-
-        closeMobileNav.addEventListener('click', () => {
-            mobileNav.classList.remove('translate-y-0');
-            mobileNav.classList.add('-translate-y-full');
-        });
-
-        // Search Modal Logic
-        async function setupSearch() {
-            const searchInput = document.getElementById('searchInput');
-            const searchModal = document.getElementById('searchModal');
-            const searchResults = document.getElementById('searchResults');
-            const closeModal = document.getElementById('closeModal');
-
-            closeModal.addEventListener('click', () => {
-                searchModal.classList.add('hidden');
-                searchResults.innerHTML = '';
-            });
-
-            searchInput.addEventListener('input', async () => {
-                const keyword = searchInput.value.toLowerCase().trim();
-                if (keyword === '') {
-                    searchModal.classList.add('hidden');
-                    return;
-                }
-                searchModal.classList.remove('hidden');
-                searchResults.innerHTML = '';
-                try {
-                    // For simplicity and consistency, hardcode a small list of known songs for search
-                    // IMPORTANT: You should keep this list updated in all your song pages
-                    // or ideally, load it from a single source (e.g., songsData in content.html).
-                    const allSongsForSearch = [
-                        { title: "Bohemian Rhapsody", link: "bohemian_rhapsody.html" },
-                        { title: "Back in Black", link: "back_in_black.html" },
-                        { title: "Smells Like Teen Spirit", link: "smells_like_teen_spirit.html" },
-                        { title: "Dirty Deeds Done Dirt Cheap", link: "dirty_deeds_done_dirt_cheap.html" },
-                        { title: "Down Under", link: "down_under.html" },
-                        { title: "Hey Jude", link: "hey_jude.html" },
-                        { title: "Highway Star", link: "highway_star.html" },
-                        { title: "Highway to Hell", link: "highway_to_hell.html" },
-                        { title: "House of the Rising Sun", link: "house_of_the_rising_sun.html" },
-                        // Add more songs here as you create their pages
-                    ];
-
-                    const filteredSongs = allSongsForSearch.filter(song =>
-                        song.title.toLowerCase().includes(keyword)
-                    );
-
-                    if (filteredSongs.length > 0) {
-                        filteredSongs.forEach(song => {
-                            const songItem = document.createElement('div');
-                            songItem.className = 'song-item flex flex-col items-center';
-                            songItem.innerHTML = `
-                                <p class="text-lg text-gray-700 mt-4 text-center">
-                                    <a href="${song.link}" class="text-blue-700 hover:underline font-semibold">
-                                        ${song.title}
-                                    </a>
-                                </p>
-                            `;
-                            searchResults.appendChild(songItem);
-                        });
-                    } else {
-                        searchResults.innerHTML = '<p class="text-gray-700">No results found.</p>';
-                    }
-                } catch (error) {
-                    console.error('Error fetching songs for search:', error);
-                    searchResults.innerHTML = '<p class="text-red-500">Error loading search results.</p>';
-                }
-            });
+        // Favorite logic
+        const favBtn = document.getElementById('favoriteBtn');
+        const songId = 'houseoftherisingsun';
+        function updateFav() {
+            const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
+            favBtn.innerHTML = favs.includes(songId) ? '<span class="material-icons">favorite</span> Favorite' : '<span class="material-icons">favorite_border</span> Favorite';
         }
-        document.addEventListener('DOMContentLoaded', setupSearch);
-
-// --- Web Audio API Metronome ---
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-let metronomeInterval = null;
-let bpm = 115; // valore preso dal tuo HTML
-
-
-function playClick(accent = false) {
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-
-    osc.frequency.value = accent ? 2000 : 1000; // accento più acuto sul primo beat
-    gain.gain.value = 1;
-
-    osc.start();
-    osc.stop(audioCtx.currentTime + 0.05); // durata click
-}
-
-        let isMetronomePlaying = false; // dichiarazione globale
-
-// Toggle metronome
-metronomeToggleBtn.addEventListener('click', () => {
-    if (isMetronomePlaying) {
-        clearInterval(metronomeInterval);
-        metronomeInterval = null;
-        metronomeToggleBtn.textContent = 'Start Metronome';
-        metronomeToggleBtn.classList.remove('bg-red-600', 'hover:bg-red-700');
-        metronomeToggleBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
-    } else {
-        let beat = 0;
-        const intervalMs = (60 / bpm) * 1000;
-        metronomeInterval = setInterval(() => {
-            playClick(beat === 0); // primo beat accentato
-            beat = (beat + 1) % 4; // ciclo 4/4
-        }, intervalMs);
-
-        metronomeToggleBtn.textContent = 'Stop Metronome';
-        metronomeToggleBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
-        metronomeToggleBtn.classList.add('bg-red-600', 'hover:bg-red-700');
-    }
-    isMetronomePlaying = !isMetronomePlaying;
-});
-
-
-        // Print Tab button functionality
-        printTabBtn.addEventListener('click', () => {
-            window.print(); 
-        });
-
-        // --- Favorite Button Script ---
-        function updateFavBtn() {
-            const btn = document.getElementById('favBtn');
-            const star = document.getElementById('favStar');
-            let favs = [];
-            try { favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]'); } catch { favs = []; }
-            const exists = favs.some(s => s.link === btn.dataset.link);
-            star.textContent = exists ? '★' : '☆'; // Filled star or outline star
-            btn.title = exists ? "Remove from favorites" : "Add to favorites";
-            btn.setAttribute('aria-label', btn.title);
-        }
-
-        document.getElementById('favBtn').onclick = function() {
-            const btn = this;
-            let favs = [];
-            try { favs = JSON.parse(localStorage.getItem('favoriteSongs') || '[]'); } catch { favs = []; }
-            const song = { title: btn.dataset.title, link: btn.dataset.link };
-            const idx = favs.findIndex(s => s.link === song.link); // Check if song already exists
-
-            if (idx === -1) {
-                favs.push(song); // Add if not found
-                alert(`${song.title} added to favorites!`);
-            } else {
-                favs.splice(idx, 1); // Remove if found
-                alert(`${song.title} removed from favorites!`);
-            }
-            localStorage.setItem('favoriteSongs', JSON.stringify(favs));
-            updateFavBtn(); // Update button state
+        favBtn.onclick = () => {
+            let favs = JSON.parse(localStorage.getItem('favorites') || '[]');
+            if (favs.includes(songId)) favs = favs.filter(id => id !== songId); else favs.push(songId);
+            localStorage.setItem('favorites', JSON.stringify(favs));
+            updateFav();
         };
-
-        // Initial setup for favorite button on page load
-        document.addEventListener('DOMContentLoaded', updateFavBtn);
-
-        const bpmInput = document.getElementById('bpmInput');
-
-        bpmInput.addEventListener('change', () => {
-            bpm = parseInt(bpmInput.value, 10);
-            if (isMetronomePlaying) {
-                clearInterval(metronomeInterval); // restart with new BPM
-                let beat = 0;
-                const intervalMs = (60 / bpm) * 1000;
-                metronomeInterval = setInterval(() => {
-                    playClick(beat === 0);
-                    beat = (beat + 1) % 4;
-                }, intervalMs);
-            }
-        });
-
-
+        updateFav();
+        // Copy, Print, PDF, Share placeholders
+        document.getElementById('copyBtn').onclick = () => { navigator.clipboard.writeText(document.getElementById('tabContent').innerText).then(() => alert('Copied')).catch(() => alert('Copy failed')) };
+        document.getElementById('printBtn').onclick = () => { window.print() };
+        document.getElementById('pdfBtn').onclick = () => { alert('PDF generation not implemented') };
+        document.getElementById('shareBtn').onclick = () => { alert('Share functionality not implemented') };
     </script>
-
 </body>
+
 </html>
