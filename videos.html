@@ -1,256 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Videos - The Sheet Music Directory</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">`n    <!-- Security Headers -->`n    <meta http-equiv="X-Content-Type-Options" content="nosniff">`n    <meta http-equiv="X-Frame-Options" content="DENY">`n    <meta http-equiv="X-XSS-Protection" content="1; mode=block">`n    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
     <meta name="description" content="Videos for guitar songs, performances, and tutorials.">
     <meta name="keywords" content="guitar, videos, tutorials, performances, directory">
     <meta name="author" content="Mattia Lobrano">
     <link rel="icon" href="Copilot_20250722_164706.png" type="image/x-icon">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9724879624767701"
-     crossorigin="anonymous"></script>
-     <meta name="google-adsense-account" content="ca-pub-9724879624767701">
-</head>
-<body class="bg-gradient-to-tr from-blue-100 via-white to-blue-200 min-h-screen text-gray-800 font-sans">
-    <!-- Header -->
-<header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-<a href="index.html" class="flex items-center gap-3">
-    <img src="The Guitar Directory (1).png" alt="Logo"
-        class="w-12 h-12 object-cover rounded-xl shadow border border-blue-200">
-    <span class="text-2xl font-bold text-blue-700 tracking-tight">The Sheet Music Directory</span>
-</a>
-        <!-- Hamburger Button (mobile only) -->
-        <button id="hamburgerBtn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded hover:bg-blue-100 transition" aria-label="Open menu">
-            <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
-            <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
-            <span class="block w-6 h-0.5 bg-blue-700"></span>
-        </button>
-        <!-- Desktop Nav -->
-        <nav id="mainNav" class="hidden md:flex gap-8">
-            <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
-            <a href="content.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Content</a>
-            <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
-            <a href="profile.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Profile</a>
-        </nav>
-    </div>
-    <!-- Mobile Nav (hidden by default) -->
-    <nav id="mobileNav" class="md:hidden fixed top-0 left-0 w-full h-full bg-white/95 z-50 flex flex-col items-center pt-24 gap-8 text-xl font-medium text-blue-700 transition-all duration-300 -translate-y-full">
-        <a href="index.html" class="hover:text-blue-900 transition">Home</a>
-        <a href="content.html" class="hover:text-blue-900 transition">Content</a>
-        <a href="videos.html" class="hover:text-blue-900 transition">Videos</a>
-        <a href="profile.html" class="hover:text-blue-900 transition">Profile</a>
-        <button id="closeMobileNav" class="absolute top-6 right-6 text-3xl text-blue-700" aria-label="Close menu">&times;</button>
-    </nav>
-    <div class="max-w-2xl mx-auto px-6 pb-4">
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Search songs..."
-            class="w-full p-3 border border-blue-100 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-        />
-    </div>
-</header>
 
-    <!-- Content Section -->
-    <main class="flex flex-col items-center justify-center py-10 px-5 gap-10 max-w-6xl mx-auto">
-        <section class="bg-white/95 p-10 rounded-3xl shadow-xl border border-blue-100 w-full text-center">
-            <h2 class="text-3xl font-bold text-blue-700 mb-8">Videos</h2>
-            <p class="text-lg text-gray-700 mb-8">Explore a collection of videos for guitar tutorials, performances, and more.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 justify-items-center">
-                <!-- Nirvana -->
-                <div class="flex flex-col items-center">
-                    <img src="adesivi-nirvana-logo.jpg" alt="Nirvana" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
-                    <a href="Nirvana - Smells Like Teen Spirit (Official Music Video).mp4" class="text-blue-700 hover:underline font-semibold text-lg mb-2">Smells Like Teen Spirit</a>
-                </div>
-                <!-- AC/DC -->
-                <div class="flex flex-col items-center">
-                    <img src="Black-Ice-ACDC-800x445.jpg" alt="AC/DC" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
-                    <a href="AC_DC - Dirty Deeds Done Dirt Cheap (Live At River Plate, December 2009).mp4" class="text-blue-700 hover:underline font-semibold text-lg mb-2">Dirty Deeds Done Dirt Cheap</a>
-                    <a href="AC_DC - Highway to Hell (Official Video).mp4" class="text-blue-700 hover:underline font-semibold text-lg">Highway to Hell</a>
-                </div>
-                <!-- Deep Purple -->
-                <div class="flex flex-col items-center">
-                    <img src="logo-deep-purple-on-air.webp" alt="Deep Purple" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
-                    <a href="DEEP_PURPLE_Highway_Star_1972.mp4" class="text-blue-700 hover:underline font-semibold text-lg">Highway Star</a>
-                </div>
-                <!-- Men at Work -->
-                <div class="flex flex-col items-center">
-                    <img src="MAW3-medium-1024x617.jpg" alt="Men at Work" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
-                    <a href="Men At Work - Down Under (Official HD Video).mp4" class="text-blue-700 hover:underline font-semibold text-lg">Down Under</a>
-                </div>
-                <!-- Lynyrd Skynyrd -->
-                <div class="flex flex-col items-center">
-                    <img src="0a3a5df7-5330-419c-8805-941c22aa3423_TABLET_LANDSCAPE_LARGE_16_9.jpg" alt="Lynyrd Skynyrd" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
-                    <a href="Lynyrd Skynyrd - Freebird - 7_2_1977 - Oakland Coliseum Stadium (Official).mp4" class="text-blue-700 hover:underline font-semibold text-lg">Free Bird</a>
-                </div>
-                <!-- The Beatles -->
-                <div class="flex flex-col items-center">
-                    <img src="5814efca-2039-465f-a0cd-0520cde7f3d2.jpg" alt="The Beatles" class="w-56 h-40 object-cover rounded-2xl shadow-lg border border-blue-100 mb-4">
-                    <a href="The Beatles - Twist & Shout - Performed Live On The Ed Sullivan Show 2_23_64.mp4" class="text-blue-700 hover:underline font-semibold text-lg mb-2">Twist and Shout</a>
-                    <a href="The Beatles.mp4" class="text-blue-700 hover:underline font-semibold text-lg mb-2">I Want to Hold Your Hand</a>
-                    <a href="THE_BEATLES_Hey_Jude_1968.mp4" class="text-blue-700 hover:underline font-semibold text-lg">Hey Jude</a>
-                </div>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="page-header">
+        <div class="header-nav">
+            <a href="index.html" class="nav-link">← Home</a>
+            <a href="content.html" class="nav-link">Library</a>
+            <a href="videos.html" class="nav-link active">Videos</a>
+            <a href="account.html" class="nav-link">Account</a>
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search songs...">
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h1 class="section-title">Videos</h1>
+        <p class="section-subtitle">Explore a collection of videos for guitar tutorials, performances, and more.</p>
+
+        <div class="video-grid">
+            <!-- Nirvana -->
+            <div class="video-card">
+                <img src="adesivi-nirvana-logo.jpg" alt="Nirvana" class="artist-img">
+                <a href="Nirvana - Smells Like Teen Spirit (Official Music Video).mp4" class="video-link">Smells Like
+                    Teen Spirit</a>
             </div>
-            <div class="mt-10">
-                <h2 class="text-2xl font-bold text-blue-700 mb-2">New videos coming soon!</h2>
-                <p class="text-lg text-gray-700">Currently working hard to put all the songs in <a href="content.html" class="text-blue-500 font-bold hover:underline">Content</a> on the videos page.</p>
+            <!-- AC/DC -->
+            <div class="video-card">
+                <img src="Black-Ice-ACDC-800x445.jpg" alt="AC/DC" class="artist-img">
+                <a href="AC_DC - Dirty Deeds Done Dirt Cheap (Live At River Plate, December 2009).mp4"
+                    class="video-link">Dirty Deeds Done Dirt Cheap</a>
+                <a href="AC_DC - Highway to Hell (Official Video).mp4" class="video-link">Highway to Hell</a>
             </div>
-        </section>
+            <!-- Deep Purple -->
+            <div class="video-card">
+                <img src="logo-deep-purple-on-air.webp" alt="Deep Purple" class="artist-img">
+                <a href="DEEP_PURPLE_Highway_Star_1972.mp4" class="video-link">Highway Star</a>
+            </div>
+            <!-- Men at Work -->
+            <div class="video-card">
+                <img src="MAW3-medium-1024x617.jpg" alt="Men at Work" class="artist-img">
+                <a href="Men At Work - Down Under (Official HD Video).mp4" class="video-link">Down Under</a>
+            </div>
+            <!-- Lynyrd Skynyrd -->
+            <div class="video-card">
+                <img src="0a3a5df7-5330-419c-8805-941c22aa3423_TABLET_LANDSCAPE_LARGE_16_9.jpg" alt="Lynyrd Skynyrd"
+                    class="artist-img">
+                <a href="Lynyrd Skynyrd - Freebird - 7_2_1977 - Oakland Coliseum Stadium (Official).mp4"
+                    class="video-link">Free Bird</a>
+            </div>
+            <!-- The Beatles -->
+            <div class="video-card">
+                <img src="5814efca-2039-465f-a0cd-0520cde7f3d2.jpg" alt="The Beatles" class="artist-img">
+                <a href="The Beatles - Twist & Shout - Performed Live On The Ed Sullivan Show 2_23_64.mp4"
+                    class="video-link">Twist and Shout</a>
+                <a href="The Beatles.mp4" class="video-link">I Want to Hold Your Hand</a>
+                <a href="THE_BEATLES_Hey_Jude_1968.mp4" class="video-link">Hey Jude</a>
+            </div>
+        </div>
+
+        <div class="coming-soon">
+            <h2>New videos coming soon!</h2>
+            <p>Currently working hard to put all the songs in <a href="content.html"
+                    style="color: var(--primary-color); text-decoration: none; font-weight: 500;">Content</a> on the
+                videos page.</p>
+        </div>
     </main>
 
-    <!-- Search Modal -->
-    <div id="searchModal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
-        <div class="bg-white p-8 rounded-2xl shadow-2xl w-11/12 md:w-1/2 text-center relative">
-            <button id="closeModal" class="absolute top-4 right-4 text-red-500 font-bold text-xl">×</button>
-            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Search Results</h2>
-            <div id="searchResults" class="flex flex-col items-center gap-4">
-                <!-- Search results will be dynamically loaded here -->
-            </div>
+    <footer>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">© 2025 The Sheet Music Directory. Created by Mattia
+            Lobrano.</p>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <span>|</span>
+            <a href="terms.html">Terms and Conditions</a>
         </div>
-    </div>
-
-    <footer class="bg-white text-center py-4 mt-10 border-t border-gray-300">
-        <p class="text-gray-600 text-sm">© 2025 The Sheet Music Directory. Created by Mattia Lobrano.</p>
-        <nav class="mt-2">
-            <a href="privacy.html" class="text-blue-500 text-sm hover:underline">Privacy Policy</a> |
-            <a href="terms.html" class="text-blue-500 text-sm hover:underline">Terms and Conditions</a>
-        </nav>
-        <div class="mt-4 flex justify-center items-center gap-4">
-            <a href="https://www.tiktok.com/@the_guitar_directory" target="_blank" class="flex items-center gap-2">
-                <img src="tiktok.png" alt="TikTok" class="w-6 h-6">
-                <span class="text-blue-500 text-sm hover:underline">Follow us on TikTok</span>
-            </a>
+        <h2 style="color: var(--primary-color); margin-bottom: 1rem;">Search Results</h2>
+        <div id="searchResults" class="search-results">
+            <!-- Search results will be dynamically loaded here -->
         </div>
-    </footer>
-    <script>
-        // Search functionality with modal
-        const searchInput = document.getElementById('searchInput');
-        const searchModal = document.getElementById('searchModal');
-        const searchResults = document.getElementById('searchResults');
-        const closeModal = document.getElementById('closeModal');
+        </div>
+        </div>
 
-        closeModal.addEventListener('click', () => {
-            searchModal.classList.add('hidden');
-            searchResults.innerHTML = '';
-        });
+        <!-- Cookie Consent -->
+        <div id="cookieConsent" class="cookie-consent">
+            <p class="cookie-text">This website uses cookies to enhance your experience. By continuing to browse, you
+                accept
+                our use of cookies.</p>
+            <button id="acceptCookies" class="cookie-btn">Accept</button>
+        </div>
 
-        searchInput.addEventListener('input', async () => {
-            const keyword = searchInput.value.toLowerCase().trim();
-            if (keyword === '') {
-                searchModal.classList.add('hidden');
-                return;
-            }
-            searchModal.classList.remove('hidden');
-            searchResults.innerHTML = '';
+        <script>
+            // Search functionality with modal
+            const searchInput = document.getElementById('searchInput');
+            const searchModal = document.getElementById('searchModal');
+            const searchResults = document.getElementById('searchResults');
+            const closeModal = document.getElementById('closeModal');
 
-            try {
-                const response = await fetch('content.html');
-                const contentHtml = await response.text();
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(contentHtml, 'text/html');
-                const links = doc.querySelectorAll('a[href$=".html"]');
+            closeModal.addEventListener('click', () => {
+                searchModal.classList.remove('active');
+                searchResults.innerHTML = '';
+            });
 
-                let hasResults = false;
+            // Close modal when clicking outside
+            searchModal.addEventListener('click', (e) => {
+                if (e.target === searchModal) {
+                    searchModal.classList.remove('active');
+                }
+            });
 
-                links.forEach(link => {
-                    const text = link.textContent.toLowerCase();
-                    if (text.includes(keyword)) {
-                        hasResults = true;
-                        const resultItem = document.createElement('div');
-                        resultItem.className = 'text-lg text-gray-600';
-                        resultItem.innerHTML = `
-                            <a href="${link.getAttribute('href')}" class="text-blue-500 hover:underline">
+            searchInput.addEventListener('input', async () => {
+                const keyword = searchInput.value.toLowerCase().trim();
+                if (keyword === '') {
+                    searchModal.classList.remove('active');
+                    return;
+                }
+                searchModal.classList.add('active');
+                searchResults.innerHTML = '';
+
+                try {
+                    const response = await fetch('content.html');
+                    const contentHtml = await response.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(contentHtml, 'text/html');
+                    const links = doc.querySelectorAll('a[href$=".html"]');
+
+                    let hasResults = false;
+
+                    links.forEach(link => {
+                        const text = link.textContent.toLowerCase();
+                        if (text.includes(keyword)) {
+                            hasResults = true;
+                            const resultItem = document.createElement('div');
+                            resultItem.className = 'search-result-item';
+                            resultItem.innerHTML = `
+                            <a href="${link.getAttribute('href')}">
                                 ${link.textContent}
                             </a>
                         `;
-                        searchResults.appendChild(resultItem);
+                            searchResults.appendChild(resultItem);
+                        }
+                    });
+
+                    if (!hasResults) {
+                        searchResults.innerHTML = '<p style="color: var(--text-secondary);">No results found.</p>';
                     }
-                });
-
-                if (!hasResults) {
-                    searchResults.innerHTML = '<p class="text-gray-600">No results found.</p>';
+                } catch (error) {
+                    console.error('Error fetching videos:', error);
+                    searchResults.innerHTML = '<p style="color: #d93025;">Error loading results.</p>';
                 }
-            } catch (error) {
-                console.error('Error fetching videos:', error);
-                searchResults.innerHTML = '<p class="text-red-500">Error loading results.</p>';
+            });
+
+            // Helper functions for cookies
+            function setCookie(name, value, days) {
+                let expires = "";
+                if (days) {
+                    const date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    expires = "; expires=" + date.toUTCString();
+                }
+                document.cookie = name + "=" + (value || "") + expires + "; path=/";
             }
-        });
-    </script>
-    <script>
-    // Helper functions for cookies
-    function setCookie(name, value, days) {
-        let expires = "";
-        if (days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days*24*60*60*1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-    function getCookie(name) {
-        const nameEQ = name + "=";
-        const ca = document.cookie.split(';');
-        for(let i=0;i < ca.length;i++) {
-            let c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1,c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-        }
-        return null;
-    }
-    function eraseCookie(name) {   
-        document.cookie = name+'=; Max-Age=-99999999; path=/';  
-    }
 
+            function getCookie(name) {
+                const nameEQ = name + "=";
+                const ca = document.cookie.split(';');
+                for (let i = 0; i < ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            }
 
-
-
-</script>
-<!-- Add this just before </body> -->
-<div id="cookieConsent" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-white/95 border border-blue-200 rounded-xl shadow-xl px-6 py-4 flex flex-col md:flex-row items-center gap-4 max-w-lg w-full transition-all duration-300 hidden">
-    <span class="text-gray-700 text-sm flex-1">
-        This website uses cookies to enhance your experience. By continuing to browse, you accept our use of cookies.
-    </span>
-    <button id="acceptCookies" class="bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg px-4 py-2 font-bold shadow hover:from-blue-600 hover:to-blue-800 transition">
-        Accept
-    </button>
-</div>
-<script>
-    // Show cookie consent popup if not accepted
-    function showCookieConsent() {
-        if (!getCookie('cookieConsent')) {
-            document.getElementById('cookieConsent').classList.remove('hidden');
-        }
-    }
-    document.getElementById('acceptCookies').addEventListener('click', function() {
-        setCookie('cookieConsent', 'accepted', 365);
-        document.getElementById('cookieConsent').classList.add('hidden');
-    });
-    document.addEventListener('DOMContentLoaded', showCookieConsent);
-</script>
-<script>
-    // Hamburger menu logic
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    const closeMobileNav = document.getElementById('closeMobileNav');
-
-    hamburgerBtn.addEventListener('click', () => {
-        mobileNav.classList.remove('-translate-y-full');
-        mobileNav.classList.add('translate-y-0');
-    });
-    closeMobileNav.addEventListener('click', () => {
-        mobileNav.classList.add('-translate-y-full');
-        mobileNav.classList.remove('translate-y-0');
-    });
-
-    // Optional: close mobile nav when clicking a link
-    mobileNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileNav.classList.add('-translate-y-full');
-            mobileNav.classList.remove('translate-y-0');
-        });
-    });
-</script>
+            // Show cookie consent popup if not accepted
+            function showCookieConsent() {
+                if (!getCookie('cookieConsent')) {
+                    document.getElementById('cookieConsent').classList.add('visible');
+                }
+            }
+            document.getElementById('acceptCookies').addEventListener('click', function () {
+                setCookie('cookieConsent', 'accepted', 365);
+                document.getElementById('cookieConsent').classList.remove('visible');
+            });
+            document.addEventListener('DOMContentLoaded', showCookieConsent);
+        </script>
 </body>
+
 </html>

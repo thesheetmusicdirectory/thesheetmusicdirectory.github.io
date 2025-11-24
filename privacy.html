@@ -1,122 +1,467 @@
-Copilot_20250722_164706.png<!DOCTYPE html><!DOCTYPE html>Copilot_20250722_164706.png<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Privacy Policy - The Sheet Music Directory</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">`n    <!-- Security Headers -->`n    <meta http-equiv="X-Content-Type-Options" content="nosniff">`n    <meta http-equiv="X-Frame-Options" content="DENY">`n    <meta http-equiv="X-XSS-Protection" content="1; mode=block">`n    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Privacy Policy for The Sheet Music Directory">
-    <meta name="author" content="Mattia Lobrano">
-    <link rel="icon" href="Copilot_20250722_164706.png" type="image/x-icon">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9724879624767701"
-     crossorigin="anonymous"></script>
-     <meta name="google-adsense-account" content="ca-pub-9724879624767701">
-</head>
-<body class="bg-gradient-to-tr from-blue-100 via-white to-blue-200 min-h-screen text-gray-800 font-sans flex flex-col">
-    <!-- Header -->
-<header class="bg-white/90 shadow-sm border-b border-gray-200 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-<a href="index.html" class="flex items-center gap-3">
-    <img src="the_sheet_music_directory.png" alt="Logo"
-        class="w-12 h-12 object-cover rounded-xl shadow border border-blue-200">
-    <span class="text-2xl font-bold text-blue-700 tracking-tight">The Sheet Music Directory</span>
-</a>
-        <!-- Hamburger Button (mobile only) -->
-        <button id="hamburgerBtn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded hover:bg-blue-100 transition" aria-label="Open menu">
-            <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
-            <span class="block w-6 h-0.5 bg-blue-700 mb-1"></span>
-            <span class="block w-6 h-0.5 bg-blue-700"></span>
-        </button>
-        <!-- Desktop Nav -->
-        <nav id="mainNav" class="hidden md:flex gap-8">
-            <a href="index.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Home</a>
-            <a href="content.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Content</a>
-            <a href="videos.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Videos</a>
-            <a href="profile.html" class="text-blue-700 hover:text-blue-900 font-medium transition">Profile</a>
-        </nav>
-    </div>
-    <!-- Mobile Nav (hidden by default) -->
-    <nav id="mobileNav" class="md:hidden fixed top-0 left-0 w-full h-full bg-white/95 z-50 flex flex-col items-center pt-24 gap-8 text-xl font-medium text-blue-700 transition-all duration-300 -translate-y-full">
-        <a href="index.html" class="hover:text-blue-900 transition">Home</a>
-        <a href="content.html" class="hover:text-blue-900 transition">Content</a>
-        <a href="videos.html" class="hover:text-blue-900 transition">Videos</a>
-        <a href="profile.html" class="hover:text-blue-900 transition">Profile</a>
-        <button id="closeMobileNav" class="absolute top-6 right-6 text-3xl text-blue-700" aria-label="Close menu">&times;</button>
-    </nav>
-    <div class="max-w-2xl mx-auto px-6 pb-4">
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Search songs..."
-            class="w-full p-3 border border-blue-100 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-        />
-    </div>
-</header>
 
-    <main class="flex flex-1 items-center justify-center px-4">
-        <div class="bg-white/95 p-10 rounded-3xl shadow-2xl border border-blue-100 w-full max-w-2xl flex flex-col gap-6 mt-10 mb-10">
-            <h1 class="text-3xl font-bold text-blue-700 mb-4 text-center">Privacy Policy</h1>
-            <p class="text-gray-700 mb-4">
-                <strong>Last updated:</strong> June 2025
-            </p>
-            <p class="text-gray-700 mb-4">
-                The Sheet Music Directory ("we", "us", or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our website.
-            </p>
-            <h2 class="text-2xl font-bold text-blue-700 mt-6 mb-2">Information We Collect</h2>
-            <ul class="list-disc list-inside text-gray-700 mb-4">
-                <li>We may collect non-personal information such as browser type, device type, and usage statistics for analytics and site improvement.</li>
-                <li>Favorites and preferences are stored locally in your browser using <strong>localStorage</strong>. This data is not shared with us or any third party.</li>
-            </ul>
-            <h2 class="text-2xl font-bold text-blue-700 mt-6 mb-2">Cookies</h2>
-            <p class="text-gray-700 mb-4">
-                We use cookies to enhance your experience (for example, to remember your cookie consent). You can disable cookies in your browser settings, but some features may not work as intended.
-            </p>
-            <h2 class="text-2xl font-bold text-blue-700 mt-6 mb-2">Third-Party Links</h2>
-            <p class="text-gray-700 mb-4">
-                Our website may contain links to third-party sites (such as Ultimate Guitar, Wikipedia, or TikTok). We are not responsible for the privacy practices or content of these sites.
-            </p>
-            <h2 class="text-2xl font-bold text-blue-700 mt-6 mb-2">Contact</h2>
-            <p class="text-gray-700 mb-4">
-                If you have any questions about this Privacy Policy, please contact us at
-                <a href="mailto:theguitardirectory@gmail.com" class="text-blue-500 hover:underline">theguitardirectory@gmail.com</a>.
-            </p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - The Sheet Music Directory</title>
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --primary-hover: #1557b0;
+            --text-color: #202124;
+            --text-secondary: #5f6368;
+            --bg-color: #ffffff;
+            --border-color: #dadce0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .page-header {
+            padding: 4rem 2rem;
+            background: #fff;
+            text-align: center;
+        }
+
+        .header-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: #f1f3f4;
+            color: var(--primary-color);
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .last-updated {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background: #fff;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="page-header">
+        <div class="header-nav">
+            <a href="index.html" class="nav-link">← Home</a>
+            <a href="content.html" class="nav-link">Library</a>
+
+            <a href="account.html" class="nav-link">Account</a>
         </div>
+        <h1>Privacy Policy</h1>
+        <p class="last-updated">Last updated: October 2025</p>
+    </header>
+
+    <main class="content">
+        <p>At The Sheet Music Directory, accessible from thesheetmusicdirectory.github.io, one of our main priorities is
+            the privacy of our visitors. This Privacy Policy document contains types of information that is collected
+            and recorded by The Sheet Music Directory and how we use it.</p>
+
+        <h2>Log Files</h2>
+        <p>The Sheet Music Directory follows a standard procedure of using log files. These files log visitors when they
+            visit websites. All hosting companies do this and a part of hosting services' analytics. The information
+            collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider
+            (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to
+            any information that is personally identifiable. The purpose of the information is for analyzing trends,
+            administering the site, tracking users' movement on the website, and gathering demographic information.</p>
+
+        <h2>Cookies and Web Beacons</h2>
+        <p>Like any other website, The Sheet Music Directory uses 'cookies'. These cookies are used to store information
+            including visitors' preferences, and the pages on the website that the visitor accessed or visited. The
+            information is used to optimize the users' experience by customizing our web page content based on visitors'
+            browser type and/or other information.</p>
+        <p>We use local storage to save your preferences (such as dark mode and favorites) directly on your device. This
+            data is not sent to our servers.</p>
+
+        <h2>Google DoubleClick DART Cookie</h2>
+        <p>Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads
+            to our site visitors based upon their visit to www.website.com and other sites on the internet. However,
+            visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy
+            Policy at the following URL – <a href="https://policies.google.com/technologies/ads" target="_blank"
+                style="color: var(--primary-color);">https://policies.google.com/technologies/ads</a></p>
+
+        <h2>Privacy Policies</h2>
+        <p>You may consult this list to find the Privacy Policy for each of the advertising partners of The Sheet Music
+            Directory.</p>
+        <p>Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are
+            used in their respective advertisements and links that appear on The Sheet Music Directory, which are sent
+            directly to users' browser. They automatically receive your IP address when this occurs. These technologies
+            are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising
+            content that you see on websites that you visit.</p>
+        <p>Note that The Sheet Music Directory has no access to or control over these cookies that are used by
+            third-party advertisers.</p>
+
+        <h2>Third Party Privacy Policies</h2>
+        <p>The Sheet Music Directory's Privacy Policy does not apply to other advertisers or websites. Thus, we are
+            advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed
+            information. It may include their practices and instructions about how to opt-out of certain options.</p>
+
+        <h2>Children's Information</h2>
+        <p>Another part of our priority is adding protection for children while using the internet. We encourage parents
+            and guardians to observe, participate in, and/or monitor and guide their online activity.</p>
+        <p>The Sheet Music Directory does not knowingly collect any Personal Identifiable Information from children
+            under the age of 13. If you think that your child provided this kind of information on our website, we
+            strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such
+            information from our records.</p>
+
+        <h2>Consent</h2>
+        <p>By using our website, you hereby consent to our Privacy Policy and agree to its Terms and Conditions.</p>
     </main>
 
-    <footer class="bg-white text-center py-4 mt-auto border-t border-gray-300">
-        <p class="text-gray-600 text-sm">© 2025 The Sheet Music Directory. Created by Mattia Lobrano.</p>
-        <nav class="mt-2">
-            <a href="privacy.html" class="text-blue-500 text-sm hover:underline">Privacy Policy</a> |
-            <a href="terms.html" class="text-blue-500 text-sm hover:underline">Terms and Conditions</a>
-        </nav>
-        <div class="mt-4 flex justify-center items-center gap-4">
-            <a href="https://www.tiktok.com/@the_guitar_directory" target="_blank" class="flex items-center gap-2">
-                <img src="tiktok.png" alt="TikTok" class="w-6 h-6">
-                <span class="text-blue-500 text-sm hover:underline">Follow us on TikTok</span>
-            </a>
-        </div>
-    </footer>
-    <script>
-    // Hamburger menu logic
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    const closeMobileNav = document.getElementById('closeMobileNav');
+    <footer>
+        <div class="footer-content">
+            <h3 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 1rem; color: var(--text-color);">Get in
+                Touch</h3>
+            <div style="display: flex; gap: 1.5rem; justify-content: center; margin: 1.5rem 0;">
+                <a href="mailto:theguitardirectory@gmail.com"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">theguitardirectory@gmail.com</a>
+                <span style="opacity: 0.3;">|</span>
+                <a href="mailto:mattialobrano@gmail.com"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">mattialobrano@gmail.com</a>
+            </div>
+            <p style="opacity: 0.7; margin-top: 2rem; color: var(--text-secondary);">Have feedback, suggestions, or want
+                to contribute? We'd love to hear from you!</p>
+            <p style="color: #9aa0a6; font-size: 0.85rem; margin-top: 2rem;">© 2025 The Sheet Music Directory. Created
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                }
 
-    hamburgerBtn.addEventListener('click', () => {
-        mobileNav.classList.remove('-translate-y-full');
-        mobileNav.classList.add('translate-y-0');
-    });
-    closeMobileNav.addEventListener('click', () => {
-        mobileNav.classList.add('-translate-y-full');
-        mobileNav.classList.remove('translate-y-0');
-    });
+                body {
+                font-family: 'Roboto', sans-serif;
+                background: var(--bg-color);
+                color: var(--text-color);
+                line-height: 1.6;
+                }
 
-    // Optional: close mobile nav when clicking a link
-    mobileNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileNav.classList.add('-translate-y-full');
-            mobileNav.classList.remove('translate-y-0');
-        });
-    });
-</script>
-</body>
+                /* Header */
+                .page-header {
+                padding: 4rem 2rem;
+                background: #fff;
+                text-align: center;
+                }
+
+                .header-nav {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                margin-bottom: 2rem;
+                }
+
+                .nav-link {
+                color: var(--text-secondary);
+                text-decoration: none;
+                font-weight: 500;
+                padding: 0.5rem 1rem;
+                border-radius: 20px;
+                transition: all 0.2s;
+                }
+
+                .nav-link:hover,
+                .nav-link.active {
+                background: #f1f3f4;
+                color: var(--primary-color);
+                }
+
+                .content {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 0 2rem;
+                }
+
+                h1 {
+                font-size: 2.5rem;
+                font-weight: 400;
+                margin-bottom: 1rem;
+                color: var(--text-color);
+                text-align: center;
+                }
+
+                h2 {
+                font-size: 1.5rem;
+                font-weight: 400;
+                margin-top: 2rem;
+                margin-bottom: 1rem;
+                color: var(--text-color);
+                }
+
+                p {
+                margin-bottom: 1rem;
+                color: var(--text-secondary);
+                }
+
+                ul {
+                margin-bottom: 1rem;
+                padding-left: 2rem;
+                color: var(--text-secondary);
+                }
+
+                li {
+                margin-bottom: 0.5rem;
+                }
+
+                .last-updated {
+                color: var(--text-secondary);
+                font-size: 0.9rem;
+                margin-bottom: 2rem;
+                text-align: center;
+                }
+
+                /* Footer */
+                footer {
+                padding: 3rem 2rem;
+                background: #fff;
+                border-top: 1px solid var(--border-color);
+                text-align: center;
+                margin-top: 4rem;
+                }
+
+                .footer-links {
+                margin-top: 1rem;
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                font-size: 0.9rem;
+                }
+
+                .footer-links a {
+                color: var(--primary-color);
+                text-decoration: none;
+                }
+
+                .footer-links a:hover {
+                text-decoration: underline;
+                }
+                </style>
+                </head>
+
+                <body>
+                    <header class="page-header">
+                        <div class="header-nav">
+                            <a href="index.html" class="nav-link">← Home</a>
+                            <a href="content.html" class="nav-link">Library</a>
+
+                            <a href="account.html" class="nav-link">Account</a>
+                        </div>
+                        <h1>Privacy Policy</h1>
+                        <p class="last-updated">Last updated: October 2025</p>
+                    </header>
+
+                    <main class="content">
+                        <p>At The Sheet Music Directory, accessible from thesheetmusicdirectory.github.io, one of our
+                            main priorities is
+                            the privacy of our visitors. This Privacy Policy document contains types of information that
+                            is collected
+                            and recorded by The Sheet Music Directory and how we use it.</p>
+
+                        <h2>Log Files</h2>
+                        <p>The Sheet Music Directory follows a standard procedure of using log files. These files log
+                            visitors when they
+                            visit websites. All hosting companies do this and a part of hosting services' analytics. The
+                            information
+                            collected by log files include internet protocol (IP) addresses, browser type, Internet
+                            Service Provider
+                            (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These
+                            are not linked to
+                            any information that is personally identifiable. The purpose of the information is for
+                            analyzing trends,
+                            administering the site, tracking users' movement on the website, and gathering demographic
+                            information.</p>
+
+                        <h2>Cookies and Web Beacons</h2>
+                        <p>Like any other website, The Sheet Music Directory uses 'cookies'. These cookies are used to
+                            store information
+                            including visitors' preferences, and the pages on the website that the visitor accessed or
+                            visited. The
+                            information is used to optimize the users' experience by customizing our web page content
+                            based on visitors'
+                            browser type and/or other information.</p>
+                        <p>We use local storage to save your preferences (such as dark mode and favorites) directly on
+                            your device. This
+                            data is not sent to our servers.</p>
+
+                        <h2>Google DoubleClick DART Cookie</h2>
+                        <p>Google is one of a third-party vendor on our site. It also uses cookies, known as DART
+                            cookies, to serve ads
+                            to our site visitors based upon their visit to www.website.com and other sites on the
+                            internet. However,
+                            visitors may choose to decline the use of DART cookies by visiting the Google ad and content
+                            network Privacy
+                            Policy at the following URL – <a href="https://policies.google.com/technologies/ads"
+                                target="_blank"
+                                style="color: var(--primary-color);">https://policies.google.com/technologies/ads</a>
+                        </p>
+
+                        <h2>Privacy Policies</h2>
+                        <p>You may consult this list to find the Privacy Policy for each of the advertising partners of
+                            The Sheet Music
+                            Directory.</p>
+                        <p>Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web
+                            Beacons that are
+                            used in their respective advertisements and links that appear on The Sheet Music Directory,
+                            which are sent
+                            directly to users' browser. They automatically receive your IP address when this occurs.
+                            These technologies
+                            are used to measure the effectiveness of their advertising campaigns and/or to personalize
+                            the advertising
+                            content that you see on websites that you visit.</p>
+                        <p>Note that The Sheet Music Directory has no access to or control over these cookies that are
+                            used by
+                            third-party advertisers.</p>
+
+                        <h2>Third Party Privacy Policies</h2>
+                        <p>The Sheet Music Directory's Privacy Policy does not apply to other advertisers or websites.
+                            Thus, we are
+                            advising you to consult the respective Privacy Policies of these third-party ad servers for
+                            more detailed
+                            information. It may include their practices and instructions about how to opt-out of certain
+                            options.</p>
+
+                        <h2>Children's Information</h2>
+                        <p>Another part of our priority is adding protection for children while using the internet. We
+                            encourage parents
+                            and guardians to observe, participate in, and/or monitor and guide their online activity.
+                        </p>
+                        <p>The Sheet Music Directory does not knowingly collect any Personal Identifiable Information
+                            from children
+                            under the age of 13. If you think that your child provided this kind of information on our
+                            website, we
+                            strongly encourage you to contact us immediately and we will do our best efforts to promptly
+                            remove such
+                            information from our records.</p>
+
+                        <h2>Consent</h2>
+                        <p>By using our website, you hereby consent to our Privacy Policy and agree to its Terms and
+                            Conditions.</p>
+                    </main>
+
+                    <footer>
+                        <div class="footer-content">
+                            <h3
+                                style="font-size: 1.25rem; font-weight: 500; margin-bottom: 1rem; color: var(--text-color);">
+                                Get in
+                                Touch</h3>
+                            <div style="display: flex; gap: 1.5rem; justify-content: center; margin: 1.5rem 0;">
+                                <a href="mailto:theguitardirectory@gmail.com"
+                                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">theguitardirectory@gmail.com</a>
+                                <span style="opacity: 0.3;">|</span>
+                                <a href="mailto:mattialobrano@gmail.com"
+                                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">mattialobrano@gmail.com</a>
+                            </div>
+                            <p style="opacity: 0.7; margin-top: 2rem; color: var(--text-secondary);">Have feedback,
+                                suggestions, or want
+                                to contribute? We'd love to hear from you!</p>
+                            <p style="color: #9aa0a6; font-size: 0.85rem; margin-top: 2rem;">© 2025 The Sheet Music
+                                Directory. Created
+                                with ❤️ for musicians everywhere.</p>
+                            <div class="footer-links">
+                                <a href="privacy.html">Privacy Policy</a>
+                                <span style="color: var(--text-secondary);">|</span>
+                                <a href="terms.html">Terms and Conditions</a>
+                            </div>
+                            <p style="margin-top: 1rem; font-size: 0.75rem; opacity: 0.5;">Version 5.0.0</p>
+                        </div>
+                    </footer>
+                </body>
+
 </html>
