@@ -98,128 +98,116 @@
             <span>|</span>
             <a href="terms.html">Terms and Conditions</a>
         </div>
-        <div style="margin-top: 1rem;">
-            <a href="https://www.tiktok.com/@the_guitar_directory" target="_blank"
-                style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">
-                <img src="tiktok.png" alt="TikTok" style="width: 20px; height: 20px;">
-                Follow us on TikTok
-            </a>
+        <h2 style="color: var(--primary-color); margin-bottom: 1rem;">Search Results</h2>
+        <div id="searchResults" class="search-results">
+            <!-- Search results will be dynamically loaded here -->
         </div>
-    </footer>
-
-    <!-- Search Modal -->
-    <div id="searchModal" class="modal">
-        <div class="modal-content">
-            <button id="closeModal" class="close-modal">×</button>
-            <h2 style="color: var(--primary-color); margin-bottom: 1rem;">Search Results</h2>
-            <div id="searchResults" class="search-results">
-                <!-- Search results will be dynamically loaded here -->
-            </div>
         </div>
-    </div>
+        </div>
 
-    <!-- Cookie Consent -->
-    <div id="cookieConsent" class="cookie-consent">
-        <p class="cookie-text">This website uses cookies to enhance your experience. By continuing to browse, you accept
-            our use of cookies.</p>
-        <button id="acceptCookies" class="cookie-btn">Accept</button>
-    </div>
+        <!-- Cookie Consent -->
+        <div id="cookieConsent" class="cookie-consent">
+            <p class="cookie-text">This website uses cookies to enhance your experience. By continuing to browse, you
+                accept
+                our use of cookies.</p>
+            <button id="acceptCookies" class="cookie-btn">Accept</button>
+        </div>
 
-    <script>
-        // Search functionality with modal
-        const searchInput = document.getElementById('searchInput');
-        const searchModal = document.getElementById('searchModal');
-        const searchResults = document.getElementById('searchResults');
-        const closeModal = document.getElementById('closeModal');
+        <script>
+            // Search functionality with modal
+            const searchInput = document.getElementById('searchInput');
+            const searchModal = document.getElementById('searchModal');
+            const searchResults = document.getElementById('searchResults');
+            const closeModal = document.getElementById('closeModal');
 
-        closeModal.addEventListener('click', () => {
-            searchModal.classList.remove('active');
-            searchResults.innerHTML = '';
-        });
-
-        // Close modal when clicking outside
-        searchModal.addEventListener('click', (e) => {
-            if (e.target === searchModal) {
+            closeModal.addEventListener('click', () => {
                 searchModal.classList.remove('active');
-            }
-        });
+                searchResults.innerHTML = '';
+            });
 
-        searchInput.addEventListener('input', async () => {
-            const keyword = searchInput.value.toLowerCase().trim();
-            if (keyword === '') {
-                searchModal.classList.remove('active');
-                return;
-            }
-            searchModal.classList.add('active');
-            searchResults.innerHTML = '';
+            // Close modal when clicking outside
+            searchModal.addEventListener('click', (e) => {
+                if (e.target === searchModal) {
+                    searchModal.classList.remove('active');
+                }
+            });
 
-            try {
-                const response = await fetch('content.html');
-                const contentHtml = await response.text();
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(contentHtml, 'text/html');
-                const links = doc.querySelectorAll('a[href$=".html"]');
+            searchInput.addEventListener('input', async () => {
+                const keyword = searchInput.value.toLowerCase().trim();
+                if (keyword === '') {
+                    searchModal.classList.remove('active');
+                    return;
+                }
+                searchModal.classList.add('active');
+                searchResults.innerHTML = '';
 
-                let hasResults = false;
+                try {
+                    const response = await fetch('content.html');
+                    const contentHtml = await response.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(contentHtml, 'text/html');
+                    const links = doc.querySelectorAll('a[href$=".html"]');
 
-                links.forEach(link => {
-                    const text = link.textContent.toLowerCase();
-                    if (text.includes(keyword)) {
-                        hasResults = true;
-                        const resultItem = document.createElement('div');
-                        resultItem.className = 'search-result-item';
-                        resultItem.innerHTML = `
+                    let hasResults = false;
+
+                    links.forEach(link => {
+                        const text = link.textContent.toLowerCase();
+                        if (text.includes(keyword)) {
+                            hasResults = true;
+                            const resultItem = document.createElement('div');
+                            resultItem.className = 'search-result-item';
+                            resultItem.innerHTML = `
                             <a href="${link.getAttribute('href')}">
                                 ${link.textContent}
                             </a>
                         `;
-                        searchResults.appendChild(resultItem);
+                            searchResults.appendChild(resultItem);
+                        }
+                    });
+
+                    if (!hasResults) {
+                        searchResults.innerHTML = '<p style="color: var(--text-secondary);">No results found.</p>';
                     }
-                });
-
-                if (!hasResults) {
-                    searchResults.innerHTML = '<p style="color: var(--text-secondary);">No results found.</p>';
+                } catch (error) {
+                    console.error('Error fetching videos:', error);
+                    searchResults.innerHTML = '<p style="color: #d93025;">Error loading results.</p>';
                 }
-            } catch (error) {
-                console.error('Error fetching videos:', error);
-                searchResults.innerHTML = '<p style="color: #d93025;">Error loading results.</p>';
-            }
-        });
+            });
 
-        // Helper functions for cookies
-        function setCookie(name, value, days) {
-            let expires = "";
-            if (days) {
-                const date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
+            // Helper functions for cookies
+            function setCookie(name, value, days) {
+                let expires = "";
+                if (days) {
+                    const date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    expires = "; expires=" + date.toUTCString();
+                }
+                document.cookie = name + "=" + (value || "") + expires + "; path=/";
             }
-            document.cookie = name + "=" + (value || "") + expires + "; path=/";
-        }
 
-        function getCookie(name) {
-            const nameEQ = name + "=";
-            const ca = document.cookie.split(';');
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            function getCookie(name) {
+                const nameEQ = name + "=";
+                const ca = document.cookie.split(';');
+                for (let i = 0; i < ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
             }
-            return null;
-        }
 
-        // Show cookie consent popup if not accepted
-        function showCookieConsent() {
-            if (!getCookie('cookieConsent')) {
-                document.getElementById('cookieConsent').classList.add('visible');
+            // Show cookie consent popup if not accepted
+            function showCookieConsent() {
+                if (!getCookie('cookieConsent')) {
+                    document.getElementById('cookieConsent').classList.add('visible');
+                }
             }
-        }
-        document.getElementById('acceptCookies').addEventListener('click', function () {
-            setCookie('cookieConsent', 'accepted', 365);
-            document.getElementById('cookieConsent').classList.remove('visible');
-        });
-        document.addEventListener('DOMContentLoaded', showCookieConsent);
-    </script>
+            document.getElementById('acceptCookies').addEventListener('click', function () {
+                setCookie('cookieConsent', 'accepted', 365);
+                document.getElementById('cookieConsent').classList.remove('visible');
+            });
+            document.addEventListener('DOMContentLoaded', showCookieConsent);
+        </script>
 </body>
 
 </html>

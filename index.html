@@ -863,6 +863,7 @@
             <p style="opacity: 0.7; margin-top: 2rem;">Have feedback, suggestions, or want to contribute? We'd love to
                 hear from you!</p>
             <p class="footer-note">© 2025 The Sheet Music Directory. Created with ❤️ for musicians everywhere.</p>
+            <p class="footer-note" style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.5;">Version 5.0.0</p>
         </div>
     </footer>
 
@@ -1110,6 +1111,50 @@
             });
         }
     </script>
+
+    <!-- Update Popup -->
+    <div id="updatePopup" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" id="closePopup">&times;</button>
+            <h2>Version V just released! Explore the new site</h2>
+
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                Here's what's new in this update:
+            </p>
+
+            <ul style="color: var(--text-secondary); margin-left: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+                <li>✔ Faster loading across all pages</li>
+                <li>✔ New layout inspired by modern Google design</li>
+                <li>✔ Improved mobile experience</li>
+                <li>✔ Cleaner UI and upgraded animations</li>
+            </ul>
+
+            <button id="continueBtn" class="btn btn-primary" style="width: 100%;">Continue to site</button>
+        </div>
+    </div>
+
+    <script>
+        const CURRENT_VERSION = "V"; // Change this only when you release a new version
+        const LAST_SEEN_VERSION = localStorage.getItem("last_seen_version");
+
+        const popup = document.getElementById("updatePopup");
+        const closePopup = document.getElementById("closePopup");
+        const continueBtn = document.getElementById("continueBtn");
+
+        // Show popup only on first visit after update
+        if (LAST_SEEN_VERSION !== CURRENT_VERSION) {
+            popup.classList.add("active");
+        }
+
+        function closeUpdatePopup() {
+            popup.classList.remove("active");
+            localStorage.setItem("last_seen_version", CURRENT_VERSION);
+        }
+
+        closePopup.addEventListener("click", closeUpdatePopup);
+        continueBtn.addEventListener("click", closeUpdatePopup);
+    </script>
+
 </body>
 
 </html>
