@@ -39,16 +39,16 @@
         }
 
         .page-header {
-            padding: 4rem 2rem;
             background: #fff;
-            text-align: center
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem
         }
 
         .header-nav {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-bottom: 2rem
+            margin-bottom: 0.5rem
         }
 
         .nav-link {
@@ -267,8 +267,10 @@
 <body>
     <header class="page-header">
         <div class="header-nav">
-            <a href="index.html" class="nav-link">← Home</a>
+            <a href="index.html" class="nav-link">Home</a>
             <a href="content.html" class="nav-link">Library</a>
+
+            <a href="account.html" class="nav-link">Account</a>
         </div>
     </header>
     <section class="hero">
@@ -292,8 +294,207 @@
                 <button class="btn" id="pdfBtn"><span class="material-icons">picture_as_pdf</span> PDF</button>
                 <button class="btn" id="shareBtn"><span class="material-icons">share</span> Share</button>
             </div>
-            <section class="tabs" id="tabsSection">
-                <pre id="tabContent">[Intro]
+            right: -100px;
+            animation-delay: 2s
+            }
+
+            .shape-3 {
+            width: 200px;
+            height: 200px;
+            background: #EA4335;
+            top: 20%;
+            right: 10%;
+            animation-delay: 4s
+            }
+
+            @keyframes float {
+
+            0%,
+            100% {
+            transform: translateY(0)
+            }
+
+            50% {
+            transform: translateY(-20px)
+            }
+            }
+
+            .hero-content {
+            max-width: 900px;
+            z-index: 1;
+            position: relative
+            }
+
+            .song-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp .8s ease-out .1s both
+            }
+
+            .song-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 300;
+            margin-bottom: .5rem;
+            color: var(--text-color);
+            animation: fadeInUp .8s ease-out .2s both
+            }
+
+            .artist-name {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            animation: fadeInUp .8s ease-out .3s both
+            }
+
+            .meta-badge {
+            background: #f8f9fa;
+            border: 1px solid var(--border-color);
+            padding: .5rem 1rem;
+            border-radius: 16px;
+            font-size: .9rem;
+            color: var(--text-secondary);
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            margin: 0 .3rem;
+            animation: fadeInUp .8s ease-out .4s both
+            }
+
+            @keyframes fadeInUp {
+            from {
+            opacity: 0;
+            transform: translateY(20px)
+            }
+
+            to {
+            opacity: 1;
+            transform: translateY(0)
+            }
+            }
+
+            .action-bar {
+            display: flex;
+            gap: .75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 1.5rem 0;
+            animation: fadeInUp .8s ease-out .5s both
+            }
+
+            .btn {
+            padding: 0 16px;
+            height: 40px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            transition: .2s
+            }
+
+            .btn:hover {
+            background: #f8f9fa;
+            border-color: #d2e3fc;
+            color: var(--primary-color)
+            }
+
+            .tabs {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            animation: fadeInUp .8s ease-out .6s both
+            }
+
+            pre {
+            font-family: 'Courier New', monospace;
+            font-size: .85rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: var(--text-color)
+            }
+
+            footer {
+            padding: 4rem 2rem;
+            background: #fff;
+            border-top: 1px solid var(--border-color);
+            text-align: center
+            }
+
+            .footer-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--text-color)
+            }
+
+            .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 1.5rem 0
+            }
+
+            .contact-link {
+            color: var(--text-secondary);
+            font-size: .9rem;
+            text-decoration: none
+            }
+
+            .contact-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline
+            }
+
+            .footer-note {
+            color: #9aa0a6;
+            font-size: .85rem;
+            margin-top: 2rem
+            }
+            </style>
+            </head>
+
+            <body>
+                <header class="page-header">
+                    <div class="header-nav">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="content.html" class="nav-link">Library</a>
+
+                        <a href="account.html" class="nav-link">Account</a>
+                    </div>
+                </header>
+                <section class="hero">
+                    <div class="hero-shape shape-1"></div>
+                    <div class="hero-shape shape-2"></div>
+                    <div class="hero-shape shape-3"></div>
+                    <div class="hero-content">
+                        <div class="song-icon">🎸</div>
+                        <h1 class="song-title">Smells Like Teen Spirit</h1>
+                        <p class="artist-name">Nirvana</p>
+                        <div class="meta">
+                            <span class="meta-badge"><span
+                                    class="material-icons">show_chart</span>Intermediate</span>
+                            <span class="meta-badge"><span
+                                    class="material-icons">music_note</span>Guitar</span>
+                            <span class="meta-badge"><span class="material-icons">album</span>Grunge</span>
+                        </div>
+                        <div class="action-bar">
+                            <button class="btn" id="favoriteBtn"><span class="material-icons">favorite_border</span>
+                                Favorite</button>
+                            <button class="btn" id="copyBtn"><span class="material-icons">content_copy</span>
+                                Copy</button>
+                            <button class="btn" id="printBtn"><span class="material-icons">print</span> Print</button>
+                            <button class="btn" id="pdfBtn"><span class="material-icons">picture_as_pdf</span>
+                                PDF</button>
+                            <button class="btn" id="shareBtn"><span class="material-icons">share</span> Share</button>
+                        </div>
+                        <section class="tabs" id="tabsSection">
+                            <pre id="tabContent">[Intro]
  
 (Clean guitar)
 e|----------------------|------------------------|
@@ -521,39 +722,50 @@ E|-1------------|(1)-----------|
 | ¾  3/4 tone     | \  Slide down    |
 | ~  Vibrato      | (n) Hold note    |
 ************************************</pre>
-            </section>
-        </div>
-    </section>
-    <footer>
-        <h3 class="footer-title">Get in Touch</h3>
-        <div class="contact-links">
-            <a href="mailto:theguitardirectory@gmail.com" class="contact-link">theguitardirectory@gmail.com</a>
-            <span>|</span>
-            <a href="mailto:mattialobrano@gmail.com" class="contact-link">mattialobrano@gmail.com</a>
-        </div>
-        <p class="footer-note">© 2025 The Sheet Music Directory. Created with ❤️ for musicians everywhere.</p>
-    </footer>
-    <script>
-        // Favorite logic
-        const favBtn = document.getElementById('favoriteBtn');
-        const songId = 'smellsliketeenspirit';
-        function updateFav() {
-            const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
-            favBtn.innerHTML = favs.includes(songId) ? '<span class="material-icons">favorite</span> Favorite' : '<span class="material-icons">favorite_border</span> Favorite';
-        }
-        favBtn.onclick = () => {
-            let favs = JSON.parse(localStorage.getItem('favorites') || '[]');
-            if (favs.includes(songId)) favs = favs.filter(id => id !== songId); else favs.push(songId);
-            localStorage.setItem('favorites', JSON.stringify(favs));
-            updateFav();
-        };
-        updateFav();
-        // Copy, Print, PDF, Share placeholders
-        document.getElementById('copyBtn').onclick = () => { navigator.clipboard.writeText(document.getElementById('tabContent').innerText).then(() => alert('Copied')).catch(() => alert('Copy failed')) };
-        document.getElementById('printBtn').onclick = () => { window.print() };
-        document.getElementById('pdfBtn').onclick = () => { alert('PDF generation not implemented') };
-        document.getElementById('shareBtn').onclick = () => { alert('Share functionality not implemented') };
-    </script>
-</body>
+                        </section>
+                    </div>
+                </section>
+                <footer>
+                    <h3 class="footer-title">Get in Touch</h3>
+                    <div class="contact-links">
+                        <a href="mailto:theguitardirectory@gmail.com"
+                            class="contact-link">theguitardirectory@gmail.com</a>
+                        <span>|</span>
+                        <a href="mailto:mattialobrano@gmail.com" class="contact-link">mattialobrano@gmail.com</a>
+                    </div>
+                    <p class="footer-note">© 2025 The Sheet Music Directory. Created with ❤️ for musicians everywhere.
+                    </p>
+                </footer>
+
+                <!-- Firebase SDKs -->
+                <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+                <!-- App Scripts -->
+                <script src="js/firebase-config.js"></script>
+                <script>
+                    const songId = 'smellsliketeenspirit';
+                </script>
+                <script src="js/app.js"></script>
+
+                <script>
+                    // Copy, Print, PDF, Share placeholders
+                    document.getElementById('copyBtn').onclick = () => { navigator.clipboard.writeText(document.getElementById('tabContent').innerText).then(() => alert('Copied')).catch(() => alert('Copy failed')) };
+                    document.getElementById('printBtn').onclick = () => { window.print() };
+                    document.getElementById('pdfBtn').onclick = () => { alert('PDF generation not implemented') };
+                    document.getElementById('shareBtn').onclick = () => {
+                        if (navigator.share) {
+                            navigator.share({
+                                title: 'Smells Like Teen Spirit - The Sheet Music Directory',
+                                text: 'Check out this tab for Smells Like Teen Spirit by Nirvana!',
+                                url: window.location.href
+                            });
+                        } else {
+                            alert('Share functionality not supported on this browser');
+                        }
+                    };
+                </script>
+            </body>
 
 </html>

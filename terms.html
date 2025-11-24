@@ -39,46 +39,38 @@
             line-height: 1.6;
         }
 
-        .header {
+        /* Header */
+        .page-header {
+            padding: 4rem 2rem;
             background: #fff;
-            border-bottom: 1px solid var(--border-color);
-            padding: 1rem 2rem;
+            text-align: center;
         }
 
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
+        .header-nav {
             display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 500;
-            color: var(--text-color);
-            text-decoration: none;
-        }
-
-        .nav {
-            display: flex;
-            gap: 1.5rem;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
 
         .nav-link {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.2s;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.2s;
         }
 
-        .nav-link:hover {
+        .nav-link:hover,
+        .nav-link.active {
+            background: #f1f3f4;
             color: var(--primary-color);
         }
 
         .content {
             max-width: 800px;
-            margin: 3rem auto;
+            margin: 0 auto;
             padding: 0 2rem;
         }
 
@@ -87,6 +79,7 @@
             font-weight: 400;
             margin-bottom: 1rem;
             color: var(--text-color);
+            text-align: center;
         }
 
         h2 {
@@ -102,15 +95,24 @@
             color: var(--text-secondary);
         }
 
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
+        ul {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            color: var(--text-secondary);
         }
 
-        a:hover {
-            text-decoration: underline;
+        li {
+            margin-bottom: 0.5rem;
         }
 
+        .last-updated {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Footer */
         footer {
             padding: 3rem 2rem;
             background: #fff;
@@ -119,81 +121,120 @@
             margin-top: 4rem;
         }
 
-        .footer-title {
-            font-size: 1.25rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-
-        .contact-links {
+        .footer-links {
+            margin-top: 1rem;
             display: flex;
-            gap: 1.5rem;
             justify-content: center;
-            margin: 1.5rem 0;
-        }
-
-        .contact-link {
-            color: var(--text-secondary);
+            gap: 1rem;
             font-size: 0.9rem;
         }
 
-        .footer-note {
-            color: #9aa0a6;
-            font-size: 0.85rem;
-            margin-top: 2rem;
+        .footer-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 
 <body>
-    <header class="header">
-        <div class="header-content">
-            <a href="index.html" class="logo">The Sheet Music Directory</a>
-            <nav class="nav">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="content.html" class="nav-link">Library</a>
-            </nav>
+    <header class="page-header">
+        <div class="header-nav">
+            <a href="index.html" class="nav-link">← Home</a>
+            <a href="content.html" class="nav-link">Library</a>
+        
+            <a href="account.html" class="nav-link">Account</a>
         </div>
+        <h1>Terms and Conditions</h1>
+        <p class="last-updated">Last updated: October 2025</p>
     </header>
 
     <main class="content">
-        <h1>Terms and Conditions</h1>
-        <p><strong>Last updated:</strong> November 2025</p>
+        <p>Welcome to The Sheet Music Directory!</p>
+        <p>These terms and conditions outline the rules and regulations for the use of The Sheet Music Directory's
+            Website, located at thesheetmusicdirectory.github.io.</p>
+        <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use The Sheet
+            Music Directory if you do not agree to take all of the terms and conditions stated on this page.</p>
 
-        <p>Welcome to The Sheet Music Directory. By accessing or using this website, you agree to comply with and be
-            bound by the following terms and conditions. Please read them carefully.</p>
+        <h2>Cookies</h2>
+        <p>We employ the use of cookies. By accessing The Sheet Music Directory, you agreed to use cookies in agreement
+            with the The Sheet Music Directory's Privacy Policy.</p>
+        <p>Most interactive websites use cookies to let us retrieve the user's details for each visit. Cookies are used
+            by our website to enable the functionality of certain areas to make it easier for people visiting our
+            website. Some of our affiliate/advertising partners may also use cookies.</p>
 
-        <h2>1. Use of Website</h2>
-        <p>The content provided on this website is for informational and educational purposes only. You may not use this
-            site for any unlawful purpose or in any way that may harm the site or its users.</p>
+        <h2>License</h2>
+        <p>Unless otherwise stated, The Sheet Music Directory and/or its licensors own the intellectual property rights
+            for all material on The Sheet Music Directory. All intellectual property rights are reserved. You may access
+            this from The Sheet Music Directory for your own personal use subjected to restrictions set in these terms
+            and conditions.</p>
+        <p>You must not:</p>
+        <ul>
+            <li>Republish material from The Sheet Music Directory</li>
+            <li>Sell, rent or sub-license material from The Sheet Music Directory</li>
+            <li>Reproduce, duplicate or copy material from The Sheet Music Directory</li>
+            <li>Redistribute content from The Sheet Music Directory</li>
+        </ul>
 
-        <h2>2. External Links</h2>
-        <p>This website may contain links to external sites. The Sheet Music Directory is not responsible for the
-            content or practices of any linked site.</p>
+        <h2>Content Liability</h2>
+        <p>We shall not be hold responsible for any content that appears on your Website. You agree to protect and
+            defend us against all claims that is rising on your Website. No link(s) should appear on any Website that
+            may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates
+            the infringement or other violation of, any third party rights.</p>
 
-        <h2>3. Disclaimer</h2>
-        <p>The Sheet Music Directory provides content "as is" without warranties of any kind. We do not guarantee the
-            accuracy, completeness, or usefulness of any information on the site.</p>
+        <h2>Reservation of Rights</h2>
+        <p>We reserve the right to request that you remove all links or any particular link to our Website. You approve
+            to immediately remove all links to our Website upon request. We also reserve the right to amen these terms
+            and conditions and it's linking policy at any time. By continuously linking to our Website, you agree to be
+            bound to and follow these linking terms and conditions.</p>
 
-        <h2>4. Changes to Terms</h2>
-        <p>We reserve the right to update these terms at any time. Changes will be posted on this page.</p>
+        <h2>Removal of links from our website</h2>
+        <p>If you find any link on our Website that is offensive for any reason, you are free to contact and inform us
+            any moment. We will consider requests to remove links but we are not obligated to or so or to respond to you
+            directly.</p>
+        <p>We do not ensure that the information on this website is correct, we do not warrant its completeness or
+            accuracy; nor do we promise to ensure that the website remains available or that the material on the website
+            is kept up to date.</p>
 
-        <h2>5. Contact</h2>
-        <p>For questions about these terms, please contact us at <a
-                href="mailto:theguitardirectory@gmail.com">theguitardirectory@gmail.com</a>.</p>
+        <h2>Disclaimer</h2>
+        <p>To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions
+            relating to our website and the use of this website. Nothing in this disclaimer will:</p>
+        <ul>
+            <li>limit or exclude our or your liability for death or personal injury;</li>
+            <li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>
+            <li>limit any of our or your liabilities in any way that is not permitted under applicable law; or</li>
+            <li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>
+        </ul>
+        <p>The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are
+            subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including
+            liabilities arising in contract, in tort and for breach of statutory duty.</p>
+        <p>As long as the website and the information and services on the website are provided free of charge, we will
+            not be liable for any loss or damage of any nature.</p>
     </main>
 
     <footer>
         <div class="footer-content">
-            <h3 class="footer-title">Get in Touch</h3>
-            <div class="contact-links">
-                <a href="mailto:theguitardirectory@gmail.com" class="contact-link">theguitardirectory@gmail.com</a>
+            <h3 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 1rem; color: var(--text-color);">Get in
+                Touch</h3>
+            <div style="display: flex; gap: 1.5rem; justify-content: center; margin: 1.5rem 0;">
+                <a href="mailto:theguitardirectory@gmail.com"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">theguitardirectory@gmail.com</a>
                 <span style="opacity: 0.3;">|</span>
-                <a href="mailto:mattialobrano@gmail.com" class="contact-link">mattialobrano@gmail.com</a>
+                <a href="mailto:mattialobrano@gmail.com"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">mattialobrano@gmail.com</a>
             </div>
-            <p style="opacity: 0.7; margin-top: 2rem;">Have feedback, suggestions, or want to contribute? We'd love to
-                hear from you!</p>
-            <p class="footer-note">© 2025 The Sheet Music Directory. Created with ❤️ for musicians everywhere.</p>
+            <p style="opacity: 0.7; margin-top: 2rem; color: var(--text-secondary);">Have feedback, suggestions, or want
+                to contribute? We'd love to hear from you!</p>
+            <p style="color: #9aa0a6; font-size: 0.85rem; margin-top: 2rem;">© 2025 The Sheet Music Directory. Created
+                with ❤️ for musicians everywhere.</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <span style="color: var(--text-secondary);">|</span>
+                <a href="terms.html">Terms and Conditions</a>
+            </div>
         </div>
     </footer>
 </body>
