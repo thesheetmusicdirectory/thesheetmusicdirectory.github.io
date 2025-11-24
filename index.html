@@ -1,33 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Sheet Music Directory</title>
-    
+
     <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    
+
     <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#667eea">
-    <meta name="description" content="Your all-in-one resource for legendary guitar tabs, piano scores, audio, and videos.">
-    
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description"
+        content="Your all-in-one resource for legendary guitar tabs, piano scores, audio, and videos.">
+
     <!-- iOS Specific Meta Tags -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Sheet Music">
-    
+
     <!-- iOS Splash Screens (various sizes) -->
     <link rel="apple-touch-icon" href="the_sheet_music_directory.png">
-    <link rel="apple-touch-startup-image" href="the_sheet_music_directory.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)">
-    
+    <link rel="apple-touch-startup-image" href="the_sheet_music_directory.png"
+        media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)">
+
     <!-- Manifest -->
     <link rel="manifest" href="manifest.json">
-    
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <style>
+        :root {
+            --primary-color: #1a73e8;
+            --primary-hover: #1557b0;
+            --text-color: #202124;
+            --text-secondary: #5f6368;
+            --bg-color: #ffffff;
+            --surface-color: #ffffff;
+            --border-color: #dadce0;
+            --shadow-1: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+            --shadow-2: 0 4px 8px 3px rgba(60, 64, 67, 0.15), 0 1px 3px 0 rgba(60, 64, 67, 0.3);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -35,192 +54,185 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #0a0a0a;
-            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3), transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 119, 198, 0.3), transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(138, 119, 255, 0.3), transparent 50%);
-            animation: float 20s ease-in-out infinite;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 150px;
-            background: linear-gradient(to bottom, transparent, #0a0a0a);
-            pointer-events: none;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: 2rem;
-            max-width: 900px;
-        }
-
-        .logo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            animation: fadeInUp 0.8s ease-out, pulse 3s ease-in-out infinite;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(120deg, #ffffff 0%, #ffffff 40%, #f093fb 50%, #ffffff 60%, #ffffff 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 0.8s ease-out 0.2s both, shimmer 3s linear infinite;
-        }
-
-        .subtitle {
-            font-size: clamp(1.1rem, 3vw, 1.4rem);
-            margin-bottom: 3rem;
-            opacity: 0.95;
-            animation: fadeInUp 0.8s ease-out 0.4s both;
-            line-height: 1.6;
-        }
-
+        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        .cta-buttons {
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
             display: flex;
-            gap: 1.5rem;
+            align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease-out 0.6s both;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
+            text-align: center;
+            padding: 2rem;
             background: #fff;
-            color: #667eea;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
         }
 
-        .btn-primary::before {
-            content: '';
+        /* Decorative Elements */
+        .hero-shape {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
             border-radius: 50%;
-            background: rgba(102, 126, 234, 0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
+            opacity: 0.05;
+            z-index: 0;
+            animation: float 6s ease-in-out infinite;
         }
 
-        .btn-primary:hover::before {
+        .shape-1 {
             width: 300px;
             height: 300px;
+            background: var(--primary-color);
+            top: -50px;
+            left: -50px;
+            animation-delay: 0s;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background: #34A853;
+            /* Google Green */
+            bottom: -100px;
+            right: -100px;
+            animation-delay: 2s;
         }
 
-        .btn * {
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            background: #EA4335;
+            /* Google Red */
+            top: 20%;
+            right: 10%;
+            animation-delay: 4s;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            width: 100%;
             position: relative;
             z-index: 1;
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.15);
+        h1 {
+            font-size: clamp(3.5rem, 8vw, 6rem);
+            font-weight: 300;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        /* Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .btn {
+            padding: 0 24px;
+            height: 48px;
+            font-size: 1rem;
+            font-weight: 500;
+            border: none;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.25px;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
             color: #fff;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
+        }
+
+        .btn-secondary {
+            background: #fff;
+            color: var(--primary-color);
+            border: 1px solid var(--border-color);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-3px);
+            background: #f8f9fa;
+            border-color: #d2e3fc;
+            color: #174ea6;
         }
 
+        /* Features Section */
         .features {
-            padding: 8rem 2rem;
-            background: #0a0a0a;
-            position: relative;
+            padding: 6rem 2rem;
+            background: #f8f9fa;
         }
 
         .container {
@@ -230,215 +242,321 @@
 
         .section-title {
             text-align: center;
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 1rem;
-            font-weight: 700;
+            font-size: 2.25rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: 1.2rem;
-            opacity: 0.7;
-            margin-bottom: 5rem;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
         }
 
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
+            gap: 24px;
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 3rem 2rem;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
-            animation: fadeInScale 0.6s ease-out both;
-        }
-
-        .feature-card:nth-child(1) { animation-delay: 0.1s; }
-        .feature-card:nth-child(2) { animation-delay: 0.2s; }
-        .feature-card:nth-child(3) { animation-delay: 0.3s; }
-        .feature-card:nth-child(4) { animation-delay: 0.4s; }
-        .feature-card:nth-child(5) { animation-delay: 0.5s; }
-        .feature-card:nth-child(6) { animation-delay: 0.6s; }
-
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(102, 126, 234, 0.5);
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+            box-shadow: var(--shadow-1);
+            border-color: transparent;
+            transform: translateY(-5px);
         }
 
         .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
             display: block;
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        .feature-card:hover .feature-icon {
-            animation: spin 0.6s ease-in-out;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            color: var(--primary-color);
         }
 
         .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #667eea;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-color);
         }
 
         .feature-card p {
-            opacity: 0.8;
-            line-height: 1.7;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
+        /* Featured Sheet Music Section */
+        .featured-section {
+            padding: 6rem 2rem;
+            background: #fff;
+            text-align: center;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .song-card {
+            background: #f8f9fa;
+            padding: 0;
+            border-radius: 12px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .song-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-1);
+        }
+
+        .song-image {
+            height: 160px;
+            background: linear-gradient(135deg, var(--primary-color), #1557b0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .song-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .song-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            color: var(--text-color);
+        }
+
+        .song-artist {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .song-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: auto;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .song-btn {
+            margin-top: 1rem;
+            width: 100%;
+            padding: 0.75rem;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--primary-color);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .song-btn:hover {
+            background: #f1f3f4;
+            border-color: #d2e3fc;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 6rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            transition: opacity 0.3s ease;
+        }
+
+        .newsletter-form.hidden {
+            display: none;
+        }
+
+        .newsletter-success {
+            display: none;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .newsletter-success.visible {
+            display: block;
+        }
+
+        .success-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .newsletter-input {
+            padding: 0.75rem 1.5rem;
+            border-radius: 24px;
+            border: none;
+            font-size: 1rem;
+            flex: 1;
+            min-width: 250px;
+            max-width: 400px;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .btn-white:hover {
+            background: #f1f3f4;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* About Section */
         .about-section {
-            padding: 8rem 2rem;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            position: relative;
-        }
-
-        .about-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 150px;
-            background: linear-gradient(to bottom, #0a0a0a, transparent);
-            pointer-events: none;
-        }
-
-        .about-section::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 150px;
-            background: linear-gradient(to bottom, transparent, #0a0a0a);
-            pointer-events: none;
+            padding: 6rem 2rem;
+            background: #fff;
+            text-align: center;
         }
 
         .about-content {
             max-width: 800px;
             margin: 0 auto;
-            text-align: center;
         }
 
         .about-content p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
             line-height: 1.8;
-            opacity: 0.9;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
+        /* Download Section */
         .download-section {
-            padding: 8rem 2rem;
-            background: #0a0a0a;
+            padding: 6rem 2rem;
+            background: #f8f9fa;
         }
 
         .download-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
+            gap: 24px;
+            margin-top: 3rem;
         }
 
         .download-card {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-            border: 1px solid rgba(102, 126, 234, 0.3);
-            border-radius: 20px;
+            background: #fff;
+            border-radius: 8px;
             padding: 3rem 2rem;
             text-align: center;
-            transition: all 0.4s ease;
+            border: 1px solid var(--border-color);
+            transition: box-shadow 0.3s, transform 0.3s ease;
         }
 
         .download-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+            box-shadow: var(--shadow-1);
+            transform: translateY(-5px);
         }
 
         .download-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
         }
 
         .download-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
         }
 
         .download-card p {
-            opacity: 0.8;
+            color: var(--text-secondary);
             margin-bottom: 2rem;
-            line-height: 1.6;
         }
 
+        /* Footer */
         footer {
-            padding: 4rem 2rem 2rem;
-            background: #050505;
+            padding: 3rem 2rem;
+            background: #fff;
+            border-top: 1px solid var(--border-color);
             text-align: center;
         }
 
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
         .footer-title {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 500;
             margin-bottom: 1rem;
+            color: var(--text-color);
         }
 
         .contact-links {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             justify-content: center;
-            flex-wrap: wrap;
-            margin: 2rem 0;
+            margin: 1.5rem 0;
         }
 
         .contact-link {
-            color: #667eea;
+            color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-link:hover {
-            color: #f093fb;
-        }
-
-        .footer-note {
-            opacity: 0.5;
-            margin-top: 2rem;
             font-size: 0.9rem;
         }
 
+        .contact-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .footer-note {
+            color: #9aa0a6;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+        }
+
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -447,9 +565,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            animation: fadeIn 0.3s ease;
+            background: rgba(0, 0, 0, 0.5);
         }
 
         .modal.active {
@@ -458,144 +574,117 @@
             justify-content: center;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
         .modal-content {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            border: 1px solid rgba(102, 126, 234, 0.3);
-            border-radius: 20px;
-            padding: 3rem;
-            max-width: 600px;
+            background: #fff;
+            border-radius: 8px;
+            padding: 2rem;
+            max-width: 500px;
             width: 90%;
-            max-height: 80vh;
+            max-height: 90vh;
             overflow-y: auto;
             position: relative;
-            animation: slideUp 0.4s ease;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            box-shadow: var(--shadow-2);
         }
 
         .close-modal {
             position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: rgba(255, 255, 255, 0.1);
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
             border: none;
-            color: white;
+            color: var(--text-secondary);
             font-size: 1.5rem;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .close-modal:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(90deg);
-        }
-
-        .modal-content h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(120deg, #667eea, #f093fb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .modal-content p {
-            margin-bottom: 2rem;
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-
-        .install-steps {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-top: 1.5rem;
-        }
-
-        .install-steps h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            color: #667eea;
-        }
-
-        .step {
-            display: flex;
-            align-items: start;
-            margin-bottom: 1.5rem;
-            gap: 1rem;
-        }
-
-        .step-number {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
             width: 32px;
             height: 32px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+        }
+
+        .close-modal:hover {
+            background: #f1f3f4;
+        }
+
+        .modal-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .install-steps {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .install-steps h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .step {
+            display: flex;
+            align-items: start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .step-number {
+            background: var(--primary-color);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 500;
             flex-shrink: 0;
         }
 
         .step-text {
             flex: 1;
-            padding-top: 4px;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 768px) {
-            .modal-content {
-                padding: 2rem 1.5rem;
-                max-height: 90vh;
-            }
+            font-size: 0.95rem;
+            color: var(--text-secondary);
         }
 
         @media (max-width: 768px) {
             .hero {
-                min-height: 100vh;
+                min-height: 80vh;
             }
-            
+
             .cta-buttons {
                 flex-direction: column;
-                align-items: stretch;
+                width: 100%;
             }
-            
+
             .btn {
                 width: 100%;
             }
         }
     </style>
 </head>
+
 <body>
     <section class="hero">
+        <div class="hero-shape shape-1"></div>
+        <div class="hero-shape shape-2"></div>
+        <div class="hero-shape shape-3"></div>
+
         <div class="hero-content">
-            <div class="logo">🎸</div>
             <h1>The Sheet Music Directory</h1>
-            <p class="subtitle">Your all-in-one resource for legendary guitar tabs, piano scores, audio, and videos. From classics to modern hits, everything you need in one place.</p>
+            <p class="subtitle">Search for legendary guitar tabs, piano scores, audio, and videos.</p>
             <div class="cta-buttons">
-                <a href="https://thesheetmusicdirectory.github.io/content.html" class="btn btn-primary">Explore Library</a>
+                <a href="https://thesheetmusicdirectory.github.io/content.html" class="btn btn-primary">
+                    <span class="material-icons" style="margin-right: 8px; font-size: 20px;">search</span>
+                    Explore Library
+                </a>
                 <button id="installBtn" class="btn btn-secondary">Get the App</button>
             </div>
         </div>
@@ -603,75 +692,161 @@
 
     <section class="features">
         <div class="container">
-            <h2 class="section-title">Everything You Need</h2>
-            <p class="section-subtitle">Comprehensive resources for musicians of all levels</p>
-            
+            <h2 class="section-title animate-on-scroll">Everything You Need</h2>
+            <p class="section-subtitle animate-on-scroll">Comprehensive resources for musicians of all levels</p>
+
             <div class="feature-grid">
-                <div class="feature-card">
-                    <span class="feature-icon">🎵</span>
+                <div class="feature-card animate-on-scroll">
+                    <span class="material-icons feature-icon">library_music</span>
                     <h3>Curated Collection</h3>
-                    <p>Access a carefully selected library of classic and modern songs with professionally transcribed tabs and sheet music.</p>
+                    <p>Access a carefully selected library of classic and modern songs with professionally transcribed
+                        tabs and sheet music.</p>
                 </div>
-                
-                <div class="feature-card">
-                    <span class="feature-icon">🎧</span>
+
+                <div class="feature-card animate-on-scroll" style="transition-delay: 0.1s">
+                    <span class="material-icons feature-icon">headphones</span>
                     <h3>Audio & Video</h3>
-                    <p>Listen to tracks and watch tutorials alongside your sheet music for the complete learning experience.</p>
+                    <p>Listen to tracks and watch tutorials alongside your sheet music for the complete learning
+                        experience.</p>
                 </div>
-                
-                <div class="feature-card">
-                    <span class="feature-icon">⚡</span>
+
+                <div class="feature-card animate-on-scroll" style="transition-delay: 0.2s">
+                    <span class="material-icons feature-icon">speed</span>
                     <h3>Fast & Clean</h3>
-                    <p>No clutter, no distractions. Just a fast, beautiful interface designed for musicians who want to play.</p>
+                    <p>No clutter, no distractions. Just a fast, beautiful interface designed for musicians who want to
+                        play.</p>
                 </div>
-                
-                <div class="feature-card">
-                    <span class="feature-icon">📱</span>
+
+                <div class="feature-card animate-on-scroll">
+                    <span class="material-icons feature-icon">devices</span>
                     <h3>Works Everywhere</h3>
-                    <p>Access your music on any device. Install as a web app for offline use and lightning-fast performance.</p>
+                    <p>Access your music on any device. Install as a web app for offline use and lightning-fast
+                        performance.</p>
                 </div>
-                
-                <div class="feature-card">
-                    <span class="feature-icon">🎹</span>
+
+                <div class="feature-card animate-on-scroll" style="transition-delay: 0.1s">
+                    <span class="material-icons feature-icon">piano</span>
                     <h3>Multi-Instrument</h3>
-                    <p>Guitar tabs, piano scores, and more. Whether you're shredding or tinkling the ivories, we've got you covered.</p>
+                    <p>Guitar tabs, piano scores, and more. Whether you're shredding or tinkling the ivories, we've got
+                        you covered.</p>
                 </div>
-                
-                <div class="feature-card">
-                    <span class="feature-icon">🎯</span>
+
+                <div class="feature-card animate-on-scroll" style="transition-delay: 0.2s">
+                    <span class="material-icons feature-icon">school</span>
                     <h3>All Skill Levels</h3>
-                    <p>From beginners taking their first steps to seasoned players perfecting their craft, resources for everyone.</p>
+                    <p>From beginners taking their first steps to seasoned players perfecting their craft, resources for
+                        everyone.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="featured-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Featured Sheet Music</h2>
+            <p class="section-subtitle animate-on-scroll">Top rated tabs and scores this week</p>
+            <div class="featured-grid">
+                <!-- Card 1 -->
+                <div class="song-card animate-on-scroll">
+                    <div class="song-image">
+                        <span class="material-icons" style="font-size: 64px; opacity: 0.8;">music_note</span>
+                    </div>
+                    <div class="song-content">
+                        <h3 class="song-title">Bohemian Rhapsody</h3>
+                        <p class="song-artist">Queen</p>
+                        <div class="song-meta">
+                            <span class="material-icons" style="font-size: 18px;">piano</span>
+                            <span>Piano Score</span>
+                        </div>
+                        <button class="song-btn">View Sheet Music</button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="song-card animate-on-scroll" style="transition-delay: 0.1s">
+                    <div class="song-image">
+                        <span class="material-icons" style="font-size: 64px; opacity: 0.8;">graphic_eq</span>
+                    </div>
+                    <div class="song-content">
+                        <h3 class="song-title">Stairway to Heaven</h3>
+                        <p class="song-artist">Led Zeppelin</p>
+                        <div class="song-meta">
+                            <span class="material-icons" style="font-size: 18px;">queue_music</span>
+                            <span>Guitar Tab</span>
+                        </div>
+                        <button class="song-btn">View Tab</button>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="song-card animate-on-scroll" style="transition-delay: 0.2s">
+                    <div class="song-image">
+                        <span class="material-icons" style="font-size: 64px; opacity: 0.8;">album</span>
+                    </div>
+                    <div class="song-content">
+                        <h3 class="song-title">Hotel California</h3>
+                        <p class="song-artist">Eagles</p>
+                        <div class="song-meta">
+                            <span class="material-icons" style="font-size: 18px;">queue_music</span>
+                            <span>Guitar Tab</span>
+                        </div>
+                        <button class="song-btn">View Tab</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-section animate-on-scroll">
+        <div class="newsletter-content">
+            <h2>Stay in the Loop</h2>
+            <p>Get the latest tabs, features, and music news delivered straight to your inbox.</p>
+
+            <form id="newsletterForm" class="newsletter-form" action="https://formspree.io/f/movbzgkq" method="POST">
+                <input type="email" name="email" id="newsletterEmail" class="newsletter-input"
+                    placeholder="Enter your email address" required>
+                <button type="submit" class="btn btn-white">Subscribe</button>
+            </form>
+
+            <div id="newsletterSuccess" class="newsletter-success">
+                <span class="material-icons success-icon">check_circle</span>
+                <h3>Thanks for subscribing!</h3>
+                <p style="margin-bottom: 0;">You're now on the list. Watch your inbox for updates.</p>
+            </div>
+        </div>
+    </section>
+
     <section class="about-section">
-        <div class="about-content">
+        <div class="about-content animate-on-scroll">
             <h2 class="section-title">Built by Musicians, for Musicians</h2>
-            <p>The Sheet Music Directory was created and maintained by Mattia Lobrano, combining a passion for music with clean, modern web development. This is an independent project focused on creating the best possible experience for musicians worldwide.</p>
+            <p>The Sheet Music Directory was created and maintained by Mattia Lobrano, combining a passion for music
+                with clean, modern web development. This is an independent project focused on creating the best possible
+                experience for musicians worldwide.</p>
             <p>The goal is simple: keep it clean, keep it fast, and keep it useful for everyone who loves to play.</p>
         </div>
     </section>
 
     <section class="download-section" id="download">
         <div class="container">
-            <h2 class="section-title">Get Started</h2>
-            <p class="section-subtitle">Install or contribute to the project</p>
-            
+            <h2 class="section-title animate-on-scroll">Get Started</h2>
+            <p class="section-subtitle animate-on-scroll">Install or contribute to the project</p>
+
             <div class="download-grid">
-                <div class="download-card">
-                    <div class="download-icon">📲</div>
+                <div class="download-card animate-on-scroll">
+                    <div class="material-icons download-icon">install_mobile</div>
                     <h3>Web App</h3>
-                    <p>Install as a progressive web app for quick access and offline use. Works on desktop and mobile.</p>
+                    <p>Install as a progressive web app for quick access and offline use. Works on desktop and mobile.
+                    </p>
                     <button id="installNowBtn" class="btn btn-primary">Install Now</button>
                 </div>
-                
-                <div class="download-card">
-                    <div class="download-icon">💻</div>
+
+                <div class="download-card animate-on-scroll" style="transition-delay: 0.1s">
+                    <div class="material-icons download-icon">code</div>
                     <h3>GitHub</h3>
-                    <p>View the source code, contribute improvements, or fork the project to create your own version.</p>
-                    <a href="https://github.com/theguitardirectory/theguitardirectory.github.io" class="btn btn-secondary" target="_blank">View on GitHub</a>
+                    <p>View the source code, contribute improvements, or fork the project to create your own version.
+                    </p>
+                    <a href="https://github.com/theguitardirectory/theguitardirectory.github.io"
+                        class="btn btn-secondary" target="_blank">View on GitHub</a>
                 </div>
             </div>
         </div>
@@ -685,8 +860,10 @@
                 <span style="opacity: 0.3;">|</span>
                 <a href="mailto:mattialobrano@gmail.com" class="contact-link">mattialobrano@gmail.com</a>
             </div>
-            <p style="opacity: 0.7; margin-top: 2rem;">Have feedback, suggestions, or want to contribute? We'd love to hear from you!</p>
+            <p style="opacity: 0.7; margin-top: 2rem;">Have feedback, suggestions, or want to contribute? We'd love to
+                hear from you!</p>
             <p class="footer-note">© 2025 The Sheet Music Directory. Created with ❤️ for musicians everywhere.</p>
+            <p class="footer-note" style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.5;">Version 5.0.0</p>
         </div>
     </footer>
 
@@ -696,7 +873,7 @@
             <button class="close-modal" id="closeModal">×</button>
             <h2>📲 Install The Sheet Music Directory</h2>
             <p>Get instant access to all your favorite tabs and sheet music with our web app!</p>
-            
+
             <div class="install-steps" id="installInstructions">
                 <!-- Instructions will be inserted here by JavaScript -->
             </div>
@@ -719,11 +896,11 @@
         // Get installation instructions based on device
         function getInstructions() {
             const mobile = isMobile();
-            
+
             if (mobile) {
                 // Mobile instructions
                 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-                
+
                 if (isIOS) {
                     return `
                         <h3>📱 iOS Installation</h3>
@@ -769,7 +946,7 @@
                 // Desktop instructions
                 const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
                 const isEdge = /Edg/.test(navigator.userAgent);
-                
+
                 if (isChrome || isEdge) {
                     return `
                         <h3>💻 Desktop Installation (Chrome/Edge)</h3>
@@ -877,6 +1054,107 @@
         window.addEventListener('appinstalled', () => {
             deferredPrompt = null;
         });
+
+        // Scroll Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach((element) => {
+            observer.observe(element);
+        });
+
+        // Newsletter Form Handling
+        const newsletterForm = document.getElementById('newsletterForm');
+        const newsletterSuccess = document.getElementById('newsletterSuccess');
+
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const formData = new FormData(newsletterForm);
+
+                try {
+                    const response = await fetch(newsletterForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        // UI Feedback
+                        newsletterForm.classList.add('hidden');
+                        setTimeout(() => {
+                            newsletterForm.style.display = 'none';
+                            newsletterSuccess.classList.add('visible');
+                        }, 300);
+                        newsletterForm.reset();
+                    } else {
+                        alert("Oops! There was a problem submitting your form");
+                    }
+                } catch (error) {
+                    alert("Oops! There was a problem submitting your form");
+                }
+            });
+        }
     </script>
+
+    <!-- Update Popup -->
+    <div id="updatePopup" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" id="closePopup">&times;</button>
+            <h2>Version V just released! Explore the new site</h2>
+
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                Here's what's new in this update:
+            </p>
+
+            <ul style="color: var(--text-secondary); margin-left: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+                <li>✔ Faster loading across all pages</li>
+                <li>✔ New layout inspired by modern Google design</li>
+                <li>✔ Improved mobile experience</li>
+                <li>✔ Cleaner UI and upgraded animations</li>
+            </ul>
+
+            <button id="continueBtn" class="btn btn-primary" style="width: 100%;">Continue to site</button>
+        </div>
+    </div>
+
+    <script>
+        const CURRENT_VERSION = "V"; // Change this only when you release a new version
+        const LAST_SEEN_VERSION = localStorage.getItem("last_seen_version");
+
+        const popup = document.getElementById("updatePopup");
+        const closePopup = document.getElementById("closePopup");
+        const continueBtn = document.getElementById("continueBtn");
+
+        // Show popup only on first visit after update
+        if (LAST_SEEN_VERSION !== CURRENT_VERSION) {
+            popup.classList.add("active");
+        }
+
+        function closeUpdatePopup() {
+            popup.classList.remove("active");
+            localStorage.setItem("last_seen_version", CURRENT_VERSION);
+        }
+
+        closePopup.addEventListener("click", closeUpdatePopup);
+        continueBtn.addEventListener("click", closeUpdatePopup);
+    </script>
+
 </body>
+
 </html>

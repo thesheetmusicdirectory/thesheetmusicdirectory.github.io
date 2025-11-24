@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Account - The Sheet Music Directory</title>
-    
+
     <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    
+
     <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#667eea">
+    <meta name="theme-color" content="#ffffff">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <style>
+        :root {
+            --primary-color: #1a73e8;
+            --primary-hover: #1557b0;
+            --text-color: #202124;
+            --text-secondary: #5f6368;
+            --bg-color: #ffffff;
+            --surface-color: #ffffff;
+            --border-color: #dadce0;
+            --shadow-1: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+            --shadow-2: 0 4px 8px 3px rgba(60, 64, 67, 0.15), 0 1px 3px 0 rgba(60, 64, 67, 0.3);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -24,181 +41,177 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #0a0a0a;
-            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        /* Header */
+        .page-header {
             padding: 4rem 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3), transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 119, 198, 0.3), transparent 50%);
-            animation: float 20s ease-in-out infinite;
-        }
-
-        .header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background: linear-gradient(to bottom, transparent, #0a0a0a);
-            pointer-events: none;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 1;
-            max-width: 1200px;
-            margin: 0 auto;
+            background: #fff;
             text-align: center;
         }
 
-        .back-btn {
-            position: absolute;
-            left: 2rem;
-            top: 2rem;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
+        .header-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            z-index: 10;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.2s;
         }
 
-        .back-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateX(-5px);
+        .nav-link:hover,
+        .nav-link.active {
+            background: #f1f3f4;
+            color: var(--primary-color);
         }
 
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 300;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        /* Profile Section */
         .profile-section {
-            position: relative;
-            z-index: 1;
-            margin-top: -50px;
-            padding: 0 2rem;
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .profile-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
             padding: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            backdrop-filter: blur(10px);
-        }
-
-        .profile-header {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
             margin-bottom: 2rem;
+            text-align: center;
         }
 
         .profile-avatar {
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, var(--primary-color), #1557b0);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2.5rem;
+            color: white;
+            margin: 0 auto 1rem;
         }
 
         .profile-info h2 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
+            font-weight: 500;
             margin-bottom: 0.5rem;
         }
 
         .profile-info p {
-            opacity: 0.7;
+            color: var(--text-secondary);
         }
 
+        /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
+            gap: 1.5rem;
             margin: 2rem 0;
         }
 
         .stat-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            background: #f8f9fa;
+            border-radius: 12px;
             padding: 1.5rem;
             text-align: center;
         }
 
         .stat-number {
             font-size: 2rem;
-            font-weight: 700;
+            font-weight: 300;
+            color: var(--primary-color);
             margin-bottom: 0.5rem;
-            background: linear-gradient(120deg, #667eea, #f093fb);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
         .stat-label {
-            opacity: 0.7;
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
 
-        .section-title {
-            font-size: 1.5rem;
-            margin: 3rem 0 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        /* Buttons */
+        .btn {
+            padding: 0 24px;
+            height: 48px;
+            font-size: 1rem;
+            font-weight: 500;
+            border: none;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
+        .btn-primary {
+            background: var(--primary-color);
+            color: #fff;
+            box-shadow: var(--shadow-1);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            box-shadow: var(--shadow-2);
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-color);
+        }
+
+        /* Favorites Grid */
         .favorites-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.5rem;
-            margin-top: 2rem;
         }
 
         .favorite-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
             padding: 1.5rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            transition: all 0.2s;
             text-decoration: none;
-            color: white;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
 
         .favorite-card:hover {
             transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.05);
-            border-color: #667eea;
+            box-shadow: var(--shadow-1);
         }
 
         .favorite-header {
@@ -210,31 +223,58 @@
 
         .favorite-icon {
             font-size: 2rem;
+            color: var(--text-secondary);
         }
 
         .favorite-info h3 {
             font-size: 1.1rem;
-            margin-bottom: 0.3rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
         }
 
         .favorite-info p {
             font-size: 0.9rem;
-            opacity: 0.7;
+            color: var(--text-secondary);
         }
 
-        .recent-activity {
-            margin: 3rem auto;
-            max-width: 800px;
+        .remove-btn {
+            margin-top: auto;
+            background: none;
+            border: none;
+            color: #d93025;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            z-index: 2;
+            /* Ensure button is clickable above the card link */
         }
 
+        .remove-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* Make the whole card clickable except the button */
+        .card-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Recent Activity */
         .activity-item {
             display: flex;
             align-items: center;
             gap: 1rem;
             padding: 1rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
             margin-bottom: 1rem;
         }
 
@@ -242,7 +282,8 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: rgba(102, 126, 234, 0.1);
+            background: #e8f0fe;
+            color: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -253,28 +294,30 @@
             flex: 1;
         }
 
+        .activity-content p {
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
         .activity-time {
-            font-size: 0.8rem;
-            opacity: 0.5;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
         }
 
-        .settings-section {
-            max-width: 800px;
-            margin: 3rem auto;
-        }
-
+        /* Settings */
         .settings-group {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
         }
 
         .settings-group h3 {
             margin-bottom: 1rem;
-            font-size: 1.2rem;
-            opacity: 0.9;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-secondary);
         }
 
         .setting-item {
@@ -282,86 +325,308 @@
             align-items: center;
             justify-content: space-between;
             padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid #f1f3f4;
         }
 
         .setting-item:last-child {
             border-bottom: none;
         }
 
-        .setting-label {
-            opacity: 0.8;
-        }
-
         .toggle-switch {
-            width: 50px;
-            height: 26px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 13px;
+            width: 44px;
+            height: 24px;
+            background: #dadce0;
+            border-radius: 12px;
             position: relative;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: background 0.2s;
         }
 
         .toggle-switch.active {
-            background: #667eea;
+            background: var(--primary-color);
         }
 
         .toggle-switch::before {
             content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             background: white;
             border-radius: 50%;
             top: 3px;
             left: 3px;
-            transition: transform 0.3s ease;
+            transition: transform 0.2s;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         .toggle-switch.active::before {
-            transform: translateX(24px);
+            transform: translateX(20px);
         }
 
-        @media (max-width: 768px) {
-            .profile-header {
-                flex-direction: column;
-                text-align: center;
-            }
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background: #fff;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            margin-top: 4rem;
+        }
 
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
 
-            .back-btn {
-                position: static;
-                margin-bottom: 2rem;
-                display: inline-block;
-            }
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        .contact-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .contact-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .footer-note {
+            color: #9aa0a6;
+            font-size: 0.85rem;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .favorite-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-1);
+        }
+
+        .favorite-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .favorite-icon {
+            font-size: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .favorite-info h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .favorite-info p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .remove-btn {
+            margin-top: auto;
+            background: none;
+            border: none;
+            color: #d93025;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            z-index: 2;
+            /* Ensure button is clickable above the card link */
+        }
+
+        .remove-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* Make the whole card clickable except the button */
+        .card-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Recent Activity */
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e8f0fe;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-content p {
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .activity-time {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Settings */
+        .settings-group {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .settings-group h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .setting-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f1f3f4;
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .toggle-switch {
+            width: 44px;
+            height: 24px;
+            background: #dadce0;
+            border-radius: 12px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .toggle-switch.active {
+            background: var(--primary-color);
+        }
+
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            top: 3px;
+            left: 3px;
+            transition: transform 0.2s;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-switch.active::before {
+            transform: translateX(20px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background: #fff;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        .contact-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .contact-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .footer-note {
+            color: #9aa0a6;
+            font-size: 0.85rem;
+            margin-top: 2rem;
         }
     </style>
 </head>
+
 <body>
-    <header class="header">
-        <a href="index.html" class="back-btn">← Home</a>
-        <div class="header-content">
-            <h1>Your Account</h1>
+    <header class="page-header">
+        <div class="header-nav">
+            <a href="index.html" class="nav-link">← Home</a>
+            <a href="content.html" class="nav-link">Library</a>
+            <a href="videos.html" class="nav-link">Videos</a>
+            <a href="account.html" class="nav-link active">Account</a>
         </div>
+        <h1>Your Account</h1>
     </header>
 
     <section class="profile-section">
         <div class="profile-card">
-            <div class="profile-header">
-                <div class="profile-avatar">🎵</div>
-                <div class="profile-info">
-                    <h2>Your Name</h2>
-                    <p>Member since October 2025</p>
-                </div>
+            <div class="profile-avatar">
+                <!-- Avatar will be set by JS -->
+                <img id="userAvatar" src="" alt="Profile"
+                    style="width: 100%; height: 100%; border-radius: 50%; display: none;">
+                <span class="material-icons" id="defaultAvatar" style="font-size: 48px;">person</span>
+            </div>
+            <div class="profile-info">
+                <h2 id="userName">Guest</h2>
+                <p id="userStatus">Sign in to sync your data</p>
             </div>
 
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">12</div>
+                    <div class="stat-number" id="fav-count">0</div>
                     <div class="stat-label">Favorite Songs</div>
                 </div>
                 <div class="stat-card">
@@ -373,110 +638,101 @@
                     <div class="stat-label">Practice Hours</div>
                 </div>
             </div>
-            <button id="practice-btn" onclick="startPractice()" style="
-                background: linear-gradient(135deg, #667eea, #764ba2);
-                border: none;
-                color: white;
-                padding: 10px 20px;
-                border-radius: 20px;
-                cursor: pointer;
-                margin: 20px 0;
-                font-weight: bold;
-                transition: transform 0.2s;
-            ">▶️ Start Practice</button>
 
-            <h2 class="section-title">Your Favorites</h2>
-            <div class="favorites-grid">
-                <a href="bohemian_rhapsody.html" class="favorite-card">
-                    <div class="favorite-header">
-                        <span class="favorite-icon">🎸</span>
-                        <div class="favorite-info">
-                            <h3>Bohemian Rhapsody</h3>
-                            <p>Queen</p>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="back_in_black.html" class="favorite-card">
-                    <div class="favorite-header">
-                        <span class="favorite-icon">🎸</span>
-                        <div class="favorite-info">
-                            <h3>Back in Black</h3>
-                            <p>AC/DC</p>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="hey_jude.html" class="favorite-card">
-                    <div class="favorite-header">
-                        <span class="favorite-icon">🎸</span>
-                        <div class="favorite-info">
-                            <h3>Hey Jude</h3>
-                            <p>The Beatles</p>
-                        </div>
-                    </div>
-                </a>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button id="authBtn" class="btn btn-primary">
+                    <span class="material-icons">login</span> Sign in with Google
+                </button>
+                <button id="practice-btn" onclick="startPractice()" class="btn btn-secondary">
+                    <span class="material-icons">play_arrow</span> Start Practice
+                </button>
             </div>
+        </div>
 
-            <div class="recent-activity">
-                <h2 class="section-title">Recent Activity</h2>
-                <div class="activity-item">
-                    <div class="activity-icon">🎵</div>
-                    <div class="activity-content">
-                        <p>Added "Bohemian Rhapsody" to favorites</p>
-                        <span class="activity-time">2 hours ago</span>
-                    </div>
-                </div>
-                <div class="activity-item">
-                    <div class="activity-icon">👁️</div>
-                    <div class="activity-content">
-                        <p>Viewed "Back in Black" sheet music</p>
-                        <span class="activity-time">Yesterday</span>
-                    </div>
-                </div>
-                <div class="activity-item">
-                    <div class="activity-icon">⭐</div>
-                    <div class="activity-content">
-                        <p>Added "Hey Jude" to favorites</p>
-                        <span class="activity-time">2 days ago</span>
-                    </div>
-                </div>
+        <h2 class="section-title">Your Favorites</h2>
+        <div class="favorites-grid">
+            <!-- Favorites will be populated by JS -->
+        </div>
+        <p id="no-favs-msg" style="text-align: center; color: var(--text-secondary); display: none;">You haven't added
+            any favorites yet.</p>
+
+        <h2 class="section-title">Recent Activity</h2>
+        <div class="recent-activity">
+            <!-- Activity will be populated by JS -->
+        </div>
+
+        <h2 class="section-title">Settings</h2>
+        <div class="settings-group">
+            <h3>Preferences</h3>
+            <div class="setting-item">
+                <span class="setting-label">Dark Mode</span>
+                <div class="toggle-switch"></div>
             </div>
-
-            <div class="settings-section">
-                <h2 class="section-title">Settings</h2>
-                <div class="settings-group">
-                    <h3>Preferences</h3>
-                    <div class="setting-item">
-                        <span class="setting-label">Dark Mode</span>
-                        <div class="toggle-switch active"></div>
-                    </div>
-                    <div class="setting-item">
-                        <span class="setting-label">Auto-play Preview</span>
-                        <div class="toggle-switch active"></div>
-                    </div>
-                </div>
-
-                <div class="settings-group">
-                    <h3>Privacy</h3>
-                    <div class="setting-item">
-                        <span class="setting-label">Public Profile</span>
-                        <div class="toggle-switch"></div>
-                    </div>
-                    <div class="setting-item">
-                        <span class="setting-label">Show Activity Status</span>
-                        <div class="toggle-switch active"></div>
-                    </div>
-                </div>
+            <div class="setting-item">
+                <span class="setting-label">Auto-play Preview</span>
+                <div class="toggle-switch active"></div>
             </div>
         </div>
     </section>
 
+    <footer>
+        <div class="footer-content">
+            <h3 class="footer-title">Get in Touch</h3>
+            <div class="contact-links">
+                <a href="mailto:theguitardirectory@gmail.com" class="contact-link">theguitardirectory@gmail.com</a>
+                <span style="opacity: 0.3;">|</span>
+                <a href="mailto:mattialobrano@gmail.com" class="contact-link">mattialobrano@gmail.com</a>
+            </div>
+            <p style="opacity: 0.7; margin-top: 2rem;">Have feedback, suggestions, or want to contribute? We'd love to
+                hear from you!</p>
+            <p class="footer-note">© 2025 The Sheet Music Directory. Created with ❤️ for musicians everywhere.</p>
+            <p class="footer-note" style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.5;">Version 5.0.0</p>
+            <div style="margin-top: 1rem; font-size: 0.9rem;">
+                <a href="privacy.html" style="color: var(--primary-color); text-decoration: none;">Privacy Policy</a>
+                <span style="color: var(--text-secondary);">|</span>
+                <a href="terms.html" style="color: var(--primary-color); text-decoration: none;">Terms and
+                    Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <!-- App Scripts -->
+    <script src="js/firebase-config.js"></script>
     <script>
-        // Initialize local storage with default values if not exists
+        // Song Metadata Database
+        const songDatabase = {
+            "bohemianrhapsody": { title: "Bohemian Rhapsody", artist: "Queen", icon: "🎸", filename: "bohemian_rhapsody.html" },
+            "backinblack": { title: "Back in Black", artist: "AC/DC", icon: "⚡", filename: "back_in_black.html" },
+            "backinblackupdated": { title: "Back in Black (Updated)", artist: "AC/DC", icon: "⚡", filename: "back_in_black_updated.html" },
+            "dirtydeedsdone": { title: "Dirty Deeds Done Dirt Cheap", artist: "AC/DC", icon: "⚡", filename: "Dirty Deeds Done Dirt Cheap.html" },
+            "downunder": { title: "Down Under", artist: "Men at Work", icon: "🎺", filename: "down_under.html" },
+            "freebird": { title: "Free Bird", artist: "Lynyrd Skynyrd", icon: "🦅", filename: "free_bird.html" },
+            "heyjude": { title: "Hey Jude", artist: "The Beatles", icon: "🎹", filename: "hey_jude.html" },
+            "highwaystar": { title: "Highway Star", artist: "Deep Purple", icon: "🎸", filename: "highway_star.html" },
+            "highwaytohell": { title: "Highway to Hell", artist: "AC/DC", icon: "⚡", filename: "highway_to_hell_acdc.html" },
+            "houseoftherisingsun": { title: "House of the Rising Sun", artist: "The Animals", icon: "🌅", filename: "house_of_the_rising_sun.html" },
+            "iwanttoholdyourhand": { title: "I Want to Hold Your Hand", artist: "The Beatles", icon: "🎸", filename: "i_want_to_hold_your_hand.html" },
+            "johnnybgoode": { title: "Johnny B. Goode", artist: "Chuck Berry", icon: "🎸", filename: "johnny_b_goode.html" },
+            "smellsliketeenspirit": { title: "Smells Like Teen Spirit", artist: "Nirvana", icon: "🎸", filename: "sltsnirvana.html" },
+            "thunderstruck": { title: "Thunderstruck", artist: "AC/DC", icon: "⚡", filename: "thunderstruck.html" },
+            "twistandshout": { title: "Twist and Shout", artist: "The Beatles", icon: "🎸", filename: "twist_and_shout.html" }
+        };
+    </script>
+    <script src="js/app.js"></script>
+
+    <script>
+        // Additional Account Page Logic (Practice, Settings, Activity)
+        // Note: Favorites logic is now handled by app.js
+
+        // Initialize local storage for non-synced items if not exists
         if (!localStorage.getItem('userSettings')) {
             const defaultSettings = {
-                darkMode: true,
+                darkMode: false,
                 autoplayPreview: true,
                 publicProfile: false,
                 showActivityStatus: true
@@ -484,20 +740,10 @@
             localStorage.setItem('userSettings', JSON.stringify(defaultSettings));
         }
 
-        if (!localStorage.getItem('favorites')) {
-            const defaultFavorites = [
-                { id: 'bohemian-rhapsody', title: 'Bohemian Rhapsody', artist: 'Queen', icon: '🎸' },
-                { id: 'back-in-black', title: 'Back in Black', artist: 'AC/DC', icon: '🎸' },
-                { id: 'hey-jude', title: 'Hey Jude', artist: 'The Beatles', icon: '🎸' }
-            ];
-            localStorage.setItem('favorites', JSON.stringify(defaultFavorites));
-        }
-
         if (!localStorage.getItem('recentActivity')) {
             const defaultActivity = [
-                { type: '🎵', text: 'Added "Bohemian Rhapsody" to favorites', time: '2 hours ago' },
-                { type: '👁️', text: 'Viewed "Back in Black" sheet music', time: 'Yesterday' },
-                { type: '⭐', text: 'Added "Hey Jude" to favorites', time: '2 days ago' }
+                { type: 'favorite', text: 'Added "Bohemian Rhapsody" to favorites', time: '2 hours ago' },
+                { type: 'visibility', text: 'Viewed "Back in Black" sheet music', time: 'Yesterday' }
             ];
             localStorage.setItem('recentActivity', JSON.stringify(defaultActivity));
         }
@@ -510,44 +756,6 @@
             localStorage.setItem('practiceData', JSON.stringify(defaultPracticeData));
         }
 
-        // Load and update favorites
-        function updateFavorites() {
-            const favorites = JSON.parse(localStorage.getItem('favorites'));
-            const favoritesGrid = document.querySelector('.favorites-grid');
-            const favoriteCount = document.querySelector('.stat-number');
-            
-            favoritesGrid.innerHTML = favorites.map(fav => `
-                <div class="favorite-card" data-id="${fav.id}">
-                    <div class="favorite-header">
-                        <span class="favorite-icon">${fav.icon}</span>
-                        <div class="favorite-info">
-                            <h3>${fav.title}</h3>
-                            <p>${fav.artist}</p>
-                        </div>
-                    </div>
-                    <button onclick="removeFavorite('${fav.id}')" class="remove-btn" style="background: none; border: none; color: #f093fb; cursor: pointer; margin-top: 10px;">
-                        ❌ Remove
-                    </button>
-                </div>
-            `).join('');
-            
-            favoriteCount.textContent = favorites.length;
-        }
-
-        // Remove favorite
-        function removeFavorite(id) {
-            const favorites = JSON.parse(localStorage.getItem('favorites'));
-            const updatedFavorites = favorites.filter(fav => fav.id !== id);
-            localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-            
-            // Add to recent activity
-            const removedSong = favorites.find(fav => fav.id === id);
-            addActivity('❌', `Removed "${removedSong.title}" from favorites`);
-            
-            updateFavorites();
-            updateRecentActivity();
-        }
-
         // Add activity
         function addActivity(icon, text) {
             const activities = JSON.parse(localStorage.getItem('recentActivity'));
@@ -556,10 +764,10 @@
                 text: text,
                 time: 'Just now'
             });
-            
+
             // Keep only last 10 activities
             if (activities.length > 10) activities.pop();
-            
+
             localStorage.setItem('recentActivity', JSON.stringify(activities));
         }
 
@@ -568,13 +776,18 @@
             const practiceData = JSON.parse(localStorage.getItem('practiceData'));
             practiceData.sessions.push({
                 startTime: new Date().toISOString(),
-                song: document.querySelector('.favorite-card h3')?.textContent || 'General Practice'
+                song: 'General Practice'
             });
             localStorage.setItem('practiceData', JSON.stringify(practiceData));
-            addActivity('▶️', 'Started practice session');
+            addActivity('play_arrow', 'Started practice session');
             updateRecentActivity();
-            document.getElementById('practice-btn').innerHTML = '⏹️ End Practice';
-            document.getElementById('practice-btn').onclick = endPractice;
+
+            const btn = document.getElementById('practice-btn');
+            btn.innerHTML = '<span class="material-icons">stop</span> End Practice';
+            btn.classList.remove('btn-secondary');
+            btn.style.backgroundColor = '#d93025';
+            btn.style.color = 'white';
+            btn.onclick = endPractice;
         }
 
         function endPractice() {
@@ -583,23 +796,28 @@
             const startTime = new Date(lastSession.startTime);
             const endTime = new Date();
             const hoursSpent = (endTime - startTime) / (1000 * 60 * 60);
-            
+
             practiceData.totalHours += hoursSpent;
             lastSession.endTime = endTime.toISOString();
             lastSession.duration = hoursSpent;
-            
+
             localStorage.setItem('practiceData', JSON.stringify(practiceData));
-            addActivity('⏹️', `Practiced for ${Math.round(hoursSpent * 60)} minutes`);
+            addActivity('stop', `Practiced for ${Math.round(hoursSpent * 60)} minutes`);
             updateRecentActivity();
             updatePracticeHours();
-            
-            document.getElementById('practice-btn').innerHTML = '▶️ Start Practice';
-            document.getElementById('practice-btn').onclick = startPractice;
+
+            const btn = document.getElementById('practice-btn');
+            btn.innerHTML = '<span class="material-icons">play_arrow</span> Start Practice';
+            btn.classList.add('btn-secondary');
+            btn.style.backgroundColor = ''; // Reset inline style
+            btn.style.color = '';
+            btn.onclick = startPractice;
         }
 
         function updatePracticeHours() {
             const practiceData = JSON.parse(localStorage.getItem('practiceData'));
-            const practiceHoursElement = document.querySelector('.stats-grid .stat-card:nth-child(3) .stat-number');
+            // 3rd stat card is practice hours
+            const practiceHoursElement = document.querySelectorAll('.stat-number')[2];
             practiceHoursElement.textContent = Math.round(practiceData.totalHours);
         }
 
@@ -607,52 +825,44 @@
         function updateRecentActivity() {
             const activities = JSON.parse(localStorage.getItem('recentActivity'));
             const activityContainer = document.querySelector('.recent-activity');
-            
+
             const activityHTML = activities.map(activity => `
                 <div class="activity-item">
-                    <div class="activity-icon">${activity.type}</div>
+                    <div class="activity-icon">
+                        <span class="material-icons">${activity.type}</span>
+                    </div>
                     <div class="activity-content">
                         <p>${activity.text}</p>
                         <span class="activity-time">${activity.time}</span>
                     </div>
                 </div>
             `).join('');
-            
-            activityContainer.innerHTML = `
-                <h2 class="section-title">Recent Activity</h2>
-                ${activityHTML}
-            `;
+
+            activityContainer.innerHTML = activityHTML;
         }
 
         // Handle settings
         document.querySelectorAll('.toggle-switch').forEach(toggle => {
             const settingName = toggle.parentElement.querySelector('.setting-label').textContent.toLowerCase().replace(/\s+/g, '');
             const settings = JSON.parse(localStorage.getItem('userSettings'));
-            
-            // Set initial state
-            if (settings[settingName]) {
-                toggle.classList.add('active');
-            }
-            
+
             toggle.addEventListener('click', () => {
                 toggle.classList.toggle('active');
-                settings[settingName] = toggle.classList.contains('active');
-                localStorage.setItem('userSettings', JSON.stringify(settings));
-                
+
                 // Add to recent activity
                 const settingLabel = toggle.parentElement.querySelector('.setting-label').textContent;
                 const state = toggle.classList.contains('active') ? 'enabled' : 'disabled';
-                addActivity('⚙️', `${settingLabel} ${state}`);
+                addActivity('settings', `${settingLabel} ${state}`);
                 updateRecentActivity();
             });
         });
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', () => {
-            updateFavorites();
             updateRecentActivity();
             updatePracticeHours();
         });
     </script>
 </body>
+
 </html>

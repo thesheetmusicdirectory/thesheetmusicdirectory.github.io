@@ -11,13 +11,37 @@
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta name="referrer" content="strict-origin-when-cross-origin">
+<<<<<<< HEAD
 
+=======
+>>>>>>> f78397a82f574ef9b6d80bc1bee3e58e06ab520d
 
     <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#667eea">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Browse our collection of guitar tabs and sheet music.">
+
+    <!-- iOS Specific Meta Tags -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sheet Music">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <style>
+        :root {
+            --primary-color: #1a73e8;
+            --primary-hover: #1557b0;
+            --text-color: #202124;
+            --text-secondary: #5f6368;
+            --bg-color: #ffffff;
+            --surface-color: #ffffff;
+            --border-color: #dadce0;
+            --shadow-1: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+            --shadow-2: 0 4px 8px 3px rgba(60, 64, 67, 0.15), 0 1px 3px 0 rgba(60, 64, 67, 0.3);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -25,15 +49,42 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #0a0a0a;
-            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header */
+        .page-header {
             padding: 4rem 2rem;
+<<<<<<< HEAD
             position: relative;
             overflow: hidden;
         }
@@ -83,39 +134,41 @@
             z-index: 1;
             max-width: 1200px;
             margin: 0 auto;
+=======
+            background: #fff;
+>>>>>>> f78397a82f574ef9b6d80bc1bee3e58e06ab520d
             text-align: center;
-        }
-
-        .back-btn {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            z-index: 10;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .header-nav {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            z-index: 10;
             margin-bottom: 2rem;
         }
 
-        .back-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateX(-5px);
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: #f1f3f4;
+            color: var(--primary-color);
         }
 
         h1 {
             font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 800;
+            font-weight: 300;
+            color: var(--text-color);
             margin-bottom: 1rem;
+<<<<<<< HEAD
             background: linear-gradient(120deg, #ffffff 0%, #ffffff 40%, #f093fb 50%, #ffffff 60%, #ffffff 100%);
             background-size: 200% auto;
             -webkit-background-clip: text;
@@ -132,18 +185,27 @@
             100% {
                 background-position: 1000px 0;
             }
+=======
+            letter-spacing: -1px;
+            animation: fadeInUp 0.8s ease-out both;
+>>>>>>> f78397a82f574ef9b6d80bc1bee3e58e06ab520d
         }
 
         .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
+        /* Search Section */
         .search-section {
             padding: 3rem 2rem;
-            background: #0a0a0a;
+            background: #f8f9fa;
         }
 
         .container {
@@ -153,7 +215,7 @@
 
         .search-box {
             max-width: 600px;
-            margin: 0 auto 3rem;
+            margin: 0 auto 2rem;
             position: relative;
         }
 
@@ -161,157 +223,193 @@
             width: 100%;
             padding: 1rem 1.5rem 1rem 3.5rem;
             font-size: 1.1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #fff;
+            border: 1px solid var(--border-color);
             border-radius: 50px;
-            color: white;
+            color: var(--text-color);
             outline: none;
             transition: all 0.3s ease;
+            box-shadow: var(--shadow-1);
         }
 
         .search-input:focus {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
-        }
-
-        .search-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-2);
         }
 
         .search-icon {
             position: absolute;
-            left: 1.5rem;
+            left: 1.2rem;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 1.2rem;
-            opacity: 0.5;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
         }
 
         .filters {
             display: flex;
-            gap: 1rem;
+            gap: 0.5rem;
             justify-content: center;
             flex-wrap: wrap;
             margin-bottom: 3rem;
         }
 
         .filter-btn {
-            padding: 0.75rem 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
-            color: white;
+            padding: 0.5rem 1rem;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            color: var(--text-secondary);
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-            font-weight: 600;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
+<<<<<<< HEAD
         .filter-btn:hover,
         .filter-btn.active {
             background: rgba(102, 126, 234, 0.2);
             border-color: #667eea;
+=======
+        .filter-btn:hover {
+            background: #f1f3f4;
+            color: var(--text-color);
+>>>>>>> f78397a82f574ef9b6d80bc1bee3e58e06ab520d
         }
 
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Songs Grid */
         .songs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            padding: 2rem 0;
+            padding-bottom: 4rem;
         }
 
         .song-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            text-decoration: none;
-            color: white;
-            display: block;
-            position: relative;
+            background: #fff;
+            border-radius: 12px;
             overflow: hidden;
-        }
-
-        .song-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .song-card:hover::before {
-            opacity: 1;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: inherit;
         }
 
         .song-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(102, 126, 234, 0.5);
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-1);
         }
 
-        .song-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-            position: relative;
-            z-index: 1;
+        .song-image {
+            height: 160px;
+            background: linear-gradient(135deg, var(--primary-color), #1557b0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .song-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .song-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            color: var(--text-color);
         }
 
         .song-artist {
-            font-size: 1rem;
-            opacity: 0.7;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
             margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
         }
 
         .song-meta {
             display: flex;
-            gap: 1rem;
-            font-size: 0.85rem;
-            opacity: 0.6;
-            position: relative;
-            z-index: 1;
-        }
-
-        .meta-item {
-            display: flex;
             align-items: center;
-            gap: 0.3rem;
-        }
-
-        footer {
-            padding: 3rem 2rem;
-            background: #050505;
-            text-align: center;
-            margin-top: 4rem;
-        }
-
-        .footer-note {
-            opacity: 0.5;
+            gap: 0.5rem;
+            margin-top: auto;
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
 
+        .song-btn {
+            margin-top: 1rem;
+            width: 100%;
+            padding: 0.75rem;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--primary-color);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .song-card:hover .song-btn {
+            background: #f1f3f4;
+            border-color: #d2e3fc;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background: #fff;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        .contact-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .contact-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .footer-note {
+            color: #9aa0a6;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+        }
+
         @media (max-width: 768px) {
-            .header {
+            .page-header {
                 padding: 2rem 1rem;
             }
+<<<<<<< HEAD
 
             .header-nav {
                 flex-wrap: wrap;
@@ -330,6 +428,8 @@
                 padding: 0.6rem 1rem;
                 font-size: 0.85rem;
             }
+=======
+>>>>>>> f78397a82f574ef9b6d80bc1bee3e58e06ab520d
 
             .songs-grid {
                 grid-template-columns: 1fr;
@@ -339,22 +439,24 @@
 </head>
 
 <body>
-    <header class="header">
+    <header class="page-header">
         <div class="header-nav">
-            <a href="index.html" class="back-btn">← Home</a>
-            <a href="content.html" class="back-btn">📚 Library</a>
-            <a href="account.html" class="back-btn">👤 Profile</a>
+            <a href="index.html" class="nav-link">← Home</a>
+            <a href="content.html" class="nav-link active">Library</a>
+            <a href="account.html" class="nav-link">Account</a>
         </div>
-        <div class="header-content">
-            <h1>Browse Library</h1>
-            <p class="subtitle">Explore our collection of guitar tabs and sheet music</p>
-        </div>
+        <h1>Browse Library</h1>
+        <p class="subtitle">Explore our collection of guitar tabs and sheet music</p>
     </header>
 
     <section class="search-section">
         <div class="container">
             <div class="search-box">
+<<<<<<< HEAD
                 <span class="search-icon">🔍</span>
+=======
+                <span class="material-icons search-icon">search</span>
+>>>>>>> f78397a82f574ef9b6d80bc1bee3e58e06ab520d
                 <input type="text" class="search-input" id="searchInput"
                     placeholder="Search for songs, artists, or genres...">
             </div>
@@ -373,18 +475,24 @@
             <div class="songs-grid" id="songsGrid">
                 <!-- Nirvana Songs -->
                 <a href="sltsnirvana.html" class="song-card" data-genre="rock alternative">
-                    <span class="song-icon">🎸</span>
-                    <h3 class="song-title">Smells Like Teen Spirit</h3>
-                    <p class="song-artist">Nirvana</p>
-                    <div class="song-meta">
-                        <span class="meta-item">📊 Intermediate</span>
-                        <span class="meta-item">🎸 Guitar</span>
+                    <div class="song-image">
+                        <span class="material-icons" style="font-size: 64px; opacity: 0.8;">music_note</span>
+                    </div>
+                    <div class="song-content">
+                        <h3 class="song-title">Smells Like Teen Spirit</h3>
+                        <p class="song-artist">Nirvana</p>
+                        <div class="song-meta">
+                            <span class="material-icons" style="font-size: 18px;">equalizer</span>
+                            <span>Intermediate</span>
+                        </div>
+                        <div class="song-btn">View Tab</div>
                     </div>
                 </a>
 
                 <!-- Video Game Songs -->
                 <a href="%5BN64%5D%20-%20Super%20Mario%2064%20-%20Bob-Omb%20Battlefield-1.pdf" class="song-card"
                     data-genre="videogame piano">
+<<<<<<< HEAD
                     <span class="song-icon">🎹</span>
                     <h3 class="song-title">Bob-Omb Battlefield</h3>
                     <p class="song-artist">Koji Kondo</p>
@@ -392,124 +500,192 @@
                         <span class="meta-item">📊 Intermediate</span>
                         <span class="meta-item">🎹 Piano</span>
                         <span class="meta-item">📄 PDF</span>
+=======
+                    <div class="song-image">
+                        <span class="material-icons" style="font-size: 64px; opacity: 0.8;">piano</span>
+                    </div>
+                    <div class="song-content">
+                        <h3 class="song-title">Bob-Omb Battlefield</h3>
+                        <p class="song-artist">Koji Kondo</p>
+                        <div class="song-meta">
+                            <span class="material-icons" style="font-size: 18px;">piano</span>
+                            <span>Piano Score</span>
+                        </div>
+                        <div class="song-btn">View PDF</div>
+>>>>>>> f78397a82f574ef9b6d80bc1bee3e58e06ab520d
                     </div>
                 </a>
 
                 <!-- AC/DC Songs -->
                 <a href="back_in_black.html" class="song-card" data-genre="rock">
-                    <span class="song-icon">🎸</span>
-                    <h3 class="song-title">Back in Black</h3>
-                    <p class="song-artist">AC/DC</p>
-                    <div class="song-meta">
-                        <span class="meta-item">📊 Intermediate</span>
-                        <span class="meta-item">🎸 Guitar</span>
+                    <div class="song-image">
+                        <span class="material-icons" style="font-size: 64px; opacity: 0.8;">graphic_eq</span>
+                    </div>
+                    <div class="song-content">
+                        <h3 class="song-title">Back in Black</h3>
+                        <p class="song-artist">AC/DC</p>
+                        <div class="song-meta">
+                            <span class="material-icons" style="font-size: 18px;">equalizer</span>
+                            <span>Intermediate</span>
+                        </div>
+                        <div class="song-btn">View Tab</div>
                     </div>
                 </a>
 
                 <a href="highway_to_hell_acdc.html" class="song-card" data-genre="rock">
-                    <span class="song-icon">🎸</span>
-                    <h3 class="song-title">Highway to Hell</h3>
-                    <p class="song-artist">AC/DC</p>
-                    <div class="song-meta">
-                        <span class="meta-item">📊 Intermediate</span>
-                        <span class="meta-item">🎸 Guitar</span>
+                    <div class="song-image">
+                        <span class="material-icons" style="font-size: 64px; opacity: 0.8;">graphic_eq</span>
+                    </div>
+                    <div class="song-content">
+                        <h3 class="song-title">Highway to Hell</h3>
+                        <p class="song-artist">AC/DC</p>
+                        <div class="song-meta">
+                            <span class="material-icons" style="font-size: 18px;">equalizer</span>
+                            <span>Intermediate</span>
+                        </div>
+                        <div class="song-btn">View Tab</div>
                     </div>
                 </a>
 
                 <a href="Dirty%20Deeds%20Done%20Dirt%20Cheap.html" class="song-card" data-genre="rock">
-                    <span class="song-icon">🎸</span>
-                    <h3 class="song-title">Dirty Deeds Done Dirt Cheap</h3>
-                    <p class="song-artist">AC/DC</p>
-                    <div class="song-meta">
-                        <span class="meta-item">📊 Intermediate</span>
-                        <span class="meta-item">🎸 Guitar</span>
+                    <div class="song-image">
+                        <span class="material-icons" style="font-size: 64px; opacity: 0.8;">graphic_eq</span>
+                    </div>
+                    <div class="song-content">
+                        <h3 class="song-title">Dirty Deeds Done Dirt Cheap</h3>
+                        <p class="song-artist">AC/DC</p>
+                        <div class="song-meta">
+                            <span class="material-icons" style="font-size: 18px;">equalizer</span>
+                            <span>Intermediate</span>
+                        </div>
+                        <div class="song-btn">View Tab</div>
                     </div>
                 </a>
 
                 <!-- Queen Songs -->
                 <a href="bohemian_rhapsody.html" class="song-card" data-genre="rock">
-                    <span class="song-icon">🎸</span>
-                    <h3 class="song-title">Bohemian Rhapsody</h3>
-                    <p class="song-artist">Queen</p>
-                    <div class="song-meta">
-                        <span class="meta-item">📊 Advanced</span>
-                        <span class="meta-item">🎸 Guitar</span>
+                    <div class="song-image">
+                        <span class="material-icons" style="font-size: 64px; opacity: 0.8;">music_note</span>
+                    </div>
+                    <div class="song-content">
+                        <h3 class="song-title">Bohemian Rhapsody</h3>
+                        <p class="song-artist">Queen</p>
+                        <div class="song-meta">
+                            <span class="material-icons" style="font-size: 18px;">trending_up</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="song-btn">View Tab</div>
                     </div>
                 </a>
 
                 <!-- Deep Purple Songs -->
                 <a href="highway_star.html" class="song-card" data-genre="rock">
-                    <span class="song-icon">🎸</span>
-                    <h3 class="song-title">Highway Star</h3>
-                    <p class="song-artist">Deep Purple</p>
-                    <div class="song-meta">
-                        <span class="meta-item">📊 Advanced</span>
-                        <span class="meta-item">🎸 Guitar</span>
+                    <div class="song-image">
+                        <span class="material-icons" style="font-size: 64px; opacity: 0.8;">graphic_eq</span>
+                    </div>
+                    <div class="song-content">
+                        <h3 class="song-title">Highway Star</h3>
+                        <p class="song-artist">Deep Purple</p>
+                        <div class="song-meta">
+                            <span class="material-icons" style="font-size: 18px;">trending_up</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="song-btn">View Tab</div>
                     </div>
                 </a>
 
                 <!-- The Beatles Songs -->
                 <a href="hey_jude.html" class="song-card" data-genre="pop rock">
-                    <span class="song-icon">🎸</span>
-                    <h3 class="song-title">Hey Jude</h3>
-                    <p class="song-artist">The Beatles</p>
-                    <div class="song-meta">
-                        <span class="meta-item">📊 Intermediate</span>
-                        <span class="meta-item">🎸 Guitar</span>
+                    <div class="song-image">
+                        <span class="material-icons" style="font-size: 64px; opacity: 0.8;">music_note</span>
+                    </div>
+                    <div class="song-content">
+                        <h3 class="song-title">Hey Jude</h3>
+                        <p class="song-artist">The Beatles</p>
+                        <div class="song-meta">
+                            <span class="material-icons" style="font-size: 18px;">equalizer</span>
+                            <span>Intermediate</span>
+                        </div>
+                        <div class="song-btn">View Tab</div>
                     </div>
                 </a>
 
                 <a href="i_want_to_hold_your_hand.html" class="song-card" data-genre="pop rock">
-                    <span class="song-icon">🎸</span>
-                    <h3 class="song-title">I Want to Hold Your Hand</h3>
-                    <p class="song-artist">The Beatles</p>
-                    <div class="song-meta">
-                        <span class="meta-item">📊 Beginner</span>
-                        <span class="meta-item">🎸 Guitar</span>
+                    <div class="song-image">
+                        <span class="material-icons" style="font-size: 64px; opacity: 0.8;">music_note</span>
+                    </div>
+                    <div class="song-content">
+                        <h3 class="song-title">I Want to Hold Your Hand</h3>
+                        <p class="song-artist">The Beatles</p>
+                        <div class="song-meta">
+                            <span class="material-icons" style="font-size: 18px;">check_circle</span>
+                            <span>Beginner</span>
+                        </div>
+                        <div class="song-btn">View Tab</div>
                     </div>
                 </a>
 
                 <!-- Chuck Berry Songs -->
                 <a href="johnny_b_goode.html" class="song-card" data-genre="rock">
-                    <span class="song-icon">🎸</span>
-                    <h3 class="song-title">Johnny B. Goode</h3>
-                    <p class="song-artist">Chuck Berry</p>
-                    <div class="song-meta">
-                        <span class="meta-item">📊 Intermediate</span>
-                        <span class="meta-item">� Guitar</span>
+                    <div class="song-image">
+                        <span class="material-icons" style="font-size: 64px; opacity: 0.8;">graphic_eq</span>
+                    </div>
+                    <div class="song-content">
+                        <h3 class="song-title">Johnny B. Goode</h3>
+                        <p class="song-artist">Chuck Berry</p>
+                        <div class="song-meta">
+                            <span class="material-icons" style="font-size: 18px;">equalizer</span>
+                            <span>Intermediate</span>
+                        </div>
+                        <div class="song-btn">View Tab</div>
                     </div>
                 </a>
 
                 <!-- Men At Work Songs -->
                 <a href="down_under.html" class="song-card" data-genre="pop rock">
-                    <span class="song-icon">🎸</span>
-                    <h3 class="song-title">Down Under</h3>
-                    <p class="song-artist">Men At Work</p>
-                    <div class="song-meta">
-                        <span class="meta-item">📊 Beginner</span>
-                        <span class="meta-item">🎸 Guitar</span>
+                    <div class="song-image">
+                        <span class="material-icons" style="font-size: 64px; opacity: 0.8;">music_note</span>
+                    </div>
+                    <div class="song-content">
+                        <h3 class="song-title">Down Under</h3>
+                        <p class="song-artist">Men At Work</p>
+                        <div class="song-meta">
+                            <span class="material-icons" style="font-size: 18px;">check_circle</span>
+                            <span>Beginner</span>
+                        </div>
+                        <div class="song-btn">View Tab</div>
                     </div>
                 </a>
 
                 <!-- The Animals Songs -->
                 <a href="house_of_the_rising_sun.html" class="song-card" data-genre="rock folk">
-                    <span class="song-icon">🎸</span>
-                    <h3 class="song-title">House of the Rising Sun</h3>
-                    <p class="song-artist">The Animals</p>
-                    <div class="song-meta">
-                        <span class="meta-item">📊 Intermediate</span>
-                        <span class="meta-item">🎸 Guitar</span>
+                    <div class="song-image">
+                        <span class="material-icons" style="font-size: 64px; opacity: 0.8;">graphic_eq</span>
+                    </div>
+                    <div class="song-content">
+                        <h3 class="song-title">House of the Rising Sun</h3>
+                        <p class="song-artist">The Animals</p>
+                        <div class="song-meta">
+                            <span class="material-icons" style="font-size: 18px;">equalizer</span>
+                            <span>Intermediate</span>
+                        </div>
+                        <div class="song-btn">View Tab</div>
                     </div>
                 </a>
 
                 <!-- Lynyrd Skynyrd Songs -->
                 <a href="free_bird.html" class="song-card" data-genre="rock">
-                    <span class="song-icon">🎸</span>
-                    <h3 class="song-title">Free Bird</h3>
-                    <p class="song-artist">Lynyrd Skynyrd</p>
-                    <div class="song-meta">
-                        <span class="meta-item">📊 Advanced</span>
-                        <span class="meta-item">🎸 Guitar</span>
+                    <div class="song-image">
+                        <span class="material-icons" style="font-size: 64px; opacity: 0.8;">graphic_eq</span>
+                    </div>
+                    <div class="song-content">
+                        <h3 class="song-title">Free Bird</h3>
+                        <p class="song-artist">Lynyrd Skynyrd</p>
+                        <div class="song-meta">
+                            <span class="material-icons" style="font-size: 18px;">trending_up</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="song-btn">View Tab</div>
                     </div>
                 </a>
             </div>
@@ -534,7 +710,6 @@
     <script>
         const searchInput = document.getElementById('searchInput');
         const filterBtns = document.querySelectorAll('.filter-btn');
-        const songsGrid = document.getElementById('songsGrid');
         const songCards = document.querySelectorAll('.song-card');
 
         // Search functionality
@@ -547,7 +722,7 @@
                 const genre = card.dataset.genre.toLowerCase();
 
                 if (title.includes(searchTerm) || artist.includes(searchTerm) || genre.includes(searchTerm)) {
-                    card.style.display = 'block';
+                    card.style.display = 'flex'; // Changed to flex to match CSS
                 } else {
                     card.style.display = 'none';
                 }
@@ -567,7 +742,7 @@
                     const genre = card.dataset.genre.toLowerCase();
 
                     if (filter === 'all' || genre.includes(filter)) {
-                        card.style.display = 'block';
+                        card.style.display = 'flex'; // Changed to flex
                     } else {
                         card.style.display = 'none';
                     }

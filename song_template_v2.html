@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{SONG_TITLE}} â€“ {{ARTIST_NAME}}</title>
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="content.html">Library</a>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="hero-shape shape-1"></div>
+        <div class="hero-shape shape-2"></div>
+        <div class="hero-shape shape-3"></div>
+        <div class="hero-content">
+            <div class="song-icon">{{ICON_EMOJI}}</div>
+            <h1 class="song-title">{{SONG_TITLE}}</h1>
+            <p class="artist-name">{{ARTIST_NAME}}</p>
+            <div class="meta">
+                <span class="meta-badge"><span class="material-icons">{{DIFFICULTY_ICON}}</span>{{DIFFICULTY}}</span>
+                <span class="meta-badge"><span class="material-icons">{{INSTRUMENT_ICON}}</span>{{INSTRUMENT}}</span>
+                <span class="meta-badge"><span class="material-icons">{{GENRE_ICON}}</span>{{GENRE}}</span>
+            </div>
+            <div class="action-bar">
+                <button class="btn" id="favoriteBtn"><span class="material-icons">favorite_border</span>
+                    Favorite</button>
+                <button class="btn" id="copyBtn"><span class="material-icons">content_copy</span> Copy</button>
+                <button class="btn" id="printBtn"><span class="material-icons">print</span> Print</button>
+                <button class="btn" id="pdfBtn"><span class="material-icons">picture_as_pdf</span> PDF</button>
+                <button class="btn" id="shareBtn"><span class="material-icons">share</span> Share</button>
+            </div>
+            <section class="tabs" id="tabsSection">
+                <pre id="tabContent">{{TAB_CONTENT}}</pre>
+            </section>
+        </div>
+    </section>
+    <footer>
+        <h3 class="footer-title">Get in Touch</h3>
+        <div class="contact-links">
+            <a href="mailto:theguitardirectory@gmail.com" class="contact-link">theguitardirectory@gmail.com</a>
+            <span>|</span>
+            <a href="mailto:mattialobrano@gmail.com" class="contact-link">mattialobrano@gmail.com</a>
+        </div>
+        <p class="footer-note">Â© 2025 The Sheet Music Directory. Created with â¤ï¸ for musicians everywhere.</p>
+    </footer>
+    <script>
+        // Favorite logic (same as previous template)
+        const favBtn = document.getElementById('favoriteBtn');
+        const songId = '{{SONG_ID}}';
+        function updateFav() {
+            const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
+            favBtn.innerHTML = favs.includes(songId) ? '<span class="material-icons">favorite</span> Favorite' : '<span class="material-icons">favorite_border</span> Favorite';
+        }
+        favBtn.onclick = () => {
+            let favs = JSON.parse(localStorage.getItem('favorites') || '[]');
+            if (favs.includes(songId)) favs = favs.filter(id => id !== songId); else favs.push(songId);
+            localStorage.setItem('favorites', JSON.stringify(favs));
+            updateFav();
+        };
+        updateFav();
+        // Copy, Print, PDF placeholders
+        document.getElementById('copyBtn').onclick = () => { navigator.clipboard.writeText(document.getElementById('tabContent').innerText).then(() => alert('Copied')).catch(() => alert('Copy failed')) };
+        document.getElementById('printBtn').onclick = () => { window.print() };
+        document.getElementById('pdfBtn').onclick = () => { alert('PDF generation not implemented in this template') };
+        document.getElementById('shareBtn').onclick = () => { alert('Share functionality not implemented') };
+    </script>
+</body>
+
+</html>

@@ -1,86 +1,309 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dirty Deeds Done Dirt Cheap - AC/DC</title>`n    <!-- Security Headers -->`n    <meta http-equiv="X-Content-Type-Options" content="nosniff">`n    <meta http-equiv="X-Frame-Options" content="DENY">`n    <meta http-equiv="X-XSS-Protection" content="1; mode=block">`n    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Dirty Deeds Done Dirt Cheap – AC/DC</title>
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; }
-        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); padding: 2rem 2rem 4rem; position: relative; overflow: hidden; }
-        .header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 100px; background: linear-gradient(to bottom, transparent, #0a0a0a); }
-        .song-header { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; }
-        .nav { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
-        .nav-btn { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; }
-        h1 { font-size: clamp(2rem, 6vw, 4rem); font-weight: 800; margin-bottom: 0.5rem; }
-        .artist-name { font-size: 1.5rem; opacity: 0.9; margin-bottom: 1.5rem; }
-        .song-meta { display: flex; gap: 1rem; flex-wrap: wrap; }
-        .meta-badge { background: rgba(255, 255, 255, 0.2); padding: 0.5rem 1rem; border-radius: 20px; }
-        .content { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
-        .tabs-section { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; margin-bottom: 2rem; }
-        .tabs-title { font-size: 1.8rem; color: #667eea; margin-bottom: 1.5rem; }
-        .action-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
-        .action-btn { padding: 0.7rem 1.3rem; background: rgba(102, 126, 234, 0.2); border: 1px solid rgba(102, 126, 234, 0.4); border-radius: 50px; color: white; font-weight: 600; cursor: pointer; font-family: inherit; font-size: 0.95rem; transition: all 0.3s; }
-        .action-btn:hover { background: rgba(102, 126, 234, 0.4); transform: translateY(-2px); }
-        .action-btn.favorite.active { background: rgba(255, 107, 107, 0.3); border-color: rgba(255, 107, 107, 0.5); }
-        .tabs-content { background: #000; border-radius: 15px; padding: 1.5rem; overflow-x: auto; }
-        pre { font-family: 'Courier New', monospace; font-size: 0.85rem; line-height: 1.3; color: #00ff88; white-space: pre; }
-        .metronome-widget { background: rgba(102, 126, 234, 0.1); border: 1px solid rgba(102, 126, 234, 0.3); border-radius: 20px; padding: 2rem; margin-bottom: 2rem; }
-        .metronome-widget h3 { font-size: 1.5rem; color: #667eea; text-align: center; margin-bottom: 1.5rem; }
-        .metronome-controls { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
-        .bpm-display { font-size: 3rem; font-weight: 800; color: #667eea; }
-        .bpm-controls { display: flex; gap: 1rem; align-items: center; }
-        .bpm-btn { width: 50px; height: 50px; border-radius: 50%; border: none; background: rgba(102, 126, 234, 0.2); color: white; font-size: 1.5rem; cursor: pointer; font-family: inherit; }
-        .bpm-slider { width: 300px; height: 8px; border-radius: 4px; background: rgba(255, 255, 255, 0.1); outline: none; }
-        .metronome-play-btn { width: 120px; height: 120px; border-radius: 50%; border: none; background: linear-gradient(135deg, #667eea, #764ba2); color: white; font-size: 3rem; cursor: pointer; font-family: inherit; }
-        .metronome-play-btn.playing { background: linear-gradient(135deg, #ff6b6b, #ff5252); }
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); align-items: center; justify-content: center; }
-        .modal.active { display: flex; }
-        .modal-content { background: linear-gradient(135deg, #1a1a2e, #16213e); border: 1px solid rgba(102, 126, 234, 0.3); border-radius: 20px; padding: 3rem; max-width: 500px; width: 90%; position: relative; }
-        .close-modal { position: absolute; top: 1rem; right: 1rem; background: rgba(255, 255, 255, 0.1); border: none; color: white; font-size: 1.5rem; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-family: inherit; }
-        .modal-content h2 { font-size: 2rem; margin-bottom: 1rem; color: #667eea; }
-        .share-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.5rem; }
-        .share-btn { padding: 1rem; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 15px; color: white; cursor: pointer; font-family: inherit; font-size: 0.9rem; }
-        .notification { position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 1rem 2rem; border-radius: 50px; z-index: 10000; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
-        .info-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
-        .info-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; transition: all 0.4s ease; }
-        .info-card:hover { transform: translateY(-5px); border-color: rgba(102, 126, 234, 0.5); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2); }
-        .info-card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: #667eea; }
-        .info-card p { opacity: 0.8; margin-bottom: 1rem; }
-        .info-card a { color: #f093fb; text-decoration: none; font-weight: 600; }
-        footer { padding: 3rem 2rem; background: #050505; text-align: center; }
-        @media (max-width: 768px) { .tabs-content { padding: 1rem; } pre { font-size: 0.7rem; } .bpm-slider { width: 200px; } .metronome-play-btn { width: 100px; height: 100px; font-size: 2.5rem; } .share-options { grid-template-columns: 1fr; } }
+        :root {
+            --primary-color: #1a73e8;
+            --primary-hover: #1557b0;
+            --text-color: #202124;
+            --text-secondary: #5f6368;
+            --bg-color: #fff;
+            --border-color: #dadce0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8eaed 100%);
+            color: var(--text-color);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            padding: 4rem 2rem;
+            background: transparent;
+            text-align: center;
+        }
+
+        .header-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: .5rem 1rem;
+            border-radius: 20px;
+            transition: .2s;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--primary-color);
+        }
+
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-shape {
+            position: fixed;
+            border-radius: 50%;
+            opacity: .1;
+            animation: float 6s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: #4285f4;
+            top: -50px;
+            left: -50px;
+        }
+
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background: #34A853;
+            bottom: -100px;
+            right: -100px;
+            animation-delay: 2s;
+        }
+
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            background: #EA4335;
+            top: 20%;
+            right: 10%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 1;
+            position: relative;
+            text-align: center;
+        }
+
+        .song-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp .8s ease-out .1s both;
+        }
+
+        .song-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 300;
+            margin-bottom: .5rem;
+            color: var(--text-color);
+            animation: fadeInUp .8s ease-out .2s both;
+        }
+
+        .artist-name {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            animation: fadeInUp .8s ease-out .3s both;
+        }
+
+        .meta {
+            text-align: center;
+        }
+
+        .meta-badge {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--border-color);
+            padding: .5rem 1rem;
+            border-radius: 16px;
+            font-size: .9rem;
+            color: var(--text-secondary);
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            margin: 0 .3rem;
+            animation: fadeInUp .8s ease-out .4s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .action-bar {
+            display: flex;
+            gap: .75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 1.5rem 0;
+            animation: fadeInUp .8s ease-out .5s both;
+        }
+
+        .btn {
+            padding: 0 16px;
+            height: 40px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            transition: .2s;
+        }
+
+        .btn:hover {
+            background: #f8f9fa;
+            border-color: #d2e3fc;
+            color: var(--primary-color);
+        }
+
+        .tabs {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            animation: fadeInUp .8s ease-out .6s both;
+            box-shadow: 0 1px 3px rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        pre {
+            font-family: 'Courier New', monospace;
+            font-size: .85rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: var(--text-color);
+            text-align: left;
+        }
+
+        footer {
+            padding: 4rem 2rem;
+            background: transparent;
+            border-top: 1px solid rgba(218, 220, 224, 0.5);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        .contact-link {
+            color: var(--text-secondary);
+            font-size: .9rem;
+            text-decoration: none;
+        }
+
+        .contact-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .footer-note {
+            color: #9aa0a6;
+            font-size: .85rem;
+            margin-top: 2rem;
+        }
     </style>
 </head>
+
 <body>
-    <header class="header">
-        <div class="song-header">
-            <nav class="nav">
-                <a href="index.html" class="nav-btn">← Home</a>
-                <a href="content.html" class="nav-btn">📚 Library</a>
-            </nav>
-            <span style="font-size: 4rem;">🎸</span>
-            <h1>Dirty Deeds Done Dirt Cheap</h1>
-            <p class="artist-name">AC/DC</p>
-            <div class="song-meta">
-                <span class="meta-badge">📊 Intermediate</span>
-                <span class="meta-badge">🎵 Guitar</span>
-                <span class="meta-badge">🎤 Hard Rock</span>
-            </div>
+    <header class="page-header">
+        <div class="header-nav">
+            <a href="index.html" class="nav-link">← Home</a>
+            <a href="content.html" class="nav-link">Library</a>
+            <a href="account.html" class="nav-link">Account</a>
         </div>
     </header>
-
-    <main class="content">
-        <section class="tabs-section">
-            <h2 class="tabs-title">Guitar Tabs</h2>
-            <div class="action-bar">
-                <button class="action-btn favorite" id="favoriteBtn"><span id="favoriteIcon">🤍</span> Favorite</button>
-                <button class="action-btn" id="copyBtn">📋 Copy</button>
-                <button class="action-btn" id="printBtn">🖨️ Print</button>
-                <button class="action-btn" id="pdfBtn">📄 PDF</button>
-                <button class="action-btn" id="shareBtn">🔗 Share</button>
+    <section class="hero">
+        <div class="hero-shape shape-1"></div>
+        <div class="hero-shape shape-2"></div>
+        <div class="hero-shape shape-3"></div>
+        <div class="hero-content">
+            <div class="song-icon">⚡</div>
+            <h1 class="song-title">Dirty Deeds Done Dirt Cheap</h1>
+            <p class="artist-name">AC/DC</p>
+            <div class="meta">
+                <span class="meta-badge"><span class="material-icons">trending_flat</span>Beginner</span>
+                <span class="meta-badge"><span class="material-icons">music_note</span>Guitar</span>
+                <span class="meta-badge"><span class="material-icons">album</span>Hard Rock</span>
             </div>
-            <div class="tabs-content" id="tabsContent"><pre>[Intro]
+            <div class="action-bar">
+                <button class="btn" id="favoriteBtn"><span class="material-icons">favorite_border</span>
+                    Favorite</button>
+                <button class="btn" id="copyBtn"><span class="material-icons">content_copy</span> Copy</button>
+                <button class="btn" id="printBtn"><span class="material-icons">print</span> Print</button>
+                <button class="btn" id="pdfBtn"><span class="material-icons">picture_as_pdf</span> PDF</button>
+                <button class="btn" id="shareBtn"><span class="material-icons">share</span> Share</button>
+            </div>
+            <section class="tabs" id="tabsSection">
+                <pre id="tabContent">[Intro]
  
     E5       G5 E5      A5 E5       D5 E5
 e|-------------------------------------------|
@@ -247,83 +470,50 @@ E|--0--------3--0----------0--------------------------------|
 | s  Slide        | h  Hammer-on    |
 | p  Pull-off     | b  Bend         |
 | x  Dead note    | ~  Vibrato      |
-************************************</pre></div>
-        </section>
-
-        <div class="metronome-widget">
-            <h3>🎵 Practice Metronome</h3>
-            <div class="metronome-controls">
-                <div class="bpm-display" id="bpmDisplay">120 BPM</div>
-                <div class="bpm-controls">
-                    <button class="bpm-btn" id="bpmMinus">-</button>
-                    <input type="range" class="bpm-slider" id="bpmSlider" min="40" max="240" value="120">
-                    <button class="bpm-btn" id="bpmPlus">+</button>
-                </div>
-                <button class="metronome-play-btn" id="metronomeBtn">▶️</button>
-            </div>
+************************************</pre>
+            </section>
         </div>
-
-        <div class="info-cards">
-            <div class="info-card">
-                <h3>📖 Learn More</h3>
-                <p>Discover the story behind this AC/DC classic.</p>
-                <a href="https://en.wikipedia.org/wiki/Dirty_Deeds_Done_Dirt_Cheap_(song)" target="_blank">Read on Wikipedia →</a>
-            </div>
-            <div class="info-card">
-                <h3>🎵 Alternative Versions</h3>
-                <p>Check out different tab interpretations.</p>
-                <a href="https://tabs.ultimate-guitar.com/tab/ac-dc/dirty-deeds-done-dirt-cheap-tabs-12604" target="_blank">Browse Ultimate Guitar →</a>
-            </div>
-            <div class="info-card">
-                <h3>🎬 Watch & Learn</h3>
-                <p>Watch tutorials to master this song.</p>
-                <a href="https://www.youtube.com/results?search_query=dirty+deeds+guitar+tutorial" target="_blank">Watch on YouTube →</a>
-            </div>
+    </section>
+    <footer>
+        <h3 class="footer-title">Get in Touch</h3>
+        <div class="contact-links">
+            <a href="mailto:theguitardirectory@gmail.com" class="contact-link">theguitardirectory@gmail.com</a>
+            <span>|</span>
+            <a href="mailto:mattialobrano@gmail.com" class="contact-link">mattialobrano@gmail.com</a>
         </div>
-    </main>
+        <p class="footer-note">© 2025 The Sheet Music Directory. Created with ❤️ for musicians everywhere.</p>
+            <p class="footer-note" style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.5;">Version 5.0.0</p>
+    </footer>
 
-    <footer><p>© 2025 The Sheet Music Directory</p></footer>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
-    <div id="shareModal" class="modal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeModalBtn">×</button>
-            <h2>🔗 Share This Song</h2>
-            <p style="opacity: 0.8; margin-bottom: 1rem;">Share with your friends!</p>
-            <div class="share-options">
-                <button class="share-btn" data-platform="twitter">🐦 Twitter</button>
-                <button class="share-btn" data-platform="facebook">📘 Facebook</button>
-                <button class="share-btn" data-platform="whatsapp">💬 WhatsApp</button>
-                <button class="share-btn" data-platform="email">📧 Email</button>
-                <button class="share-btn" id="copyLinkBtn">🔗 Copy Link</button>
-                <button class="share-btn" id="nativeShareBtn">📤 More</button>
-            </div>
-        </div>
-    </div>
+    <!-- App Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script>
+        const songId = 'dirtydeedsdone';
+    </script>
+    <script src="js/app.js"></script>
 
     <script>
-        function notify(m){const n=document.createElement('div');n.className='notification';n.textContent=m;document.body.appendChild(n);setTimeout(()=>n.remove(),2500);}
-        let playing=false,bpm=120,ctx,nextNote=0,interval;
-        const bpmDis=document.getElementById('bpmDisplay'),bpmSli=document.getElementById('bpmSlider'),metBtn=document.getElementById('metronomeBtn');
-        function playClick(){if(!ctx)ctx=new(window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.value=800;g.gain.value=0.3;o.start(ctx.currentTime);o.stop(ctx.currentTime+0.05);}
-        metBtn.onclick=()=>{if(!playing){if(!ctx)ctx=new(window.AudioContext||window.webkitAudioContext)();playing=true;nextNote=ctx.currentTime;interval=setInterval(()=>{while(nextNote<ctx.currentTime+0.1){playClick();nextNote+=60.0/bpm;}},25);metBtn.classList.add('playing');metBtn.textContent='⏸️';}else{playing=false;clearInterval(interval);metBtn.classList.remove('playing');metBtn.textContent='▶️';}};
-        bpmSli.oninput=e=>{bpm=parseInt(e.target.value);bpmDis.textContent=bpm+' BPM';};
-        document.getElementById('bpmMinus').onclick=()=>{let n=Math.max(40,parseInt(bpmSli.value)-10);bpmSli.value=n;bpm=n;bpmDis.textContent=bpm+' BPM';};
-        document.getElementById('bpmPlus').onclick=()=>{let n=Math.min(240,parseInt(bpmSli.value)+10);bpmSli.value=n;bpm=n;bpmDis.textContent=bpm+' BPM';};
-        const favBtn=document.getElementById('favoriteBtn'),favIcon=document.getElementById('favoriteIcon'),songId='dirtydeedsdcd';
-        function checkFavorite(){const f=JSON.parse(localStorage.getItem('favorites')||'[]');if(f.includes(songId)){favIcon.textContent='❤️';favBtn.classList.add('active');}}
-        favBtn.onclick=()=>{let f=JSON.parse(localStorage.getItem('favorites')||'[]');if(f.includes(songId)){f=f.filter(id=>id!==songId);favIcon.textContent='🤍';favBtn.classList.remove('active');notify('Removed from favorites');}else{f.push(songId);favIcon.textContent='❤️';favBtn.classList.add('active');notify('Added to favorites!');}localStorage.setItem('favorites',JSON.stringify(f));};
-        checkFavorite();
-        document.getElementById('copyBtn').onclick=()=>{navigator.clipboard.writeText(document.getElementById('tabsContent').innerText).then(()=>notify('✅ Tabs copied!')).catch(()=>alert('Copy failed'));};
-        document.getElementById('printBtn').onclick=()=>{const c=document.getElementById('tabsContent').innerHTML,w=window.open('','','width=800,height=600');w.document.write(`<!DOCTYPE html><html><head><title>Dirty Deeds Done Dirt Cheap - AC/DC</title><style>body{font-family:'Courier New',monospace;padding:40px;color:black;background:white;}h1{font-family:Arial;color:#333;}h2{font-family:Arial;color:#666;font-weight:normal;}pre{font-size:11px;line-height:1.3;color:black;}</style></head><body><h1>Dirty Deeds Done Dirt Cheap</h1><h2>AC/DC</h2><hr>${c}<script>window.onload=()=>window.print();<\/script></body></html>`);w.document.close();notify('🖨️ Print dialog opened!');};
-        document.getElementById('pdfBtn').onclick=()=>{const c=document.getElementById('tabsContent').innerText,w=window.open('','','width=800,height=600');w.document.write(`<!DOCTYPE html><html><head><title>Dirty Deeds Done Dirt Cheap - AC/DC - PDF</title><style>body{font-family:'Courier New',monospace;padding:40px;color:black;background:white;}h1{font-family:Arial;color:#333;margin-bottom:5px;}h2{font-family:Arial;color:#666;margin-top:0;font-weight:normal;}pre{font-size:11px;line-height:1.3;color:black;white-space:pre;}.footer{margin-top:40px;font-size:10px;color:#999;border-top:1px solid #ccc;padding-top:10px;}</style></head><body><h1>Dirty Deeds Done Dirt Cheap</h1><h2>AC/DC</h2><hr><pre>${c}</pre><div class="footer">Downloaded from The Sheet Music Directory</div><script>window.onload=()=>setTimeout(()=>window.print(),500);<\/script></body></html>`);w.document.close();notify('📄 PDF export ready! Use "Save as PDF" in print dialog');};
-        const shareModal=document.getElementById('shareModal'),closeModalBtn=document.getElementById('closeModalBtn'),shareBtn=document.getElementById('shareBtn');
-        shareBtn.onclick=()=>{shareModal.classList.add('active');document.body.style.overflow='hidden';};
-        closeModalBtn.onclick=()=>{shareModal.classList.remove('active');document.body.style.overflow='';};
-        shareModal.onclick=e=>{if(e.target===shareModal){shareModal.classList.remove('active');document.body.style.overflow='';}};
-        document.addEventListener('keydown',e=>{if(e.key==='Escape'&&shareModal.classList.contains('active')){shareModal.classList.remove('active');document.body.style.overflow='';}});
-        document.querySelectorAll('.share-btn[data-platform]').forEach(btn=>{btn.onclick=()=>{const p=btn.dataset.platform,url=window.location.href,t='Check out "Dirty Deeds Done Dirt Cheap" by AC/DC tabs!',urls={twitter:`https://twitter.com/intent/tweet?text=${encodeURIComponent(t)}&url=${encodeURIComponent(url)}`,facebook:`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,whatsapp:`https://wa.me/?text=${encodeURIComponent(t+' '+url)}`,email:`mailto:?subject=${encodeURIComponent('Check out this song!')}&body=${encodeURIComponent(t+'\n\n'+url)}`};if(urls[p]){window.open(urls[p],'_blank','width=600,height=400');notify(`Shared via ${p}!`);}}});
-        document.getElementById('copyLinkBtn').onclick=()=>{navigator.clipboard.writeText(window.location.href).then(()=>{notify('🔗 Link copied!');setTimeout(()=>{shareModal.classList.remove('active');document.body.style.overflow='';},1000);}).catch(()=>alert('Failed to copy link'));};
-        document.getElementById('nativeShareBtn').onclick=()=>{if(navigator.share){navigator.share({title:'Dirty Deeds Done Dirt Cheap - AC/DC',text:'Check out these guitar tabs!',url:window.location.href}).then(()=>{notify('Shared successfully!');shareModal.classList.remove('active');document.body.style.overflow='';}).catch(err=>{if(err.name!=='AbortError'){document.getElementById('copyLinkBtn').click();}});}else{document.getElementById('copyLinkBtn').click();}};
+        // Copy, Print, PDF, Share placeholders
+        document.getElementById('copyBtn').onclick = () => { navigator.clipboard.writeText(document.getElementById('tabContent').innerText).then(() => alert('Copied')).catch(() => alert('Copy failed')) };
+        document.getElementById('printBtn').onclick = () => { window.print() };
+        document.getElementById('pdfBtn').onclick = () => { alert('PDF generation not implemented') };
+        document.getElementById('shareBtn').onclick = () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Dirty Deeds Done Dirt Cheap - The Sheet Music Directory',
+                    text: 'Check out this tab for Dirty Deeds Done Dirt Cheap by AC/DC!',
+                    url: window.location.href
+                });
+            } else {
+                alert('Share functionality not supported on this browser');
+            }
+        };
     </script>
 </body>
+
 </html>
