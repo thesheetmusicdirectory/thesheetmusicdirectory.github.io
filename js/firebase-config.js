@@ -1,11 +1,5 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Firebase Configuration (v8 SDK - Namespaced)
+// This matches the Firebase SDK version loaded in the HTML files
 const firebaseConfig = {
     apiKey: "AIzaSyBhxOdAM-H60JHZDPc0dQsusi2MFwfJAYA",
     authDomain: "the-sheet-music-directory.firebaseapp.com",
@@ -16,6 +10,7 @@ const firebaseConfig = {
     measurementId: "G-1T2PKFCRXX"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// Initialize Firebase (v8 syntax)
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();

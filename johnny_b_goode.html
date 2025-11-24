@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -19,79 +19,77 @@
             --primary-hover: #1557b0;
             --text-color: #202124;
             --text-secondary: #5f6368;
-            --bg-color: #ffffff;
+            --bg-color: #fff;
             --border-color: #dadce0;
-            --shadow-1: 0 1px 2px rgba(60, 64, 67, .3), 0 1px 3px rgba(60, 64, 67, .15);
         }
 
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            background: var(--bg-color);
+            font-family: Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8eaed 100%);
             color: var(--text-color);
             line-height: 1.5;
-            overflow-x: hidden
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            min-height: 100vh;
         }
 
         .page-header {
-            background: #fff;
-            border-bottom: 1px solid var(--border-color);
-            padding: 1rem 2rem
+            padding: 4rem 2rem;
+            background: transparent;
+            text-align: center;
         }
 
         .header-nav {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-bottom: 0.5rem
+            margin-bottom: 2rem;
         }
 
         .nav-link {
             color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
-            padding: 0.5rem 1rem;
+            padding: .5rem 1rem;
             border-radius: 20px;
-            transition: 0.2s
+            transition: .2s;
         }
 
-        .nav-link:hover,
-        .nav-link.active {
-            background: #f1f3f4;
-            color: var(--primary-color)
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--primary-color);
         }
 
         .hero {
-            position: relative;
-            min-height: 70vh;
+            min-height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            background: #fff;
-            overflow: hidden
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
         }
 
         .hero-shape {
-            position: absolute;
+            position: fixed;
             border-radius: 50%;
-            opacity: 0.05;
+            opacity: .1;
+            animation: float 6s ease-in-out infinite;
             z-index: 0;
-            animation: float 6s ease-in-out infinite
         }
 
         .shape-1 {
             width: 300px;
             height: 300px;
-            background: var(--primary-color);
+            background: #4285f4;
             top: -50px;
             left: -50px;
-            animation-delay: 0s
         }
 
         .shape-2 {
@@ -100,7 +98,7 @@
             background: #34A853;
             bottom: -100px;
             right: -100px;
-            animation-delay: 2s
+            animation-delay: 2s;
         }
 
         .shape-3 {
@@ -109,31 +107,32 @@
             background: #EA4335;
             top: 20%;
             right: 10%;
-            animation-delay: 4s
+            animation-delay: 4s;
         }
 
         @keyframes float {
 
             0%,
             100% {
-                transform: translateY(0)
+                transform: translateY(0);
             }
 
             50% {
-                transform: translateY(-20px)
+                transform: translateY(-20px);
             }
         }
 
         .hero-content {
             max-width: 900px;
             z-index: 1;
-            position: relative
+            position: relative;
+            text-align: center;
         }
 
         .song-icon {
             font-size: 4rem;
             margin-bottom: 1rem;
-            animation: fadeInUp .8s ease-out .1s both
+            animation: fadeInUp .8s ease-out .1s both;
         }
 
         .song-title {
@@ -141,7 +140,7 @@
             font-weight: 300;
             margin-bottom: .5rem;
             color: var(--text-color);
-            animation: fadeInUp .8s ease-out .2s both
+            animation: fadeInUp .8s ease-out .2s both;
         }
 
         .artist-name {
@@ -149,11 +148,15 @@
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
             font-weight: 300;
-            animation: fadeInUp .8s ease-out .3s both
+            animation: fadeInUp .8s ease-out .3s both;
+        }
+
+        .meta {
+            text-align: center;
         }
 
         .meta-badge {
-            background: #f8f9fa;
+            background: rgba(255, 255, 255, 0.9);
             border: 1px solid var(--border-color);
             padding: .5rem 1rem;
             border-radius: 16px;
@@ -163,18 +166,18 @@
             align-items: center;
             gap: .5rem;
             margin: 0 .3rem;
-            animation: fadeInUp .8s ease-out .4s both
+            animation: fadeInUp .8s ease-out .4s both;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px)
+                transform: translateY(20px);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0)
+                transform: translateY(0);
             }
         }
 
@@ -184,7 +187,7 @@
             flex-wrap: wrap;
             justify-content: center;
             margin: 1.5rem 0;
-            animation: fadeInUp .8s ease-out .5s both
+            animation: fadeInUp .8s ease-out .5s both;
         }
 
         .btn {
@@ -199,21 +202,24 @@
             display: inline-flex;
             align-items: center;
             gap: .5rem;
-            transition: .2s
+            transition: .2s;
         }
 
         .btn:hover {
             background: #f8f9fa;
             border-color: #d2e3fc;
-            color: var(--primary-color)
+            color: var(--primary-color);
         }
 
         .tabs {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
             overflow-x: auto;
-            animation: fadeInUp .8s ease-out .6s both
+            animation: fadeInUp .8s ease-out .6s both;
+            box-shadow: 0 1px 3px rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+            margin: 0 auto;
+            max-width: 100%;
         }
 
         pre {
@@ -221,45 +227,48 @@
             font-size: .85rem;
             white-space: pre-wrap;
             word-wrap: break-word;
-            color: var(--text-color)
+            color: var(--text-color);
+            text-align: left;
         }
 
         footer {
             padding: 4rem 2rem;
-            background: #fff;
-            border-top: 1px solid var(--border-color);
-            text-align: center
+            background: transparent;
+            border-top: 1px solid rgba(218, 220, 224, 0.5);
+            text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-title {
             font-size: 1.25rem;
             font-weight: 500;
             margin-bottom: 1rem;
-            color: var(--text-color)
+            color: var(--text-color);
         }
 
         .contact-links {
             display: flex;
             gap: 1.5rem;
             justify-content: center;
-            margin: 1.5rem 0
+            margin: 1.5rem 0;
         }
 
         .contact-link {
             color: var(--text-secondary);
             font-size: .9rem;
-            text-decoration: none
+            text-decoration: none;
         }
 
         .contact-link:hover {
             color: var(--primary-color);
-            text-decoration: underline
+            text-decoration: underline;
         }
 
         .footer-note {
             color: #9aa0a6;
             font-size: .85rem;
-            margin-top: 2rem
+            margin-top: 2rem;
         }
     </style>
 </head>
@@ -267,9 +276,8 @@
 <body>
     <header class="page-header">
         <div class="header-nav">
-            <a href="index.html" class="nav-link">Home</a>
+            <a href="index.html" class="nav-link">← Home</a>
             <a href="content.html" class="nav-link">Library</a>
-
             <a href="account.html" class="nav-link">Account</a>
         </div>
     </header>
@@ -294,251 +302,50 @@
                 <button class="btn" id="pdfBtn"><span class="material-icons">picture_as_pdf</span> PDF</button>
                 <button class="btn" id="shareBtn"><span class="material-icons">share</span> Share</button>
             </div>
-            right: -100px;
-            animation-delay: 2s
+            <section class="tabs" id="tabsSection">
+                <pre id="tabContent">Tab content not found</pre>
+            </section>
+        </div>
+    </section>
+    <footer>
+        <h3 class="footer-title">Get in Touch</h3>
+        <div class="contact-links">
+            <a href="mailto:theguitardirectory@gmail.com" class="contact-link">theguitardirectory@gmail.com</a>
+            <span>|</span>
+            <a href="mailto:mattialobrano@gmail.com" class="contact-link">mattialobrano@gmail.com</a>
+        </div>
+        <p class="footer-note">© 2025 The Sheet Music Directory. Created with ❤️ for musicians everywhere.</p>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <!-- App Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script>
+        const songId = 'johnnybgoode';
+    </script>
+    <script src="js/app.js"></script>
+
+    <script>
+        // Copy, Print, PDF, Share placeholders
+        document.getElementById('copyBtn').onclick = () => { navigator.clipboard.writeText(document.getElementById('tabContent').innerText).then(() => alert('Copied')).catch(() => alert('Copy failed')) };
+        document.getElementById('printBtn').onclick = () => { window.print() };
+        document.getElementById('pdfBtn').onclick = () => { alert('PDF generation not implemented') };
+        document.getElementById('shareBtn').onclick = () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Johnny B. Goode - The Sheet Music Directory',
+                    text: 'Check out this tab for Johnny B. Goode by Chuck Berry!',
+                    url: window.location.href
+                });
+            } else {
+                alert('Share functionality not supported on this browser');
             }
-
-            .shape-3 {
-            width: 200px;
-            height: 200px;
-            background: #EA4335;
-            top: 20%;
-            right: 10%;
-            animation-delay: 4s
-            }
-
-            @keyframes float {
-
-            0%,
-            100% {
-            transform: translateY(0)
-            }
-
-            50% {
-            transform: translateY(-20px)
-            }
-            }
-
-            .hero-content {
-            max-width: 900px;
-            z-index: 1;
-            position: relative
-            }
-
-            .song-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp .8s ease-out .1s both
-            }
-
-            .song-title {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 300;
-            margin-bottom: .5rem;
-            color: var(--text-color);
-            animation: fadeInUp .8s ease-out .2s both
-            }
-
-            .artist-name {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-            animation: fadeInUp .8s ease-out .3s both
-            }
-
-            .meta-badge {
-            background: #f8f9fa;
-            border: 1px solid var(--border-color);
-            padding: .5rem 1rem;
-            border-radius: 16px;
-            font-size: .9rem;
-            color: var(--text-secondary);
-            display: inline-flex;
-            align-items: center;
-            gap: .5rem;
-            margin: 0 .3rem;
-            animation: fadeInUp .8s ease-out .4s both
-            }
-
-            @keyframes fadeInUp {
-            from {
-            opacity: 0;
-            transform: translateY(20px)
-            }
-
-            to {
-            opacity: 1;
-            transform: translateY(0)
-            }
-            }
-
-            .action-bar {
-            display: flex;
-            gap: .75rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 1.5rem 0;
-            animation: fadeInUp .8s ease-out .5s both
-            }
-
-            .btn {
-            padding: 0 16px;
-            height: 40px;
-            background: #fff;
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            color: var(--text-secondary);
-            font-weight: 500;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: .5rem;
-            transition: .2s
-            }
-
-            .btn:hover {
-            background: #f8f9fa;
-            border-color: #d2e3fc;
-            color: var(--primary-color)
-            }
-
-            .tabs {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            overflow-x: auto;
-            animation: fadeInUp .8s ease-out .6s both
-            }
-
-            pre {
-            font-family: 'Courier New', monospace;
-            font-size: .85rem;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            color: var(--text-color)
-            }
-
-            footer {
-            padding: 4rem 2rem;
-            background: #fff;
-            border-top: 1px solid var(--border-color);
-            text-align: center
-            }
-
-            .footer-title {
-            font-size: 1.25rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-            color: var(--text-color)
-            }
-
-            .contact-links {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin: 1.5rem 0
-            }
-
-            .contact-link {
-            color: var(--text-secondary);
-            font-size: .9rem;
-            text-decoration: none
-            }
-
-            .contact-link:hover {
-            color: var(--primary-color);
-            text-decoration: underline
-            }
-
-            .footer-note {
-            color: #9aa0a6;
-            font-size: .85rem;
-            margin-top: 2rem
-            }
-            </style>
-            </head>
-
-            <body>
-                <header class="page-header">
-                    <div class="header-nav">
-                        <a href="index.html" class="nav-link">Home</a>
-                        <a href="content.html" class="nav-link">Library</a>
-
-                        <a href="account.html" class="nav-link">Account</a>
-                    </div>
-                </header>
-                <section class="hero">
-                    <div class="hero-shape shape-1"></div>
-                    <div class="hero-shape shape-2"></div>
-                    <div class="hero-shape shape-3"></div>
-                    <div class="hero-content">
-                        <div class="song-icon">🎸</div>
-                        <h1 class="song-title">Johnny B. Goode</h1>
-                        <p class="artist-name">Chuck Berry</p>
-                        <div class="meta">
-                            <span class="meta-badge"><span
-                                    class="material-icons">trending_up</span>Advanced</span>
-                            <span class="meta-badge"><span
-                                    class="material-icons">music_note</span>Guitar</span>
-                            <span class="meta-badge"><span class="material-icons">album</span>Rock and Roll</span>
-                        </div>
-                        <div class="action-bar">
-                            <button class="btn" id="favoriteBtn"><span class="material-icons">favorite_border</span>
-                                Favorite</button>
-                            <button class="btn" id="copyBtn"><span class="material-icons">content_copy</span>
-                                Copy</button>
-                            <button class="btn" id="printBtn"><span class="material-icons">print</span> Print</button>
-                            <button class="btn" id="pdfBtn"><span class="material-icons">picture_as_pdf</span>
-                                PDF</button>
-                            <button class="btn" id="shareBtn"><span class="material-icons">share</span> Share</button>
-                        </div>
-                        <section class="tabs" id="tabsSection">
-                            <pre id="tabContent">Tab content not found</pre>
-                        </section>
-                    </div>
-                </section>
-                <footer>
-                    <h3 class="footer-title">Get in Touch</h3>
-                    <div class="contact-links">
-                        <a href="mailto:theguitardirectory@gmail.com"
-                            class="contact-link">theguitardirectory@gmail.com</a>
-                        <span>|</span>
-                        <a href="mailto:mattialobrano@gmail.com" class="contact-link">mattialobrano@gmail.com</a>
-                    </div>
-                    <p class="footer-note">© 2025 The Sheet Music Directory. Created with ❤️ for musicians everywhere.
-                    </p>
-                </footer>
-
-                <!-- Firebase SDKs -->
-                <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-                <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-                <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-
-                <!-- App Scripts -->
-                <script src="js/firebase-config.js"></script>
-                <script>
-                    const songId = 'johnnybgoode';
-                </script>
-                <script src="js/app.js"></script>
-
-                <script>
-                    // Copy, Print, PDF, Share placeholders
-                    document.getElementById('copyBtn').onclick = () => { navigator.clipboard.writeText(document.getElementById('tabContent').innerText).then(() => alert('Copied')).catch(() => alert('Copy failed')) };
-                    document.getElementById('printBtn').onclick = () => { window.print() };
-                    document.getElementById('pdfBtn').onclick = () => { alert('PDF generation not implemented') };
-                    document.getElementById('shareBtn').onclick = () => {
-                        if (navigator.share) {
-                            navigator.share({
-                                title: 'Johnny B. Goode - The Sheet Music Directory',
-                                text: 'Check out this tab for Johnny B. Goode by Chuck Berry!',
-                                url: window.location.href
-                            });
-                        } else {
-                            alert('Share functionality not supported on this browser');
-                        }
-                    };
-                </script>
-            </body>
+        };
+    </script>
+</body>
 
 </html>
