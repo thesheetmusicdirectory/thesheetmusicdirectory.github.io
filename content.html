@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Browse Library - The Sheet Music Directory</title>
-    
+
     <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    
+
 
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#667eea">
@@ -44,7 +45,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
+            background:
                 radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3), transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(255, 119, 198, 0.3), transparent 50%);
             animation: float 20s ease-in-out infinite;
@@ -62,9 +63,19 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -30px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
         }
 
         .header-content {
@@ -114,8 +125,13 @@
         }
 
         @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
+            0% {
+                background-position: -1000px 0;
+            }
+
+            100% {
+                background-position: 1000px 0;
+            }
         }
 
         .subtitle {
@@ -192,7 +208,8 @@
             font-weight: 600;
         }
 
-        .filter-btn:hover, .filter-btn.active {
+        .filter-btn:hover,
+        .filter-btn.active {
             background: rgba(102, 126, 234, 0.2);
             border-color: #667eea;
         }
@@ -295,9 +312,11 @@
             .header {
                 padding: 2rem 1rem;
             }
+
             .header-nav {
                 flex-wrap: wrap;
             }
+
             .back-btn {
                 font-size: 0.9rem;
                 padding: 0.6rem 1.2rem;
@@ -318,6 +337,7 @@
         }
     </style>
 </head>
+
 <body>
     <header class="header">
         <div class="header-nav">
@@ -335,7 +355,8 @@
         <div class="container">
             <div class="search-box">
                 <span class="search-icon">🔍</span>
-                <input type="text" class="search-input" id="searchInput" placeholder="Search for songs, artists, or genres...">
+                <input type="text" class="search-input" id="searchInput"
+                    placeholder="Search for songs, artists, or genres...">
             </div>
 
             <div class="filters">
@@ -362,7 +383,8 @@
                 </a>
 
                 <!-- Video Game Songs -->
-                <a href="%5BN64%5D%20-%20Super%20Mario%2064%20-%20Bob-Omb%20Battlefield-1.pdf" class="song-card" data-genre="videogame piano">
+                <a href="%5BN64%5D%20-%20Super%20Mario%2064%20-%20Bob-Omb%20Battlefield-1.pdf" class="song-card"
+                    data-genre="videogame piano">
                     <span class="song-icon">🎹</span>
                     <h3 class="song-title">Bob-Omb Battlefield</h3>
                     <p class="song-artist">Koji Kondo</p>
@@ -494,13 +516,19 @@
         </div>
     </section>
 
-
-
-
-
-
     <footer>
-        <p class="footer-note">© 2025 The Sheet Music Directory. Created with ❤️ for musicians everywhere.</p>
+        <div class="footer-content">
+            <h3 class="footer-title">Get in Touch</h3>
+            <div class="contact-links">
+                <a href="mailto:theguitardirectory@gmail.com" class="contact-link">theguitardirectory@gmail.com</a>
+                <span style="opacity: 0.3;">|</span>
+                <a href="mailto:mattialobrano@gmail.com" class="contact-link">mattialobrano@gmail.com</a>
+            </div>
+            <p style="opacity: 0.7; margin-top: 2rem;">Have feedback, suggestions, or want to contribute? We'd love to
+                hear from you!</p>
+            <p class="footer-note">© 2025 The Sheet Music Directory. Created with ❤️ for musicians everywhere.</p>
+            <p class="footer-note" style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.5;">Version 5.0.0</p>
+        </div>
     </footer>
 
     <script>
@@ -512,12 +540,12 @@
         // Search functionality
         searchInput.addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
-            
+
             songCards.forEach(card => {
                 const title = card.querySelector('.song-title').textContent.toLowerCase();
                 const artist = card.querySelector('.song-artist').textContent.toLowerCase();
                 const genre = card.dataset.genre.toLowerCase();
-                
+
                 if (title.includes(searchTerm) || artist.includes(searchTerm) || genre.includes(searchTerm)) {
                     card.style.display = 'block';
                 } else {
@@ -532,12 +560,12 @@
                 // Update active state
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                
+
                 const filter = btn.dataset.filter;
-                
+
                 songCards.forEach(card => {
                     const genre = card.dataset.genre.toLowerCase();
-                    
+
                     if (filter === 'all' || genre.includes(filter)) {
                         card.style.display = 'block';
                     } else {
@@ -547,5 +575,30 @@
             });
         });
     </script>
+    <footer>
+        <div class="footer-content"
+            style="text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border-color); margin-top: 4rem;">
+            <h3 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 1rem; color: var(--text-color);">Get in
+                Touch</h3>
+            <div style="display: flex; gap: 1.5rem; justify-content: center; margin: 1.5rem 0;">
+                <a href="mailto:theguitardirectory@gmail.com"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">theguitardirectory@gmail.com</a>
+                <span style="opacity: 0.3;">|</span>
+                <a href="mailto:mattialobrano@gmail.com"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">mattialobrano@gmail.com</a>
+            </div>
+            <p style="opacity: 0.7; margin-top: 2rem; color: var(--text-secondary);">Have feedback, suggestions, or want
+                to contribute? We'd love to hear from you!</p>
+            <p style="color: #9aa0a6; font-size: 0.85rem; margin-top: 2rem;">© 2025 The Sheet Music Directory. Created
+                with ❤️ for musicians everywhere.</p>
+            <div style="margin-top: 1rem; font-size: 0.9rem;">
+                <a href="privacy.html" style="color: var(--primary-color); text-decoration: none;">Privacy Policy</a>
+                <span style="color: var(--text-secondary);">|</span>
+                <a href="terms.html" style="color: var(--primary-color); text-decoration: none;">Terms and
+                    Conditions</a>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>
